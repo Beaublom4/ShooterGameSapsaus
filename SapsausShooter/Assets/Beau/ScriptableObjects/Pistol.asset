@@ -9,20 +9,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 213fea49ae48f464ab37d08fdb047e2c, type: 3}
+  m_Script: {fileID: 11500000, guid: 0f4a6e8223b91104bbaee7304f22396e, type: 3}
   m_Name: Pistol
   m_EditorClassIdentifier: 
   weaponPrefab: {fileID: 0}
-  bulletPrefab: {fileID: 0}
   weaponName: Pistol
-  weaponType: Pistol
-  weaponDescription: 'Low damage starter pistol
+  weaponDescription: 'Starter pistol
 
-    Unlimited ammo'
-  ammoType: Unlimited
+    Infinite ammo'
+  damage: 20
+  damageDropOverDist: 1.2
+  damageOverTime: 0
+  canStun: 0
+  stunTime: 0
+  canSlow: 0
+  slowTime: 0
+  shootsProjectile: 0
+  bulletPrefab: {fileID: 0}
+  gunType: Pistol
+  ammoType: Infinite
   magCount: 12
-  bulletSpeed: 2
+  bulletSpeed: 20
   reloadSpeed: 2
-  fireRate: 0
-  damage: 10
-  damageDropOverDist: 0.5
+  fireRate: 1

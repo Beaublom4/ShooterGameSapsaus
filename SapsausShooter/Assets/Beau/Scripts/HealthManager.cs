@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class HealthManager : MonoBehaviour
 {
     public int health;
+    public bool canGetDmg;
     public TextMeshProUGUI healthText;
     public Slider healthSlider;
     private void Start()
@@ -14,12 +15,15 @@ public class HealthManager : MonoBehaviour
     }
     public void DoDamage(int damage)
     {
-        health -= damage;
-        if(health <= 0)
+        if (canGetDmg == true)
         {
-            health = 0;
+            health -= damage;
+            if (health <= 0)
+            {
+                health = 0;
+            }
+            UpdateNumber();
         }
-        UpdateNumber();
     }
     public void UpdateNumber()
     {

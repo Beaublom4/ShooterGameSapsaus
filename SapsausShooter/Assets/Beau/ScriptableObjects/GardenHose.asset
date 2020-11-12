@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2cba9e37e8d2194eb81d9825765e019, type: 3}
+  m_Name: GardenHose
+  m_EditorClassIdentifier: 
+  weaponPrefab: {fileID: 0}
+  weaponName: Garden hose
+  weaponDescription: Spin in a circle and make all enemies in range fall
+  damage: 5
+  damageDropOverDist: 0
+  damageOverTime: 0
+  canStun: 1
+  stunTime: 2
+  canSlow: 0
+  slowTime: 0
+  range: 0
