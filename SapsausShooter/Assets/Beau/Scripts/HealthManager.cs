@@ -10,8 +10,15 @@ public class HealthManager : MonoBehaviour
     public Slider healthSlider;
     private void Start()
     {
-        healthSlider.maxValue = health;
-        UpdateNumber();
+        if (healthText == null)
+        {
+            healthSlider.maxValue = health;
+            UpdateNumber();
+        }
+        else
+        {
+            print("NoHealthShitAssigned");
+        }
     }
     public void DoDamage(int damage)
     {
