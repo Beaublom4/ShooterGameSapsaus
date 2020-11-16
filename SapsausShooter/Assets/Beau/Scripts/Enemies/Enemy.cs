@@ -45,7 +45,7 @@ public class Enemy : MonoBehaviour
             isColliding = false;
         }
     }
-    IEnumerator Hit(GameObject player)
+    public virtual IEnumerator Hit(GameObject player)
     {
         if (isColliding == true && hitCooldown == false)
         {

@@ -7,11 +7,16 @@ public class MeleeAttack : MonoBehaviour
     public Weapon testWeapon;
 
     public GameObject mainCam;
-    public Transform mainCamPos, meleeCamPos;
-    public float camChangeSpeed, meleeDuration;
+    public Transform mainCamPos;
+    public Transform[] meleeCamPos;
+    public float camChangeSpeed = 5, meleeDuration;
     Transform wantedLoc, wantedLookAt;
     bool canMelee = true, isReturning;
-    public bool moveCam;
+    bool moveCam;
+    
+    public LayerMask ignoreLayer;
+    public RaycastHit hit;
+
     public void Update()
     {
         if (moveCam == true)
@@ -26,11 +31,20 @@ public class MeleeAttack : MonoBehaviour
                 canMelee = false;
                 mainCam.GetComponent<MouseLook>().enabled = !enabled;
                 GetComponent<Movement>().enabled = !enabled;
-                wantedLoc = meleeCamPos;
-                wantedLookAt = transform;
-                StartCoroutine(MeleeTiming());
-                moveCam = true;
+
+                for (int i = 0; i < meleeCamPos.Length; i++)
+                {
+                    if(!Physics.Raycast(transform.position, meleeCamPos[i].position, out hit, Vector3.Distance(transform.position, meleeCamPos[i].position), ~ignoreLayer))
+                    {
+                        print(i + " hit nothing");
+                        wantedLoc = meleeCamPos[i];
+                        wantedLookAt = transform;
+                        moveCam = true;
+                        break; 
+                    }
+                }
             }
+            StartCoroutine(MeleeTiming());
         }
     }
     void SwitchCamPos()
@@ -39,7 +53,6 @@ public class MeleeAttack : MonoBehaviour
         mainCam.transform.LookAt(wantedLookAt);
         if(Vector3.Distance(mainCam.transform.position, wantedLoc.transform.position) <= .1f)
         {
-            print("at loc");
             moveCam = false;
             if(isReturning == true)
             {
