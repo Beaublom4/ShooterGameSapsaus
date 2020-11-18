@@ -28,7 +28,7 @@ public class Enemy : MonoBehaviour
         agent.speed = speed;
         SpawnWithWeapon();
     }
-    private void Update()
+    public virtual void Update()
     {
         if(isAttacking == true)
         {
@@ -53,15 +53,12 @@ public class Enemy : MonoBehaviour
                 print(randomNumber);
                 if (randomNumber <= chanceToHoldGun)
                 {
-                    print("Get gun");
                 }
                 else if (randomNumber > chanceToHoldGun && randomNumber <= (chanceToHoldGun + chanceToHoldMelee))
                 {
-                    print("get melee");
                 }
                 else
                 {
-                    print("get noting");
                 }
             }
         }
