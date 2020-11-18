@@ -4,14 +4,14 @@ using System.Collections;
 public class MeleeAttack : MonoBehaviour
 {
     public bool hasMeleeWeapon;
-    public Weapon testWeapon;
+    public Melee testWeapon;
 
     public GameObject mainCam;
     public Transform mainCamPos;
     public Transform[] meleeCamPos;
     public float camChangeSpeed = 5, meleeDuration;
     Transform wantedLoc, wantedLookAt;
-    bool canMelee = true, isReturning;
+    public bool canMelee = true, isReturning;
     bool moveCam;
     
     public LayerMask ignoreLayer;
@@ -36,15 +36,14 @@ public class MeleeAttack : MonoBehaviour
                 {
                     if(!Physics.Raycast(transform.position, meleeCamPos[i].position, out hit, Vector3.Distance(transform.position, meleeCamPos[i].position), ~ignoreLayer))
                     {
-                        print(i + " hit nothing");
                         wantedLoc = meleeCamPos[i];
                         wantedLookAt = transform;
                         moveCam = true;
                         break; 
                     }
                 }
+                StartCoroutine(MeleeTiming());
             }
-            StartCoroutine(MeleeTiming());
         }
     }
     void SwitchCamPos()
@@ -66,9 +65,27 @@ public class MeleeAttack : MonoBehaviour
         mainCam.GetComponent<MouseLook>().enabled = enabled;
         GetComponent<Movement>().enabled = enabled;
     }
+    void DoHitBox()
+    {
+        Instantiate(testWeapon.hitBox, transform);
+    }
+    void DestroyHitBox()
+    {
+        foreach(Transform child in transform)
+        {
+            if (child.GetComponent<HitBoxMelee>())
+            {
+                Destroy(child.gameObject);
+            }
+        }
+    }
     IEnumerator MeleeTiming()
     {
+        DoHitBox();
         yield return new WaitForSeconds(meleeDuration);
+
+        DestroyHitBox();
+
         wantedLoc = mainCamPos;
         isReturning = true;
         moveCam = true;

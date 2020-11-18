@@ -12,7 +12,7 @@ public class AreaColScript : MonoBehaviour
                 isAlreadyTriggered = true;
                 foreach (Transform child in transform)
                 {
-                    child.GetComponent<Enemy>().Trigger(other.gameObject);
+                    child.GetComponent<Enemy>().Trigger();
                 }
             }
         }

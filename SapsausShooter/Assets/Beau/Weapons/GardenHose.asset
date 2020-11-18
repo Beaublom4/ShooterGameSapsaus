@@ -15,11 +15,13 @@ MonoBehaviour:
   weaponPrefab: {fileID: 0}
   weaponName: Garden hose
   weaponDescription: Spin in a circle and make all enemies in range fall
-  damage: 5
+  damage: 20
   damageDropOverDist: 0
   damageOverTime: 0
-  canStun: 1
-  stunTime: 2
+  damageOverTimeTime: 0
+  canStun: 0
+  stunTime: 0
   canSlow: 0
+  slowTimesNumber: 0
   slowTime: 0
-  range: 0
+  hitBox: {fileID: 7177953602970471430, guid: 1ac76e7806f16c34ca405610dfbe4fd6, type: 3}
