@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,6 +9,7 @@ public class Enemy : MonoBehaviour
     public float health;
     public int damage;
     public float deathAnimTime = 2;
+    public Animator anim;
 
     public bool canMutateToBigZomb;
     [HideInInspector] public bool countTowardsBigZomb;
@@ -18,14 +20,20 @@ public class Enemy : MonoBehaviour
     public float chanceToHoldGun, chanceToHoldMelee;
     public Gun[] gunOptions;
     public Melee[] meleeOptions;
+    public Gun holdindGun;
+    public Melee holdingMelee;
 
     public GameObject playerObj;
-    public bool isAttacking;
+    public bool isAttacking, isWalking;
     [HideInInspector] public NavMeshAgent agent;
 
-    public float hitCooldownTime;
+    public float hitCooldownTime = 2;
     public bool isColliding;
     bool hitCooldown;
+
+    public Transform shootPos;
+    public bool playerInShootingRange;
+    public float shootTimer;
 
     [HideInInspector] public bool getDamageOverTime;
     [HideInInspector] public float damageOverTime;
@@ -37,7 +45,7 @@ public class Enemy : MonoBehaviour
     }
     public virtual void Update()
     {
-        if(isAttacking == true)
+        if (isAttacking == true)
         {
             if(playerObj != null)
             agent.SetDestination(playerObj.transform.position);
@@ -55,6 +63,18 @@ public class Enemy : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+        if(playerInShootingRange == true)
+        {
+            if(shootTimer > 0)
+            {
+                shootTimer -= Time.deltaTime;
+            }
+            else if(shootTimer <= 0)
+            {
+                Shoot();
+                shootTimer = holdindGun.fireRate;
+            }
+        }
     }
     public virtual void Trigger(GameObject player)
     {
@@ -66,18 +86,32 @@ public class Enemy : MonoBehaviour
         {
             Invoke("CountsToBigZombieCooldown", 3);
         }
+        if(isWalking == false)
+        {
+            isWalking = true;
+            anim.SetBool("Aggro", true);
+            float length = anim.GetCurrentAnimatorClipInfo(0).Length;
+            print(length);
+            Invoke("GoAttack", length);
+        }
+    }
+    public void GoAttack()
+    {
         isAttacking = true;
+        anim.SetBool("Walking", true);
     }
     public void SpawnWithWeapon()
     {
         if (chanceToHoldGun != 0 || chanceToHoldMelee != 0)
         {
-            if (chanceToHoldGun > 0 && chanceToHoldMelee > 0)
+            if (chanceToHoldGun > 0 || chanceToHoldMelee > 0)
             {
                 int randomNumber = Random.Range(0, 100);
                 print(randomNumber);
                 if (randomNumber <= chanceToHoldGun)
                 {
+                    int weaponNumber = Random.Range(0, gunOptions.Length);
+                    holdindGun = gunOptions[weaponNumber];
                 }
                 else if (randomNumber > chanceToHoldGun && randomNumber <= (chanceToHoldGun + chanceToHoldMelee))
                 {
@@ -110,9 +144,9 @@ public class Enemy : MonoBehaviour
             hitCooldown = true;
             agent.speed = 0;
             agent.velocity = Vector3.zero;
-            //attackAnim
+            anim.SetTrigger("Attack");
             player.GetComponent<HealthManager>().DoDamage(damage);
-            yield return new WaitForSeconds(hitCooldownTime);
+            yield return new WaitForSeconds(anim.GetCurrentAnimatorClipInfo(0).Length);
             agent.speed = speed;
             hitCooldown = false;
             StartCoroutine(Hit(player));
@@ -174,5 +208,28 @@ public class Enemy : MonoBehaviour
     void CountsToBigZombieCooldown()
     {
         countTowardsBigZomb = true;
+    }
+    void Shoot()
+    {
+        RaycastHit hit;
+        if(Physics.Raycast(shootPos.position, playerObj.transform.position - transform.position, out hit, 1000, -5, QueryTriggerInteraction.Ignore))
+        {
+            if(hit.collider.gameObject.tag == "Player")
+            {
+                playerObj.GetComponent<HealthManager>().DoDamageWithGun(holdindGun, gameObject);
+            }
+        }
+    }
+    public void PlayerInShootingRange()
+    {
+        agent.speed = 0;
+        agent.velocity = Vector3.zero;
+        playerInShootingRange = true;
+        transform.LookAt(playerObj.transform);
+    }
+    public void PlayerOutOfShootingRange()
+    {
+        shootTimer = holdindGun.fireRate;
+        agent.speed = speed;
     }
 }

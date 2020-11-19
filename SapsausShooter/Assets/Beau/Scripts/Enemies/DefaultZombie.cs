@@ -45,7 +45,6 @@ public class DefaultZombie : Enemy
             UpdateList();
         }
     }
-    public Animation anim;
     void UpdateList()
     { 
         foreach(GameObject g in enemiesInRange)

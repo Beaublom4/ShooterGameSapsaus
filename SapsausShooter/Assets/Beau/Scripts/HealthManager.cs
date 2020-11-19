@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class HealthManager : MonoBehaviour
 {
-    public int health;
+    public float health;
     public bool canGetDmg;
     public TextMeshProUGUI healthText;
     public Slider healthSlider;
@@ -54,6 +54,31 @@ public class HealthManager : MonoBehaviour
             }
             UpdateNumber();
         }
+    }
+    public void DoDamageWithGun(Weapon weapon, GameObject enemy)
+    {
+        float range = Vector3.Distance(enemy.transform.position, transform.position);
+        float calculatedDamage = weapon.damage - (weapon.damageDropOverDist * range);
+        health -= calculatedDamage;
+        if (health <= 0)
+        {
+            health = 0;
+            death = true;
+        }
+        //if (weapon.damageOverTime != 0)
+        //{
+        //    float getDamageOverTime = weapon.damageOverTime / weapon.damageOverTimeTime;
+        //    StartCoroutine(DoDamageOvertime(getDamageOverTime, weapon.damageOverTimeTime));
+        //}
+        //if (weapon.canStun == true)
+        //{
+        //    StartCoroutine(DoStun(weapon.stunTime));
+        //}
+        //else if (weapon.canSlow == true)
+        //{
+        //    StartCoroutine(DoSlow(weapon.slowTime, weapon.slowTimesNumber));
+        //}
+        UpdateNumber();
     }
     public void UpdateNumber()
     {

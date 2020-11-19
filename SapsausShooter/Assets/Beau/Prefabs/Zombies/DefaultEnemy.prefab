@@ -245,7 +245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89c652a68f4bfa74d8ea8cc70cb21a56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 7
   health: 100
   damage: 10
   deathAnimTime: 2
@@ -258,10 +258,15 @@ MonoBehaviour:
   chanceToHoldMelee: 0
   gunOptions: []
   meleeOptions: []
+  holdindGun: {fileID: 0}
+  holdingMelee: {fileID: 0}
   playerObj: {fileID: 0}
   isAttacking: 0
   agent: {fileID: 0}
   hitCooldownTime: 2
   isColliding: 0
+  shootPos: {fileID: 0}
+  playerInShootingRange: 0
+  shootTimer: 0
   getDamageOverTime: 0
   damageOverTime: 0
