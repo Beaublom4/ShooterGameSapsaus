@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DogZombie : Enemy
 {
-    public bool walkToPlayer, keepMainPos = true, lookAtPlayer;
+    public bool walkToPlayer, keepMainPos = true, lookAtPlayer = true;
     public Transform normalPos;
     public override void Update()
     {

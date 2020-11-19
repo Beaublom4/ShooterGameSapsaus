@@ -15,7 +15,7 @@ public class BossZombie : MonoBehaviour
     public GameObject currentBarrel;
     public Transform barrelSpawnPoint;
 
-    bool isMeleeAttacking;
+    bool isMeleeAttacking, lookAtPlayer;
     NavMeshAgent agent;
     private void Start()
     {
@@ -34,6 +34,10 @@ public class BossZombie : MonoBehaviour
         {
             agent.destination = playerObj.transform.position;
         }
+        if(lookAtPlayer == true)
+        {
+            transform.LookAt(new Vector3(playerObj.transform.position.x, transform.position.y, playerObj.transform.position.z));
+        }
     }
     public void Trigger()
     {
@@ -43,7 +47,7 @@ public class BossZombie : MonoBehaviour
     {
         if(Vector3.Distance(transform.position, playerObj.transform.position) <= maxRangeMeleeAttack)
         {
-            int randomNum = Random.Range(3, 4);
+            int randomNum = Random.Range(0, 4);
             switch (randomNum)
             {
                 case 0:
@@ -62,7 +66,7 @@ public class BossZombie : MonoBehaviour
         }
         else
         {
-            int randomNum = Random.Range(2, 3);
+            int randomNum = Random.Range(0, 3);
             switch (randomNum)
             {
                 case 0:
@@ -123,16 +127,20 @@ public class BossZombie : MonoBehaviour
     void ToxicBoyTrow()
     {
         print("Toxic boy trow");
+        lookAtPlayer = true;
         StartCoroutine(DoToxicBarrelTrow());
-        RandomAttack();
     }
     IEnumerator DoToxicBarrelTrow()
     {
-        Instantiate(nuclearBarrel, barrelSpawnPoint.transform.position, Quaternion.identity, barrelSpawnPoint);
+        Instantiate(nuclearBarrel, barrelSpawnPoint.transform.position, barrelSpawnPoint.rotation, barrelSpawnPoint);
         currentBarrel = barrelSpawnPoint.GetChild(0).gameObject;
         yield return new WaitForSeconds(2);
+        // trow anim
+        currentBarrel.transform.SetParent(null);
         currentBarrel.GetComponent<Rigidbody>().useGravity = true;
-        float calculatedForce = Vector3.Distance(currentBarrel.transform.position, playerObj.transform.position);
-        currentBarrel.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, 2, calculatedForce));
+        yield return new WaitForEndOfFrame();
+        float calculatedForce = Vector3.Distance(currentBarrel.transform.position, playerObj.transform.position) * 12;
+        currentBarrel.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, 1000, calculatedForce));
+        currentBarrel.GetComponent<Rigidbody>().AddRelativeTorque(new Vector3(100, 100, 100));
     }
 }
