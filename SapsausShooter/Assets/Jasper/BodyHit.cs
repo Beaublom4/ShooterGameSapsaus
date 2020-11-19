@@ -5,7 +5,7 @@ using UnityEngine;
 public class BodyHit : MonoBehaviour
 {
     public int bodyType;
-    public Enemy enemyScript;
+    Enemy enemyScript;
     private void Start()
     {
         enemyScript = GetComponentInParent<Enemy>();

@@ -5,6 +5,8 @@ public class ShootAttack : MonoBehaviour
     public Gun weapon;
     public Camera fpsCam;
 
+    public LayerMask canHit;
+
     private float nextTimeToFire = 0f;
 
     // Update is called once per frame
@@ -18,21 +20,20 @@ public class ShootAttack : MonoBehaviour
     }
     void Shoot()
     {
-        weapon.muzzleFlash.Play();
-
+        //weapon.muzzleFlash.Play();
         RaycastHit hit;
-        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, 1000))
+        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, 1000, canHit, QueryTriggerInteraction.Ignore))
         {
-            Debug.Log(hit.transform.name);
-
-            Enemy enemy = hit.transform.GetComponent<Enemy>();
-            if (enemy != null)
+            if(hit.collider.tag == "Enemy")
             {
-                hit.transform.GetComponent<BodyHit>().HitPart(weapon);
+                if (hit.collider.GetComponent<BodyHit>())
+                {
+                    hit.collider.GetComponent<BodyHit>().HitPart(weapon);
+                }
             }
 
-            GameObject impactGO = Instantiate(weapon.impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
-            Destroy(impactGO, 2f);
+            //GameObject impactGO = Instantiate(weapon.impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+            //Destroy(impactGO, 2f);
         }
     }
 }

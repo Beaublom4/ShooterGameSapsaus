@@ -17,10 +17,11 @@ MonoBehaviour:
   weaponDescription: 'Starter pistol
 
     Infinite ammo'
-  damage: 100
-  damageDropOverDist: 0
+  damage: 5
+  damageDropOverDist: 0.1
   damageOverTime: 0
   damageOverTimeTime: 2
+  critMultiplier: 1.2
   canStun: 0
   stunTime: 0
   canSlow: 0
@@ -34,3 +35,5 @@ MonoBehaviour:
   bulletSpeed: 20
   reloadSpeed: 2
   fireRate: 1
+  muzzleFlash: {fileID: 0}
+  impactEffect: {fileID: 0}

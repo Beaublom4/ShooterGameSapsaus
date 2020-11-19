@@ -154,6 +154,10 @@ public class Enemy : MonoBehaviour
     {
         float range = Vector3.Distance(playerObj.transform.position, transform.position);
         float calculatedDamage = weapon.damage - (weapon.damageDropOverDist * range);
+        if(hitPoint == 1)
+        {
+            calculatedDamage = calculatedDamage * weapon.critMultiplier;
+        }
         health -= calculatedDamage;
         if(health <= 0)
         {
