@@ -200,9 +200,9 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(slowTime);
         agent.speed = speed;
     }
-    IEnumerator Dead(int hitPoint)
+    public virtual IEnumerator Dead(int hitPoint)
     {
-        agent.Stop();
+        agent.isStopped = true;
         if (hitPoint != 0)
         {
             anim.SetInteger("Dead", hitPoint);

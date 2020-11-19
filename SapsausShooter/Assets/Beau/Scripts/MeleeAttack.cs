@@ -3,8 +3,7 @@ using System.Collections;
 
 public class MeleeAttack : MonoBehaviour
 {
-    public bool hasMeleeWeapon;
-    public Melee testWeapon;
+    public Melee weapon;
 
     public GameObject mainCam;
     public Transform mainCamPos;
@@ -26,7 +25,7 @@ public class MeleeAttack : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1"))
         {
-            if(hasMeleeWeapon == true && canMelee== true)
+            if(weapon != null && canMelee== true)
             {
                 canMelee = false;
                 mainCam.GetComponent<MouseLook>().enabled = !enabled;
@@ -67,7 +66,7 @@ public class MeleeAttack : MonoBehaviour
     }
     void DoHitBox()
     {
-        Instantiate(testWeapon.hitBox, transform);
+        Instantiate(weapon.hitBox, transform);
     }
     void DestroyHitBox()
     {

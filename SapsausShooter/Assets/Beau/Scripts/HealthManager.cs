@@ -42,7 +42,7 @@ public class HealthManager : MonoBehaviour
             }
         }
     }
-    public void DoDamage(int damage)
+    public void DoDamage(float damage)
     {
         if (canGetDmg == true)
         {
@@ -57,28 +57,31 @@ public class HealthManager : MonoBehaviour
     }
     public void DoDamageWithGun(Weapon weapon, GameObject enemy)
     {
-        float range = Vector3.Distance(enemy.transform.position, transform.position);
-        float calculatedDamage = weapon.damage - (weapon.damageDropOverDist * range);
-        health -= calculatedDamage;
-        if (health <= 0)
+        if (canGetDmg == true)
         {
-            health = 0;
-            death = true;
+            float range = Vector3.Distance(enemy.transform.position, transform.position);
+            float calculatedDamage = weapon.damage - (weapon.damageDropOverDist * range);
+            health -= calculatedDamage;
+            if (health <= 0)
+            {
+                health = 0;
+                death = true;
+            }
+            //if (weapon.damageOverTime != 0)
+            //{
+            //    float getDamageOverTime = weapon.damageOverTime / weapon.damageOverTimeTime;
+            //    StartCoroutine(DoDamageOvertime(getDamageOverTime, weapon.damageOverTimeTime));
+            //}
+            //if (weapon.canStun == true)
+            //{
+            //    StartCoroutine(DoStun(weapon.stunTime));
+            //}
+            //else if (weapon.canSlow == true)
+            //{
+            //    StartCoroutine(DoSlow(weapon.slowTime, weapon.slowTimesNumber));
+            //}
+            UpdateNumber();
         }
-        //if (weapon.damageOverTime != 0)
-        //{
-        //    float getDamageOverTime = weapon.damageOverTime / weapon.damageOverTimeTime;
-        //    StartCoroutine(DoDamageOvertime(getDamageOverTime, weapon.damageOverTimeTime));
-        //}
-        //if (weapon.canStun == true)
-        //{
-        //    StartCoroutine(DoStun(weapon.stunTime));
-        //}
-        //else if (weapon.canSlow == true)
-        //{
-        //    StartCoroutine(DoSlow(weapon.slowTime, weapon.slowTimesNumber));
-        //}
-        UpdateNumber();
     }
     public void UpdateNumber()
     {

@@ -12,7 +12,7 @@ public class ShootAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1") && Time.time >= nextTimeToFire)
+        if (Input.GetButtonDown("Fire1") && Time.time >= nextTimeToFire && weapon != null)
         {
             nextTimeToFire = Time.time + 1f / weapon.fireRate;
             Shoot();

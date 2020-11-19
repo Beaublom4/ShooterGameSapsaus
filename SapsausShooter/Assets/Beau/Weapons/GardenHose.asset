@@ -19,10 +19,13 @@ MonoBehaviour:
   damageDropOverDist: 0
   damageOverTime: 0
   damageOverTimeTime: 0
+  critMultiplier: 0
   canStun: 1
   stunTime: 2
   canSlow: 0
   slowTimesNumber: 0
   slowTime: 0
   hitBox: {fileID: 7177953602970471430, guid: 1ac76e7806f16c34ca405610dfbe4fd6, type: 3}
+  hitBoxForEnemy: {fileID: 7177953602970471430, guid: bc41cdfc38051f642aadb7b10a805fc8,
+    type: 3}
   knockBack: 250
