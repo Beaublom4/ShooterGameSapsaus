@@ -8,32 +8,16 @@ public class DefaultZombie : Enemy
     public GameObject bigZombie;
     public int wantedEnemiesInRange;
     public List<GameObject> enemiesInRange = new List<GameObject>();
-    [HideInInspector]  public bool addedToList;
-    [HideInInspector] public GameObject main;
-    [HideInInspector] public bool moveTowardMain;
     public float mutateAnimTime;
-    public override void Update()
-    {
-        base.Update();
-        if(moveTowardMain == true)
-        {
-            transform.LookAt(main.transform);
-            transform.position = Vector3.Lerp(transform.position, main.transform.position, 4 * Time.deltaTime);
-            if(Vector3.Distance(main.transform.position, transform.position) <= 1)
-            {
-                Destroy(gameObject);
-            }
-        }
-    }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Enemy" && !other.isTrigger)
+        if (other.gameObject.tag == "Enemy" && !other.isTrigger)
         {
-            if (other.GetComponent<DefaultZombie>())
+            if (other.GetComponent<Enemy>().countTowardsBigZomb == true)
             {
-                if(other.GetComponent<DefaultZombie>().addedToList == false)
+                if (other.GetComponent<Enemy>().addedToList == false)
                 {
-                    other.GetComponent<DefaultZombie>().addedToList = true;
+                    other.GetComponent<Enemy>().addedToList = true;
                     enemiesInRange.Add(other.gameObject);
                     CheckIfListFull();
                 }
@@ -44,11 +28,11 @@ public class DefaultZombie : Enemy
     {
         if (other.gameObject.tag == "Enemy" && !other.isTrigger)
         {
-            if (other.GetComponent<DefaultZombie>())
+            if (other.GetComponent<Enemy>().countTowardsBigZomb == true)
             {
-                if (other.GetComponent<DefaultZombie>().addedToList == true)
+                if (other.GetComponent<Enemy>().addedToList == true)
                 {
-                    other.GetComponent<DefaultZombie>().addedToList = false;
+                    other.GetComponent<Enemy>().addedToList = false;
                     enemiesInRange.Remove(other.gameObject);
                 }
             }
@@ -61,14 +45,15 @@ public class DefaultZombie : Enemy
             UpdateList();
         }
     }
+    public Animation anim;
     void UpdateList()
-    {
+    { 
         foreach(GameObject g in enemiesInRange)
         {
             g.GetComponent<NavMeshAgent>().speed = 0;
             g.GetComponent<NavMeshAgent>().velocity = Vector3.zero;
-            g.GetComponent<DefaultZombie>().main = gameObject;
-            g.GetComponent<DefaultZombie>().moveTowardMain = true;
+            g.GetComponent<Enemy>().main = gameObject;
+            g.GetComponent<Enemy>().moveTowardMain = true;
         }
         StartCoroutine(Mutate());
     }

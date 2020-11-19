@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NormalZombie : Enemy
+public class YoungZombie : Enemy
 {
+    
 }

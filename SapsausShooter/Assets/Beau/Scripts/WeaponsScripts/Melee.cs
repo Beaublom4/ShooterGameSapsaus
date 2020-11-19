@@ -4,4 +4,5 @@
 public class Melee : Weapon
 {
     public GameObject hitBox;
+    public float knockBack;
 }

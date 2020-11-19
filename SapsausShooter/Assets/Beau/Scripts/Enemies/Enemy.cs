@@ -7,14 +7,21 @@ public class Enemy : MonoBehaviour
     public float speed;
     public float health;
     public int damage;
+    public float deathAnimTime = 2;
+
+    public bool canMutateToBigZomb;
+    [HideInInspector] public bool countTowardsBigZomb;
+    public bool addedToList;
+    [HideInInspector] public GameObject main;
+    [HideInInspector] public bool moveTowardMain;
 
     public float chanceToHoldGun, chanceToHoldMelee;
     public Gun[] gunOptions;
     public Melee[] meleeOptions;
 
     public GameObject playerObj;
-    bool isAttacking;
-    NavMeshAgent agent;
+    public bool isAttacking;
+    [HideInInspector] public NavMeshAgent agent;
 
     public float hitCooldownTime;
     public bool isColliding;
@@ -22,7 +29,7 @@ public class Enemy : MonoBehaviour
 
     [HideInInspector] public bool getDamageOverTime;
     [HideInInspector] public float damageOverTime;
-    private void Start()
+    public virtual void Start()
     {
         agent = gameObject.GetComponent<NavMeshAgent>();
         agent.speed = speed;
@@ -32,15 +39,33 @@ public class Enemy : MonoBehaviour
     {
         if(isAttacking == true)
         {
+            if(playerObj != null)
             agent.SetDestination(playerObj.transform.position);
         }
         if(getDamageOverTime == true)
         {
             health -= damageOverTime * Time.deltaTime;
         }
+        if (moveTowardMain == true)
+        {
+            transform.LookAt(main.transform);
+            transform.position = Vector3.Lerp(transform.position, main.transform.position, 4 * Time.deltaTime);
+            if (Vector3.Distance(main.transform.position, transform.position) <= 1)
+            {
+                Destroy(gameObject);
+            }
+        }
     }
-    public void Trigger()
+    public virtual void Trigger(GameObject player)
     {
+        if(playerObj == null)
+        {
+            playerObj = player;
+        }
+        if (canMutateToBigZomb == true)
+        {
+            Invoke("CountsToBigZombieCooldown", 3);
+        }
         isAttacking = true;
     }
     public void SpawnWithWeapon()
@@ -63,7 +88,7 @@ public class Enemy : MonoBehaviour
             }
         }
     }
-    public void OnCollisionEnter(Collision collision)
+    public virtual void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "Player")
         {
@@ -98,6 +123,11 @@ public class Enemy : MonoBehaviour
         float range = Vector3.Distance(playerObj.transform.position, transform.position);
         float calculatedDamage = weapon.damage - (weapon.damageDropOverDist * range);
         health -= calculatedDamage;
+        if(health <= 0)
+        {
+            health = 0;
+            StartCoroutine(Dead());
+        }
         if(weapon.damageOverTime != 0)
         {
             float getDamageOverTime = weapon.damageOverTime / weapon.damageOverTimeTime;
@@ -133,5 +163,16 @@ public class Enemy : MonoBehaviour
         //slow anim things
         yield return new WaitForSeconds(slowTime);
         agent.speed = speed;
+    }
+    IEnumerator Dead()
+    {
+        //death animation
+        print(gameObject.name + " died");
+        yield return new WaitForSeconds(deathAnimTime);
+        Destroy(gameObject);
+    }
+    void CountsToBigZombieCooldown()
+    {
+        countTowardsBigZomb = true;
     }
 }
