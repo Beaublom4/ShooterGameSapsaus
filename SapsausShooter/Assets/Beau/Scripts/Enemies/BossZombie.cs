@@ -9,7 +9,7 @@ public class BossZombie : MonoBehaviour
     public GameObject playerObj;
     public float maxRangeMeleeAttack;
 
-    bool walkTowardsPlayer;
+    bool isMeleeAttacking;
     NavMeshAgent agent;
     private void Start()
     {
@@ -20,11 +20,7 @@ public class BossZombie : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            Trigger();
-        }
-        if (walkTowardsPlayer == true)
+        if (isMeleeAttacking == true)
         {
             agent.destination = playerObj.transform.position;
         }
@@ -71,10 +67,21 @@ public class BossZombie : MonoBehaviour
             }
         }
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if(isMeleeAttacking == true)
+        {
+            if(other.gameObject.tag == "Player")
+            {
+                isMeleeAttacking = false;
+                StartCoroutine(DoMeleeAttack());
+            }
+        }
+    }
     void MeleeAttack()
     {
         print("Melee Attack");
-        walkTowardsPlayer = true;
+        isMeleeAttacking = true;
     }
     IEnumerator DoMeleeAttack()
     {

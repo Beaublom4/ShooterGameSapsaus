@@ -14,7 +14,7 @@ public class BodyHit : MonoBehaviour
             print("Probleem poar neem");
         }
     }
-    public void HitPart(Weapon weapon, int bodyType)
+    public void HitPart(Weapon weapon)
     {
         enemyScript.DoDamage(weapon, bodyType);
     }
