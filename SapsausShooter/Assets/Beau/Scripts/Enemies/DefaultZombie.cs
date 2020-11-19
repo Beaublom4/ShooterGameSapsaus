@@ -8,7 +8,6 @@ public class DefaultZombie : Enemy
     public GameObject bigZombie;
     public int wantedEnemiesInRange;
     public List<GameObject> enemiesInRange = new List<GameObject>();
-    public float mutateAnimTime;
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Enemy" && !other.isTrigger)
@@ -62,7 +61,7 @@ public class DefaultZombie : Enemy
         GetComponent<NavMeshAgent>().velocity = Vector3.zero;
         print("Mutate");
         //mutate anim
-        yield return new WaitForSeconds(mutateAnimTime);
+        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
         Instantiate(bigZombie, transform.position, transform.rotation, null);
         Destroy(this.gameObject);
     }

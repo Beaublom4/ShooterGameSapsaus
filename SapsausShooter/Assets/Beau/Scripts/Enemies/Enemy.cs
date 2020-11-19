@@ -8,7 +8,6 @@ public class Enemy : MonoBehaviour
     public float speed;
     public float health;
     public int damage;
-    public float deathAnimTime = 2;
     public Animator anim;
 
     public bool canMutateToBigZomb;
@@ -20,11 +19,11 @@ public class Enemy : MonoBehaviour
     public float chanceToHoldGun, chanceToHoldMelee;
     public Gun[] gunOptions;
     public Melee[] meleeOptions;
-    public Gun holdindGun;
-    public Melee holdingMelee;
+    [HideInInspector] public Gun holdingGun;
+    [HideInInspector] public Melee holdingMelee;
 
     public GameObject playerObj;
-    public bool isAttacking, isWalking;
+    [HideInInspector] public bool isAttacking, isWalking;
     [HideInInspector] public NavMeshAgent agent;
 
     public float hitCooldownTime = 2;
@@ -32,8 +31,8 @@ public class Enemy : MonoBehaviour
     bool hitCooldown;
 
     public Transform shootPos;
-    public bool playerInShootingRange;
-    public float shootTimer;
+    [HideInInspector] public bool playerInShootingRange;
+    [HideInInspector] public float shootTimer;
 
     [HideInInspector] public bool getDamageOverTime;
     [HideInInspector] public float damageOverTime;
@@ -72,7 +71,7 @@ public class Enemy : MonoBehaviour
             else if(shootTimer <= 0)
             {
                 Shoot();
-                shootTimer = holdindGun.fireRate;
+                shootTimer = holdingGun.fireRate;
             }
         }
     }
@@ -111,7 +110,7 @@ public class Enemy : MonoBehaviour
                 if (randomNumber <= chanceToHoldGun)
                 {
                     int weaponNumber = Random.Range(0, gunOptions.Length);
-                    holdindGun = gunOptions[weaponNumber];
+                    holdingGun = gunOptions[weaponNumber];
                 }
                 else if (randomNumber > chanceToHoldGun && randomNumber <= (chanceToHoldGun + chanceToHoldMelee))
                 {
@@ -152,15 +151,15 @@ public class Enemy : MonoBehaviour
             StartCoroutine(Hit(player));
         }
     }
-    public void DoDamage(Weapon weapon)
+    public void DoDamage(Weapon weapon, int hitPoint)
     {
         float range = Vector3.Distance(playerObj.transform.position, transform.position);
-        float calculatedDamage = weapon.damage - (weapon.damageDropOverDist * range);
+        float calculatedDamage = weapon.damage; //- (weapon.damageDropOverDist * range);
         health -= calculatedDamage;
         if(health <= 0)
         {
             health = 0;
-            StartCoroutine(Dead());
+            StartCoroutine(Dead(hitPoint));
         }
         if(weapon.damageOverTime != 0)
         {
@@ -198,11 +197,20 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(slowTime);
         agent.speed = speed;
     }
-    IEnumerator Dead()
+    IEnumerator Dead(int hitPoint)
     {
+        agent.Stop();
+        if (hitPoint != 0)
+        {
+            anim.SetInteger("Dead", hitPoint);
+        }
+        else
+        {
+            anim.SetInteger("Dead", 2);
+        }
         //death animation
         print(gameObject.name + " died");
-        yield return new WaitForSeconds(deathAnimTime);
+        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
         Destroy(gameObject);
     }
     void CountsToBigZombieCooldown()
@@ -216,7 +224,7 @@ public class Enemy : MonoBehaviour
         {
             if(hit.collider.gameObject.tag == "Player")
             {
-                playerObj.GetComponent<HealthManager>().DoDamageWithGun(holdindGun, gameObject);
+                playerObj.GetComponent<HealthManager>().DoDamageWithGun(holdingGun, gameObject);
             }
         }
     }
@@ -229,7 +237,7 @@ public class Enemy : MonoBehaviour
     }
     public void PlayerOutOfShootingRange()
     {
-        shootTimer = holdindGun.fireRate;
+        shootTimer = holdingGun.fireRate;
         agent.speed = speed;
     }
 }

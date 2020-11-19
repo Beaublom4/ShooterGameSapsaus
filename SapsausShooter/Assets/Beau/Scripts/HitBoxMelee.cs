@@ -11,7 +11,7 @@ public class HitBoxMelee : MonoBehaviour
         {
             if (meleeWeapon != null)
             {
-                other.GetComponent<Enemy>().DoDamage(meleeWeapon);
+                other.GetComponent<Enemy>().DoDamage(meleeWeapon, 0);
 
                 other.GetComponent<Enemy>().isAttacking = false;
                 other.GetComponent<NavMeshAgent>().enabled = !enabled;

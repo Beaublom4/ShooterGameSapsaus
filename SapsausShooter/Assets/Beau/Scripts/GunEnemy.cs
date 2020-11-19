@@ -10,7 +10,7 @@ public class GunEnemy : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            if(enemyScript.holdindGun != null)
+            if(enemyScript.holdingGun != null)
             if (enemyScript.isAttacking == true)
             {
                 enemyScript.PlayerInShootingRange();
@@ -22,7 +22,7 @@ public class GunEnemy : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             enemyScript.playerInShootingRange = false;
-            if(enemyScript.holdindGun != null) 
+            if(enemyScript.holdingGun != null) 
             {
                 enemyScript.PlayerOutOfShootingRange();              
             }

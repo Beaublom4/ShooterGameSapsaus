@@ -17,12 +17,14 @@ MonoBehaviour:
   weaponDescription: 'Starter pistol
 
     Infinite ammo'
-  damage: 20
-  damageDropOverDist: 1.2
+  damage: 100
+  damageDropOverDist: 0
   damageOverTime: 0
+  damageOverTimeTime: 2
   canStun: 0
   stunTime: 0
   canSlow: 0
+  slowTimesNumber: 0
   slowTime: 0
   shootsProjectile: 0
   bulletPrefab: {fileID: 0}
