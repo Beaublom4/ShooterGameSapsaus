@@ -7626,6 +7626,7 @@ GameObject:
   - component: {fileID: 9018311267939644330}
   - component: {fileID: 9018311267939644331}
   - component: {fileID: 9018311267939644344}
+  - component: {fileID: 9018311267939644345}
   m_Layer: 10
   m_Name: BossZombie
   m_TagString: Enemy
@@ -7648,6 +7649,19 @@ MonoBehaviour:
   speed: 5
   playerObj: {fileID: 1627604931}
   maxRangeMeleeAttack: 30
+--- !u!135 &9018311267939644345
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9018311267939644343}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &9018311268752744128
 Transform:
   m_ObjectHideFlags: 0

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Pistol : MonoBehaviour
+public class ShootAttack : MonoBehaviour
 {
     public Gun weapon;
     public Camera fpsCam;
@@ -21,7 +21,7 @@ public class Pistol : MonoBehaviour
         weapon.muzzleFlash.Play();
 
         RaycastHit hit;
-        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, weapon.range))
+        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, 1000))
         {
             Debug.Log(hit.transform.name);
 
