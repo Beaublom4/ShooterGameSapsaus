@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour
     public Gun[] gunOptions;
     public Melee[] meleeOptions;
     [HideInInspector] public Gun holdingGun;
-    [HideInInspector] public Melee holdingMelee;
+    [HideInInspector]   public Melee holdingMelee;
 
     public GameObject playerObj;
     [HideInInspector] public bool isAttacking, isWalking;
@@ -106,7 +106,6 @@ public class Enemy : MonoBehaviour
             if (chanceToHoldGun > 0 || chanceToHoldMelee > 0)
             {
                 int randomNumber = Random.Range(0, 100);
-                print(randomNumber);
                 if (randomNumber <= chanceToHoldGun)
                 {
                     int weaponNumber = Random.Range(0, gunOptions.Length);
@@ -154,7 +153,7 @@ public class Enemy : MonoBehaviour
     public void DoDamage(Weapon weapon, int hitPoint)
     {
         float range = Vector3.Distance(playerObj.transform.position, transform.position);
-        float calculatedDamage = weapon.damage; //- (weapon.damageDropOverDist * range);
+        float calculatedDamage = weapon.damage - (weapon.damageDropOverDist * range);
         health -= calculatedDamage;
         if(health <= 0)
         {

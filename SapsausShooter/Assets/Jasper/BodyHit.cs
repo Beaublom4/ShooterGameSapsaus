@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class BodyHit : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public int bodyType;
+    public Enemy enemyScript;
+    private void Start()
     {
-        
+        enemyScript = GetComponentInParent<Enemy>();
+        if(enemyScript == null)
+        {
+            print("Probleem poar neem");
+        }
     }
-
-    // Update is called once per frame
-    void Update()
+    public void HitPart(Weapon weapon, int bodyType)
     {
-        
+        enemyScript.DoDamage(weapon, bodyType);
     }
 }
