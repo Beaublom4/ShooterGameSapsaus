@@ -5,6 +5,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     public CharacterController controller;
+    public Animator playerAnimation;
 
     public float speed = 12f;
     public float gravity = -9.81f;
@@ -14,10 +15,15 @@ public class Movement : MonoBehaviour
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
 
+    Vector3 move;
     Vector3 velocity;
     bool isGrounded;
 
-    // Update is called once per frame
+    private void Start()
+    {
+        controller = GetComponent<CharacterController>();
+        playerAnimation = GetComponent<Animator>();
+    }
     void Update()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
@@ -25,12 +31,21 @@ public class Movement : MonoBehaviour
         if (isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
+
+            if (move.z > 0)
+            {
+                playerAnimation.SetBool("Walking", true);
+            }
+            else
+            {
+                playerAnimation.SetBool("Walking", false);
+            }
         }
 
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
-        Vector3 move = transform.right * x + transform.forward * z;
+        move = transform.right * x + transform.forward * z;
 
         controller.Move(move * speed * Time.deltaTime);
 
