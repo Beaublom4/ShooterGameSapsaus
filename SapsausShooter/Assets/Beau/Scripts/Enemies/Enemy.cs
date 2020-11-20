@@ -11,6 +11,10 @@ public class Enemy : MonoBehaviour
     public GameObject hitBox;
     public Animator anim;
 
+    public int chanceDrop, chanceDubbleDrop;
+    public GameObject[] ammoDrops;
+    public Transform ammoDropLoc;
+
     public bool canMutateToBigZomb;
     [HideInInspector] public bool countTowardsBigZomb;
     public bool addedToList;
@@ -241,10 +245,38 @@ public class Enemy : MonoBehaviour
         {
             anim.SetInteger("Dead", 2);
         }
-        //death animation
         print(gameObject.name + " died");
+        Drop();
         yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
         Destroy(gameObject);
+    }
+    void Drop()
+    {
+        int randomNum = Random.Range(0, 100);
+        if(randomNum < chanceDrop)
+        {
+            print("Drop");
+            DropAmmo();
+        }
+        else if(randomNum > chanceDrop && randomNum < chanceDubbleDrop + chanceDrop)
+        {
+            print("Dubble drop");
+            Drop();
+            DropAmmo();
+        }
+        else
+        {
+            print("GetNothing");
+            return;
+        }
+    }
+    void DropAmmo()
+    {
+        int randomNum = Random.Range(0, ammoDrops.Length);
+        Instantiate(ammoDrops[randomNum], ammoDropLoc.position, Quaternion.Euler(ammoDropLoc.rotation.x, Random.Range(0, 360), ammoDropLoc.rotation.z), ammoDropLoc);
+        GameObject g = ammoDropLoc.transform.GetChild(0).gameObject;
+        g.GetComponent<Rigidbody>().AddRelativeForce(0, 300, 10);
+        g.transform.SetParent(null);
     }
     void CountsToBigZombieCooldown()
     {

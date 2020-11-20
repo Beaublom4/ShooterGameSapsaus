@@ -154,21 +154,24 @@ MonoBehaviour:
   speed: 3
   health: 200
   damage: 10
-  deathAnimTime: 2
+  hitBox: {fileID: 0}
+  anim: {fileID: 0}
   canMutateToBigZomb: 0
   countTowardsBigZomb: 0
   addedToList: 0
-  main: {fileID: 0}
+  main: {x: 0, y: 0, z: 0}
+  isMainBody: 0
   moveTowardMain: 0
   chanceToHoldGun: 20
   chanceToHoldMelee: 0
   gunOptions:
   - {fileID: 11400000, guid: 72503205c8ab21645a3f2ab46eb3b995, type: 2}
   meleeOptions: []
-  holdindGun: {fileID: 0}
+  holdingGun: {fileID: 0}
   holdingMelee: {fileID: 0}
   playerObj: {fileID: 0}
   isAttacking: 0
+  isWalking: 0
   agent: {fileID: 0}
   hitCooldownTime: 2
   isColliding: 0

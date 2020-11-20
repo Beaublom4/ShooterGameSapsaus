@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using TMPro;
 
 public class ShootAttack : MonoBehaviour
 {
@@ -67,6 +68,7 @@ public class ShootAttack : MonoBehaviour
                         addAmmo = ammoScript.pistolAmmo;
                     }
                     ammoScript.pistolAmmo -= addAmmo;
+                    ammoScript.UpdatePistolAmmoLeft();
                 }
             }
             StartCoroutine(Reload());
@@ -83,6 +85,7 @@ public class ShootAttack : MonoBehaviour
 
         print("Reloaded");
         currentSlot.ammoInMag = addAmmo;
+        ammoScript.UpdateAmmo(currentSlot.ammoInMag);
         isReloading = false;
     }
 
@@ -91,6 +94,7 @@ public class ShootAttack : MonoBehaviour
         //pistolAnimation.SetBool("Shoot", true);
 
         currentSlot.ammoInMag--;
+        ammoScript.UpdateAmmo(currentSlot.ammoInMag);
 
         //weapon.muzzleFlash.Play();
         RaycastHit hit;

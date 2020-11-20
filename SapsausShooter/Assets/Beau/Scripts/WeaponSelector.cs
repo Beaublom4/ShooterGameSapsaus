@@ -1,6 +1,8 @@
 ﻿using UnityEditor.Animations;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class WeaponSelector : MonoBehaviour
 {
@@ -11,13 +13,24 @@ public class WeaponSelector : MonoBehaviour
     public Slot selectedSlotScript;
     public GameObject[] rings;
     public ShootAttack shootScript;
+    AmmoCounter ammoCounterScript;
+
+    IEnumerator coroutine;
+    public TextMeshProUGUI nameText;
+    public float displayNameTime;
+
     [System.Serializable]
     public class Colors
     {
         public ColorBlock selectedColor, normalColor;
     }
     public Colors colors;
-    public float PistolAmmo;
+    private void Start()
+    {
+        ammoCounterScript = GetComponent<AmmoCounter>();
+        coroutine = ShowWeaponName("Fist");
+        StartCoroutine(coroutine);
+    }
     private void Update()
     {
         if (Input.GetButtonDown("WeaponWheel"))
@@ -41,37 +54,40 @@ public class WeaponSelector : MonoBehaviour
         }
         if (Input.GetButtonDown("Use"))
         {
-            RaycastHit hit;
-            if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, pickUpRange))
+            if (shootScript.isReloading == false)
             {
-                if(hit.collider.gameObject.tag == "Weapon")
+                RaycastHit hit;
+                if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, pickUpRange))
                 {
-                    if (hit.collider.gameObject.GetComponent<WeaponScript>().weapon.type == "Gun")
+                    if (hit.collider.gameObject.tag == "Weapon")
                     {
-                        for (int i = 0; i < rings[0].transform.childCount; i++)
+                        if (hit.collider.gameObject.GetComponent<WeaponScript>().weapon.type == "Gun")
                         {
-                            if (rings[0].transform.GetChild(i).GetComponent<Slot>().weapon == null)
+                            for (int i = 0; i < rings[0].transform.childCount; i++)
                             {
-                                rings[0].transform.GetChild(i).GetComponent<Slot>().weapon = hit.collider.GetComponent<WeaponScript>().weapon;
-                                rings[0].transform.GetChild(i).GetComponent<Slot>().ammoInMag = hit.collider.GetComponent<WeaponScript>().ammoInMag;
-                                Destroy(hit.collider.gameObject);
-                                if(selectedSlotScript == null)
+                                if (rings[0].transform.GetChild(i).GetComponent<Slot>().weapon == null)
                                 {
-                                    SelectSlot(rings[0].transform.GetChild(i).GetComponent<Slot>());
+                                    rings[0].transform.GetChild(i).GetComponent<Slot>().weapon = hit.collider.GetComponent<WeaponScript>().weapon;
+                                    rings[0].transform.GetChild(i).GetComponent<Slot>().ammoInMag = hit.collider.GetComponent<WeaponScript>().ammoInMag;
+                                    Destroy(hit.collider.gameObject);
+                                    if (selectedSlotScript == null)
+                                    {
+                                        SelectSlot(rings[0].transform.GetChild(i).GetComponent<Slot>());
+                                    }
+                                    break;
                                 }
-                                break;
-                            }
-                            else if(i + 1 == rings[0].transform.childCount)
-                            {
-                                print("Switch " + selectedSlotScript.weapon.name + " for " + hit.collider.GetComponent<WeaponScript>().weapon.name + " at slot " + selectedSlotScript.gameObject.name);
-                                Instantiate(selectedSlotScript.weapon.weaponPrefab, dropLoc.transform.position, Quaternion.identity, dropLoc.transform);
-                                GameObject g = dropLoc.transform.GetChild(0).gameObject;
-                                g.GetComponent<WeaponScript>().ammoInMag = selectedSlotScript.ammoInMag;
-                                selectedSlotScript.weapon = hit.collider.GetComponent<WeaponScript>().weapon;
-                                selectedSlotScript.ammoInMag = hit.collider.GetComponent<WeaponScript>().ammoInMag;
-                                g.transform.SetParent(null);
-                                Destroy(hit.collider.gameObject);
-                                break;
+                                else if (i + 1 == rings[0].transform.childCount)
+                                {
+                                    print("Switch " + selectedSlotScript.weapon.name + " for " + hit.collider.GetComponent<WeaponScript>().weapon.name + " at slot " + selectedSlotScript.gameObject.name);
+                                    Instantiate(selectedSlotScript.weapon.weaponPrefab, dropLoc.transform.position, Quaternion.identity, dropLoc.transform);
+                                    GameObject g = dropLoc.transform.GetChild(0).gameObject;
+                                    g.GetComponent<WeaponScript>().ammoInMag = selectedSlotScript.ammoInMag;
+                                    selectedSlotScript.weapon = hit.collider.GetComponent<WeaponScript>().weapon;
+                                    selectedSlotScript.ammoInMag = hit.collider.GetComponent<WeaponScript>().ammoInMag;
+                                    g.transform.SetParent(null);
+                                    Destroy(hit.collider.gameObject);
+                                    break;
+                                }
                             }
                         }
                     }
@@ -81,15 +97,36 @@ public class WeaponSelector : MonoBehaviour
     }
     public void SelectSlot(Slot slotscript)
     {
-        if(slotscript.weapon != null)
+        if (shootScript.isReloading == false)
         {
-            selectedSlotScript = slotscript;
-            if (slotscript.weapon.type == "Gun")
+            if (slotscript.weapon != null)
             {
-                print(slotscript.weapon);
-                shootScript.weapon = slotscript.weapon;
-                shootScript.currentSlot = slotscript;
+                selectedSlotScript = slotscript;
+
+                if (coroutine == null)
+                    StopCoroutine(coroutine);
+                coroutine = ShowWeaponName(slotscript.weapon.weaponName);
+                StartCoroutine(coroutine);
+
+                if (slotscript.weapon.type == "Gun")
+                {
+                    print(slotscript.weapon);
+                    shootScript.weapon = slotscript.weapon;
+                    shootScript.currentSlot = slotscript;
+
+                    ammoCounterScript.UpdateAmmo(slotscript.ammoInMag);
+                    if (slotscript.weapon.gunType == "Pistol")
+                    {
+                        ammoCounterScript.UpdatePistolAmmoLeft();
+                    }
+                }
             }
         }
+    }
+    IEnumerator ShowWeaponName(string name)
+    {
+        nameText.text = name;
+        yield return new WaitForSeconds(displayNameTime);
+        nameText.text = "";
     }
 }

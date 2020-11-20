@@ -777,6 +777,7 @@ Transform:
   - {fileID: 6679849617080306988}
   - {fileID: 2494115365080447349}
   - {fileID: 5554388393070716160}
+  - {fileID: 4597639230534803306}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -854,10 +855,16 @@ MonoBehaviour:
   damage: 5
   hitBox: {fileID: 5612030986373811275}
   anim: {fileID: 3282199613349893838}
+  chanceDrop: 40
+  chanceDubbleDrop: 10
+  ammoDrops:
+  - {fileID: 1319509033163920919, guid: 9f5a6a88f32c7a14baaa047fe84387d2, type: 3}
+  ammoDropLoc: {fileID: 4597639230534803306}
   canMutateToBigZomb: 1
   countTowardsBigZomb: 0
   addedToList: 0
-  main: {fileID: 0}
+  main: {x: 0, y: 0, z: 0}
+  isMainBody: 0
   moveTowardMain: 0
   chanceToHoldGun: 0
   chanceToHoldMelee: 0
@@ -881,6 +888,7 @@ MonoBehaviour:
   wantedEnemiesInRange: 2
   enemiesInRange: []
   bigBoySpawnPoint: {fileID: 5554388393070716160}
+  MainAtLoc: 0
 --- !u!135 &2517721227859463081
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2040,6 +2048,36 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.005799055, y: 0.0030462444, z: 0.1485617}
     m_Extent: {x: 0.41025972, y: 0.9885504, z: 0.4766034}
   m_DirtyAABB: 0
+--- !u!1 &6367903213241637691
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4597639230534803306}
+  m_Layer: 0
+  m_Name: AmmoDropPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4597639230534803306
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6367903213241637691}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3028123561666048315}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6384159015273042292
 GameObject:
   m_ObjectHideFlags: 0
