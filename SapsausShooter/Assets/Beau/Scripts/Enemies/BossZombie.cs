@@ -94,7 +94,6 @@ public class BossZombie : MonoBehaviour
     }
     void MeleeAttack()
     {
-        print("Melee Attack");
         isMeleeAttacking = true;
         int randomWeapon = Random.Range(0, weaponList.Length);
         selectedWeapon = weaponList[randomWeapon];
@@ -116,17 +115,14 @@ public class BossZombie : MonoBehaviour
     }
     void DogAttack()
     {
-        print("Dog");
         dog.GetComponent<DogZombie>().Trigger(playerObj);
     }
     void ShockWaveAttack()
     {
-        print("Shock wave attack");
         RandomAttack();
     } 
     void ToxicBoyTrow()
     {
-        print("Toxic boy trow");
         lookAtPlayer = true;
         StartCoroutine(DoToxicBarrelTrow());
     }

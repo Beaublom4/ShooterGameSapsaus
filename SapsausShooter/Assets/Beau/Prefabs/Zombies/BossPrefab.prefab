@@ -245,14 +245,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 378f8de0f02759b488b3b8cf9c21a1df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 8
-  health: 100
+  speed: 12
+  health: 50
   damage: 5
+  hitBox: {fileID: 0}
   anim: {fileID: 0}
   canMutateToBigZomb: 0
   countTowardsBigZomb: 0
   addedToList: 0
-  main: {fileID: 0}
+  main: {x: 0, y: 0, z: 0}
+  isMainBody: 0
   moveTowardMain: 0
   chanceToHoldGun: 0
   chanceToHoldMelee: 0

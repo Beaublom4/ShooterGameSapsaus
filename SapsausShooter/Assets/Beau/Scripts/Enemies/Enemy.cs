@@ -8,12 +8,14 @@ public class Enemy : MonoBehaviour
     public float speed;
     public float health;
     public int damage;
+    public GameObject hitBox;
     public Animator anim;
 
     public bool canMutateToBigZomb;
     [HideInInspector] public bool countTowardsBigZomb;
     public bool addedToList;
-    [HideInInspector] public GameObject main;
+    [HideInInspector] public Vector3 main;
+    [HideInInspector] public bool isMainBody;
     [HideInInspector] public bool moveTowardMain;
 
     public float chanceToHoldGun, chanceToHoldMelee;
@@ -33,11 +35,13 @@ public class Enemy : MonoBehaviour
     public Transform shootPos;
     [HideInInspector] public bool playerInShootingRange;
     [HideInInspector] public float shootTimer;
+    GameObject player;
 
     [HideInInspector] public bool getDamageOverTime;
     [HideInInspector] public float damageOverTime;
     public virtual void Start()
     {
+        player = GameObject.Find("Player");
         agent = gameObject.GetComponent<NavMeshAgent>();
         agent.speed = speed;
         SpawnWithWeapon();
@@ -55,11 +59,15 @@ public class Enemy : MonoBehaviour
         }
         if (moveTowardMain == true)
         {
-            transform.LookAt(main.transform);
-            transform.position = Vector3.Lerp(transform.position, main.transform.position, 4 * Time.deltaTime);
-            if (Vector3.Distance(main.transform.position, transform.position) <= 1)
+            transform.LookAt(main);
+            transform.position = Vector3.Lerp(transform.position, main, 4 * Time.deltaTime);
+            if (Vector3.Distance(main, transform.position) <= 1 && isMainBody == false)
             {
                 Destroy(gameObject);
+            }
+            else if(Vector3.Distance(main, transform.position) <= 1 && isMainBody == true)
+            {
+                GetComponent<DefaultZombie>().MainAtLoc = true;
             }
         }
         if(playerInShootingRange == true)
@@ -88,15 +96,23 @@ public class Enemy : MonoBehaviour
         if(isWalking == false)
         {
             isWalking = true;
-            anim.SetBool("Aggro", true);
-            float length = anim.GetCurrentAnimatorClipInfo(0).Length;
-            print(length);
+            float length;
+            if (anim != null)
+            {
+                anim.SetBool("Aggro", true);
+                length = anim.GetCurrentAnimatorClipInfo(0).Length;
+            }
+            else
+            {
+                length = 0;
+            }
             Invoke("GoAttack", length);
         }
     }
     public void GoAttack()
     {
         isAttacking = true;
+        if(anim != null)
         anim.SetBool("Walking", true);
     }
     public void SpawnWithWeapon()
@@ -125,7 +141,8 @@ public class Enemy : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             isColliding = true;
-            StartCoroutine(Hit(collision.gameObject));
+            player = collision.gameObject;
+            StartCoroutine(Hit());
         }
     }
     public void OnCollisionExit(Collision collision)
@@ -135,20 +152,33 @@ public class Enemy : MonoBehaviour
             isColliding = false;
         }
     }
-    public virtual IEnumerator Hit(GameObject player)
+    public virtual IEnumerator Hit()
     {
         if (isColliding == true && hitCooldown == false)
         {
             hitCooldown = true;
             agent.speed = 0;
             agent.velocity = Vector3.zero;
-            anim.SetTrigger("Attack");
-            player.GetComponent<HealthManager>().DoDamage(damage);
-            yield return new WaitForSeconds(anim.GetCurrentAnimatorClipInfo(0).Length);
+            hitBox.SetActive(true);
+            yield return new WaitForSeconds(0.1f);
+            hitBox.SetActive(false);
+            if (anim != null)
+            {
+                anim.SetTrigger("Attack");
+                yield return new WaitForSeconds(anim.GetCurrentAnimatorClipInfo(0).Length);
+            }
+            else
+            {
+                yield return new WaitForSeconds(1);
+            }
             agent.speed = speed;
             hitCooldown = false;
-            StartCoroutine(Hit(player));
+            StartCoroutine(Hit());
         }
+    }
+    public void HitBoxHit()
+    {
+        player.GetComponent<HealthManager>().DoDamage(damage);
     }
     public void DoDamage(Weapon weapon, int hitPoint)
     {
