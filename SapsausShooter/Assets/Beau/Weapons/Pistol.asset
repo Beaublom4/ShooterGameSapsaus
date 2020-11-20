@@ -12,11 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f4a6e8223b91104bbaee7304f22396e, type: 3}
   m_Name: Pistol
   m_EditorClassIdentifier: 
-  weaponPrefab: {fileID: 0}
+  weaponPrefab: {fileID: 5238231314656614426, guid: 8bdc3ed1e006c224797b174d03b6bf0a,
+    type: 3}
+  type: Gun
   weaponName: Pistol
   weaponDescription: 'Starter pistol
 
     Infinite ammo'
+  uiSprite: {fileID: 0}
   damage: 5
   damageDropOverDist: 0.1
   damageOverTime: 0
@@ -30,7 +33,9 @@ MonoBehaviour:
   shootsProjectile: 0
   bulletPrefab: {fileID: 0}
   gunType: Pistol
-  ammoType: Infinite
+  shotType: One-Round
+  infinityAmmo: 0
+  ammoType: Infinity
   magCount: 12
   bulletSpeed: 20
   reloadSpeed: 2

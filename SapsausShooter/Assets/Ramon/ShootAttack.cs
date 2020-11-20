@@ -3,31 +3,31 @@ using System.Collections;
 
 public class ShootAttack : MonoBehaviour
 {
-    public Gun weapon;
+    public Weapon weapon;
     public Camera fpsCam;
     public Animator pistolAnimation;
 
     public LayerMask canHit;
 
     private float nextTimeToFire = 0f;
-    public int currentMagCount;
 
     public bool canShoot;
     public bool isReloading = false;
 
+    float addAmmo;
+    public Slot currentSlot;
+    public AmmoCounter ammoScript;
     void Start()
     {
-        currentMagCount = weapon.magCount;
+        //currentMagCount = weapon.magCount;
 
         canShoot = true;
     }
-
     void OnEnable()
     {
         isReloading = false;
-        pistolAnimation.SetBool("Reloading", false);
+        //pistolAnimation.SetBool("Reloading", false);
     }
-
     void Update()
     {
         if (isReloading)
@@ -37,41 +37,60 @@ public class ShootAttack : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1") && Time.time >= nextTimeToFire && weapon != null)
         {
-            if (currentMagCount <= 0)
+            if (currentSlot.ammoInMag <= 0)
             {
-                StartCoroutine(Reload());
-
                 return;
             }
 
-            nextTimeToFire = Time.time + 1f / weapon.fireRate;
+            nextTimeToFire = Time.time + 1f / weapon.weaponPrefab.GetComponent<WeaponScript>().weapon.fireRate;
 
             Shoot();
         }
+        if (Input.GetButtonDown("Reload") && currentSlot.ammoInMag < weapon.weaponPrefab.GetComponent<WeaponScript>().weapon.magCount)
+        {
+            if(weapon.weaponPrefab.GetComponent<WeaponScript>().weapon.gunType == "Pistol")
+            {
+                if (ammoScript.pistolAmmo <= 0)
+                {
+                    print("NoAmmo");
+                    return;
+                }
+                else
+                {
+                    ammoScript.pistolAmmo += currentSlot.ammoInMag;
+                    if(ammoScript.pistolAmmo >= weapon.weaponPrefab.GetComponent<WeaponScript>().weapon.magCount)
+                    {
+                        addAmmo = weapon.weaponPrefab.GetComponent<WeaponScript>().weapon.magCount;
+                    }
+                    else
+                    {
+                        addAmmo = ammoScript.pistolAmmo;
+                    }
+                    ammoScript.pistolAmmo -= addAmmo;
+                }
+            }
+            StartCoroutine(Reload());
+        }
     }
-
-    IEnumerator Reload ()
+    IEnumerator Reload()
     {
         isReloading = true;
         Debug.Log("Reloading...");
 
-        pistolAnimation.SetBool("Reload", true);
+        //pistolAnimation.SetTrigger("Reload");
 
-        yield return new WaitForSeconds(weapon.reloadSpeed - .25f);
+        yield return new WaitForSeconds(weapon.weaponPrefab.GetComponent<WeaponScript>().weapon.reloadSpeed);
 
-        pistolAnimation.SetBool("Reload", false);
-
-        yield return new WaitForSeconds(.25f);
-
-        currentMagCount = weapon.magCount;
+        print("Reloaded");
+        currentSlot.ammoInMag = addAmmo;
         isReloading = false;
     }
 
     void Shoot()
     {
-        pistolAnimation.SetBool("Shoot", true);
+        //pistolAnimation.SetBool("Shoot", true);
 
-        currentMagCount--;
+        currentSlot.ammoInMag--;
 
         //weapon.muzzleFlash.Play();
         RaycastHit hit;
@@ -89,6 +108,6 @@ public class ShootAttack : MonoBehaviour
             //Destroy(impactGO, 2f);
         }
 
-        pistolAnimation.SetBool("Shoot", false);
+        //pistolAnimation.SetBool("Shoot", false);
     }
 }

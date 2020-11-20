@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class Weapon : ScriptableObject
-{
+{ 
     public GameObject weaponPrefab;
+    public string type;
 
     public string weaponName;
     [TextArea]
     public string weaponDescription;
+    public Image uiSprite;
 
     public float damage;
     public float damageDropOverDist;

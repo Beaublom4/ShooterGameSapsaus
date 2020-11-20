@@ -5,68 +5,91 @@ using UnityEngine.UI;
 public class WeaponSelector : MonoBehaviour
 {
     public GameObject weaponWheelObj;
+    public GameObject player, fpsCam;
+    public Transform dropLoc;
+    public float pickUpRange;
+    public Slot selectedSlotScript;
     public GameObject[] rings;
-
-    public Slot[] selectedSlots;
+    public ShootAttack shootScript;
     [System.Serializable]
     public class Colors
     {
         public ColorBlock selectedColor, normalColor;
     }
     public Colors colors;
-
-    private void Start()
-    {
-        HoverWheel(weaponWheelObj.transform.GetChild(0).gameObject);
-    }
+    public float PistolAmmo;
     private void Update()
     {
         if (Input.GetButtonDown("WeaponWheel"))
         {
-            if (weaponWheelObj.activeSelf == false)
+            if(weaponWheelObj.activeSelf == false)
             {
                 weaponWheelObj.SetActive(true);
+                player.GetComponent<Movement>().enabled = !enabled;
+                player.GetComponentInChildren<MouseLook>().enabled = !enabled;
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
             }
             else
             {
                 weaponWheelObj.SetActive(false);
+                player.GetComponent<Movement>().enabled = enabled;
+                player.GetComponentInChildren<MouseLook>().enabled = enabled;
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
             }
         }
-    }
-    public void SelectWeapon(Slot slot)
-    {
-        if(slot.weaponScOb != null)
+        if (Input.GetButtonDown("Use"))
         {
-            if(slot.slotType == "Gun")
+            RaycastHit hit;
+            if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, pickUpRange))
             {
-                selectedSlots[0] = slot;
-            }
-            else if(slot.slotType == "Melee")
-            {
-                selectedSlots[1] = slot;
-            }
-            else if(slot.slotType == "Trowable")
-            {
-                selectedSlots[2] = slot;
-            }
-            print(slot.weaponScOb.weaponName);
-        }
-    }
-    public void HoverWheel(GameObject hoverRing)
-    {
-        foreach(GameObject g in rings)
-        {
-            if (g != hoverRing)
-            {
-                foreach (Transform child in g.transform)
+                if(hit.collider.gameObject.tag == "Weapon")
                 {
-                    child.GetComponent<Button>().colors = colors.normalColor;
+                    if (hit.collider.gameObject.GetComponent<WeaponScript>().weapon.type == "Gun")
+                    {
+                        for (int i = 0; i < rings[0].transform.childCount; i++)
+                        {
+                            if (rings[0].transform.GetChild(i).GetComponent<Slot>().weapon == null)
+                            {
+                                rings[0].transform.GetChild(i).GetComponent<Slot>().weapon = hit.collider.GetComponent<WeaponScript>().weapon;
+                                rings[0].transform.GetChild(i).GetComponent<Slot>().ammoInMag = hit.collider.GetComponent<WeaponScript>().ammoInMag;
+                                Destroy(hit.collider.gameObject);
+                                if(selectedSlotScript == null)
+                                {
+                                    SelectSlot(rings[0].transform.GetChild(i).GetComponent<Slot>());
+                                }
+                                break;
+                            }
+                            else if(i + 1 == rings[0].transform.childCount)
+                            {
+                                print("Switch " + selectedSlotScript.weapon.name + " for " + hit.collider.GetComponent<WeaponScript>().weapon.name + " at slot " + selectedSlotScript.gameObject.name);
+                                Instantiate(selectedSlotScript.weapon.weaponPrefab, dropLoc.transform.position, Quaternion.identity, dropLoc.transform);
+                                GameObject g = dropLoc.transform.GetChild(0).gameObject;
+                                g.GetComponent<WeaponScript>().ammoInMag = selectedSlotScript.ammoInMag;
+                                selectedSlotScript.weapon = hit.collider.GetComponent<WeaponScript>().weapon;
+                                selectedSlotScript.ammoInMag = hit.collider.GetComponent<WeaponScript>().ammoInMag;
+                                g.transform.SetParent(null);
+                                Destroy(hit.collider.gameObject);
+                                break;
+                            }
+                        }
+                    }
                 }
             }
         }
-        foreach(Transform child in hoverRing.transform)
+    }
+    public void SelectSlot(Slot slotscript)
+    {
+        if(slotscript.weapon != null)
         {
-            child.GetComponent<Button>().colors = colors.selectedColor;
+            selectedSlotScript = slotscript;
+            if (slotscript.weapon.type == "Gun")
+            {
+                print(slotscript.weapon);
+                shootScript.weapon = slotscript.weapon;
+                shootScript.currentSlot = slotscript;
+            }
         }
     }
 }

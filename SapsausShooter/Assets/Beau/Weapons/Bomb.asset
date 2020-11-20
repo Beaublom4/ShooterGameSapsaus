@@ -13,13 +13,18 @@ MonoBehaviour:
   m_Name: Bomb
   m_EditorClassIdentifier: 
   weaponPrefab: {fileID: 0}
+  type: Trowable
   weaponName: Bomb
   weaponDescription: Heavy bomb with big damage
+  uiSprite: {fileID: 0}
   damage: 200
   damageDropOverDist: 0
   damageOverTime: 20
+  damageOverTimeTime: 2
+  critMultiplier: 0
   canStun: 0
   stunTime: 0
   canSlow: 0
+  slowTimesNumber: 0
   slowTime: 0
   TrowRange: 5

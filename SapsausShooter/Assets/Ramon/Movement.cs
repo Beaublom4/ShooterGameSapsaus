@@ -22,7 +22,7 @@ public class Movement : MonoBehaviour
     private void Start()
     {
         controller = GetComponent<CharacterController>();
-        playerAnimation = GetComponent<Animator>();
+        //playerAnimation = GetComponent<Animator>();
     }
     void Update()
     {

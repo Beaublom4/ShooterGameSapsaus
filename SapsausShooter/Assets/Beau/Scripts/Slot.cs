@@ -2,6 +2,6 @@
 
 public class Slot : MonoBehaviour
 {
-    public Weapon weaponScOb;
-    public string slotType;
+    public Gun weapon;
+    public float ammoInMag;
 }
