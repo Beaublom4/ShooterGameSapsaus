@@ -295,6 +295,7 @@ GameObject:
   m_Component:
   - component: {fileID: 946129544}
   - component: {fileID: 946129543}
+  - component: {fileID: 946129545}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -377,6 +378,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 47.23, y: -180.56, z: 0}
+--- !u!114 &946129545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 946129542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82497ffce6a9756499e4a7d704eb0d4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skyBoxShaderMaterial: {fileID: 2100000, guid: 8c5ff33c4b0cbb94f9d544f2d7975689,
+    type: 2}
+  woosh: 0
+  wooshKeer: 0.0000009
 --- !u!1 &1271423771
 GameObject:
   m_ObjectHideFlags: 0
