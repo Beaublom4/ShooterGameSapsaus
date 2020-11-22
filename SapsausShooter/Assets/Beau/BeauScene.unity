@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 8c5ff33c4b0cbb94f9d544f2d7975689, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -1907,7 +1907,7 @@ GameObject:
   - component: {fileID: 339483570}
   - component: {fileID: 339483569}
   m_Layer: 5
-  m_Name: WeaponSelet
+  m_Name: WeaponSelect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3239,11 +3239,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.8740101
       objectReference: {fileID: 0}
-    - target: {fileID: 2517721227859463081, guid: 3edb8ea549df47f4fb633796eb7ccc2a,
-        type: 3}
-      propertyPath: m_Radius
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 2519957222680718244, guid: 3edb8ea549df47f4fb633796eb7ccc2a,
         type: 3}
       propertyPath: m_TagString
@@ -3414,6 +3409,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5135113600118632459, guid: 3edb8ea549df47f4fb633796eb7ccc2a,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 18c130d0bfa36904f94d0726466ebbee, type: 2}
     - target: {fileID: 5262736803389721142, guid: 3edb8ea549df47f4fb633796eb7ccc2a,
         type: 3}
       propertyPath: m_TagString

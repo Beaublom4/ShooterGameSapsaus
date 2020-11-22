@@ -883,6 +883,9 @@ MonoBehaviour:
   shootTimer: 0
   getDamageOverTime: 0
   damageOverTime: 0
+  render: {fileID: 5135113600118632459}
+  dissolveMat: {fileID: 2100000, guid: 18c130d0bfa36904f94d0726466ebbee, type: 2}
+  dissolveSpeed: 1
   bigZombie: {fileID: 3225309657445313045, guid: b19454070a0ea164fac569d39e410b3b,
     type: 3}
   wantedEnemiesInRange: 2

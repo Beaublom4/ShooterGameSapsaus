@@ -43,11 +43,19 @@ public class Enemy : MonoBehaviour
 
     [HideInInspector] public bool getDamageOverTime;
     [HideInInspector] public float damageOverTime;
+
+    [HideInInspector] public SkinnedMeshRenderer render;
+    public Material dissolveMat;
+    public float dissolveSpeed;
+    float dissolvingNumber = 2;
+    bool dissolving;
+
     public virtual void Start()
     {
         player = GameObject.Find("Player");
         agent = gameObject.GetComponent<NavMeshAgent>();
         agent.speed = speed;
+        render = GetComponentInChildren<SkinnedMeshRenderer>();
         SpawnWithWeapon();
     }
     public virtual void Update()
@@ -85,6 +93,12 @@ public class Enemy : MonoBehaviour
                 Shoot();
                 shootTimer = holdingGun.fireRate;
             }
+        }
+        if(dissolving == true)
+        {
+            dissolvingNumber -= dissolveSpeed * Time.deltaTime;
+            print(dissolvingNumber);
+            dissolveMat.SetFloat("Vector1_4FF20CCE", dissolvingNumber);
         }
     }
     public virtual void Trigger(GameObject player)
@@ -247,7 +261,10 @@ public class Enemy : MonoBehaviour
         }
         print(gameObject.name + " died");
         Drop();
+        render.material = dissolveMat;
+        dissolving = true;
         yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
+        yield return new WaitForSeconds(3);
         Destroy(gameObject);
     }
     void Drop()
