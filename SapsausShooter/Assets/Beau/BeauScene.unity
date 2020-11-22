@@ -3413,7 +3413,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 18c130d0bfa36904f94d0726466ebbee, type: 2}
+      objectReference: {fileID: 2100000, guid: cf6f68b2885fdae4fa8581cc999d4ce7, type: 2}
+    - target: {fileID: 5135113600118632459, guid: 3edb8ea549df47f4fb633796eb7ccc2a,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5262736803389721142, guid: 3edb8ea549df47f4fb633796eb7ccc2a,
         type: 3}
       propertyPath: m_TagString
@@ -5189,6 +5194,11 @@ PrefabInstance:
     - target: {fileID: 896554098131706637, guid: 7a5e7907c140ff24082a1bce753ce327,
         type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 896554098131706639, guid: 7a5e7907c140ff24082a1bce753ce327,
+        type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 910746028691695940, guid: 7a5e7907c140ff24082a1bce753ce327,
