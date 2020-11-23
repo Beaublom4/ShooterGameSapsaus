@@ -39,7 +39,6 @@ public class Enemy : MonoBehaviour
     public Transform shootPos;
     [HideInInspector] public bool playerInShootingRange;
     [HideInInspector] public float shootTimer;
-    GameObject player;
 
     [HideInInspector] public bool getDamageOverTime;
     [HideInInspector] public float damageOverTime;
@@ -52,7 +51,7 @@ public class Enemy : MonoBehaviour
 
     public virtual void Start()
     {
-        player = GameObject.Find("Player");
+        playerObj = GameObject.FindWithTag("Player");
         agent = gameObject.GetComponent<NavMeshAgent>();
         agent.speed = speed;
         render = GetComponentInChildren<SkinnedMeshRenderer>();
@@ -97,7 +96,6 @@ public class Enemy : MonoBehaviour
         if(dissolving == true)
         {
             dissolvingNumber -= dissolveSpeed * Time.deltaTime;
-            print(dissolvingNumber);
             dissolveMat.SetFloat("Vector1_4FF20CCE", dissolvingNumber);
         }
     }
@@ -159,7 +157,7 @@ public class Enemy : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             isColliding = true;
-            player = collision.gameObject;
+            playerObj = collision.gameObject;
             StartCoroutine(Hit());
         }
     }
@@ -196,7 +194,7 @@ public class Enemy : MonoBehaviour
     }
     public void HitBoxHit()
     {
-        player.GetComponent<HealthManager>().DoDamage(damage);
+        playerObj.GetComponent<HealthManager>().DoDamage(damage);
     }
     public void DoDamage(Weapon weapon, int hitPoint)
     {
