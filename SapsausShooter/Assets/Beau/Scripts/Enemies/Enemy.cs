@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     public int damage;
     public GameObject hitBox;
     public Animator anim;
+    public Collider[] hitBoxes;
 
     public int chanceDrop, chanceDubbleDrop;
     public GameObject[] ammoDrops;
@@ -157,6 +158,7 @@ public class Enemy : MonoBehaviour
     }
     public virtual void OnCollisionEnter(Collision collision)
     {
+        print(collision.transform.name);
         if(collision.gameObject.tag == "Player")
         {
             isColliding = true;
@@ -252,6 +254,10 @@ public class Enemy : MonoBehaviour
     public virtual IEnumerator Dead(int hitPoint)
     {
         agent.isStopped = true;
+        foreach(Collider c in hitBoxes)
+        {
+            c.enabled = !enabled;
+        }
         if (hitPoint != 0)
         {
             anim.SetInteger("Dead", hitPoint);

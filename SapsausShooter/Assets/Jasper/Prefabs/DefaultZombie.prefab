@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 2221430044142500655}
   - component: {fileID: 8200076611413970068}
   - component: {fileID: 6223902912406598265}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: spine.003
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -855,13 +855,25 @@ MonoBehaviour:
   damage: 5
   hitBox: {fileID: 5612030986373811275}
   anim: {fileID: 3282199613349893838}
-  chanceDrop: 40
-  chanceDubbleDrop: 10
+  hitBoxes:
+  - {fileID: 241533708151761525}
+  - {fileID: 8200076611413970068}
+  - {fileID: 1354373728858898504}
+  - {fileID: 4892808171224283853}
+  - {fileID: 4131350230926016661}
+  - {fileID: 6255022149826207161}
+  - {fileID: 3754757101652706524}
+  - {fileID: 5084697856483076622}
+  - {fileID: 6934168921680593794}
+  - {fileID: 4799997262044685758}
+  - {fileID: 2378615542258766045}
+  chanceDrop: 20
+  chanceDubbleDrop: 5
   ammoDrops:
   - {fileID: 1319509033163920919, guid: 9f5a6a88f32c7a14baaa047fe84387d2, type: 3}
   ammoDropLoc: {fileID: 4597639230534803306}
   minDropAmount: 1
-  maxDropAmount: 50
+  maxDropAmount: 30
   moneyDropPrefab: {fileID: 2030928626577662909, guid: 446e29ffe71723b4db774c3d271eb33d,
     type: 3}
   canMutateToBigZomb: 1
