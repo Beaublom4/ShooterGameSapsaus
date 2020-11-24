@@ -6,16 +6,27 @@ public class UsePlayer : MonoBehaviour
 {
     public GameObject fpsCam;
     public float useRange;
+    RaycastHit hit;
     private void Update()
     {
-        if (Input.GetButtonDown("Use"))
+        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, useRange))
         {
-            RaycastHit hit;
-            if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, useRange))
+            if (Input.GetButtonDown("Use"))
             {
                 if (hit.transform.GetComponent<GarageDoor>())
                 {
                     hit.transform.GetComponent<GarageDoor>().OpenGarageDoor();
+                }
+            }
+            if(hit.transform.tag == "ShopItem")
+            {
+                if (hit.transform.GetComponent<ShopItem>().canvas.activeSelf == false)
+                {
+                    hit.transform.GetComponent<ShopItem>().ActivateScript();
+                }
+                if (Input.GetButtonDown("Use"))
+                {
+                    hit.transform.GetComponent<ShopItem>().BuyItem(gameObject);
                 }
             }
         }

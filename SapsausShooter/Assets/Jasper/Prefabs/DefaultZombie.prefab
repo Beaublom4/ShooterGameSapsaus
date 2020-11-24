@@ -860,6 +860,10 @@ MonoBehaviour:
   ammoDrops:
   - {fileID: 1319509033163920919, guid: 9f5a6a88f32c7a14baaa047fe84387d2, type: 3}
   ammoDropLoc: {fileID: 4597639230534803306}
+  minDropAmount: 1
+  maxDropAmount: 50
+  moneyDropPrefab: {fileID: 2030928626577662909, guid: 446e29ffe71723b4db774c3d271eb33d,
+    type: 3}
   canMutateToBigZomb: 1
   countTowardsBigZomb: 0
   addedToList: 0
