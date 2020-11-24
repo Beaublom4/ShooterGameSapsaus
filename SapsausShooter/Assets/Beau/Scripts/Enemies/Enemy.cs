@@ -158,7 +158,6 @@ public class Enemy : MonoBehaviour
     }
     public virtual void OnCollisionEnter(Collision collision)
     {
-        print(collision.transform.name);
         if(collision.gameObject.tag == "Player")
         {
             isColliding = true;
