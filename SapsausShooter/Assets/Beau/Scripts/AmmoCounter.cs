@@ -20,6 +20,14 @@ public class AmmoCounter : MonoBehaviour
     {
         ammoLeftText.text = pistolAmmo.ToString();
     }
+    public void UpdateSniperAmmoLeft()
+    {
+        ammoLeftText.text = sniperAmmo.ToString();
+    }
+    public void UpdateShotgunAmmoLeft()
+    {
+        ammoLeftText.text = shotgunAmmo.ToString();
+    }
     public void UpdateAmmo(float ammo)
     {
         magText.text = ammo.ToString();
