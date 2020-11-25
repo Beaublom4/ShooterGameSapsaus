@@ -14,6 +14,7 @@ public class WeaponSelector : MonoBehaviour
     public GameObject[] rings;
     public ShootAttack shootScript;
     AmmoCounter ammoCounterScript;
+    public Image weaponImage;
 
     IEnumerator coroutine;
     public TextMeshProUGUI nameText;
@@ -102,6 +103,7 @@ public class WeaponSelector : MonoBehaviour
             if (slotscript.weapon != null)
             {
                 selectedSlotScript = slotscript;
+                weaponImage.sprite = slotscript.weapon.uiSprite;
 
                 if (coroutine == null)
                     StopCoroutine(coroutine);

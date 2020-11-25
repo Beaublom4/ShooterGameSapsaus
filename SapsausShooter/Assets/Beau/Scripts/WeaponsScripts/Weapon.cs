@@ -9,7 +9,7 @@ public class Weapon : ScriptableObject
     public string weaponName;
     [TextArea]
     public string weaponDescription;
-    public Image uiSprite;
+    public Sprite uiSprite;
 
     public float damage;
     public float damageDropOverDist;

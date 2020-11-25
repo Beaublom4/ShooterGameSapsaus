@@ -5,8 +5,17 @@ using TMPro;
 
 public class AmmoCounter : MonoBehaviour
 {
-    public float pistolAmmo;
-    public TextMeshProUGUI ammoLeftText, magText;
+    public float pistolAmmo, shotgunAmmo, sniperAmmo, launcherAmmo, specialAmmo;
+    public TextMeshProUGUI ammoLeftText, magText, ammoInInvText;
+    public GameObject weaponSelect;
+
+    private void Update()
+    {
+        if(weaponSelect.activeSelf == true)
+        {
+            ammoInInvText.text = pistolAmmo + "<br>" + shotgunAmmo + "<br>" + sniperAmmo + "<br>" + launcherAmmo + "<br>" + specialAmmo;
+        }
+    }
     public void UpdatePistolAmmoLeft()
     {
         ammoLeftText.text = pistolAmmo.ToString();
