@@ -45,11 +45,19 @@ public class ShootAttack : MonoBehaviour
 
             nextTimeToFire = Time.time + 1f / weapon.weaponPrefab.GetComponent<WeaponScript>().weapon.fireRate;
 
-            Shoot();
+            if (weapon.weaponPrefab.GetComponent<WeaponScript>().weapon.gunType == "Pistol")
+            {
+                ShootPistol();
+            }
+
+            if (weapon.weaponPrefab.GetComponent<WeaponScript>().weapon.gunType == "Sniper")
+            {
+                ShootSniper();
+            }
         }
         if (Input.GetButtonDown("Reload") && currentSlot.ammoInMag < weapon.weaponPrefab.GetComponent<WeaponScript>().weapon.magCount)
         {
-            if(weapon.weaponPrefab.GetComponent<WeaponScript>().weapon.gunType == "Pistol")
+            if (weapon.weaponPrefab.GetComponent<WeaponScript>().weapon.gunType == "Pistol")
             {
                 if (ammoScript.pistolAmmo <= 0)
                 {
@@ -59,7 +67,7 @@ public class ShootAttack : MonoBehaviour
                 else
                 {
                     ammoScript.pistolAmmo += currentSlot.ammoInMag;
-                    if(ammoScript.pistolAmmo >= weapon.weaponPrefab.GetComponent<WeaponScript>().weapon.magCount)
+                    if (ammoScript.pistolAmmo >= weapon.weaponPrefab.GetComponent<WeaponScript>().weapon.magCount)
                     {
                         addAmmo = weapon.weaponPrefab.GetComponent<WeaponScript>().weapon.magCount;
                     }
@@ -69,6 +77,29 @@ public class ShootAttack : MonoBehaviour
                     }
                     ammoScript.pistolAmmo -= addAmmo;
                     ammoScript.UpdatePistolAmmoLeft();
+                }
+            }
+
+            if (weapon.weaponPrefab.GetComponent<WeaponScript>().weapon.gunType == "Sniper")
+            {
+                if (ammoScript.sniperAmmo <= 0)
+                {
+                    print("NoAmmo");
+                    return;
+                }
+                else
+                {
+                    ammoScript.sniperAmmo += currentSlot.ammoInMag;
+                    if (ammoScript.sniperAmmo >= weapon.weaponPrefab.GetComponent<WeaponScript>().weapon.magCount)
+                    {
+                        addAmmo = weapon.weaponPrefab.GetComponent<WeaponScript>().weapon.magCount;
+                    }
+                    else
+                    {
+                        addAmmo = ammoScript.sniperAmmo;
+                    }
+                    ammoScript.sniperAmmo -= addAmmo;
+                    ammoScript.UpdateSniperAmmoLeft();
                 }
             }
             StartCoroutine(Reload());
@@ -89,7 +120,7 @@ public class ShootAttack : MonoBehaviour
         isReloading = false;
     }
 
-    void Shoot()
+    void ShootPistol()
     {
         //pistolAnimation.SetBool("Shoot", true);
 
@@ -113,5 +144,31 @@ public class ShootAttack : MonoBehaviour
         }
 
         //pistolAnimation.SetBool("Shoot", false);
+    }
+
+    void ShootSniper()
+    {
+        //sniperAnimation.SetBool("Shoot", true);
+
+        currentSlot.ammoInMag--;
+        ammoScript.UpdateAmmo(currentSlot.ammoInMag);
+
+        //weapon.muzzleFlash.Play();
+        RaycastHit hit;
+        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, 1000, canHit, QueryTriggerInteraction.Ignore))
+        {
+            if (hit.collider.tag == "Enemy")
+            {
+                if (hit.collider.GetComponent<BodyHit>())
+                {
+                    hit.collider.GetComponent<BodyHit>().HitPart(weapon);
+                }
+            }
+
+            //GameObject impactGO = Instantiate(weapon.impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+            //Destroy(impactGO, 2f);
+        }
+
+        //sniperAnimation.SetBool("Shoot", false);
     }
 }
