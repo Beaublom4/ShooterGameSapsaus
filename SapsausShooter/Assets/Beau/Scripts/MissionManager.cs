@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Configuration;
 using TMPro;
 using UnityEngine;
+using System.Collections;
 
 public class MissionManager : MonoBehaviour
 {
@@ -17,20 +18,58 @@ public class MissionManager : MonoBehaviour
     public class SideMission
     {
         public string missionName;
-        public string[] missionTasks;
+        public string missionTask;
         public bool completed;
     }
 
     public MainMission[] mainMissions;
     public SideMission[] sideMissions;
-    public int currentMainMission, currentSideMission1;
+    public int currentMainMission, currentSideMission;
     public TextMeshProUGUI mainMissionNameText, sideMission1NameText;
     public TextMeshProUGUI mainMissionInfoText, sideMission1InfoText;
+    public MoneyManager moneyManagerScript;
+
+    public float timeLeft;
+    public TextMeshProUGUI timeLeftText;
+
+    public bool killEnemiesMission;
+    public int killAmount, currentKillAmount;
+    int moneyAmount;
 
     private void Start()
     {
         SelectMainMission();
-        SelectSideMission();
+        StartCoroutine(SelectSideMission());
+    }
+    private void Update()
+    {
+        if(timeLeft > 0)
+        {
+            timeLeft -= Time.deltaTime;
+            timeLeftText.text = timeLeft.ToString("F0");
+        }
+        else if(timeLeft < 0)
+        {
+            timeLeft = 0;
+
+            currentSideMission = -1;
+            killEnemiesMission = false;
+
+            StartCoroutine(SelectSideMission());
+        }
+        if(killEnemiesMission == true)
+        {
+            sideMission1InfoText.text = currentKillAmount.ToString() + "/" + killAmount.ToString();
+            if(currentKillAmount >= killAmount)
+            {
+                killEnemiesMission = false;
+                currentSideMission = -1;
+                timeLeft = 0;
+                moneyManagerScript.GetMoney(moneyAmount);
+                StartCoroutine(SelectSideMission());
+                currentKillAmount = 0;
+            }
+        }
     }
     public void SelectMainMission()
     {
@@ -45,16 +84,28 @@ public class MissionManager : MonoBehaviour
                 break;
         }
     }
-    public void SelectSideMission()
+    public IEnumerator SelectSideMission()
     {
         SideMissionSetup();
-        switch (currentSideMission1)
+        timeLeftText.text = "";
+        int waitForSeconds = Random.Range(0, 60);
+        print(waitForSeconds + " before side mission starts");
+        yield return new WaitForSeconds(waitForSeconds);
+        int randomSideMission = Random.Range(0, 1);
+        switch (randomSideMission)
         {
             case -1:
-                print("No Side missions selected");
+                print("Eng");
                 break;
             case 0:
-                KillMobsSideMission(20);
+                KillMobsSideMission();
+                currentSideMission = 0;
+                SideMissionSetup();
+                break;
+            case 1:
+                currentSideMission = 1;
+                Debug.LogError("wrong side mission");
+                SideMissionSetup();
                 break;
         }
     }
@@ -86,22 +137,10 @@ public class MissionManager : MonoBehaviour
     }
     public void SideMissionSetup()
     {
-        if (currentSideMission1 < sideMissions.Length && currentSideMission1 >= 0)
+        if (currentSideMission < sideMissions.Length && currentSideMission >= 0)
         {
-            sideMission1NameText.text = sideMissions[currentSideMission1].missionName;
-            if (sideMissions[currentSideMission1].missionTasks.Length == 1)
-            {
-                sideMission1InfoText.text = sideMissions[currentSideMission1].missionTasks[0];
-            }
-            else if (sideMissions[currentSideMission1].missionTasks.Length == 2)
-            {
-                sideMission1InfoText.text = sideMissions[currentSideMission1].missionTasks[0] + "<br>" + sideMissions[currentSideMission1].missionTasks[1];
-            }
-            else if (sideMissions[currentSideMission1].missionTasks.Length == 3)
-            {
-                sideMission1InfoText.text = sideMissions[currentSideMission1].missionTasks[0] + "<br>" + sideMissions[currentSideMission1].missionTasks[1] + "<br>" + sideMissions[currentSideMission1].missionTasks[2];
-            }
-            else Debug.LogError("To many tasks for mission: " + sideMissions[currentSideMission1].missionName);
+            sideMission1NameText.text = sideMissions[currentSideMission].missionName;
+            sideMission1InfoText.text = sideMissions[currentSideMission].missionTask;
         }
         else
         {
@@ -118,8 +157,29 @@ public class MissionManager : MonoBehaviour
     {
         print("Start boss battle mission");
     }
-    public void KillMobsSideMission(int killAmount)
+    public void KillMobsSideMission()
     {
         print("Start kill mobs side mission");
+        int randomKillAmount = Random.Range(0, 3);
+        print(randomKillAmount);
+        switch (randomKillAmount)
+        {
+            case 0:
+                killAmount = 5;
+                timeLeft = 120;
+                moneyAmount = 100;
+                break;
+            case 1:
+                killAmount = 10;
+                timeLeft = 300;
+                moneyAmount = 200;
+                break;
+            case 2:
+                killAmount = 25;
+                timeLeft = 600;
+                moneyAmount = 500;
+                break;
+        }
+        killEnemiesMission = true;
     }
 }

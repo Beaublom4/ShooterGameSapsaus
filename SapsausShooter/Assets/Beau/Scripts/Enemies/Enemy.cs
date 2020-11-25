@@ -53,12 +53,14 @@ public class Enemy : MonoBehaviour
     float dissolvingNumber = 2;
     bool dissolving;
 
+    public MissionManager missionManagerScript;
     public virtual void Start()
     {
         playerObj = GameObject.FindWithTag("Player");
         agent = gameObject.GetComponent<NavMeshAgent>();
         agent.speed = speed;
         render = GetComponentInChildren<SkinnedMeshRenderer>();
+        missionManagerScript = GameObject.FindWithTag("MissionManager").GetComponent<MissionManager>();
         SpawnWithWeapon();
     }
     public virtual void Update()
@@ -266,6 +268,10 @@ public class Enemy : MonoBehaviour
             anim.SetInteger("Dead", 2);
         }
         print(gameObject.name + " died");
+        if(missionManagerScript.killEnemiesMission == true)
+        {
+            missionManagerScript.currentKillAmount++;
+        }
         Drop();
         render.material = dissolveMat;
         dissolving = true;
