@@ -15,7 +15,7 @@ public class SkyBoxScroll : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        woosh += Time.time *wooshKeer;
+        woosh += wooshKeer * Time.deltaTime;
         skyBoxShaderMaterial.SetFloat("Vector1_B483EFBD", woosh);
 
         //"Vector1_B483EFBD"
