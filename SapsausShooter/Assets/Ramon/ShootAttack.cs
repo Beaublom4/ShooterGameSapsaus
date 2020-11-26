@@ -10,7 +10,12 @@ public class ShootAttack : MonoBehaviour
 
     public LayerMask canHit;
 
+    public Vector3 randomDir;
+
     private float nextTimeToFire = 0f;
+    public float scattering = 1;
+
+    public int shotPellets = 8;
 
     public bool canShoot;
     public bool isReloading = false;
@@ -53,6 +58,13 @@ public class ShootAttack : MonoBehaviour
             if (weapon.weaponPrefab.GetComponent<WeaponScript>().weapon.gunType == "Sniper")
             {
                 ShootSniper();
+            }
+
+            if (weapon.weaponPrefab.GetComponent<WeaponScript>().weapon.gunType == "Shotgun")
+            {
+                randomDir = fpsCam.transform.forward;
+                randomDir += Random.Range(-scattering, scattering) * transform.right;
+                ShootShotgun();
             }
         }
         if (Input.GetButtonDown("Reload") && currentSlot.ammoInMag < weapon.weaponPrefab.GetComponent<WeaponScript>().weapon.magCount)
@@ -129,7 +141,7 @@ public class ShootAttack : MonoBehaviour
 
         //weapon.muzzleFlash.Play();
         RaycastHit hit;
-        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, 1000, canHit, QueryTriggerInteraction.Ignore))
+        if (Physics.Raycast(fpsCam.transform.position, randomDir, out hit, 1000, canHit, QueryTriggerInteraction.Ignore))
         {
             if (hit.collider.tag == "Enemy")
             {
@@ -155,7 +167,7 @@ public class ShootAttack : MonoBehaviour
 
         //weapon.muzzleFlash.Play();
         RaycastHit hit;
-        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, 1000, canHit, QueryTriggerInteraction.Ignore))
+        if (Physics.Raycast(fpsCam.transform.position, randomDir, out hit, 1000, canHit, QueryTriggerInteraction.Ignore))
         {
             if (hit.collider.tag == "Enemy")
             {
@@ -170,5 +182,34 @@ public class ShootAttack : MonoBehaviour
         }
 
         //sniperAnimation.SetBool("Shoot", false);
+    }
+
+    void ShootShotgun()
+    {
+        //shotgunAnimation.SetBool("Shoot", true);
+
+        for (int i = 0; i < Mathf.Max(1, shotPellets); i++)
+        {
+            currentSlot.ammoInMag--;
+            ammoScript.UpdateAmmo(currentSlot.ammoInMag);
+
+            //weapon.muzzleFlash.Play();
+            RaycastHit hit;
+            if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, 1000, canHit, QueryTriggerInteraction.Ignore))
+            {
+                if (hit.collider.tag == "Enemy")
+                {
+                    if (hit.collider.GetComponent<BodyHit>())
+                    {
+                        hit.collider.GetComponent<BodyHit>().HitPart(weapon);
+                    }
+                }
+
+                //GameObject impactGO = Instantiate(weapon.impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+                //Destroy(impactGO, 2f);
+            }
+        }
+
+        //shotgunAnimation.SetBool("Shoot", false);
     }
 }
