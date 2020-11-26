@@ -114,6 +114,29 @@ public class ShootAttack : MonoBehaviour
                     ammoScript.UpdateSniperAmmoLeft();
                 }
             }
+
+            if (weapon.weaponPrefab.GetComponent<WeaponScript>().weapon.gunType == "Shotgun")
+            {
+                if (ammoScript.shotgunAmmo <= 0)
+                {
+                    print("NoAmmo");
+                    return;
+                }
+                else
+                {
+                    ammoScript.shotgunAmmo += currentSlot.ammoInMag;
+                    if (ammoScript.shotgunAmmo >= weapon.weaponPrefab.GetComponent<WeaponScript>().weapon.magCount)
+                    {
+                        addAmmo = weapon.weaponPrefab.GetComponent<WeaponScript>().weapon.magCount;
+                    }
+                    else
+                    {
+                        addAmmo = ammoScript.shotgunAmmo;
+                    }
+                    ammoScript.shotgunAmmo -= addAmmo;
+                    ammoScript.UpdateShotgunAmmoLeft();
+                }
+            }
             StartCoroutine(Reload());
         }
     }
