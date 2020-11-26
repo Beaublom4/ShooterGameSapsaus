@@ -34,11 +34,19 @@ public class Movement : MonoBehaviour
 
             if (move.z > 0)
             {
-                playerAnimation.SetBool("Walking", true);
+                playerAnimation.SetFloat("Blendx", 1);
             }
-            else
+            if (move.z < 0)
             {
-                playerAnimation.SetBool("Walking", false);
+                playerAnimation.SetFloat("Blendx", -1);
+            }
+            if (move.x > 0)
+            {
+                playerAnimation.SetFloat("Blendy", 1);
+            }
+            if (move.x < 0)
+            {
+                playerAnimation.SetFloat("Blendy", -1);
             }
         }
 
