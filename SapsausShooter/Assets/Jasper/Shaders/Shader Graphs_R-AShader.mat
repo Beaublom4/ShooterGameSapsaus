@@ -19,7 +19,11 @@ Material:
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs: []
+    m_TexEnvs:
+    - _SampleTexture2D_339E644D_Texture_1:
+        m_Texture: {fileID: 2800000, guid: d95d4066eb8de6e45bd3dcb61f7fbfa4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats: []
     m_Colors: []
   m_BuildTextureStacks: []
