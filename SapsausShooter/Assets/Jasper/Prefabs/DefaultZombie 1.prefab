@@ -819,11 +819,24 @@ MonoBehaviour:
   speed: 3
   health: 100
   damage: 5
+  hitBox: {fileID: 0}
   anim: {fileID: 3282199613349893838}
+  hitBoxes: []
+  chanceDrop: 0
+  chanceDubbleDrop: 0
+  ammoDrops:
+  - {fileID: 1319509033163920919, guid: 9f5a6a88f32c7a14baaa047fe84387d2, type: 3}
+  - {fileID: 3115787131044623474, guid: 904151794a5747a49a960c8f5b86aaf3, type: 3}
+  - {fileID: 2921278145093864353, guid: cebbdc06acaef454f99cd55e7ad37e57, type: 3}
+  ammoDropLoc: {fileID: 0}
+  minDropAmount: 0
+  maxDropAmount: 0
+  moneyDropPrefab: {fileID: 0}
   canMutateToBigZomb: 1
   countTowardsBigZomb: 0
   addedToList: 0
-  main: {fileID: 0}
+  main: {x: 0, y: 0, z: 0}
+  isMainBody: 0
   moveTowardMain: 0
   chanceToHoldGun: 0
   chanceToHoldMelee: 0
@@ -842,10 +855,16 @@ MonoBehaviour:
   shootTimer: 0
   getDamageOverTime: 0
   damageOverTime: 0
+  render: {fileID: 0}
+  dissolveMat: {fileID: 0}
+  dissolveSpeed: 0
+  missionManagerScript: {fileID: 0}
   bigZombie: {fileID: 3225309657445313045, guid: b19454070a0ea164fac569d39e410b3b,
     type: 3}
   wantedEnemiesInRange: 2
   enemiesInRange: []
+  bigBoySpawnPoint: {fileID: 0}
+  MainAtLoc: 0
 --- !u!1 &2519957222680718244
 GameObject:
   m_ObjectHideFlags: 0

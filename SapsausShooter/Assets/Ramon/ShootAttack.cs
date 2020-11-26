@@ -164,7 +164,7 @@ public class ShootAttack : MonoBehaviour
 
         //weapon.muzzleFlash.Play();
         RaycastHit hit;
-        if (Physics.Raycast(fpsCam.transform.position, randomDir, out hit, 1000, canHit, QueryTriggerInteraction.Ignore))
+        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, 1000, canHit, QueryTriggerInteraction.Ignore))
         {
             if (hit.collider.tag == "Enemy")
             {
@@ -190,7 +190,7 @@ public class ShootAttack : MonoBehaviour
 
         //weapon.muzzleFlash.Play();
         RaycastHit hit;
-        if (Physics.Raycast(fpsCam.transform.position, randomDir, out hit, 1000, canHit, QueryTriggerInteraction.Ignore))
+        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, 1000, canHit, QueryTriggerInteraction.Ignore))
         {
             if (hit.collider.tag == "Enemy")
             {

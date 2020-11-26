@@ -6,7 +6,7 @@ public class MoneyDrop : MonoBehaviour
 {
     public int moneyAmount;
     public Material low, medium, lot;
-
+        public LayerMask hitable;
     private void Start()
     {
         if(moneyAmount <= 20)
@@ -24,9 +24,9 @@ public class MoneyDrop : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "PickUpCol")
         {
-            other.GetComponent<MoneyManager>().GetMoney(moneyAmount);
+            other.GetComponentInParent<MoneyManager>().GetMoney(moneyAmount);
             Destroy(gameObject);
         }
     }

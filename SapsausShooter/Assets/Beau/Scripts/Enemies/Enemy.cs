@@ -262,6 +262,8 @@ public class Enemy : MonoBehaviour
     }
     public virtual IEnumerator Dead(int hitPoint)
     {
+        //dead for damage over time, -damage is possible....
+
         agent.isStopped = true;
         foreach(Collider c in hitBoxes)
         {

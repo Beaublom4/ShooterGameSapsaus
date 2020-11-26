@@ -8,7 +8,6 @@ public class EnemyDamageTrigger : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            print("Hit");
             GetComponentInParent<Enemy>().HitBoxHit();
         }
     }

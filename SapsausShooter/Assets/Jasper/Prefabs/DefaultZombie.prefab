@@ -871,6 +871,8 @@ MonoBehaviour:
   chanceDubbleDrop: 5
   ammoDrops:
   - {fileID: 1319509033163920919, guid: 9f5a6a88f32c7a14baaa047fe84387d2, type: 3}
+  - {fileID: 3115787131044623474, guid: 904151794a5747a49a960c8f5b86aaf3, type: 3}
+  - {fileID: 2921278145093864353, guid: cebbdc06acaef454f99cd55e7ad37e57, type: 3}
   ammoDropLoc: {fileID: 4597639230534803306}
   minDropAmount: 1
   maxDropAmount: 30
@@ -902,6 +904,7 @@ MonoBehaviour:
   render: {fileID: 5135113600118632459}
   dissolveMat: {fileID: 2100000, guid: 18c130d0bfa36904f94d0726466ebbee, type: 2}
   dissolveSpeed: 1
+  missionManagerScript: {fileID: 0}
   bigZombie: {fileID: 3225309657445313045, guid: b19454070a0ea164fac569d39e410b3b,
     type: 3}
   wantedEnemiesInRange: 2

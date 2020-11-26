@@ -12,15 +12,27 @@ public class AmmoPack : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "PickUpCol")
         {
             if (ammoType == "Pistol")
             {
                 int ammo = Random.Range(minAmmo, maxAmmo);
                 ammoScript.pistolAmmo += ammo;
                 ammoScript.UpdatePistolAmmoLeft();
-                Destroy(gameObject);
             }
+            else if (ammoType == "Sniper")
+            {
+                int ammo = Random.Range(minAmmo, maxAmmo);
+                ammoScript.sniperAmmo += ammo;
+                ammoScript.UpdateSniperAmmoLeft();
+            }
+            else if ( ammoType == "Shotgun")
+            {
+                int ammo = Random.Range(minAmmo, maxAmmo);
+                ammoScript.shotgunAmmo += ammo;
+                ammoScript.UpdateShotgunAmmoLeft();
+            }
+            Destroy(gameObject);
         }
     }
 }

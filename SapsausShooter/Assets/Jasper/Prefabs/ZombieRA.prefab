@@ -863,7 +863,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7219832345671916576
 Transform:
   m_ObjectHideFlags: 0
@@ -1882,6 +1882,8 @@ MonoBehaviour:
   chanceDubbleDrop: 10
   ammoDrops:
   - {fileID: 1319509033163920919, guid: 9f5a6a88f32c7a14baaa047fe84387d2, type: 3}
+  - {fileID: 3115787131044623474, guid: 904151794a5747a49a960c8f5b86aaf3, type: 3}
+  - {fileID: 2921278145093864353, guid: cebbdc06acaef454f99cd55e7ad37e57, type: 3}
   ammoDropLoc: {fileID: 6998884375229870470}
   minDropAmount: 10
   maxDropAmount: 50
