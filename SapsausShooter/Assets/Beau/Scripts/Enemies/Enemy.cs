@@ -52,10 +52,13 @@ public class Enemy : MonoBehaviour
     public float dissolveSpeed;
     float dissolvingNumber = 2;
     bool dissolving;
+    MaterialPropertyBlock block;
 
     public MissionManager missionManagerScript;
     public virtual void Start()
     {
+        block = new MaterialPropertyBlock();
+
         playerObj = GameObject.FindWithTag("Player");
         agent = gameObject.GetComponent<NavMeshAgent>();
         agent.speed = speed;
@@ -102,7 +105,12 @@ public class Enemy : MonoBehaviour
         if(dissolving == true)
         {
             dissolvingNumber -= dissolveSpeed * Time.deltaTime;
-            dissolveMat.SetFloat("Vector1_4FF20CCE", dissolvingNumber);
+            render.GetPropertyBlock(block);
+            block.SetFloat("Vector1_4FF20CCE", dissolvingNumber);
+            render.SetPropertyBlock(block);
+
+            //block.SetFloat("Vector1_4FF20CCE", dissolvingNumber);
+            //dissolveMat.SetFloat("Vector1_4FF20CCE", dissolvingNumber);
         }
     }
     public virtual void Trigger(GameObject player)
