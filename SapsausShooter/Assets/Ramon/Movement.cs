@@ -42,11 +42,11 @@ public class Movement : MonoBehaviour
             }
             if (move.x > 0)
             {
-                playerAnimation.SetFloat("Blendy", 1);
+                playerAnimation.SetFloat("blendy", 1);
             }
             if (move.x < 0)
             {
-                playerAnimation.SetFloat("Blendy", -1);
+                playerAnimation.SetFloat("blendy", -1);
             }
         }
 
