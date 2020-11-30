@@ -83,7 +83,7 @@ public class ShootAttack : MonoBehaviour
             }
         }
 
-            if (Input.GetButtonDown("Reload") && currentSlot.ammoInMag < weapon.weaponPrefab.GetComponent<WeaponScript>().weapon.magCount)
+        if (Input.GetButtonDown("Reload") && currentSlot.ammoInMag < weapon.weaponPrefab.GetComponent<WeaponScript>().weapon.magCount)
         {
             if (weapon.weaponPrefab.GetComponent<WeaponScript>().weapon.gunType == "Pistol")
             {
@@ -153,6 +153,29 @@ public class ShootAttack : MonoBehaviour
                     ammoScript.UpdateShotgunAmmoLeft();
                 }
             }
+
+            //if (weapon.weaponPrefab.GetComponent<WeaponScript>().weapon.gunType == "Freezegun")
+            //{
+                //if (ammoScript.freezegunAmmo <= 0)
+                //{
+                    //print("NoAmmo");
+                    //return;
+                //}
+                //else
+                //{
+                    //ammoScript.freezegunAmmo += currentSlot.ammoInMag;
+                    //if (ammoScript.freezegunAmmo >= weapon.weaponPrefab.GetComponent<WeaponScript>().weapon.magCount)
+                    //{
+                        //addAmmo = weapon.weaponPrefab.GetComponent<WeaponScript>().weapon.magCount;
+                    //}
+                    //else
+                    //{
+                        //addAmmo = ammoScript.freezegunAmmo;
+                    //}
+                    //ammoScript.freezegunAmmo -= addAmmo;
+                    //ammoScript.UpdateFreezegunAmmoLeft();
+                //}
+            //}
             StartCoroutine(Reload());
         }
     }
@@ -251,7 +274,6 @@ public class ShootAttack : MonoBehaviour
 
         //shotgunAnimation.SetBool("Shoot", false);
     }
-
     void ShootFreezegun()
     {
         //freezegunAnimation.SetBool("Shoot", true);
@@ -260,20 +282,11 @@ public class ShootAttack : MonoBehaviour
         ammoScript.UpdateAmmo(currentSlot.ammoInMag);
 
         //weapon.muzzleFlash.Play();
-        RaycastHit hit;
-        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, 1000, canHit, QueryTriggerInteraction.Ignore))
-        {
-            if (hit.collider.tag == "Enemy")
-            {
-                if (hit.collider.GetComponent<BodyHit>())
-                {
-                    hit.collider.GetComponent<BodyHit>().HitPart(weapon);
-                }
-            }
+    
 
             //GameObject impactGO = Instantiate(weapon.impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
             //Destroy(impactGO, 2f);
-        }
+        
 
         //freezegunAnimation.SetBool("Shoot", false);
     }
