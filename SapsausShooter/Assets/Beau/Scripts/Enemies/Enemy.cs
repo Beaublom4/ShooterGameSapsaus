@@ -56,6 +56,9 @@ public class Enemy : MonoBehaviour
     MaterialPropertyBlock block;
 
     public MissionManager missionManagerScript;
+
+    public GameObject hitNumPrefab;
+    public Transform dmgTextLoc;
     public virtual void Start()
     {
         block = new MaterialPropertyBlock();
@@ -220,7 +223,7 @@ public class Enemy : MonoBehaviour
     {
         playerObj.GetComponent<HealthManager>().DoDamage(damage);
     }
-    public void DoDamage(Weapon weapon, int hitPoint)
+    public void DoDamage(Weapon weapon, int hitPoint, Vector3 hitLoc)
     {
         float range = Vector3.Distance(playerObj.transform.position, transform.position);
         float calculatedDamage = weapon.damage - (weapon.damageDropOverDist * range);
@@ -230,6 +233,10 @@ public class Enemy : MonoBehaviour
         {
             calculatedDamage = calculatedDamage * weapon.critMultiplier;
         }
+        Instantiate(hitNumPrefab, hitLoc, Quaternion.identity, dmgTextLoc);
+        GameObject g = dmgTextLoc.GetChild(0).gameObject;
+        g.GetComponent<DmgNumberShow>().UpdateNumber(calculatedDamage);
+        g.transform.SetParent(null);
         health -= calculatedDamage;
         if(health <= 0)
         {

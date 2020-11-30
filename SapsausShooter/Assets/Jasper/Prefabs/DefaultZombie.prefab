@@ -757,7 +757,7 @@ GameObject:
   - component: {fileID: 2517721227859463081}
   m_Layer: 0
   m_Name: DefaultZombie
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -778,6 +778,7 @@ Transform:
   - {fileID: 2494115365080447349}
   - {fileID: 5554388393070716160}
   - {fileID: 4597639230534803306}
+  - {fileID: 5413461888892587931}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -905,6 +906,9 @@ MonoBehaviour:
   dissolveMat: {fileID: 2100000, guid: 18c130d0bfa36904f94d0726466ebbee, type: 2}
   dissolveSpeed: 1
   missionManagerScript: {fileID: 0}
+  hitNumPrefab: {fileID: 3314747878335242109, guid: 8c6b2080012d1a048870d88718b62e11,
+    type: 3}
+  dmgTextLoc: {fileID: 5413461888892587931}
   bigZombie: {fileID: 3225309657445313045, guid: b19454070a0ea164fac569d39e410b3b,
     type: 3}
   wantedEnemiesInRange: 2
@@ -2312,6 +2316,36 @@ Transform:
   - {fileID: 5642132217539372696}
   m_Father: {fileID: 5372721489298564703}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7075422239428005042
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5413461888892587931}
+  m_Layer: 0
+  m_Name: DmgTextLoc
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5413461888892587931
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7075422239428005042}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3028123561666048315}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7117737691568925119
 GameObject:

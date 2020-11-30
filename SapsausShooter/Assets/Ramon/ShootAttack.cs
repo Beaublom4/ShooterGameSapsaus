@@ -23,10 +23,14 @@ public class ShootAttack : MonoBehaviour
     float addAmmo;
     public Slot currentSlot;
     public AmmoCounter ammoScript;
+
+    public GameObject whiteHitMarkerObj, redHitMarkerObj, hitMarkerObj;
+    public float displayTimeHitMarker;
+    IEnumerator coroutine;
     void Start()
     {
         //currentMagCount = weapon.magCount;
-
+        coroutine = HitMarker();
         canShoot = true;
     }
     void OnEnable()
@@ -193,7 +197,12 @@ public class ShootAttack : MonoBehaviour
         ammoScript.UpdateAmmo(currentSlot.ammoInMag);
         isReloading = false;
     }
-
+    IEnumerator HitMarker()
+    {
+        hitMarkerObj.SetActive(true);
+        yield return new WaitForSeconds(displayTimeHitMarker);
+        hitMarkerObj.SetActive(false);
+    }
     void ShootPistol()
     {
         //pistolAnimation.SetBool("Shoot", true);
@@ -209,7 +218,17 @@ public class ShootAttack : MonoBehaviour
             {
                 if (hit.collider.GetComponent<BodyHit>())
                 {
-                    hit.collider.GetComponent<BodyHit>().HitPart(weapon);
+                    hit.collider.GetComponent<BodyHit>().HitPart(weapon, hit.point);
+                    print(hit.collider.GetComponent<BodyHit>().bodyType);
+                    if(hit.collider.GetComponent<BodyHit>().bodyType == 1)
+                    {
+                        hitMarkerObj = redHitMarkerObj;
+                    }
+                    else
+                    hitMarkerObj = whiteHitMarkerObj;
+                    StopCoroutine(coroutine);
+                    coroutine = HitMarker();
+                    StartCoroutine(coroutine);
                 }
             }
 
@@ -235,7 +254,17 @@ public class ShootAttack : MonoBehaviour
             {
                 if (hit.collider.GetComponent<BodyHit>())
                 {
-                    hit.collider.GetComponent<BodyHit>().HitPart(weapon);
+                    hit.collider.GetComponent<BodyHit>().HitPart(weapon, hit.point);
+
+                    if (hit.collider.GetComponent<BodyHit>().bodyType == 1)
+                    {
+                        hitMarkerObj = redHitMarkerObj;
+                    }
+                    else
+                    hitMarkerObj = whiteHitMarkerObj;
+                    StopCoroutine(coroutine);
+                    coroutine = HitMarker();
+                    StartCoroutine(coroutine);
                 }
             }
 
@@ -263,7 +292,17 @@ public class ShootAttack : MonoBehaviour
                 {
                     if (hit.collider.GetComponent<BodyHit>())
                     {
-                        hit.collider.GetComponent<BodyHit>().HitPart(weapon);
+                        hit.collider.GetComponent<BodyHit>().HitPart(weapon, hit.point);
+
+                        if (hit.collider.GetComponent<BodyHit>().bodyType == 1)
+                        {
+                            hitMarkerObj = redHitMarkerObj;
+                        }
+                        else
+                        hitMarkerObj = whiteHitMarkerObj;
+                        StopCoroutine(coroutine);
+                        coroutine = HitMarker();
+                        StartCoroutine(coroutine);
                     }
                 }
 

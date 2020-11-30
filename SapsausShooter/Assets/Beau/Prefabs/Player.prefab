@@ -349,6 +349,10 @@ MonoBehaviour:
   isReloading: 0
   currentSlot: {fileID: 0}
   ammoScript: {fileID: 0}
+  whiteHitMarkerObj: {fileID: 0}
+  redHitMarkerObj: {fileID: 0}
+  hitMarkerObj: {fileID: 0}
+  displayTimeHitMarker: 0.5
 --- !u!114 &995829965692537576
 MonoBehaviour:
   m_ObjectHideFlags: 0
