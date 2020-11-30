@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     public GameObject hitBox;
     public Animator anim;
     public Collider[] hitBoxes;
+    bool isDeath;
 
     public int chanceDrop, chanceDubbleDrop;
     public GameObject[] ammoDrops;
@@ -73,9 +74,18 @@ public class Enemy : MonoBehaviour
             if(playerObj != null)
             agent.SetDestination(playerObj.transform.position);
         }
+        if(agent.velocity.sqrMagnitude > Mathf.Epsilon)
+        {
+            transform.rotation = Quaternion.LookRotation(agent.velocity.normalized);
+        }
         if(getDamageOverTime == true)
         {
             health -= damageOverTime * Time.deltaTime;
+            if (isDeath == false)
+            {
+                isDeath = true;
+                StartCoroutine(Dead(2));
+            }
         }
         if (moveTowardMain == true)
         {
@@ -214,6 +224,8 @@ public class Enemy : MonoBehaviour
     {
         float range = Vector3.Distance(playerObj.transform.position, transform.position);
         float calculatedDamage = weapon.damage - (weapon.damageDropOverDist * range);
+        if (calculatedDamage <= 0)
+            calculatedDamage = 0;
         if(hitPoint == 1)
         {
             calculatedDamage = calculatedDamage * weapon.critMultiplier;
@@ -222,7 +234,11 @@ public class Enemy : MonoBehaviour
         if(health <= 0)
         {
             health = 0;
-            StartCoroutine(Dead(hitPoint));
+            if(isDeath == false)
+            {
+                isDeath = true;
+                StartCoroutine(Dead(hitPoint));
+            }
         }
         if(weapon.damageOverTime != 0)
         {
@@ -262,8 +278,6 @@ public class Enemy : MonoBehaviour
     }
     public virtual IEnumerator Dead(int hitPoint)
     {
-        //dead for damage over time, -damage is possible....
-
         agent.isStopped = true;
         foreach(Collider c in hitBoxes)
         {
