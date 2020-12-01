@@ -13,6 +13,7 @@ public class WeaponSelector : MonoBehaviour
     public Slot selectedSlotScript;
     public GameObject[] rings;
     public ShootAttack shootScript;
+    public MeleeAttack meleeScript;
     AmmoCounter ammoCounterScript;
     public Image weaponImage;
 
@@ -62,14 +63,14 @@ public class WeaponSelector : MonoBehaviour
                 {
                     if (hit.collider.gameObject.tag == "Weapon")
                     {
-                        if (hit.collider.gameObject.GetComponent<WeaponScript>().weapon.type == "Gun")
+                        if (hit.collider.gameObject.GetComponent<GunScript>().weapon.type == "Gun")
                         {
                             for (int i = 0; i < rings[0].transform.childCount; i++)
                             {
                                 if (rings[0].transform.GetChild(i).GetComponent<Slot>().weapon == null)
                                 {
-                                    rings[0].transform.GetChild(i).GetComponent<Slot>().weapon = hit.collider.GetComponent<WeaponScript>().weapon;
-                                    rings[0].transform.GetChild(i).GetComponent<Slot>().ammoInMag = hit.collider.GetComponent<WeaponScript>().ammoInMag;
+                                    rings[0].transform.GetChild(i).GetComponent<Slot>().weapon = hit.collider.GetComponent<GunScript>().weapon;
+                                    rings[0].transform.GetChild(i).GetComponent<Slot>().ammoInMag = hit.collider.GetComponent<GunScript>().ammoInMag;
                                     Destroy(hit.collider.gameObject);
                                     if (selectedSlotScript == null)
                                     {
@@ -79,12 +80,41 @@ public class WeaponSelector : MonoBehaviour
                                 }
                                 else if (i + 1 == rings[0].transform.childCount)
                                 {
-                                    print("Switch " + selectedSlotScript.weapon.name + " for " + hit.collider.GetComponent<WeaponScript>().weapon.name + " at slot " + selectedSlotScript.gameObject.name);
+                                    print("Switch " + selectedSlotScript.weapon.name + " for " + hit.collider.GetComponent<GunScript>().weapon.name + " at slot " + selectedSlotScript.gameObject.name);
                                     Instantiate(selectedSlotScript.weapon.weaponPrefab, dropLoc.transform.position, Quaternion.identity, dropLoc.transform);
                                     GameObject g = dropLoc.transform.GetChild(0).gameObject;
-                                    g.GetComponent<WeaponScript>().ammoInMag = selectedSlotScript.ammoInMag;
-                                    selectedSlotScript.weapon = hit.collider.GetComponent<WeaponScript>().weapon;
-                                    selectedSlotScript.ammoInMag = hit.collider.GetComponent<WeaponScript>().ammoInMag;
+                                    g.GetComponent<GunScript>().ammoInMag = selectedSlotScript.ammoInMag;
+                                    selectedSlotScript.weapon = hit.collider.GetComponent<GunScript>().weapon;
+                                    selectedSlotScript.ammoInMag = hit.collider.GetComponent<GunScript>().ammoInMag;
+                                    g.transform.SetParent(null);
+                                    Destroy(hit.collider.gameObject);
+                                    break;
+                                }
+                            }
+                        }
+                        if (hit.collider.gameObject.GetComponent<GunScript>().weapon.type == "Melee")
+                        {
+                            for (int i = 0; i < rings[0].transform.childCount; i++)
+                            {
+                                if (rings[0].transform.GetChild(i).GetComponent<Slot>().weapon == null)
+                                {
+                                    rings[0].transform.GetChild(i).GetComponent<Slot>().weapon = hit.collider.GetComponent<GunScript>().weapon;
+                                    rings[0].transform.GetChild(i).GetComponent<Slot>().ammoInMag = hit.collider.GetComponent<GunScript>().ammoInMag;
+                                    Destroy(hit.collider.gameObject);
+                                    if (selectedSlotScript == null)
+                                    {
+                                        SelectSlot(rings[0].transform.GetChild(i).GetComponent<Slot>());
+                                    }
+                                    break;
+                                }
+                                else if (i + 1 == rings[0].transform.childCount)
+                                {
+                                    print("Switch " + selectedSlotScript.weapon.name + " for " + hit.collider.GetComponent<GunScript>().weapon.name + " at slot " + selectedSlotScript.gameObject.name);
+                                    Instantiate(selectedSlotScript.weapon.weaponPrefab, dropLoc.transform.position, Quaternion.identity, dropLoc.transform);
+                                    GameObject g = dropLoc.transform.GetChild(0).gameObject;
+                                    g.GetComponent<GunScript>().ammoInMag = selectedSlotScript.ammoInMag;
+                                    selectedSlotScript.weapon = hit.collider.GetComponent<GunScript>().weapon;
+                                    selectedSlotScript.ammoInMag = hit.collider.GetComponent<GunScript>().ammoInMag;
                                     g.transform.SetParent(null);
                                     Destroy(hit.collider.gameObject);
                                     break;
@@ -112,7 +142,7 @@ public class WeaponSelector : MonoBehaviour
 
                 if (slotscript.weapon.type == "Gun")
                 {
-                    print(slotscript.weapon);
+                    print(slotscript.weapon.weaponName);
                     shootScript.weapon = slotscript.weapon;
                     shootScript.currentSlot = slotscript;
 
@@ -121,6 +151,20 @@ public class WeaponSelector : MonoBehaviour
                     {
                         ammoCounterScript.UpdatePistolAmmoLeft();
                     }
+                    else if(slotscript.weapon.gunType == "Sniper")
+                    {
+                        ammoCounterScript.UpdateSniperAmmoLeft();
+                    }
+                    else if (slotscript.weapon.gunType == "Shotgun")
+                    {
+                        ammoCounterScript.UpdateShotgunAmmoLeft();
+                    }
+                }
+                else if(slotscript.weapon.type == "melee")
+                {
+                    print(slotscript.weapon.weaponName);
+                    meleeScript.weapon = slotscript.weapon.weaponPrefab.GetComponent<Melee>();
+                    ammoCounterScript.UpdateMeleeAmmo();
                 }
             }
         }

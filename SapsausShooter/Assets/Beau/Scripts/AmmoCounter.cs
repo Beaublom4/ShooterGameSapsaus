@@ -40,4 +40,8 @@ public class AmmoCounter : MonoBehaviour
     {
         magText.text = ammo.ToString();
     }
+    public void UpdateMeleeAmmo()
+    {
+
+    }
 }

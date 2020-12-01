@@ -29,6 +29,17 @@ public class UsePlayer : MonoBehaviour
                     hit.transform.GetComponent<ShopItem>().BuyItem(gameObject);
                 }
             }
+            if(hit.transform.tag == "HealStation")
+            {
+                if (hit.transform.GetComponent<HealStation>().infoPanel.activeSelf == false)
+                {
+                    hit.transform.GetComponent<HealStation>().ShowPrice();
+                }
+                if (Input.GetButtonDown("Use"))
+                {
+                    hit.transform.GetComponent<HealStation>().BuyHeal();
+                }
+            }
         }
     }
 }
