@@ -859,6 +859,8 @@ MonoBehaviour:
   dissolveMat: {fileID: 0}
   dissolveSpeed: 0
   missionManagerScript: {fileID: 0}
+  hitNumPrefab: {fileID: 0}
+  dmgTextLoc: {fileID: 0}
   bigZombie: {fileID: 3225309657445313045, guid: b19454070a0ea164fac569d39e410b3b,
     type: 3}
   wantedEnemiesInRange: 2
@@ -1826,7 +1828,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ace70089725389044a50e20bb38c4f7d, type: 2}
+  - {fileID: 2100000, guid: a9b3028f093e4b34f85f34b0c14375f6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

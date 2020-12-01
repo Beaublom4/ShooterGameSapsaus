@@ -2088,6 +2088,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5135113600118632459, guid: 3be298117b38ec94898fc1b394e5fed3,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5135113600118632459, guid: 3be298117b38ec94898fc1b394e5fed3,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9adb942599531e74fa33dc71493ee6ec, type: 2}
+    - target: {fileID: 5135113600118632459, guid: 3be298117b38ec94898fc1b394e5fed3,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: ba55ba7f9e4685a4a99e34901e91cbd1, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3be298117b38ec94898fc1b394e5fed3, type: 3}
 --- !u!1 &383795615
@@ -5813,13 +5828,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 946129542}
-  m_LocalRotation: {x: 0.3881787, y: -0.31589812, z: 0.14363024, w: 0.85375416}
+  m_LocalRotation: {x: 0.023320701, y: -0.9088767, z: 0.41324148, w: 0.051291175}
   m_LocalPosition: {x: -1.1789659, y: 3, z: -20.054358}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 48.9, y: 679.39, z: 0}
+  m_LocalEulerAnglesHint: {x: 48.9, y: 546.46, z: 0}
 --- !u!114 &946129545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9990,6 +10005,7 @@ MonoBehaviour:
   - {fileID: 466377239}
   - {fileID: 2066505790}
   shootScript: {fileID: 0}
+  meleeScript: {fileID: 0}
   weaponImage: {fileID: 1747226511}
   nameText: {fileID: 379695653}
   displayNameTime: 3
