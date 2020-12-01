@@ -10,6 +10,8 @@ public class Movement : MonoBehaviour
     public float speed = 12f;
     public float gravity = -9.81f;
     public float jumpHeight = 3f;
+    public float animationLength = 1f;
+    public float animationTime = 0f;
 
     public Transform groundCheck;
     public float groundDistance = 0.4f;
@@ -31,22 +33,23 @@ public class Movement : MonoBehaviour
         if (isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
+            animationTime += Time.deltaTime / animationLength;
 
             if (move.z > 0)
             {
-                playerAnimation.SetFloat("Blendx", 1);
+                playerAnimation.SetFloat("Blendx", Mathf.Lerp(0, 1, animationTime));
             }
             if (move.z < 0)
             {
-                playerAnimation.SetFloat("Blendx", -1);
+                playerAnimation.SetFloat("Blendx", Mathf.Lerp(0, 1, animationTime));
             }
             if (move.x > 0)
             {
-                playerAnimation.SetFloat("blendy", 1);
+                playerAnimation.SetFloat("blendy", Mathf.Lerp(0, 1, animationTime));
             }
             if (move.x < 0)
             {
-                playerAnimation.SetFloat("blendy", -1);
+                playerAnimation.SetFloat("blendy", Mathf.Lerp(0, 1, animationTime));
             }
         }
 
