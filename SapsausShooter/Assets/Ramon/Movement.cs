@@ -39,17 +39,33 @@ public class Movement : MonoBehaviour
             {
                 playerAnimation.SetFloat("Blendx", Mathf.Lerp(0, 1, animationTime));
             }
+            else
+            {
+                playerAnimation.SetFloat("Blendx", 0);
+            }
             if (move.z < 0)
             {
-                playerAnimation.SetFloat("Blendx", Mathf.Lerp(0, 1, animationTime));
+                playerAnimation.SetFloat("Blendx", Mathf.Lerp(0, -1, animationTime));
+            }
+            else
+            {
+                playerAnimation.SetFloat("Blendx", 0);
             }
             if (move.x > 0)
             {
                 playerAnimation.SetFloat("blendy", Mathf.Lerp(0, 1, animationTime));
             }
+            else
+            {
+                playerAnimation.SetFloat("blendy", 0);
+            }
             if (move.x < 0)
             {
-                playerAnimation.SetFloat("blendy", Mathf.Lerp(0, 1, animationTime));
+                playerAnimation.SetFloat("blendy", Mathf.Lerp(0, -1, animationTime));
+            }
+            else
+            {
+                playerAnimation.SetFloat("blendy", 0);
             }
         }
 
