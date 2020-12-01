@@ -5,10 +5,12 @@ public class AmmoPack : MonoBehaviour
     public string ammoType;
     public int minAmmo, maxAmmo;
     public AmmoCounter ammoScript;
+    public WeaponSelector selectScript;
 
     private void Start()
     {
         ammoScript = GameObject.Find("WeaponManager").GetComponent<AmmoCounter>();
+        selectScript = GameObject.Find("WeaponManager").GetComponent<WeaponSelector>();
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -18,20 +20,31 @@ public class AmmoPack : MonoBehaviour
             {
                 int ammo = Random.Range(minAmmo, maxAmmo);
                 ammoScript.pistolAmmo += ammo;
-                ammoScript.UpdatePistolAmmoLeft();
             }
             else if (ammoType == "Sniper")
             {
                 int ammo = Random.Range(minAmmo, maxAmmo);
                 ammoScript.sniperAmmo += ammo;
-                ammoScript.UpdateSniperAmmoLeft();
             }
             else if ( ammoType == "Shotgun")
             {
                 int ammo = Random.Range(minAmmo, maxAmmo);
                 ammoScript.shotgunAmmo += ammo;
+            }
+
+            if (selectScript.selectedSlotScript.weapon.gunType == "Pistol")
+            {
+                ammoScript.UpdatePistolAmmoLeft();
+            }
+            else if(selectScript.selectedSlotScript.weapon.gunType == "Sniper")
+            {
+                ammoScript.UpdateSniperAmmoLeft();
+            }
+            else if (selectScript.selectedSlotScript.weapon.gunType == "Shotgun")
+            {
                 ammoScript.UpdateShotgunAmmoLeft();
             }
+
             Destroy(gameObject);
         }
     }

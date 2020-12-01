@@ -903,7 +903,6 @@ MonoBehaviour:
   getDamageOverTime: 0
   damageOverTime: 0
   render: {fileID: 5135113600118632459}
-  dissolveMat: {fileID: 2100000, guid: 18c130d0bfa36904f94d0726466ebbee, type: 2}
   dissolveSpeed: 1
   missionManagerScript: {fileID: 0}
   hitNumPrefab: {fileID: 3314747878335242109, guid: 8c6b2080012d1a048870d88718b62e11,
@@ -911,7 +910,7 @@ MonoBehaviour:
   dmgTextLoc: {fileID: 5413461888892587931}
   bigZombie: {fileID: 3225309657445313045, guid: b19454070a0ea164fac569d39e410b3b,
     type: 3}
-  wantedEnemiesInRange: 2
+  wantedEnemiesInRange: 7
   enemiesInRange: []
   bigBoySpawnPoint: {fileID: 5554388393070716160}
   MainAtLoc: 0

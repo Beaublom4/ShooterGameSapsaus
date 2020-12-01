@@ -199,7 +199,7 @@ GameObject:
   - component: {fileID: 846451861069687710}
   - component: {fileID: 5857392905529847191}
   - component: {fileID: 995829965692537576}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -260,6 +260,8 @@ MonoBehaviour:
   speed: 6
   gravity: -9.81
   jumpHeight: 3
+  animationLength: 1
+  animationTime: 0
   groundCheck: {fileID: 896554097703259943}
   groundDistance: 0.4
   groundMask:

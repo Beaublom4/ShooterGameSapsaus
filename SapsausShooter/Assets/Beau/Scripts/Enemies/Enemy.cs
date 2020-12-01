@@ -30,7 +30,7 @@ public class Enemy : MonoBehaviour
     public float chanceToHoldGun, chanceToHoldMelee;
     public Gun[] gunOptions;
     public Melee[] meleeOptions;
-    [HideInInspector] public Gun holdingGun;
+    public Gun holdingGun;
     [HideInInspector]   public Melee holdingMelee;
 
     public GameObject playerObj;
@@ -49,9 +49,8 @@ public class Enemy : MonoBehaviour
     [HideInInspector] public float damageOverTime;
 
     [HideInInspector] public SkinnedMeshRenderer render;
-    public Material dissolveMat;
     public float dissolveSpeed;
-    float dissolvingNumber = 2;
+    float dissolvingNumber = 2.5f;
     bool dissolving;
     MaterialPropertyBlock block;
 
@@ -165,6 +164,7 @@ public class Enemy : MonoBehaviour
             if (chanceToHoldGun > 0 || chanceToHoldMelee > 0)
             {
                 int randomNumber = Random.Range(0, 100);
+                print(randomNumber);
                 if (randomNumber <= chanceToHoldGun)
                 {
                     int weaponNumber = Random.Range(0, gunOptions.Length);
@@ -303,8 +303,10 @@ public class Enemy : MonoBehaviour
         {
             missionManagerScript.currentKillAmount++;
         }
+        playerInShootingRange = false;
         Drop();
-        render.material = dissolveMat;
+        DropMoney();
+        DropWeapon();
         dissolving = true;
         yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
         yield return new WaitForSeconds(3);
@@ -312,7 +314,6 @@ public class Enemy : MonoBehaviour
     }
     void Drop()
     {
-        DropMoney();
         int randomNum = Random.Range(0, 100);
         if(randomNum < chanceDrop)
         {
@@ -339,6 +340,16 @@ public class Enemy : MonoBehaviour
         g.GetComponent<Rigidbody>().AddRelativeForce(0, 300, 10);
         g.transform.SetParent(null);
     }
+    void DropWeapon()
+    {
+        if(holdingGun != null)
+        {
+            Instantiate(holdingGun.weaponPrefab, ammoDropLoc.position, Quaternion.Euler(ammoDropLoc.rotation.x, Random.Range(0, 360), ammoDropLoc.rotation.z), ammoDropLoc);
+            GameObject g = ammoDropLoc.transform.GetChild(0).gameObject;
+            g.GetComponent<Rigidbody>().AddRelativeForce(0, 300, 10);
+            g.transform.SetParent(null);
+        }
+    }
     void DropMoney()
     {
         int randomNum = Random.Range(minDropAmount, maxDropAmount);
@@ -357,22 +368,29 @@ public class Enemy : MonoBehaviour
         RaycastHit hit;
         if(Physics.Raycast(shootPos.position, playerObj.transform.position - transform.position, out hit, 1000, -5, QueryTriggerInteraction.Ignore))
         {
-            if(hit.collider.gameObject.tag == "Player")
+            if(hit.collider.transform.parent.tag == "Player")
             {
-                playerObj.GetComponent<HealthManager>().DoDamageWithGun(holdingGun, gameObject);
+                playerObj.transform.GetComponent<HealthManager>().DoDamageWithGun(holdingGun, gameObject);
             }
         }
     }
     public void PlayerInShootingRange()
     {
-        agent.speed = 0;
-        agent.velocity = Vector3.zero;
-        playerInShootingRange = true;
-        transform.LookAt(playerObj.transform);
+        if (isDeath == false)
+        {
+            agent.speed = 0;
+            agent.velocity = Vector3.zero;
+            playerInShootingRange = true;
+            transform.LookAt(playerObj.transform);
+        }
     }
     public void PlayerOutOfShootingRange()
     {
-        shootTimer = holdingGun.fireRate;
-        agent.speed = speed;
+        if (isDeath == false)
+        {
+            shootTimer = holdingGun.fireRate;
+            playerInShootingRange = false;
+            agent.speed = speed;
+        }
     }
 }

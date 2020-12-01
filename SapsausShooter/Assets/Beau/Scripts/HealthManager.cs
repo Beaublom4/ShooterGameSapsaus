@@ -62,6 +62,7 @@ public class HealthManager : MonoBehaviour
             float range = Vector3.Distance(enemy.transform.position, transform.position);
             float calculatedDamage = weapon.damage - (weapon.damageDropOverDist * range);
             health -= calculatedDamage;
+            print(calculatedDamage);
             if (health <= 0)
             {
                 health = 0;
