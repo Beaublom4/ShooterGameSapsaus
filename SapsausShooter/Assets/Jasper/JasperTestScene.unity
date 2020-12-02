@@ -457,9 +457,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa049dbb8bb669b419e0cc37aeb46d1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon: {fileID: 0}
+  gunWeapon: {fileID: 0}
+  meleeWeapon: {fileID: 0}
   ammoInMag: 0
   image: {fileID: 1303963347}
+  normalSprite: {fileID: 0}
 --- !u!114 &208060250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4903,9 +4905,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa049dbb8bb669b419e0cc37aeb46d1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon: {fileID: 0}
+  gunWeapon: {fileID: 0}
+  meleeWeapon: {fileID: 0}
   ammoInMag: 0
   image: {fileID: 535769000}
+  normalSprite: {fileID: 0}
 --- !u!114 &871371706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5771,7 +5775,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.9433962, g: 0.7993573, b: 0.7609469, a: 1}
+  m_Color: {r: 0.990566, g: 0.8455247, b: 0.6594873, a: 1}
   m_Intensity: 1.2
   m_Range: 10
   m_SpotAngle: 30
@@ -5781,7 +5785,7 @@ Light:
     m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 0.32
+    m_Strength: 0.556
     m_Bias: 1.15
     m_NormalBias: 1
     m_NearPlane: 0.1
@@ -5806,7 +5810,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -6205,9 +6209,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa049dbb8bb669b419e0cc37aeb46d1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon: {fileID: 0}
+  gunWeapon: {fileID: 0}
+  meleeWeapon: {fileID: 0}
   ammoInMag: 0
   image: {fileID: 1703694607}
+  normalSprite: {fileID: 0}
 --- !u!114 &1086262992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8160,6 +8166,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ZombieRA
       objectReference: {fileID: 0}
+    - target: {fileID: 7766422322292194426, guid: b54607042c87ef942a9c3fad90d03762,
+        type: 3}
+      propertyPath: moveWithTransform
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7804006469807181428, guid: b54607042c87ef942a9c3fad90d03762,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8629,9 +8640,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa049dbb8bb669b419e0cc37aeb46d1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon: {fileID: 0}
+  gunWeapon: {fileID: 0}
+  meleeWeapon: {fileID: 0}
   ammoInMag: 0
   image: {fileID: 1232153529}
+  normalSprite: {fileID: 0}
 --- !u!114 &1663020915
 MonoBehaviour:
   m_ObjectHideFlags: 0
