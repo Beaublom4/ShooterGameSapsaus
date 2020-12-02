@@ -3,19 +3,25 @@ using UnityEngine.UI;
 
 public class Slot : MonoBehaviour
 {
-    public Gun weapon;
+    public Gun gunWeapon;
+    public Melee meleeWeapon;
     public float ammoInMag;
     public Image image;
+    public Sprite normalSprite;
 
     private void OnEnable()
     {
-        if(weapon != null)
+        if(gunWeapon != null)
         {
-            image.sprite = weapon.uiSprite;
+            image.sprite = gunWeapon.uiSprite;
+        }
+        else if(meleeWeapon != null)
+        {
+            image.sprite = meleeWeapon.uiSprite;
         }
         else
         {
-            image.sprite = null;
+            image.sprite = normalSprite;
         }
     }
 }

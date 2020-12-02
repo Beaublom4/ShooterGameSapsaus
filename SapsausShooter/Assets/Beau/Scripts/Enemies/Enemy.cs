@@ -50,7 +50,7 @@ public class Enemy : MonoBehaviour
 
     [HideInInspector] public SkinnedMeshRenderer render;
     public float dissolveSpeed;
-    float dissolvingNumber = 2.5f;
+    float dissolvingNumber = 2;
     bool dissolving;
     MaterialPropertyBlock block;
 
@@ -61,6 +61,7 @@ public class Enemy : MonoBehaviour
     public virtual void Start()
     {
         block = new MaterialPropertyBlock();
+        block.SetFloat("Vector1_4FF20CCE", dissolvingNumber);
 
         playerObj = GameObject.FindWithTag("Player");
         agent = gameObject.GetComponent<NavMeshAgent>();
@@ -310,7 +311,7 @@ public class Enemy : MonoBehaviour
         dissolving = true;
         yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
         yield return new WaitForSeconds(3);
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
     void Drop()
     {

@@ -32,15 +32,15 @@ public class AmmoPack : MonoBehaviour
                 ammoScript.shotgunAmmo += ammo;
             }
 
-            if (selectScript.selectedSlotScript.weapon.gunType == "Pistol")
+            if (selectScript.selectedSlotScript.gunWeapon.gunType == "Pistol")
             {
                 ammoScript.UpdatePistolAmmoLeft();
             }
-            else if(selectScript.selectedSlotScript.weapon.gunType == "Sniper")
+            else if(selectScript.selectedSlotScript.gunWeapon.gunType == "Sniper")
             {
                 ammoScript.UpdateSniperAmmoLeft();
             }
-            else if (selectScript.selectedSlotScript.weapon.gunType == "Shotgun")
+            else if (selectScript.selectedSlotScript.gunWeapon.gunType == "Shotgun")
             {
                 ammoScript.UpdateShotgunAmmoLeft();
             }

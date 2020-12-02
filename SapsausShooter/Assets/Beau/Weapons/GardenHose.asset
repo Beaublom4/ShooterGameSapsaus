@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2cba9e37e8d2194eb81d9825765e019, type: 3}
   m_Name: GardenHose
   m_EditorClassIdentifier: 
-  weaponPrefab: {fileID: 0}
+  weaponPrefab: {fileID: 8131684375328448212, guid: 6807551fe18cc2944ac7465d9ea8c370,
+    type: 3}
   type: Melee
   weaponName: Garden hose
   weaponDescription: Spin in a circle and make all enemies in range fall
-  uiSprite: {fileID: 0}
+  uiSprite: {fileID: 21300000, guid: d383dd6b6b8558f44914c6975055176d, type: 3}
   damage: 20
   damageDropOverDist: 0
   damageOverTime: 0
