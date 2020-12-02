@@ -50,7 +50,7 @@ public class Enemy : MonoBehaviour
 
     [HideInInspector] public SkinnedMeshRenderer render;
     public float dissolveSpeed;
-    float dissolvingNumber = 2;
+    public float dissolvingNumber = 2;
     bool dissolving;
     MaterialPropertyBlock block;
 
@@ -58,17 +58,17 @@ public class Enemy : MonoBehaviour
 
     public GameObject hitNumPrefab;
     public Transform dmgTextLoc;
-    public virtual void Start()
+    public void Start()
     {
-        block = new MaterialPropertyBlock();
-        block.SetFloat("Vector1_4FF20CCE", dissolvingNumber);
-
         playerObj = GameObject.FindWithTag("Player");
-        agent = gameObject.GetComponent<NavMeshAgent>();
+        agent = GetComponent<NavMeshAgent>();
         agent.speed = speed;
         render = GetComponentInChildren<SkinnedMeshRenderer>();
         missionManagerScript = GameObject.FindWithTag("MissionManager").GetComponent<MissionManager>();
         SpawnWithWeapon();
+        block = new MaterialPropertyBlock();
+        block.SetFloat("Vector1_4FF20CCE", dissolvingNumber);
+        render.SetPropertyBlock(block);
     }
     public virtual void Update()
     {

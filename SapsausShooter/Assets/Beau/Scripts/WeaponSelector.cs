@@ -133,13 +133,17 @@ public class WeaponSelector : MonoBehaviour
         {
             if (slotscript.gunWeapon != null)
             {
-                print("wrong");
                 selectedSlotScript = slotscript;
                 weaponImage.sprite = slotscript.gunWeapon.uiSprite;
 
                 print(slotscript.gunWeapon.weaponName);
                 shootScript.weapon = slotscript.gunWeapon;
                 shootScript.currentSlot = slotscript;
+
+                if (coroutine == null)
+                    StopCoroutine(coroutine);
+                coroutine = ShowWeaponName(slotscript.gunWeapon.weaponName);
+                StartCoroutine(coroutine);
 
                 ammoCounterScript.UpdateAmmo(slotscript.ammoInMag);
                 if (slotscript.gunWeapon.gunType == "Pistol")
@@ -157,18 +161,17 @@ public class WeaponSelector : MonoBehaviour
             }
             else if (slotscript.meleeWeapon != null)
             {
-                print("2");
                 selectedSlotScript = slotscript;
                 weaponImage.sprite = slotscript.meleeWeapon.uiSprite;
 
                 print(slotscript.meleeWeapon.weaponName);
                 meleeScript.weapon = slotscript.meleeWeapon;
                 ammoCounterScript.UpdateMeleeAmmo();
+                if (coroutine == null)
+                    StopCoroutine(coroutine);
+                coroutine = ShowWeaponName(slotscript.meleeWeapon.weaponName);
+                StartCoroutine(coroutine);
             }
-            if (coroutine == null)
-                StopCoroutine(coroutine);
-            coroutine = ShowWeaponName(slotscript.meleeWeapon.weaponName);
-            StartCoroutine(coroutine);
         }
     }
     IEnumerator ShowWeaponName(string name)
