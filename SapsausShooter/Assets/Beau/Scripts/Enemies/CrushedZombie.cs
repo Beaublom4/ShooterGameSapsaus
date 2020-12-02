@@ -5,10 +5,11 @@ using UnityEngine;
 public class CrushedZombie : Enemy
 {
     [HideInInspector] public bool canBash, runOnce, test;
-    public float reLocatePlayerTime;
+    public float reLocatePlayerTime, timeBetweenbashes;
     float timer;
     public float bashSpeed;
     public Transform walkToLoc;
+    public GameObject bashRangeObj;
     public override void Update()
     {
         base.Update();
@@ -28,11 +29,37 @@ public class CrushedZombie : Enemy
         }
         else if(timer < 0)
         {
-            print("test");
             timer = reLocatePlayerTime;
             transform.LookAt(playerObj.transform.position);
             agent.SetDestination(walkToLoc.position);
         }
+    }
+    public override void Trigger(GameObject player)
+    {
+        base.Trigger(player);
+        bashRangeObj.SetActive(true);
+    }
+    public override void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            isColliding = true;
+            playerObj = collision.gameObject;
+            StartCoroutine(Hit());
+
+            StartCoroutine(HitBash());
+        }
+    }
+    IEnumerator HitBash()
+    {
+        canBash = false;
+        runOnce = false;
+        bashRangeObj.SetActive(false);
+        anim.SetTrigger("TargetHit");
+        yield return new WaitForSeconds(anim.GetCurrentAnimatorClipInfo(0).Length);
+        agent.speed = speed;
+        yield return new WaitForSeconds(timeBetweenbashes);
+        bashRangeObj.SetActive(true);
     }
     public void StartBash()
     {
