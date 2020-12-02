@@ -6,12 +6,14 @@ public class ShootAttack : MonoBehaviour
 {
     public Weapon weapon;
     public Camera fpsCam;
-    public Animator pistolAnimation;
+    public Animator spAnimator;
+    public Mesh freezegunCollider;
 
     public LayerMask canHit;
 
     public Vector3 randomDir;
 
+    public float freezeSpeed = 1f; 
     private float nextTimeToFire = 0f;
     public float scattering = 1;
 
@@ -32,6 +34,11 @@ public class ShootAttack : MonoBehaviour
         //currentMagCount = weapon.magCount;
         coroutine = HitMarker();
         canShoot = true;
+
+        MeshCollider meshCollider = gameObject.AddComponent<MeshCollider>();
+        meshCollider.sharedMesh = freezegunCollider;
+
+        freezeSpeed = spAnimator.GetFloat("speed");
     }
     void OnEnable()
     {
@@ -160,25 +167,25 @@ public class ShootAttack : MonoBehaviour
 
             //if (weapon.weaponPrefab.GetComponent<WeaponScript>().weapon.gunType == "Freezegun")
             //{
-                //if (ammoScript.freezegunAmmo <= 0)
-                //{
-                    //print("NoAmmo");
-                    //return;
-                //}
-                //else
-                //{
-                    //ammoScript.freezegunAmmo += currentSlot.ammoInMag;
-                    //if (ammoScript.freezegunAmmo >= weapon.weaponPrefab.GetComponent<WeaponScript>().weapon.magCount)
-                    //{
-                        //addAmmo = weapon.weaponPrefab.GetComponent<WeaponScript>().weapon.magCount;
-                    //}
-                    //else
-                    //{
-                        //addAmmo = ammoScript.freezegunAmmo;
-                    //}
-                    //ammoScript.freezegunAmmo -= addAmmo;
-                    //ammoScript.UpdateFreezegunAmmoLeft();
-                //}
+            //if (ammoScript.freezegunAmmo <= 0)
+            //{
+            //print("NoAmmo");
+            //return;
+            //}
+            //else
+            //{
+            //ammoScript.freezegunAmmo += currentSlot.ammoInMag;
+            //if (ammoScript.freezegunAmmo >= weapon.weaponPrefab.GetComponent<WeaponScript>().weapon.magCount)
+            //{
+            //addAmmo = weapon.weaponPrefab.GetComponent<WeaponScript>().weapon.magCount;
+            //}
+            //else
+            //{
+            //addAmmo = ammoScript.freezegunAmmo;
+            //}
+            //ammoScript.freezegunAmmo -= addAmmo;
+            //ammoScript.UpdateFreezegunAmmoLeft();
+            //}
             //}
             StartCoroutine(Reload());
         }
@@ -219,12 +226,12 @@ public class ShootAttack : MonoBehaviour
                 if (hit.collider.GetComponent<BodyHit>())
                 {
                     hit.collider.GetComponent<BodyHit>().HitPart(weapon, hit.point);
-                    if(hit.collider.GetComponent<BodyHit>().bodyType == 1)
+                    if (hit.collider.GetComponent<BodyHit>().bodyType == 1)
                     {
                         hitMarkerObj = redHitMarkerObj;
                     }
                     else
-                    hitMarkerObj = whiteHitMarkerObj;
+                        hitMarkerObj = whiteHitMarkerObj;
                     StopCoroutine(coroutine);
                     coroutine = HitMarker();
                     StartCoroutine(coroutine);
@@ -260,7 +267,7 @@ public class ShootAttack : MonoBehaviour
                         hitMarkerObj = redHitMarkerObj;
                     }
                     else
-                    hitMarkerObj = whiteHitMarkerObj;
+                        hitMarkerObj = whiteHitMarkerObj;
                     StopCoroutine(coroutine);
                     coroutine = HitMarker();
                     StartCoroutine(coroutine);
@@ -298,7 +305,7 @@ public class ShootAttack : MonoBehaviour
                             hitMarkerObj = redHitMarkerObj;
                         }
                         else
-                        hitMarkerObj = whiteHitMarkerObj;
+                            hitMarkerObj = whiteHitMarkerObj;
                         StopCoroutine(coroutine);
                         coroutine = HitMarker();
                         StartCoroutine(coroutine);
@@ -320,11 +327,16 @@ public class ShootAttack : MonoBehaviour
         ammoScript.UpdateAmmo(currentSlot.ammoInMag);
 
         //weapon.muzzleFlash.Play();
-    
+        if (freezegunCollider)
+        {
+            hitMarkerObj = whiteHitMarkerObj;
+            StopCoroutine(coroutine);
+            coroutine = HitMarker();
+            StartCoroutine(coroutine);
+        }
+        //GameObject impactGO = Instantiate(weapon.impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+        //Destroy(impactGO, 2f);
 
-            //GameObject impactGO = Instantiate(weapon.impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
-            //Destroy(impactGO, 2f);
-        
 
         //freezegunAnimation.SetBool("Shoot", false);
     }
