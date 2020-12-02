@@ -6,7 +6,7 @@ public class ShootAttack : MonoBehaviour
 {
     public Weapon weapon;
     public Camera fpsCam;
-    public Animator spAnimator;
+    //public Animator spAnimator;
     public Mesh freezegunCollider;
 
     public LayerMask canHit;
@@ -38,7 +38,7 @@ public class ShootAttack : MonoBehaviour
         MeshCollider meshCollider = gameObject.AddComponent<MeshCollider>();
         meshCollider.sharedMesh = freezegunCollider;
 
-        freezeSpeed = spAnimator.GetFloat("speed");
+        //freezeSpeed = spAnimator.GetFloat("speed");
     }
     void OnEnable()
     {
