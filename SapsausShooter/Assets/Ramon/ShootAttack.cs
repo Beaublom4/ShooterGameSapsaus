@@ -26,7 +26,7 @@ public class ShootAttack : MonoBehaviour
     public Slot currentSlot;
     public AmmoCounter ammoScript;
 
-    public GameObject whiteHitMarkerObj, redHitMarkerObj, hitMarkerObj;
+    public GameObject whiteHitMarkerObj, redHitMarkerObj, hitMarkerObj, weaponWheel;
     public float displayTimeHitMarker;
     IEnumerator coroutine;
     public GameObject areaColParent;
@@ -56,7 +56,7 @@ public class ShootAttack : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1") && Time.time >= nextTimeToFire && weapon != null)
         {
-            if (currentSlot.ammoInMag <= 0)
+            if (currentSlot.ammoInMag <= 0 || weaponWheel.activeSelf == true)
             {
                 return;
             }

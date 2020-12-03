@@ -321,11 +321,14 @@ MonoBehaviour:
   - {fileID: 917309575608189586}
   camChangeSpeed: 10
   meleeDuration: 2
+  wantedLoc: {fileID: 0}
+  wantedLookAt: {fileID: 0}
   canMelee: 1
   isReturning: 0
+  moveCam: 0
   ignoreLayer:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 5120
 --- !u!114 &5857392905529847191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -356,6 +359,7 @@ MonoBehaviour:
   redHitMarkerObj: {fileID: 0}
   hitMarkerObj: {fileID: 0}
   displayTimeHitMarker: 0.5
+  areaColParent: {fileID: 0}
 --- !u!114 &995829965692537576
 MonoBehaviour:
   m_ObjectHideFlags: 0
