@@ -297,11 +297,11 @@ public class ShootAttack : MonoBehaviour
     {
         //shotgunAnimation.SetBool("Shoot", true);
 
+        currentSlot.ammoInMag--;
+        ammoScript.UpdateAmmo(currentSlot.ammoInMag);
+
         for (int i = 0; i < Mathf.Max(1, shotPellets); i++)
         {
-            currentSlot.ammoInMag--;
-            ammoScript.UpdateAmmo(currentSlot.ammoInMag);
-
             //weapon.muzzleFlash.Play();
             RaycastHit hit;
             if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, 1000, canHit, QueryTriggerInteraction.Ignore))
