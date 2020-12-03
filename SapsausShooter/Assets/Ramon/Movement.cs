@@ -30,39 +30,14 @@ public class Movement : MonoBehaviour
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
-        if (isGrounded && velocity.y < 0)
-        {
-            velocity.y = -2f;
-            animationTime += Time.deltaTime / animationLength;
-
-            if (move.z > 0)
-            {
-                playerAnimation.SetFloat("Blendx", Mathf.Lerp(0, 1, animationTime));
-            }
-            if (move.z < 0)
-            {
-                playerAnimation.SetFloat("Blendx", Mathf.Lerp(0, -1, animationTime));
-            }
-            if (move.z == 0)
-            {
-                playerAnimation.SetFloat("Blendx", 0);
-            }
-            if (move.x > 0)
-            {
-                playerAnimation.SetFloat("blendy", Mathf.Lerp(0, 1, animationTime));
-            }
-            if (move.x < 0)
-            {
-                playerAnimation.SetFloat("blendy", Mathf.Lerp(0, -1, animationTime));
-            }
-            if (move.x == 0)
-            {
-                playerAnimation.SetFloat("blendy", 0);
-            }
-        }
-
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
+
+        if(x != 0 && z != 0)
+        {
+            x *= .7f;
+            z *= .7f;
+        }
 
         move = transform.right * x + transform.forward * z;
 
@@ -76,5 +51,41 @@ public class Movement : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
+        
+        if (isGrounded)
+        {
+            playerAnimation.SetFloat("blendy", z);
+            playerAnimation.SetFloat("Blendx", x);
+
+            //velocity.y = -2f;
+            //animationTime += Time.deltaTime / animationLength;
+
+            /*
+            if (move.z > 0)
+            {
+                playerAnimation.SetFloat("Blendx", Mathf.Lerp(0, 1, animationLength * Time.deltaTime));
+            }
+            if (move.z < 0)
+            {
+                playerAnimation.SetFloat("Blendx", Mathf.Lerp(0, 1, animationLength * Time.deltaTime));
+            }
+            if (move.z == 0)
+            {
+                playerAnimation.SetFloat("Blendx", 0);
+            }
+            if (move.x > 0)
+            {
+                playerAnimation.SetFloat("blendy", Mathf.Lerp(0, 1, 1));
+            }
+            if (move.x < 0)
+            {
+                playerAnimation.SetFloat("blendy", Mathf.Lerp(0, -1, 1));
+            }
+            if (move.x == 0)
+            {
+                playerAnimation.SetFloat("blendy", 0);
+            }
+            */
+        }
     }
 }
