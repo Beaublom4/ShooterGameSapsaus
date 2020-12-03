@@ -1,4 +1,4 @@
-﻿using UnityEditor.Animations;
+﻿    using UnityEditor.Animations;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -131,6 +131,8 @@ public class WeaponSelector : MonoBehaviour
     {
         if (shootScript.isReloading == false)
         {
+            shootScript.weapon = null;
+            meleeScript.weapon = null;
             if (slotscript.gunWeapon != null)
             {
                 selectedSlotScript = slotscript;

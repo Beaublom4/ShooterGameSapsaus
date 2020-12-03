@@ -46,8 +46,11 @@ public class CrushedZombie : Enemy
             isColliding = true;
             playerObj = collision.gameObject;
             StartCoroutine(Hit());
-
             StartCoroutine(HitBash());
+        }
+        else
+        {
+           StartCoroutine(HitBash());
         }
     }
     IEnumerator HitBash()

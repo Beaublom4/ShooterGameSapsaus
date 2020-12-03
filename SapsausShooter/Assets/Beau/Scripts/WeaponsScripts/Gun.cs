@@ -15,6 +15,8 @@ public class Gun : Weapon
     public float reloadSpeed;
     public float fireRate;
 
+    public float soundAreaIncrease;
+
     public ParticleSystem muzzleFlash;
     public GameObject impactEffect;
 }

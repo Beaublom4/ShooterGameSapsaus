@@ -226,6 +226,13 @@ public class Enemy : MonoBehaviour
     }
     public void DoDamage(Weapon weapon, int hitPoint, Vector3 hitLoc)
     {
+        if (GetComponentInParent<AreaColScript>())
+        {
+            if (GetComponentInParent<AreaColScript>().isAlreadyTriggered == false)
+            {
+                GetComponentInParent<AreaColScript>().TriggerArea(playerObj);
+            }
+        }
         float range = Vector3.Distance(playerObj.transform.position, transform.position);
         float calculatedDamage = weapon.damage - (weapon.damageDropOverDist * range);
         if (calculatedDamage <= 0)

@@ -29,6 +29,8 @@ public class ShootAttack : MonoBehaviour
     public GameObject whiteHitMarkerObj, redHitMarkerObj, hitMarkerObj;
     public float displayTimeHitMarker;
     IEnumerator coroutine;
+    public GameObject areaColParent;
+    IEnumerator colCoroutine;
     void Start()
     {
         //currentMagCount = weapon.magCount;
@@ -60,6 +62,16 @@ public class ShootAttack : MonoBehaviour
             }
 
             nextTimeToFire = Time.time + 1f / weapon.weaponPrefab.GetComponent<GunScript>().weapon.fireRate;
+
+            //hopen dat dit niet teveel shit gaat eisen
+            foreach(Transform child in areaColParent.transform)
+            {
+                if (child.gameObject.activeSelf == true)
+                {
+                    print(child.GetComponent<SphereCollider>());
+                    child.GetComponent<AreaColScript>().IncreaseSizeStart(weapon.weaponPrefab.GetComponent<GunScript>().weapon.soundAreaIncrease);
+                }
+            }
 
             if (weapon.weaponPrefab.GetComponent<GunScript>().weapon.gunType == "Pistol")
             {

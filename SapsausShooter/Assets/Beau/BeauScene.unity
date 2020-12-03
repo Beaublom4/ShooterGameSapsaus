@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 0ffaa0b7117ba8c47a9d05ae701d4b4d, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: ee1a83a44edff3e4b9285ccff892ecd2, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 0}
+  m_Sun: {fileID: 344752541}
   m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
@@ -2233,7 +2233,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &339483568
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2395,12 +2395,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 344752540}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 82497ffce6a9756499e4a7d704eb0d4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skyBoxShaderMaterial: {fileID: 2100000, guid: 8c5ff33c4b0cbb94f9d544f2d7975689,
+  skyBoxShaderMaterial: {fileID: 2100000, guid: ee1a83a44edff3e4b9285ccff892ecd2,
     type: 2}
   woosh: 0
   wooshKeer: 0.001
@@ -3881,6 +3881,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9d1b756050cb3d43ad0c28544c38413, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isAlreadyTriggered: 0
+  normalColRadius: 0
 --- !u!1 &721724191
 GameObject:
   m_ObjectHideFlags: 0
@@ -5664,11 +5666,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ZombieRA
       objectReference: {fileID: 0}
-    - target: {fileID: 7423821309739881678, guid: b54607042c87ef942a9c3fad90d03762,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7766422322069289911, guid: b54607042c87ef942a9c3fad90d03762,
         type: 3}
       propertyPath: sharedProfile
@@ -6186,11 +6183,6 @@ PrefabInstance:
       propertyPath: healthSlider
       value: 
       objectReference: {fileID: 30372366}
-    - target: {fileID: 896554098108623720, guid: 7a5e7907c140ff24082a1bce753ce327,
-        type: 3}
-      propertyPath: canGetDmg
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 896554098108623721, guid: 7a5e7907c140ff24082a1bce753ce327,
         type: 3}
       propertyPath: m_RootOrder
@@ -6496,6 +6488,11 @@ PrefabInstance:
       propertyPath: whiteHitMarkerObj
       value: 
       objectReference: {fileID: 2136556435}
+    - target: {fileID: 5857392905529847191, guid: 7a5e7907c140ff24082a1bce753ce327,
+        type: 3}
+      propertyPath: areaColParent
+      value: 
+      objectReference: {fileID: 1868615829}
     - target: {fileID: 6040761117112673390, guid: 7a5e7907c140ff24082a1bce753ce327,
         type: 3}
       propertyPath: m_Layer
@@ -8999,6 +8996,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9d1b756050cb3d43ad0c28544c38413, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isAlreadyTriggered: 0
+  normalColRadius: 0
 --- !u!135 &2019740982
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -10456,11 +10455,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DefaultZombie
-      objectReference: {fileID: 0}
-    - target: {fileID: 5433026564681970298, guid: 595a79ed576d0434b85df93ea3312bcb,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5433026564681970299, guid: 595a79ed576d0434b85df93ea3312bcb,
         type: 3}

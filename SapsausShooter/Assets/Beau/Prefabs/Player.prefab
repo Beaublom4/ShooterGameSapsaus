@@ -280,7 +280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  canGetDmg: 0
+  canGetDmg: 1
   healthText: {fileID: 0}
   healthSlider: {fileID: 0}
   mainCam: {fileID: 896554098131706639}
@@ -340,11 +340,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 0}
   fpsCam: {fileID: 896554098131706634}
-  pistolAnimation: {fileID: 0}
+  freezegunCollider: {fileID: 0}
   canHit:
     serializedVersion: 2
     m_Bits: 1024
   randomDir: {x: 0, y: 0, z: 0}
+  freezeSpeed: 1
   scattering: 1
   shotPellets: 8
   canShoot: 0
