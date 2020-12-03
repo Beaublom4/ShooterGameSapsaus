@@ -902,7 +902,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: -5495902117074765545, guid: 66eaa6d61cc1fd24f82b48de1390dd41, type: 3}
+  m_Mesh: {fileID: -5495902117074765545, guid: 04c3d0a288332ba478619e62c184b604, type: 3}
   m_Bones:
   - {fileID: 7002480591826998323}
   - {fileID: 4651633422927725964}
@@ -1406,6 +1406,7 @@ MonoBehaviour:
   damageOverTime: 0
   render: {fileID: 0}
   dissolveSpeed: 1
+  dissolvingNumber: 2
   missionManagerScript: {fileID: 0}
   hitNumPrefab: {fileID: 3314747878335242109, guid: 8c6b2080012d1a048870d88718b62e11,
     type: 3}
