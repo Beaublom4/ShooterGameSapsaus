@@ -5,9 +5,15 @@ using TMPro;
 public class ShootAttack : MonoBehaviour
 {
     public Weapon weapon;
+    public PistolShoot pistol;
+    public ShotgunShoot shotgun;
+    public SniperShoot sniper;
+    public FreezegunShoot freezegun;
     public Camera fpsCam;
     //public Animator spAnimator;
     public Mesh freezegunCollider;
+    public GameObject areaColParent;
+    public GameObject whiteHitMarkerObj, redHitMarkerObj, hitMarkerObj, weaponWheel;
 
     public LayerMask canHit;
 
@@ -26,10 +32,8 @@ public class ShootAttack : MonoBehaviour
     public Slot currentSlot;
     public AmmoCounter ammoScript;
 
-    public GameObject whiteHitMarkerObj, redHitMarkerObj, hitMarkerObj, weaponWheel;
     public float displayTimeHitMarker;
     IEnumerator coroutine;
-    public GameObject areaColParent;
     IEnumerator colCoroutine;
     void Start()
     {
