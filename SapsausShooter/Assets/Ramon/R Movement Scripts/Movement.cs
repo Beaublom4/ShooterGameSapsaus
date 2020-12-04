@@ -33,6 +33,9 @@ public class Movement : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
+        float animX = x;
+        float animZ = z;
+
         if(x != 0 && z != 0)
         {
             x *= .7f;
@@ -54,8 +57,8 @@ public class Movement : MonoBehaviour
         
         if (isGrounded)
         {
-            playerAnimation.SetFloat("blendy", z);
-            playerAnimation.SetFloat("Blendx", x);
+            playerAnimation.SetFloat("blendy", animZ);
+            playerAnimation.SetFloat("Blendx", animX);
 
             //velocity.y = -2f;
             //animationTime += Time.deltaTime / animationLength;
@@ -87,5 +90,5 @@ public class Movement : MonoBehaviour
             }
             */
         }
-    }
+        }
 }

@@ -89,7 +89,6 @@ public class MissionManager : MonoBehaviour
         SideMissionSetup();
         timeLeftText.text = "";
         int waitForSeconds = Random.Range(0, 60);
-        print(waitForSeconds + " before side mission starts");
         yield return new WaitForSeconds(waitForSeconds);
         int randomSideMission = Random.Range(0, 1);
         switch (randomSideMission)
@@ -144,7 +143,6 @@ public class MissionManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Current side mission empty");
             sideMission1NameText.text = "";
             sideMission1InfoText.text = "";
         }
