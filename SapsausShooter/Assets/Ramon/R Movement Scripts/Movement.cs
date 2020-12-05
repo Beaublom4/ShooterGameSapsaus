@@ -57,7 +57,7 @@ public class Movement : MonoBehaviour
         
         if (isGrounded)
         {
-            playerAnimation.SetFloat("blendy", animZ);
+            playerAnimation.SetFloat("Blendy", animZ);
             playerAnimation.SetFloat("Blendx", animX);
 
             //velocity.y = -2f;

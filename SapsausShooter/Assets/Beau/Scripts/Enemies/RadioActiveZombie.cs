@@ -19,6 +19,7 @@ public class RadioActiveZombie : Enemy
             {
                 DoToxicDamage();
                 timer = addTimeToTimer;
+                print("jojojojoj");
             }
         }
     }
