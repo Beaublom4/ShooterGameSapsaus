@@ -20,7 +20,7 @@ public class ShootAttack : MonoBehaviour
     public Vector3 randomDir;
 
     public float freezeSpeed = 1f; 
-    private float nextTimeToFire = 0f;
+    public float nextTimeToFire = 0f;
     public float scattering = 1;
 
     public int shotPellets = 8;
@@ -28,28 +28,22 @@ public class ShootAttack : MonoBehaviour
     public bool canShoot;
     public bool isReloading = false;
 
-    float addAmmo;
+    public float addAmmo;
     public Slot currentSlot;
     public AmmoCounter ammoScript;
 
     public float displayTimeHitMarker;
-    IEnumerator coroutine;
-    IEnumerator colCoroutine;
+    public IEnumerator coroutine;
+    public IEnumerator colCoroutine;
     void Start()
     {
         //currentMagCount = weapon.magCount;
         coroutine = HitMarker();
         canShoot = true;
-
-        MeshCollider meshCollider = gameObject.AddComponent<MeshCollider>();
-        meshCollider.sharedMesh = freezegunCollider;
-
-        //freezeSpeed = spAnimator.GetFloat("speed");
     }
     void OnEnable()
     {
         isReloading = false;
-        //pistolAnimation.SetBool("Reloading", false);
     }
     void Update()
     {
@@ -58,17 +52,10 @@ public class ShootAttack : MonoBehaviour
             return;
         }
 
-        if (Input.GetButtonDown("Fire1") && Time.time >= nextTimeToFire && weapon != null)
+        if (Input.GetButtonDown("Fire1"))
         {
-            if (currentSlot.ammoInMag <= 0 || weaponWheel.activeSelf == true)
-            {
-                return;
-            }
-
-            nextTimeToFire = Time.time + 1f / weapon.weaponPrefab.GetComponent<GunScript>().weapon.fireRate;
-
             //hopen dat dit niet teveel shit gaat eisen
-            foreach(Transform child in areaColParent.transform)
+            foreach (Transform child in areaColParent.transform)
             {
                 if (child.gameObject.activeSelf == true)
                 {
@@ -76,137 +63,9 @@ public class ShootAttack : MonoBehaviour
                     child.GetComponent<AreaColScript>().IncreaseSizeStart(weapon.weaponPrefab.GetComponent<GunScript>().weapon.soundAreaIncrease);
                 }
             }
-
-            if (weapon.weaponPrefab.GetComponent<GunScript>().weapon.gunType == "Pistol")
-            {
-                ShootPistol();
-            }
-
-            if (weapon.weaponPrefab.GetComponent<GunScript>().weapon.gunType == "Sniper")
-            {
-                ShootSniper();
-            }
-
-            if (weapon.weaponPrefab.GetComponent<GunScript>().weapon.gunType == "Shotgun")
-            {
-                randomDir = fpsCam.transform.forward;
-                randomDir += Random.Range(-scattering, scattering) * transform.right;
-                ShootShotgun();
-            }
-        }
-
-        if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire && weapon != null)
-        {
-            if (currentSlot.ammoInMag <= 0)
-            {
-                return;
-            }
-
-            nextTimeToFire = Time.time + 1f / weapon.weaponPrefab.GetComponent<GunScript>().weapon.fireRate;
-
-            if (weapon.weaponPrefab.GetComponent<GunScript>().weapon.gunType == "Freezegun")
-            {
-                ShootFreezegun();
-            }
-        }
-
-        if (Input.GetButtonDown("Reload") && currentSlot.ammoInMag < weapon.weaponPrefab.GetComponent<GunScript>().weapon.magCount)
-        {
-            if (weapon.weaponPrefab.GetComponent<GunScript>().weapon.gunType == "Pistol")
-            {
-                if (ammoScript.pistolAmmo <= 0)
-                {
-                    print("NoAmmo");
-                    return;
-                }
-                else
-                {
-                    ammoScript.pistolAmmo += currentSlot.ammoInMag;
-                    if (ammoScript.pistolAmmo >= weapon.weaponPrefab.GetComponent<GunScript>().weapon.magCount)
-                    {
-                        addAmmo = weapon.weaponPrefab.GetComponent<GunScript>().weapon.magCount;
-                    }
-                    else
-                    {
-                        addAmmo = ammoScript.pistolAmmo;
-                    }
-                    ammoScript.pistolAmmo -= addAmmo;
-                    ammoScript.UpdatePistolAmmoLeft();
-                }
-            }
-
-            if (weapon.weaponPrefab.GetComponent<GunScript>().weapon.gunType == "Sniper")
-            {
-                if (ammoScript.sniperAmmo <= 0)
-                {
-                    print("NoAmmo");
-                    return;
-                }
-                else
-                {
-                    ammoScript.sniperAmmo += currentSlot.ammoInMag;
-                    if (ammoScript.sniperAmmo >= weapon.weaponPrefab.GetComponent<GunScript>().weapon.magCount)
-                    {
-                        addAmmo = weapon.weaponPrefab.GetComponent<GunScript>().weapon.magCount;
-                    }
-                    else
-                    {
-                        addAmmo = ammoScript.sniperAmmo;
-                    }
-                    ammoScript.sniperAmmo -= addAmmo;
-                    ammoScript.UpdateSniperAmmoLeft();
-                }
-            }
-
-            if (weapon.weaponPrefab.GetComponent<GunScript>().weapon.gunType == "Shotgun")
-            {
-                if (ammoScript.shotgunAmmo <= 0)
-                {
-                    print("NoAmmo");
-                    return;
-                }
-                else
-                {
-                    ammoScript.shotgunAmmo += currentSlot.ammoInMag;
-                    if (ammoScript.shotgunAmmo >= weapon.weaponPrefab.GetComponent<GunScript>().weapon.magCount)
-                    {
-                        addAmmo = weapon.weaponPrefab.GetComponent<GunScript>().weapon.magCount;
-                    }
-                    else
-                    {
-                        addAmmo = ammoScript.shotgunAmmo;
-                    }
-                    ammoScript.shotgunAmmo -= addAmmo;
-                    ammoScript.UpdateShotgunAmmoLeft();
-                }
-            }
-
-            //if (weapon.weaponPrefab.GetComponent<WeaponScript>().weapon.gunType == "Freezegun")
-            //{
-            //if (ammoScript.freezegunAmmo <= 0)
-            //{
-            //print("NoAmmo");
-            //return;
-            //}
-            //else
-            //{
-            //ammoScript.freezegunAmmo += currentSlot.ammoInMag;
-            //if (ammoScript.freezegunAmmo >= weapon.weaponPrefab.GetComponent<WeaponScript>().weapon.magCount)
-            //{
-            //addAmmo = weapon.weaponPrefab.GetComponent<WeaponScript>().weapon.magCount;
-            //}
-            //else
-            //{
-            //addAmmo = ammoScript.freezegunAmmo;
-            //}
-            //ammoScript.freezegunAmmo -= addAmmo;
-            //ammoScript.UpdateFreezegunAmmoLeft();
-            //}
-            //}
-            StartCoroutine(Reload());
         }
     }
-    IEnumerator Reload()
+    public IEnumerator Reload()
     {
         isReloading = true;
         Debug.Log("Reloading...");
@@ -220,140 +79,10 @@ public class ShootAttack : MonoBehaviour
         ammoScript.UpdateAmmo(currentSlot.ammoInMag);
         isReloading = false;
     }
-    IEnumerator HitMarker()
+    public IEnumerator HitMarker()
     {
         hitMarkerObj.SetActive(true);
         yield return new WaitForSeconds(displayTimeHitMarker);
         hitMarkerObj.SetActive(false);
-    }
-    void ShootPistol()
-    {
-        //pistolAnimation.SetBool("Shoot", true);
-
-        currentSlot.ammoInMag--;
-        ammoScript.UpdateAmmo(currentSlot.ammoInMag);
-
-        //weapon.muzzleFlash.Play();
-        RaycastHit hit;
-        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, 1000, canHit, QueryTriggerInteraction.Ignore))
-        {
-            if (hit.collider.tag == "Enemy")
-            {
-                if (hit.collider.GetComponent<BodyHit>())
-                {
-                    hit.collider.GetComponent<BodyHit>().HitPart(weapon, hit.point);
-                    if (hit.collider.GetComponent<BodyHit>().bodyType == 1)
-                    {
-                        hitMarkerObj = redHitMarkerObj;
-                    }
-                    else
-                        hitMarkerObj = whiteHitMarkerObj;
-                    StopCoroutine(coroutine);
-                    coroutine = HitMarker();
-                    StartCoroutine(coroutine);
-                }
-            }
-
-            //GameObject impactGO = Instantiate(weapon.impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
-            //Destroy(impactGO, 2f);
-        }
-
-        //pistolAnimation.SetBool("Shoot", false);
-    }
-
-    void ShootSniper()
-    {
-        //sniperAnimation.SetBool("Shoot", true);
-
-        currentSlot.ammoInMag--;
-        ammoScript.UpdateAmmo(currentSlot.ammoInMag);
-
-        //weapon.muzzleFlash.Play();
-        RaycastHit hit;
-        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, 1000, canHit, QueryTriggerInteraction.Ignore))
-        {
-            if (hit.collider.tag == "Enemy")
-            {
-                if (hit.collider.GetComponent<BodyHit>())
-                {
-                    hit.collider.GetComponent<BodyHit>().HitPart(weapon, hit.point);
-
-                    if (hit.collider.GetComponent<BodyHit>().bodyType == 1)
-                    {
-                        hitMarkerObj = redHitMarkerObj;
-                    }
-                    else
-                        hitMarkerObj = whiteHitMarkerObj;
-                    StopCoroutine(coroutine);
-                    coroutine = HitMarker();
-                    StartCoroutine(coroutine);
-                }
-            }
-
-            //GameObject impactGO = Instantiate(weapon.impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
-            //Destroy(impactGO, 2f);
-        }
-
-        //sniperAnimation.SetBool("Shoot", false);
-    }
-
-    void ShootShotgun()
-    {
-        //shotgunAnimation.SetBool("Shoot", true);
-
-        currentSlot.ammoInMag--;
-        ammoScript.UpdateAmmo(currentSlot.ammoInMag);
-
-        for (int i = 0; i < Mathf.Max(1, shotPellets); i++)
-        {
-            //weapon.muzzleFlash.Play();
-            RaycastHit hit;
-            if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, 1000, canHit, QueryTriggerInteraction.Ignore))
-            {
-                if (hit.collider.tag == "Enemy")
-                {
-                    if (hit.collider.GetComponent<BodyHit>())
-                    {
-                        hit.collider.GetComponent<BodyHit>().HitPart(weapon, hit.point);
-
-                        if (hit.collider.GetComponent<BodyHit>().bodyType == 1)
-                        {
-                            hitMarkerObj = redHitMarkerObj;
-                        }
-                        else
-                            hitMarkerObj = whiteHitMarkerObj;
-                        StopCoroutine(coroutine);
-                        coroutine = HitMarker();
-                        StartCoroutine(coroutine);
-                    }
-                }
-
-                //GameObject impactGO = Instantiate(weapon.impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
-                //Destroy(impactGO, 2f);
-            }
-        }
-
-        //shotgunAnimation.SetBool("Shoot", false);
-    }
-    void ShootFreezegun()
-    {
-        //freezegunAnimation.SetBool("Shoot", true);
-
-        currentSlot.ammoInMag--;
-        ammoScript.UpdateAmmo(currentSlot.ammoInMag);
-
-        //weapon.muzzleFlash.Play();
-        if (freezegunCollider)
-        {
-            hitMarkerObj = whiteHitMarkerObj;
-            StopCoroutine(coroutine);
-            coroutine = HitMarker();
-            StartCoroutine(coroutine);
-        }
-        //GameObject impactGO = Instantiate(weapon.impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
-        //Destroy(impactGO, 2f);
-
-
-        //freezegunAnimation.SetBool("Shoot", false);
     }
 }
