@@ -5,13 +5,8 @@ using TMPro;
 public class ShootAttack : MonoBehaviour
 {
     public Weapon weapon;
-    public PistolShoot pistol;
-    public ShotgunShoot shotgun;
-    public SniperShoot sniper;
-    public FreezegunShoot freezegun;
     public Camera fpsCam;
     //public Animator spAnimator;
-    public Mesh freezegunCollider;
     public GameObject areaColParent;
     public GameObject whiteHitMarkerObj, redHitMarkerObj, hitMarkerObj, weaponWheel;
 
@@ -19,7 +14,7 @@ public class ShootAttack : MonoBehaviour
 
     public Vector3 randomDir;
 
-    public float freezeSpeed = 1f; 
+    public float freezeSpeed = 1f;
     public float nextTimeToFire = 0f;
     public float scattering = 1;
 
@@ -45,24 +40,78 @@ public class ShootAttack : MonoBehaviour
     {
         isReloading = false;
     }
-    void Update()
+    public virtual void Update()
     {
-        if (isReloading)
+        if (weapon.weaponPrefab.GetComponent<GunScript>().weapon.gunType == "Pistol")
+        {
+            if (isReloading)
+            {
+                return;
+            }
+
+            FireWeapon();
+
+            if (Input.GetButtonDown("Reload") && currentSlot.ammoInMag < weapon.weaponPrefab.GetComponent<GunScript>().weapon.magCount)
+            {
+                ReloadWeapon();
+
+                StartCoroutine(Reload());
+            }
+        }
+    }
+    public virtual void FireWeapon()
+    {
+        if (Input.GetButtonDown("Fire1") && Time.time >= nextTimeToFire && weapon != null)
+        {
+            FireRateAndSwitch();
+
+            ShootWeapon();
+
+            SoundWave();
+        }
+    }
+    public void FireRateAndSwitch()
+    {
+        if (currentSlot.ammoInMag <= 0 || weaponWheel.activeSelf == true)
         {
             return;
         }
 
-        if (Input.GetButtonDown("Fire1"))
+        nextTimeToFire = Time.time + 1f / weapon.weaponPrefab.GetComponent<GunScript>().weapon.fireRate;
+    }
+
+    public void SoundWave()
+    {
+        //hopen dat dit niet teveel shit gaat eisen
+        foreach (Transform child in areaColParent.transform)
         {
-            //hopen dat dit niet teveel shit gaat eisen
-            foreach (Transform child in areaColParent.transform)
+            if (child.gameObject.activeSelf == true)
             {
-                if (child.gameObject.activeSelf == true)
-                {
-                    print(child.GetComponent<SphereCollider>());
-                    child.GetComponent<AreaColScript>().IncreaseSizeStart(weapon.weaponPrefab.GetComponent<GunScript>().weapon.soundAreaIncrease);
-                }
+                print(child.GetComponent<SphereCollider>());
+                child.GetComponent<AreaColScript>().IncreaseSizeStart(weapon.weaponPrefab.GetComponent<GunScript>().weapon.soundAreaIncrease);
             }
+        }
+    }
+    public virtual void ReloadWeapon()
+    {
+        if (ammoScript.pistolAmmo <= 0)
+        {
+            print("NoAmmo");
+            return;
+        }
+        else
+        {
+            ammoScript.pistolAmmo += currentSlot.ammoInMag;
+            if (ammoScript.pistolAmmo >= weapon.weaponPrefab.GetComponent<GunScript>().weapon.magCount)
+            {
+                addAmmo = weapon.weaponPrefab.GetComponent<GunScript>().weapon.magCount;
+            }
+            else
+            {
+                addAmmo = ammoScript.pistolAmmo;
+            }
+            ammoScript.pistolAmmo -= addAmmo;
+            ammoScript.UpdatePistolAmmoLeft();
         }
     }
     public IEnumerator Reload()
@@ -84,5 +133,39 @@ public class ShootAttack : MonoBehaviour
         hitMarkerObj.SetActive(true);
         yield return new WaitForSeconds(displayTimeHitMarker);
         hitMarkerObj.SetActive(false);
+    }
+    public virtual void ShootWeapon()
+    {
+        //pistolAnimation.SetBool("Shoot", true);
+
+        currentSlot.ammoInMag--;
+        ammoScript.UpdateAmmo(currentSlot.ammoInMag);
+
+        //weapon.muzzleFlash.Play();
+        RaycastHit hit;
+        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, 1000, canHit, QueryTriggerInteraction.Ignore))
+        {
+            if (hit.collider.tag == "Enemy")
+            {
+                if (hit.collider.GetComponent<BodyHit>())
+                {
+                    hit.collider.GetComponent<BodyHit>().HitPart(weapon, hit.point);
+                    if (hit.collider.GetComponent<BodyHit>().bodyType == 1)
+                    {
+                        hitMarkerObj = redHitMarkerObj;
+                    }
+                    else
+                        hitMarkerObj = whiteHitMarkerObj;
+                    StopCoroutine(coroutine);
+                    coroutine = HitMarker();
+                    StartCoroutine(coroutine);
+                }
+            }
+
+            //GameObject impactGO = Instantiate(weapon.impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+            //Destroy(impactGO, 2f);
+        }
+
+        //pistolAnimation.SetBool("Shoot", false);
     }
 }

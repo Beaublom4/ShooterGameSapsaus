@@ -4,61 +4,38 @@ using UnityEngine;
 
 public class SniperShoot : ShootAttack
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
+    public override void Update()
     {
         if (weapon.weaponPrefab.GetComponent<GunScript>().weapon.gunType == "Sniper")
         {
-            if (isReloading)
-            {
-                return;
-            }
-
-            if (Input.GetButtonDown("Fire1") && Time.time >= nextTimeToFire && weapon != null)
-            {
-                if (currentSlot.ammoInMag <= 0 || weaponWheel.activeSelf == true)
-                {
-                    return;
-                }
-
-                nextTimeToFire = Time.time + 1f / weapon.weaponPrefab.GetComponent<GunScript>().weapon.fireRate;
-
-                ShootSniper();
-            }
-
-            if (Input.GetButtonDown("Reload") && currentSlot.ammoInMag < weapon.weaponPrefab.GetComponent<GunScript>().weapon.magCount)
-            {  
-                if (ammoScript.sniperAmmo <= 0)
-                {
-                    print("NoAmmo");
-                    return;
-                }
-                else
-                {
-                    ammoScript.sniperAmmo += currentSlot.ammoInMag;
-                    if (ammoScript.sniperAmmo >= weapon.weaponPrefab.GetComponent<GunScript>().weapon.magCount)
-                    {
-                        addAmmo = weapon.weaponPrefab.GetComponent<GunScript>().weapon.magCount;
-                    }
-                    else
-                    {
-                        addAmmo = ammoScript.sniperAmmo;
-                    }
-                    ammoScript.sniperAmmo -= addAmmo;
-                    ammoScript.UpdateSniperAmmoLeft();
-                }
-                StartCoroutine(Reload());
-            }
+            base.Update();
         }
     }
 
-    void ShootSniper()
+    public override void ReloadWeapon()
+    {
+        if (ammoScript.sniperAmmo <= 0)
+        {
+            print("NoAmmo");
+            return;
+        }
+        else
+        {
+            ammoScript.sniperAmmo += currentSlot.ammoInMag;
+            if (ammoScript.sniperAmmo >= weapon.weaponPrefab.GetComponent<GunScript>().weapon.magCount)
+            {
+                addAmmo = weapon.weaponPrefab.GetComponent<GunScript>().weapon.magCount;
+            }
+            else
+            {
+                addAmmo = ammoScript.sniperAmmo;
+            }
+            ammoScript.sniperAmmo -= addAmmo;
+            ammoScript.UpdateSniperAmmoLeft();
+        }
+    }
+
+    public override void ShootWeapon()
     {
         //sniperAnimation.SetBool("Shoot", true);
 

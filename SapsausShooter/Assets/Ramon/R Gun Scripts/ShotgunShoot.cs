@@ -4,62 +4,45 @@ using UnityEngine;
 
 public class ShotgunShoot : ShootAttack
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
+    public override void Update()
     {
         if (weapon.weaponPrefab.GetComponent<GunScript>().weapon.gunType == "Shotgun")
         {
-            if (isReloading)
-            {
-                return;
-            }
+            ShotgunScatter();
 
-            if (Input.GetButtonDown("Fire1") && Time.time >= nextTimeToFire && weapon != null)
-            {
-                if (currentSlot.ammoInMag <= 0 || weaponWheel.activeSelf == true)
-                {
-                    return;
-                }
-
-                nextTimeToFire = Time.time + 1f / weapon.weaponPrefab.GetComponent<GunScript>().weapon.fireRate;
-
-                randomDir = fpsCam.transform.forward;
-                randomDir += Random.Range(-scattering, scattering) * transform.right;
-                ShootShotgun();
-            }
-
-            if (Input.GetButtonDown("Reload") && currentSlot.ammoInMag < weapon.weaponPrefab.GetComponent<GunScript>().weapon.magCount)
-            {
-                if (ammoScript.shotgunAmmo <= 0)
-                {
-                    print("NoAmmo");
-                    return;
-                }
-                else
-                {
-                    ammoScript.shotgunAmmo += currentSlot.ammoInMag;
-                    if (ammoScript.shotgunAmmo >= weapon.weaponPrefab.GetComponent<GunScript>().weapon.magCount)
-                    {
-                        addAmmo = weapon.weaponPrefab.GetComponent<GunScript>().weapon.magCount;
-                    }
-                    else
-                    {
-                        addAmmo = ammoScript.shotgunAmmo;
-                    }
-                    ammoScript.shotgunAmmo -= addAmmo;
-                    ammoScript.UpdateShotgunAmmoLeft();
-                }
-                StartCoroutine(Reload());
-            }
+            base.Update();
         }
     }
-    void ShootShotgun()
+
+    public void ShotgunScatter()
+    {
+        randomDir = fpsCam.transform.forward;
+        randomDir += Random.Range(-scattering, scattering) * transform.right;
+    }
+    public override void ReloadWeapon()
+    {
+        if (ammoScript.shotgunAmmo <= 0)
+        {
+            print("NoAmmo");
+            return;
+        }
+        else
+        {
+            ammoScript.shotgunAmmo += currentSlot.ammoInMag;
+            if (ammoScript.shotgunAmmo >= weapon.weaponPrefab.GetComponent<GunScript>().weapon.magCount)
+            {
+                addAmmo = weapon.weaponPrefab.GetComponent<GunScript>().weapon.magCount;
+            }
+            else
+            {
+                addAmmo = ammoScript.shotgunAmmo;
+            }
+            ammoScript.shotgunAmmo -= addAmmo;
+            ammoScript.UpdateShotgunAmmoLeft();
+        }
+    }
+
+    public override void ShootWeapon()
     {
         //shotgunAnimation.SetBool("Shoot", true);
 
