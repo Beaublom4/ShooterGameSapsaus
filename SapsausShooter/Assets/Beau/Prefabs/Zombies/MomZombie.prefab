@@ -394,27 +394,48 @@ MonoBehaviour:
   speed: 2
   health: 100
   damage: 3
-  deathAnimTime: 2
+  hitBox: {fileID: 0}
+  anim: {fileID: 0}
+  hitBoxes: []
+  chanceDrop: 0
+  chanceDubbleDrop: 0
+  ammoDrops: []
+  ammoDropLoc: {fileID: 0}
+  minDropAmount: 0
+  maxDropAmount: 0
+  moneyDropPrefab: {fileID: 0}
   canMutateToBigZomb: 0
   countTowardsBigZomb: 0
   addedToList: 0
-  main: {fileID: 0}
+  main: {x: 0, y: 0, z: 0}
+  isMainBody: 0
   moveTowardMain: 0
   chanceToHoldGun: 0
   chanceToHoldMelee: 0
   gunOptions: []
   meleeOptions: []
+  holdingGun: {fileID: 0}
+  holdingMelee: {fileID: 0}
   playerObj: {fileID: 0}
   isAttacking: 0
+  isWalking: 0
   agent: {fileID: 0}
   hitCooldownTime: 2
-  isColliding: 0
+  isColliding: 1
+  shootPos: {fileID: 0}
+  playerInShootingRange: 0
+  shootTimer: 0
   getDamageOverTime: 0
   damageOverTime: 0
-  babyZombie: {fileID: 2770487483032493856, guid: cbecb6c42c95506429cb88f66be4788a,
-    type: 3}
+  render: {fileID: 0}
+  dissolveSpeed: 0
+  dissolvingNumber: 2
+  missionManagerScript: {fileID: 0}
+  hitNumPrefab: {fileID: 0}
+  dmgTextLoc: {fileID: 0}
+  waitTimeBeforeTrow: 0
+  babyZombiePrefab: {fileID: 0}
   carriedBaby: {fileID: 5300943071131329942}
-  currentBaby: {fileID: 0}
   trowPos: {fileID: 1696462809065143663}
   spawnArea: {fileID: 0}
   trowVelocity: {x: 0, y: 250, z: 500}

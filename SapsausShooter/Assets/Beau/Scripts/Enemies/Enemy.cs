@@ -58,7 +58,7 @@ public class Enemy : MonoBehaviour
 
     public GameObject hitNumPrefab;
     public Transform dmgTextLoc;
-    public void Start()
+    public virtual void Start()
     {
         playerObj = GameObject.FindWithTag("Player");
         agent = GetComponent<NavMeshAgent>();
