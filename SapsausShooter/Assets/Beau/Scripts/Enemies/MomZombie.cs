@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class MomZombie : Enemy
 {
+    public float waitTimeBeforeTrow;
     public GameObject babyZombie, carriedBaby;
     public GameObject currentBaby;
     public Transform trowPos, spawnArea;
@@ -12,7 +13,7 @@ public class MomZombie : Enemy
     public override void Trigger(GameObject player)
     {
         base.Trigger(player);
-        Invoke("TrowBaby", 3);
+        Invoke("TrowBaby", waitTimeBeforeTrow);
     }
     void TrowBaby()
     {

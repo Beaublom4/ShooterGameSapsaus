@@ -340,8 +340,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 0}
+  pistol: {fileID: 0}
+  shotgun: {fileID: 0}
+  sniper: {fileID: 0}
+  freezegun: {fileID: 0}
   fpsCam: {fileID: 896554098131706634}
   freezegunCollider: {fileID: 0}
+  areaColParent: {fileID: 0}
+  whiteHitMarkerObj: {fileID: 0}
+  redHitMarkerObj: {fileID: 0}
+  hitMarkerObj: {fileID: 0}
+  weaponWheel: {fileID: 0}
   canHit:
     serializedVersion: 2
     m_Bits: 1024
@@ -353,12 +362,7 @@ MonoBehaviour:
   isReloading: 0
   currentSlot: {fileID: 0}
   ammoScript: {fileID: 0}
-  whiteHitMarkerObj: {fileID: 0}
-  redHitMarkerObj: {fileID: 0}
-  hitMarkerObj: {fileID: 0}
-  weaponWheel: {fileID: 0}
   displayTimeHitMarker: 0.5
-  areaColParent: {fileID: 0}
 --- !u!114 &995829965692537576
 MonoBehaviour:
   m_ObjectHideFlags: 0

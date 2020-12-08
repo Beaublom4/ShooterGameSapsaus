@@ -19,7 +19,6 @@ public class RadioActiveZombie : Enemy
             {
                 DoToxicDamage();
                 timer = addTimeToTimer;
-                print("jojojojoj");
             }
         }
     }
@@ -31,7 +30,7 @@ public class RadioActiveZombie : Enemy
     {
         if(other.gameObject.tag == "Player")
         {
-            playerInRange = true;
+            playerInRange = true;   
         }
     }
     private void OnTriggerExit(Collider other)
