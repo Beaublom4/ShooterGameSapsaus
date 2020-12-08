@@ -339,13 +339,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 927cd47094445554e8d749396cc3e068, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  impactEffect: {fileID: 7054411763817082133, guid: df0c50c3577988d438561c92c25866db,
+    type: 3}
   weapon: {fileID: 0}
-  pistol: {fileID: 0}
-  shotgun: {fileID: 0}
-  sniper: {fileID: 0}
-  freezegun: {fileID: 0}
   fpsCam: {fileID: 896554098131706634}
-  freezegunCollider: {fileID: 0}
   areaColParent: {fileID: 0}
   whiteHitMarkerObj: {fileID: 0}
   redHitMarkerObj: {fileID: 0}
@@ -356,10 +353,12 @@ MonoBehaviour:
     m_Bits: 1024
   randomDir: {x: 0, y: 0, z: 0}
   freezeSpeed: 1
+  nextTimeToFire: 0
   scattering: 1
   shotPellets: 8
   canShoot: 0
   isReloading: 0
+  addAmmo: 0
   currentSlot: {fileID: 0}
   ammoScript: {fileID: 0}
   displayTimeHitMarker: 0.5

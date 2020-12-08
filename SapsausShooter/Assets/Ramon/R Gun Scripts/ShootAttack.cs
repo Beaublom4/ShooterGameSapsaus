@@ -4,6 +4,7 @@ using TMPro;
 
 public class ShootAttack : MonoBehaviour
 {
+    public GameObject impactEffect, impactEffect1, impactEffect2, impactEffect3;
     public Weapon weapon;
     public Camera fpsCam;
     //public Animator spAnimator;
@@ -162,8 +163,8 @@ public class ShootAttack : MonoBehaviour
                 }
             }
 
-            //GameObject impactGO = Instantiate(weapon.impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
-            //Destroy(impactGO, 2f);
+            GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+            Destroy(impactGO, 2f);
         }
 
         //pistolAnimation.SetBool("Shoot", false);
