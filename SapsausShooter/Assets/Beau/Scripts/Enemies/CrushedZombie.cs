@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CrushedZombie : Enemy
 {
-    [HideInInspector] public bool canBash, runOnce, test;
+    public bool canBash, runOnce;
     public float reLocatePlayerTime, timeBetweenbashes;
     float timer;
     public float bashSpeed;
@@ -19,7 +19,6 @@ public class CrushedZombie : Enemy
             print("Bash");
             anim.SetTrigger("TargetFound");
             agent.speed = bashSpeed;
-            test = true;
             timer = reLocatePlayerTime;
             agent.SetDestination(walkToLoc.position);
         }
@@ -50,7 +49,11 @@ public class CrushedZombie : Enemy
         }
         else
         {
-           StartCoroutine(HitBash());
+            if (collision.gameObject.tag != "Floor")
+            {
+                print("hit bash");
+                StartCoroutine(HitBash());
+            }
         }
     }
     IEnumerator HitBash()
