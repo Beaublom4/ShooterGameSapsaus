@@ -20,6 +20,7 @@ public class CrushedZombie : Enemy
             anim.SetTrigger("TargetFound");
             agent.speed = bashSpeed;
             timer = reLocatePlayerTime;
+            if(isDeath == false)
             agent.SetDestination(walkToLoc.position);
         }
         if(timer > 0)
@@ -28,9 +29,12 @@ public class CrushedZombie : Enemy
         }
         else if(timer < 0)
         {
-            timer = reLocatePlayerTime;
-            transform.LookAt(playerObj.transform.position);
-            agent.SetDestination(walkToLoc.position);
+            if (isDeath == false)
+            {
+                timer = reLocatePlayerTime;
+                transform.LookAt(playerObj.transform.position);
+                agent.SetDestination(walkToLoc.position);
+            }
         }
     }
     public override void Trigger(GameObject player)

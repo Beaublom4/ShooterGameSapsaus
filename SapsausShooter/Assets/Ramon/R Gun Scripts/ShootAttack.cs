@@ -48,10 +48,6 @@ public class ShootAttack : MonoBehaviour
         canShoot = true;
 
         //freezeSpeed = spAnimator.GetFloat("speed");
-
-        block = new MaterialPropertyBlock();
-        block.SetFloat("Vector1_4FF20CCE", dissolvingNumber);
-        render.SetPropertyBlock(block);
     }
     void OnEnable()
     {

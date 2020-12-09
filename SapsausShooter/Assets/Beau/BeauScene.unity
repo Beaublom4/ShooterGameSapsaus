@@ -1931,6 +1931,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shotgun
       objectReference: {fileID: 0}
+    - target: {fileID: 4912182362659050485, guid: 7d3fb976731dfd841a6c183ce35fd430,
+        type: 3}
+      propertyPath: ammoInMag
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 5227300210623219339, guid: 7d3fb976731dfd841a6c183ce35fd430,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2575,11 +2580,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Sniper
-      objectReference: {fileID: 0}
-    - target: {fileID: 2533554347693845448, guid: 9f52fbc56e4b8914fbbf0dc55c0d77f2,
-        type: 3}
-      propertyPath: m_TagString
-      value: Weapon
       objectReference: {fileID: 0}
     - target: {fileID: 5632102412515276665, guid: 9f52fbc56e4b8914fbbf0dc55c0d77f2,
         type: 3}
