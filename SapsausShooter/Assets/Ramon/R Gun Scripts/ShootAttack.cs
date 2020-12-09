@@ -7,7 +7,7 @@ public class ShootAttack : MonoBehaviour
     public GameObject impactEffect, impactEffect1, impactEffect2, impactEffect3;
     public Weapon weapon;
     public Camera fpsCam;
-    //public Animator fgAnimator;
+    public Animator zombieAnimator;
     public GameObject areaColParent;
     public GameObject whiteHitMarkerObj, redHitMarkerObj, hitMarkerObj, weaponWheel;
 
@@ -20,6 +20,8 @@ public class ShootAttack : MonoBehaviour
     public float freezeSpeed = 1f;
     public float nextTimeToFire = 0f;
     public float scattering = 1;
+    public float timeUntilFrozen = 2f;
+    public float timeUntilDefrozen = 5;
 
     public int shotPellets = 8;
 
@@ -352,11 +354,13 @@ public class ShootAttack : MonoBehaviour
                 StopCoroutine(coroutine);
                 coroutine = HitMarker();
                 StartCoroutine(coroutine);
+
+                zombieAnimator.SetFloat("speed", Mathf.Lerp(1, 0, timeUntilFrozen * Time.deltaTime));
+                zombieAnimator.SetFloat("Vector1_76374516", Mathf.Lerp(-2, 2, timeUntilFrozen * Time.deltaTime));
             }
 
             //GameObject impactGO = Instantiate(weapon.impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
             //Destroy(impactGO, 2f);
-
 
             //freezegunAnimation.SetBool("Shoot", false);
         }
