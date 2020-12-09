@@ -9,6 +9,7 @@ public class SpitBall : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
+            print(collision.gameObject.name);
             collision.gameObject.GetComponent<HealthManager>().DoDamage(damage);
         }
         if(collision.gameObject.tag != "Enemy") 
