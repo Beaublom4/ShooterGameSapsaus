@@ -7,7 +7,7 @@ public class ShootAttack : MonoBehaviour
     public GameObject impactEffect, impactEffect1, impactEffect2, impactEffect3;
     public Weapon weapon;
     public Camera fpsCam;
-    //public Animator spAnimator;
+    //public Animator fgAnimator;
     public GameObject areaColParent;
     public GameObject whiteHitMarkerObj, redHitMarkerObj, hitMarkerObj, weaponWheel;
 
@@ -25,6 +25,7 @@ public class ShootAttack : MonoBehaviour
 
     public bool canShoot;
     public bool isReloading = false;
+    public bool beingFrozen;
 
     public float addAmmo;
     public Slot currentSlot;
@@ -52,6 +53,8 @@ public class ShootAttack : MonoBehaviour
             return;
         }
 
+
+
         FireWeapon();
 
         if (Input.GetButtonDown("Reload") && currentSlot.ammoInMag < weapon.weaponPrefab.GetComponent<GunScript>().weapon.magCount)
@@ -60,32 +63,25 @@ public class ShootAttack : MonoBehaviour
 
             StartCoroutine(Reload());
         }
-
     }
-    public virtual void FireWeapon()
+    void FireWeapon()
     {
-        if (currentSlot.ammoInMag <= 0 || weaponWheel.activeSelf == true)
+        if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire && weapon != null)
         {
-            return;
+            ShootWeapon();
+
+            SoundWave();
+
+     
         }
 
-        if (weapon.weaponPrefab.GetComponent<GunScript>().weapon.gunType == "Freezegun")
+        if (Input.GetButtonDown("Fire1") && Time.time >= nextTimeToFire && weapon != null)
         {
-            if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire && weapon != null)
-            {
-                ShootWeapon();
+            ShootWeapon();
 
-                SoundWave();
-            }
-        }
-        else
-        {
-            if (Input.GetButtonDown("Fire1") && Time.time >= nextTimeToFire && weapon != null)
-            {
-                ShootWeapon();
+            SoundWave();
 
-                SoundWave();
-            }
+        
         }
     }
     public void ShotgunScatter()
@@ -106,7 +102,7 @@ public class ShootAttack : MonoBehaviour
             }
         }
     }
-    public virtual void ReloadWeapon()
+    void ReloadWeapon()
     {
         if (weapon.weaponPrefab.GetComponent<GunScript>().weapon.gunType == "Pistol")
         {
@@ -223,7 +219,7 @@ public class ShootAttack : MonoBehaviour
         yield return new WaitForSeconds(displayTimeHitMarker);
         hitMarkerObj.SetActive(false);
     }
-    public virtual void ShootWeapon()
+    void ShootWeapon()
     {
         if (currentSlot.ammoInMag <= 0 || weaponWheel.activeSelf == true)
         {
@@ -350,12 +346,13 @@ public class ShootAttack : MonoBehaviour
             ammoScript.UpdateAmmo(currentSlot.ammoInMag);
 
             //weapon.muzzleFlash.Play();
-
-
-            hitMarkerObj = whiteHitMarkerObj;
-            StopCoroutine(coroutine);
-            coroutine = HitMarker();
-            StartCoroutine(coroutine);
+            foreach (GameObject zombie in freezeBox.Zombies)
+            {
+                hitMarkerObj = whiteHitMarkerObj;
+                StopCoroutine(coroutine);
+                coroutine = HitMarker();
+                StartCoroutine(coroutine);
+            }
 
             //GameObject impactGO = Instantiate(weapon.impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
             //Destroy(impactGO, 2f);
