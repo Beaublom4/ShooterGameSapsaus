@@ -16,6 +16,7 @@ public class AmmoPack : MonoBehaviour
     {
         if (other.gameObject.tag == "PickUpCol")
         {
+            other.GetComponentInParent<UsePlayer>().PlayAudioSource(other.GetComponentInParent<UsePlayer>().sounds.itemPickUp);
             if (ammoType == "Pistol")
             {
                 int ammo = Random.Range(minAmmo, maxAmmo);
@@ -31,8 +32,18 @@ public class AmmoPack : MonoBehaviour
                 int ammo = Random.Range(minAmmo, maxAmmo);
                 ammoScript.shotgunAmmo += ammo;
             }
+            else if (ammoType == "Launcher")
+            {
+                int ammo = Random.Range(minAmmo, maxAmmo);
+                ammoScript.launcherAmmo += ammo;
+            }
+            else if (ammoType == "Special")
+            {
+                int ammo = Random.Range(minAmmo, maxAmmo);
+                ammoScript.specialAmmo += ammo;
+            }
 
-            if(selectScript = null)
+            if (selectScript.selectedSlotScript.gunWeapon = null)
             {
                 Destroy(gameObject);
             }
@@ -45,6 +56,14 @@ public class AmmoPack : MonoBehaviour
                 ammoScript.UpdateSniperAmmoLeft();
             }
             else if (selectScript.selectedSlotScript.gunWeapon.gunType == "Shotgun")
+            {
+                ammoScript.UpdateShotgunAmmoLeft();
+            }
+            else if (selectScript.selectedSlotScript.gunWeapon.gunType == "Launcher")
+            {
+                ammoScript.UpdateShotgunAmmoLeft();
+            }
+            else if (selectScript.selectedSlotScript.gunWeapon.gunType == "Special")
             {
                 ammoScript.UpdateShotgunAmmoLeft();
             }

@@ -2,11 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-
 public class ShopItem : MonoBehaviour
 {
+    [System.Serializable]
+    public class Sounds
+    {
+        public float minSoundRange = .2f, maxSoundRange = .2f;
+        public AudioSource buyItem, notEnoughMoney;
+    }
     public string nameObj;
     public int price;
+    public Sounds sounds;
 
     public GameObject canvas;
 

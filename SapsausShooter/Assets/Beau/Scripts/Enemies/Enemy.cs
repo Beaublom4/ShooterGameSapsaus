@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -282,6 +282,7 @@ public class Enemy : MonoBehaviour
         agent.speed = 0;
         //stun anim
         yield return new WaitForSeconds(stunTime);
+        if (isDeath == false)
         agent.speed = speed;
     }
     IEnumerator DoSlow(float slowTime, float slowSpeed)
@@ -289,6 +290,7 @@ public class Enemy : MonoBehaviour
         agent.speed = speed * slowSpeed;
         //slow anim things
         yield return new WaitForSeconds(slowTime);
+        if (isDeath == false)
         agent.speed = speed;
     }
     public virtual IEnumerator Dead(int hitPoint)

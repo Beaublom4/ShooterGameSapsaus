@@ -4,9 +4,16 @@ using UnityEngine;
 
 public class UsePlayer : MonoBehaviour
 {
+    [System.Serializable]
+    public class Sounds
+    {
+        public float minSoundRange = .2f, maxSoundRange = .2f;
+        public AudioSource itemPickUp, Use;
+    }
     public GameObject fpsCam;
     public float useRange;
     RaycastHit hit;
+    public Sounds sounds;
     private void Update()
     {
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, useRange))
@@ -15,6 +22,7 @@ public class UsePlayer : MonoBehaviour
             {
                 if (hit.transform.GetComponent<GarageDoor>())
                 {
+                    PlayAudioSource(sounds.Use);
                     hit.transform.GetComponent<GarageDoor>().OpenGarageDoor();
                 }
             }
@@ -41,5 +49,15 @@ public class UsePlayer : MonoBehaviour
                 }
             }
         }
+    }
+    public void PlayAudioSource(AudioSource source)
+    {
+        float standardVolume = source.volume;
+        float standardPitch = source.pitch;
+        source.volume = Random.Range(standardVolume - sounds.minSoundRange, standardVolume + sounds.maxSoundRange);
+        source.pitch = Random.Range(standardPitch - sounds.minSoundRange, standardPitch + sounds.maxSoundRange);
+        source.Play();
+        source.volume = standardVolume;
+        source.pitch = standardPitch;
     }
 }
