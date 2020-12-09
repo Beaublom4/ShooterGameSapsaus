@@ -167,6 +167,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ZombieMom
       objectReference: {fileID: 0}
+    - target: {fileID: 8463677753485028893, guid: 67f420e94101fd34d9107c95a872f83e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9096944415836583079, guid: 67f420e94101fd34d9107c95a872f83e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -607,6 +612,80 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &482059800
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1678117413832924282, guid: 6206d2318e6a4bf4fa4a9cf1900fab18,
+        type: 3}
+      propertyPath: m_Name
+      value: Mailbox1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1678117413832924282, guid: 6206d2318e6a4bf4fa4a9cf1900fab18,
+        type: 3}
+      propertyPath: m_TagString
+      value: Weapon
+      objectReference: {fileID: 0}
+    - target: {fileID: 2018191289917949632, guid: 6206d2318e6a4bf4fa4a9cf1900fab18,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 2018191289917949632, guid: 6206d2318e6a4bf4fa4a9cf1900fab18,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2018191289917949632, guid: 6206d2318e6a4bf4fa4a9cf1900fab18,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 2018191289917949632, guid: 6206d2318e6a4bf4fa4a9cf1900fab18,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2018191289917949632, guid: 6206d2318e6a4bf4fa4a9cf1900fab18,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2018191289917949632, guid: 6206d2318e6a4bf4fa4a9cf1900fab18,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2018191289917949632, guid: 6206d2318e6a4bf4fa4a9cf1900fab18,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2018191289917949632, guid: 6206d2318e6a4bf4fa4a9cf1900fab18,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 2018191289917949632, guid: 6206d2318e6a4bf4fa4a9cf1900fab18,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2018191289917949632, guid: 6206d2318e6a4bf4fa4a9cf1900fab18,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2018191289917949632, guid: 6206d2318e6a4bf4fa4a9cf1900fab18,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6206d2318e6a4bf4fa4a9cf1900fab18, type: 3}
 --- !u!1 &640088955
 GameObject:
   m_ObjectHideFlags: 0
@@ -1027,6 +1106,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b54607042c87ef942a9c3fad90d03762, type: 3}
+--- !u!1 &1194846134 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1678117413832924282, guid: 6206d2318e6a4bf4fa4a9cf1900fab18,
+    type: 3}
+  m_PrefabInstance: {fileID: 482059800}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1194846135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1194846134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ccb8edfd2826c042bdd3d3fda4a14fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon: {fileID: 11400000, guid: f4d9cb664c9f644459f68771a8da6f96, type: 2}
+  uses: 1
+--- !u!65 &1194846136
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1194846134}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.16917077, y: 1.2143645, z: 0.511505}
+  m_Center: {x: -0.0020853877, y: 0.6071825, z: 0.005752519}
 --- !u!1001 &1294307362
 PrefabInstance:
   m_ObjectHideFlags: 0

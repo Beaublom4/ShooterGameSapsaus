@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour
     public GameObject hitBox;
     public Animator anim;
     public Collider[] hitBoxes;
-    bool isDeath;
+    [HideInInspector]public bool isDeath;
 
     public int chanceDrop, chanceDubbleDrop;
     public GameObject[] ammoDrops;
@@ -294,6 +294,7 @@ public class Enemy : MonoBehaviour
     public virtual IEnumerator Dead(int hitPoint)
     {
         agent.isStopped = true;
+        agent.enabled = !enabled;
         foreach(Collider c in hitBoxes)
         {
             c.enabled = !enabled;
@@ -363,7 +364,7 @@ public class Enemy : MonoBehaviour
         int randomNum = Random.Range(minDropAmount, maxDropAmount);
         Instantiate(moneyDropPrefab, ammoDropLoc.position, Quaternion.Euler(ammoDropLoc.rotation.x, Random.Range(0, 360), ammoDropLoc.rotation.z), ammoDropLoc);
         GameObject g = ammoDropLoc.transform.GetChild(0).gameObject;
-        g.GetComponent<MoneyDrop>().moneyAmount = randomNum;
+        //g.GetComponent<MoneyDrop>().moneyAmount = randomNum;
         g.GetComponent<Rigidbody>().AddRelativeForce(0, 300, 10);
         g.transform.SetParent(null);
     }

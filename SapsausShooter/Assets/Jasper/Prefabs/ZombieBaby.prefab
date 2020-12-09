@@ -1053,6 +1053,8 @@ Transform:
   - {fileID: 2239487745626601691}
   - {fileID: 6233228627984349834}
   - {fileID: 3591621814832629868}
+  - {fileID: 3352096735173288284}
+  - {fileID: 1256256802968491741}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1103,13 +1105,18 @@ MonoBehaviour:
   - {fileID: 5907631809446666145}
   - {fileID: 379079869555056711}
   - {fileID: 2809506384821182439}
-  chanceDrop: 0
+  isDeath: 0
+  chanceDrop: 20
   chanceDubbleDrop: 0
-  ammoDrops: []
-  ammoDropLoc: {fileID: 0}
-  minDropAmount: 0
-  maxDropAmount: 0
-  moneyDropPrefab: {fileID: 0}
+  ammoDrops:
+  - {fileID: 1319509033163920919, guid: 9f5a6a88f32c7a14baaa047fe84387d2, type: 3}
+  - {fileID: 3115787131044623474, guid: 904151794a5747a49a960c8f5b86aaf3, type: 3}
+  - {fileID: 2921278145093864353, guid: cebbdc06acaef454f99cd55e7ad37e57, type: 3}
+  ammoDropLoc: {fileID: 1256256802968491741}
+  minDropAmount: 1
+  maxDropAmount: 5
+  moneyDropPrefab: {fileID: 2030928626577662909, guid: 446e29ffe71723b4db774c3d271eb33d,
+    type: 3}
   canMutateToBigZomb: 1
   countTowardsBigZomb: 0
   addedToList: 0
@@ -1128,17 +1135,18 @@ MonoBehaviour:
   agent: {fileID: 0}
   hitCooldownTime: 2
   isColliding: 0
-  shootPos: {fileID: 0}
+  shootPos: {fileID: 2320895225835079325}
   playerInShootingRange: 0
   shootTimer: 0
   getDamageOverTime: 0
   damageOverTime: 0
   render: {fileID: 0}
-  dissolveSpeed: 0
+  dissolveSpeed: 1
   dissolvingNumber: 2
   missionManagerScript: {fileID: 0}
-  hitNumPrefab: {fileID: 0}
-  dmgTextLoc: {fileID: 0}
+  hitNumPrefab: {fileID: 3314747878335242109, guid: 8c6b2080012d1a048870d88718b62e11,
+    type: 3}
+  dmgTextLoc: {fileID: 3352096735173288284}
   isTrown: 0
   isSpitting: 0
   spitPoint: {fileID: 3591621814832629868}
@@ -1470,6 +1478,36 @@ Transform:
   m_Father: {fileID: 778247208918062492}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4418939298390918394
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1256256802968491741}
+  m_Layer: 0
+  m_Name: AmmoDropLoc
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1256256802968491741
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4418939298390918394}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2320895225835079325}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4519141138766895478
 GameObject:
   m_ObjectHideFlags: 0
@@ -1620,6 +1658,36 @@ Transform:
   - {fileID: 4289069924798621937}
   m_Father: {fileID: 1617392424048485359}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5143404661084145303
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3352096735173288284}
+  m_Layer: 0
+  m_Name: HitLoc
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3352096735173288284
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5143404661084145303}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.653, z: 0.038}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2320895225835079325}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5173536940872314798
 GameObject:

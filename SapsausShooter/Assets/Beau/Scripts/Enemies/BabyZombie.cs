@@ -23,6 +23,7 @@ public class BabyZombie : Enemy
         base.Update();
         if(isSpitting == true)
         {
+            if (isDeath == true) return;
             transform.LookAt(playerObj.transform);
             if (timer >= 0)
             {
@@ -59,6 +60,7 @@ public class BabyZombie : Enemy
     }
     private void OnTriggerEnter(Collider other)
     {
+        if (isDeath == true) return;
         if(isTrown == true && other.gameObject.tag == "Player")
         {
             isAttacking = false;
@@ -70,6 +72,7 @@ public class BabyZombie : Enemy
     }
     private void OnTriggerExit(Collider other)
     {
+        if (isDeath == true) return;
         if (isTrown == true && other.gameObject.tag == "Player")
         {
             agent.speed = speed;

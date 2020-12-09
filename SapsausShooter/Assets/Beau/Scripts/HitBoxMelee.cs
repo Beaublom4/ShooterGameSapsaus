@@ -11,13 +11,13 @@ public class HitBoxMelee : MonoBehaviour
         {
             if (meleeWeapon != null)
             {
-                other.GetComponent<Enemy>().DoDamage(meleeWeapon, 0, Vector3.zero);
+                other.GetComponentInParent<Enemy>().DoDamage(meleeWeapon, 2, new Vector3(other.transform.position.x, other.transform.position.y + 1, other.transform.position.z));
 
-                other.GetComponent<Enemy>().isAttacking = false;
-                other.GetComponent<NavMeshAgent>().enabled = !enabled;
-                other.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-                other.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
-                other.GetComponent<Rigidbody>().AddRelativeForce(Vector3.back * meleeWeapon.knockBack);
+                other.GetComponentInParent<Enemy>().isAttacking = false;
+                other.GetComponentInParent<NavMeshAgent>().enabled = !enabled;
+                other.GetComponentInParent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                other.GetComponentInParent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+                other.GetComponentInParent<Rigidbody>().AddRelativeForce(Vector3.back * meleeWeapon.knockBack);
                 StartCoroutine(ResetKnockBack(other.gameObject));
             }
             else
@@ -29,8 +29,8 @@ public class HitBoxMelee : MonoBehaviour
     IEnumerator ResetKnockBack(GameObject enemy)
     {
         yield return new WaitForSeconds(.2f);
-        enemy.GetComponent<NavMeshAgent>().enabled = enabled;
-        enemy.GetComponent<Enemy>().isAttacking = true;
-        enemy.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        enemy.GetComponentInParent<NavMeshAgent>().enabled = enabled;
+        enemy.GetComponentInParent<Enemy>().isAttacking = true;
+        enemy.GetComponentInParent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
     }
 }
