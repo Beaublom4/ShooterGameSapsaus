@@ -55,8 +55,6 @@ public class ShootAttack : MonoBehaviour
             return;
         }
 
-
-
         FireWeapon();
 
         if (Input.GetButtonDown("Reload") && currentSlot.ammoInMag < weapon.weaponPrefab.GetComponent<GunScript>().weapon.magCount)
@@ -73,8 +71,6 @@ public class ShootAttack : MonoBehaviour
             ShootWeapon();
 
             SoundWave();
-
-     
         }
 
         if (Input.GetButtonDown("Fire1") && Time.time >= nextTimeToFire && weapon != null)
@@ -82,8 +78,6 @@ public class ShootAttack : MonoBehaviour
             ShootWeapon();
 
             SoundWave();
-
-        
         }
     }
     public void ShotgunScatter()
@@ -175,7 +169,7 @@ public class ShootAttack : MonoBehaviour
             }
         }
 
-        if (weapon.weaponPrefab.GetComponent<GunScript>().weapon.gunType == "FreezeGun")
+        if (weapon.weaponPrefab.GetComponent<GunScript>().weapon.gunType == "Freezegun")
         {
             //if (weapon.weaponPrefab.GetComponent<WeaponScript>().weapon.gunType == "Freezegun")
             //{
