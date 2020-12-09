@@ -348,6 +348,7 @@ MonoBehaviour:
   impactEffect3: {fileID: 0}
   weapon: {fileID: 0}
   fpsCam: {fileID: 896554098131706634}
+  zombieAnimator: {fileID: 0}
   areaColParent: {fileID: 0}
   whiteHitMarkerObj: {fileID: 0}
   redHitMarkerObj: {fileID: 0}
@@ -361,6 +362,8 @@ MonoBehaviour:
   freezeSpeed: 1
   nextTimeToFire: 0
   scattering: 1
+  timeUntilFrozen: 2
+  timeUntilDefrozen: 5
   shotPellets: 8
   canShoot: 0
   isReloading: 0
@@ -384,8 +387,8 @@ MonoBehaviour:
   fpsCam: {fileID: 896554098131706639}
   useRange: 4
   sounds:
-    minSoundRange: 0
-    maxSoundRange: 0
+    minSoundRange: 0.2
+    maxSoundRange: 0.2
     itemPickUp: {fileID: 9183094351266996255}
     Use: {fileID: 496413680667672788}
 --- !u!1 &896554098131706639

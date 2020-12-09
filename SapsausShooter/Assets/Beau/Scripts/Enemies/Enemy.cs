@@ -398,7 +398,7 @@ public class Enemy : MonoBehaviour
         int randomNum = Random.Range(minDropAmount, maxDropAmount);
         Instantiate(moneyDropPrefab, ammoDropLoc.position, Quaternion.Euler(ammoDropLoc.rotation.x, Random.Range(0, 360), ammoDropLoc.rotation.z), ammoDropLoc);
         GameObject g = ammoDropLoc.transform.GetChild(0).gameObject;
-        //g.GetComponent<MoneyDrop>().moneyAmount = randomNum;
+        g.GetComponent<MoneyDrop>().moneyAmount = randomNum;
         g.GetComponent<Rigidbody>().AddRelativeForce(0, 300, 10);
         g.transform.SetParent(null);
     }

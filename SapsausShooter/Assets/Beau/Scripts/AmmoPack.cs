@@ -16,7 +16,7 @@ public class AmmoPack : MonoBehaviour
     {
         if (other.gameObject.tag == "PickUpCol")
         {
-            other.GetComponentInParent<UsePlayer>().PlayAudioSource(other.GetComponentInParent<UsePlayer>().sounds.itemPickUp);
+            StartCoroutine(other.GetComponentInParent<UsePlayer>().PlayAudioSource(other.GetComponentInParent<UsePlayer>().sounds.itemPickUp));
             if (ammoType == "Pistol")
             {
                 int ammo = Random.Range(minAmmo, maxAmmo);

@@ -22,7 +22,7 @@ public class UsePlayer : MonoBehaviour
             {
                 if (hit.transform.GetComponent<GarageDoor>())
                 {
-                    PlayAudioSource(sounds.Use);
+                    StartCoroutine(PlayAudioSource(sounds.Use));
                     hit.transform.GetComponent<GarageDoor>().OpenGarageDoor();
                 }
             }
@@ -50,13 +50,14 @@ public class UsePlayer : MonoBehaviour
             }
         }
     }
-    public void PlayAudioSource(AudioSource source)
+    public IEnumerator PlayAudioSource(AudioSource source)
     {
         float standardVolume = source.volume;
         float standardPitch = source.pitch;
         source.volume = Random.Range(standardVolume - sounds.minSoundRange, standardVolume + sounds.maxSoundRange);
         source.pitch = Random.Range(standardPitch - sounds.minSoundRange, standardPitch + sounds.maxSoundRange);
         source.Play();
+        yield return new WaitForSeconds(0.000000001f);
         source.volume = standardVolume;
         source.pitch = standardPitch;
     }
