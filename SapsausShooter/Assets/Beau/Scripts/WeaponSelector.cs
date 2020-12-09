@@ -16,6 +16,7 @@ public class WeaponSelector : MonoBehaviour
     public MeleeAttack meleeScript;
     AmmoCounter ammoCounterScript;
     public Image weaponImage;
+    public Animator playerAnim;
 
     IEnumerator coroutine;
     public TextMeshProUGUI nameText;
@@ -147,6 +148,8 @@ public class WeaponSelector : MonoBehaviour
                 coroutine = ShowWeaponName(slotscript.gunWeapon.weaponName);
                 StartCoroutine(coroutine);
 
+                playerAnim.SetBool("Gun", true);
+
                 ammoCounterScript.UpdateAmmo(slotscript.ammoInMag);
                 if (slotscript.gunWeapon.gunType == "Pistol")
                 {
@@ -159,6 +162,14 @@ public class WeaponSelector : MonoBehaviour
                 else if (slotscript.gunWeapon.gunType == "Shotgun")
                 {
                     ammoCounterScript.UpdateShotgunAmmoLeft();
+                }
+                else if (slotscript.gunWeapon.gunType == "Launcher")
+                {
+                    ammoCounterScript.UpdateLauncherAmmoLeft();
+                }
+                else if (slotscript.gunWeapon.gunType == "Special")
+                {
+                    ammoCounterScript.UpdateSpecialAmmoLeft();
                 }
             }
             else if (slotscript.meleeWeapon != null)

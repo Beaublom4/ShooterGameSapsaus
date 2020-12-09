@@ -5,6 +5,13 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
+    [System.Serializable]
+    public class Sounds
+    {
+        public float minSoundRange = .2f, maxSoundRange = .2f;
+        public AudioSource trigger, attack;
+    }
+
     public float speed;
     public float health;
     public int damage;
@@ -12,6 +19,7 @@ public class Enemy : MonoBehaviour
     public Animator anim;
     public Collider[] hitBoxes;
     [HideInInspector]public bool isDeath;
+    public Sounds sounds;
 
     public int chanceDrop, chanceDubbleDrop;
     public GameObject[] ammoDrops;
@@ -74,7 +82,7 @@ public class Enemy : MonoBehaviour
     {
         if (isAttacking == true)
         {
-            if(playerObj != null)
+            if(playerObj != null && isDeath == false)
             agent.SetDestination(playerObj.transform.position);
         }
         if(agent.velocity.sqrMagnitude > Mathf.Epsilon)
@@ -128,7 +136,9 @@ public class Enemy : MonoBehaviour
     }
     public virtual void Trigger(GameObject player)
     {
-        if(playerObj == null)
+        if(sounds.trigger != null)
+        PlayTriggerSound(sounds.trigger);
+        if (playerObj == null)
         {
             playerObj = player;
         }
@@ -200,6 +210,8 @@ public class Enemy : MonoBehaviour
     {
         if (isColliding == true && hitCooldown == false)
         {
+            if (sounds.attack != null)
+                PlayAttackSound(sounds.attack);
             hitCooldown = true;
             agent.speed = 0;
             agent.velocity = Vector3.zero;
@@ -219,6 +231,26 @@ public class Enemy : MonoBehaviour
             hitCooldown = false;
             StartCoroutine(Hit());
         }
+    }
+    public virtual void PlayTriggerSound(AudioSource source)
+    {
+        float standardVolume = source.volume;
+        float standardPitch = source.pitch;
+        source.volume = Random.Range(standardVolume - sounds.minSoundRange, standardVolume + sounds.maxSoundRange);
+        source.pitch = Random.Range(standardPitch - sounds.minSoundRange, standardPitch + sounds.maxSoundRange);
+        source.Play();
+        source.volume = standardVolume;
+        source.pitch = standardPitch;
+    }
+    public virtual void PlayAttackSound(AudioSource source)
+    {
+        float standardVolume = source.volume;
+        float standardPitch = source.pitch;
+        source.volume = Random.Range(standardVolume - sounds.minSoundRange, standardVolume + sounds.maxSoundRange);
+        source.pitch = Random.Range(standardPitch - sounds.minSoundRange, standardPitch + sounds.maxSoundRange);
+        source.Play();
+        source.volume = standardVolume;
+        source.pitch = standardPitch;
     }
     public void HitBoxHit()
     {

@@ -8,6 +8,7 @@ public class HealthManager : MonoBehaviour
     public bool canGetDmg;
     public TextMeshProUGUI healthText;
     public Slider healthSlider;
+    public Animator anim;
 
     public GameObject mainCam;
     public float camMoveSpeed, camRotateSpeed;
@@ -50,6 +51,7 @@ public class HealthManager : MonoBehaviour
             if (health <= 0)
             {
                 health = 0;
+                anim.SetTrigger("Dead");
                 death = true;
             }
             UpdateNumber();
@@ -66,6 +68,7 @@ public class HealthManager : MonoBehaviour
             if (health <= 0)
             {
                 health = 0;
+                anim.SetTrigger("Dead");
                 death = true;
             }
             //if (weapon.damageOverTime != 0)
