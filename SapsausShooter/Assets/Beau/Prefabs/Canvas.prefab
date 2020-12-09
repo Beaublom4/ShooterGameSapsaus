@@ -3576,6 +3576,7 @@ MonoBehaviour:
   shootScript: {fileID: 0}
   meleeScript: {fileID: 0}
   weaponImage: {fileID: 7932595841232607945}
+  playerAnim: {fileID: 0}
   nameText: {fileID: 7932595842846873534}
   displayNameTime: 3
   colors:
@@ -3595,6 +3596,11 @@ MonoBehaviour:
       m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
       m_ColorMultiplier: 1
       m_FadeDuration: 0.1
+  hand: {fileID: 0}
+  weaponLocations:
+    shotgun: {fileID: 5507285539958129479, guid: 3d705c7b09001b2468f79ecd0efdea41,
+      type: 3}
+    shotgunLoc: {fileID: 0}
 --- !u!114 &7932595841917631340
 MonoBehaviour:
   m_ObjectHideFlags: 0

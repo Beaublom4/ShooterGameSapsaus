@@ -28,6 +28,14 @@ public class WeaponSelector : MonoBehaviour
         public ColorBlock selectedColor, normalColor;
     }
     public Colors colors;
+    [System.Serializable]
+    public class WeaponLocations
+    {
+        public GameObject shotgun;
+        public Transform shotgunLoc;
+    }
+    public GameObject hand;
+    public WeaponLocations weaponLocations;
     private void Start()
     {
         ammoCounterScript = GetComponent<AmmoCounter>();
@@ -162,6 +170,7 @@ public class WeaponSelector : MonoBehaviour
                 else if (slotscript.gunWeapon.gunType == "Shotgun")
                 {
                     ammoCounterScript.UpdateShotgunAmmoLeft();
+                    Instantiate(weaponLocations.shotgun, weaponLocations.shotgunLoc.transform.position, weaponLocations.shotgunLoc.rotation, hand.transform);
                 }
                 else if (slotscript.gunWeapon.gunType == "Launcher")
                 {
