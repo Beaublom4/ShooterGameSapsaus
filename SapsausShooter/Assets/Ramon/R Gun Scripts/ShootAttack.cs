@@ -10,8 +10,11 @@ public class ShootAttack : MonoBehaviour
     public Animator zombieAnimator;
     public GameObject areaColParent;
     public GameObject whiteHitMarkerObj, redHitMarkerObj, hitMarkerObj, weaponWheel;
+    public Renderer render;
 
     public FreezeHitBox freezeBox;
+
+    public MaterialPropertyBlock block;
 
     public LayerMask canHit;
 
@@ -22,6 +25,8 @@ public class ShootAttack : MonoBehaviour
     public float scattering = 1;
     public float timeUntilFrozen = 2f;
     public float timeUntilDefrozen = 5;
+    public float dissolvingNumber;
+    public float dissolveSpeed;
 
     public int shotPellets = 8;
 
@@ -43,6 +48,10 @@ public class ShootAttack : MonoBehaviour
         canShoot = true;
 
         //freezeSpeed = spAnimator.GetFloat("speed");
+
+        block = new MaterialPropertyBlock();
+        block.SetFloat("Vector1_4FF20CCE", dissolvingNumber);
+        render.SetPropertyBlock(block);
     }
     void OnEnable()
     {
@@ -348,6 +357,11 @@ public class ShootAttack : MonoBehaviour
                 StopCoroutine(coroutine);
                 coroutine = HitMarker();
                 StartCoroutine(coroutine);
+
+                dissolvingNumber -= dissolveSpeed * Time.deltaTime;
+                render.GetPropertyBlock(block);
+                block.SetFloat("Vector1_76374516", dissolvingNumber);
+                render.SetPropertyBlock(block);
 
                 zombieAnimator.SetFloat("speed", Mathf.Lerp(1, 0, timeUntilFrozen * Time.deltaTime));
                 zombieAnimator.SetFloat("Vector1_76374516", Mathf.Lerp(-2, 2, timeUntilFrozen * Time.deltaTime));
