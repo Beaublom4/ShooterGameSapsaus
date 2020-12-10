@@ -11,6 +11,7 @@ public class ShootAttack : MonoBehaviour
     public GameObject areaColParent;
     public GameObject whiteHitMarkerObj, redHitMarkerObj, hitMarkerObj, weaponWheel;
     public Renderer render;
+    public Transform weaponHand;
 
     public FreezeHitBox freezeBox;
 
@@ -275,7 +276,7 @@ public class ShootAttack : MonoBehaviour
 
             for (int i = 0; i < Mathf.Max(1, shotPellets); i++)
             {
-                //weapon.muzzleFlash.Play();
+                weaponHand.GetComponentInChildren<ParticleSystem>().Play();
                 RaycastHit hit;
                 if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, 1000, canHit, QueryTriggerInteraction.Ignore))
                 {

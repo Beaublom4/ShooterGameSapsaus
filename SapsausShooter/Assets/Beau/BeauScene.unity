@@ -765,6 +765,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1294307362}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &712093736 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6046300749008909615, guid: 7a5e7907c140ff24082a1bce753ce327,
+    type: 3}
+  m_PrefabInstance: {fileID: 1294307362}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &716678357
 GameObject:
   m_ObjectHideFlags: 0
@@ -1533,6 +1539,11 @@ PrefabInstance:
       propertyPath: weaponWheel
       value: 
       objectReference: {fileID: 339483567}
+    - target: {fileID: 5857392905529847191, guid: 7a5e7907c140ff24082a1bce753ce327,
+        type: 3}
+      propertyPath: weaponHand
+      value: 
+      objectReference: {fileID: 712093736}
     - target: {fileID: 6040761117112673390, guid: 7a5e7907c140ff24082a1bce753ce327,
         type: 3}
       propertyPath: m_Layer

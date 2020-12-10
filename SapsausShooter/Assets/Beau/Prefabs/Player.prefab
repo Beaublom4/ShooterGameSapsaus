@@ -354,6 +354,7 @@ MonoBehaviour:
   redHitMarkerObj: {fileID: 0}
   hitMarkerObj: {fileID: 0}
   weaponWheel: {fileID: 0}
+  render: {fileID: 0}
   freezeBox: {fileID: 0}
   canHit:
     serializedVersion: 2
@@ -364,6 +365,8 @@ MonoBehaviour:
   scattering: 1
   timeUntilFrozen: 2
   timeUntilDefrozen: 5
+  dissolvingNumber: 0
+  dissolveSpeed: 0
   shotPellets: 8
   canShoot: 0
   isReloading: 0
@@ -957,13 +960,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5205932781698325343}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.30649087, y: -0.31169152, z: -0.50879234, w: 0.74164826}
+  m_LocalPosition: {x: 0.0356, y: 0.7139, z: -0.5791}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6046300749008909615}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 367.9, y: 308.59, z: -72.71}
 --- !u!1 &5256586979065381243
 GameObject:
   m_ObjectHideFlags: 0
