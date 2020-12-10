@@ -52,6 +52,8 @@ public class HealthManager : MonoBehaviour
             {
                 health = 0;
                 anim.SetTrigger("Dead");
+                GetComponent<Movement>().enabled = !enabled;
+                GetComponent<MouseLook>().enabled = !enabled;
                 death = true;
             }
             UpdateNumber();
@@ -70,6 +72,8 @@ public class HealthManager : MonoBehaviour
                 health = 0;
                 anim.SetTrigger("Dead");
                 death = true;
+                GetComponent<Movement>().enabled = !enabled;
+                GetComponent<MouseLook>().enabled = !enabled;
             }
             //if (weapon.damageOverTime != 0)
             //{
