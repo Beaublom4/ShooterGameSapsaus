@@ -1106,6 +1106,11 @@ MonoBehaviour:
   - {fileID: 379079869555056711}
   - {fileID: 2809506384821182439}
   isDeath: 0
+  sounds:
+    minSoundRange: 0.2
+    maxSoundRange: 0.2
+    trigger: {fileID: 0}
+    attack: {fileID: 0}
   chanceDrop: 20
   chanceDubbleDrop: 0
   ammoDrops:
@@ -2137,7 +2142,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c0c4e7eb24695da43ab304f906e91fd1, type: 2}
+  - {fileID: 2100000, guid: c508ca41999a5bc419345aa429f8df17, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
