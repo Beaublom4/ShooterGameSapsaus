@@ -185,7 +185,9 @@ public class WeaponSelector : MonoBehaviour
             {
                 selectedSlotScript = slotscript;
                 weaponImage.sprite = slotscript.meleeWeapon.uiSprite;
-                
+
+                playerAnim.SetBool("Melee", true);
+
                 print(slotscript.meleeWeapon.weaponName);
                 meleeScript.currentSlot = slotscript;
                 ammoCounterScript.UpdateMeleeAmmo(slotscript.ammoInMag);

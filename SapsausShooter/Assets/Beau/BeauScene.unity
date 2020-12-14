@@ -6012,6 +6012,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1579501318}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &209624217 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1200487926547216155, guid: 7a5e7907c140ff24082a1bce753ce327,
+    type: 3}
+  m_PrefabInstance: {fileID: 1294307362}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &211220004 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4937674181218171161, guid: b6251076083216f4ba452d7f6508c7e6,
@@ -36502,11 +36508,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -1.165
       objectReference: {fileID: 0}
-    - target: {fileID: 896554098108623722, guid: 7a5e7907c140ff24082a1bce753ce327,
-        type: 3}
-      propertyPath: playerAnimation
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 896554098108623724, guid: 7a5e7907c140ff24082a1bce753ce327,
         type: 3}
       propertyPath: m_Name
@@ -62949,7 +62950,7 @@ PrefabInstance:
         type: 3}
       propertyPath: playerAnim
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 209624217}
     - target: {fileID: 7932595841917631342, guid: 344f823c1a9753447ab0f455c4f7d7bb,
         type: 3}
       propertyPath: weaponLocations.Array.data[0].locTrans

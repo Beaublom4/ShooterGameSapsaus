@@ -590,7 +590,7 @@ AnimatorController:
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
-    m_DefaultBool: 1
+    m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
   - m_Name: Shoot
     m_Type: 9
@@ -679,7 +679,7 @@ AnimatorController:
     m_Behaviours: []
     m_BlendingMode: 0
     m_SyncedLayerIndex: -1
-    m_DefaultWeight: 0
+    m_DefaultWeight: 1
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
@@ -880,7 +880,7 @@ BlendTree:
     m_Motion: {fileID: -6213554045504038439, guid: 9f2b4f3779cc2c54b8f95a1159031801,
       type: 3}
     m_Threshold: 0.25
-    m_Position: {x: 0, y: -1}
+    m_Position: {x: 0, y: -90}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: Blendx
@@ -907,7 +907,7 @@ BlendTree:
     m_Motion: {fileID: 5733278133499357735, guid: 9f2b4f3779cc2c54b8f95a1159031801,
       type: 3}
     m_Threshold: 1
-    m_Position: {x: 0, y: 1}
+    m_Position: {x: 0, y: 90}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: Blendx
@@ -1370,7 +1370,8 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 0}
+  m_Motion: {fileID: -5324238279805231817, guid: 9f2b4f3779cc2c54b8f95a1159031801,
+    type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
