@@ -36473,6 +36473,11 @@ PrefabInstance:
       propertyPath: healthSlider
       value: 
       objectReference: {fileID: 30372366}
+    - target: {fileID: 896554098108623720, guid: 7a5e7907c140ff24082a1bce753ce327,
+        type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 209624217}
     - target: {fileID: 896554098108623721, guid: 7a5e7907c140ff24082a1bce753ce327,
         type: 3}
       propertyPath: m_RootOrder
@@ -36892,12 +36897,17 @@ PrefabInstance:
         type: 3}
       propertyPath: weaponHand
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1946389843}
     - target: {fileID: 5857392905529847191, guid: 7a5e7907c140ff24082a1bce753ce327,
         type: 3}
       propertyPath: scattering
       value: 370
       objectReference: {fileID: 0}
+    - target: {fileID: 5857392905529847191, guid: 7a5e7907c140ff24082a1bce753ce327,
+        type: 3}
+      propertyPath: zombieAnimator
+      value: 
+      objectReference: {fileID: 209624217}
     - target: {fileID: 6040761117112673390, guid: 7a5e7907c140ff24082a1bce753ce327,
         type: 3}
       propertyPath: m_Layer
@@ -55798,6 +55808,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2510128226270736656, guid: 66edfa958bdc19a4ca37dd72d24055d6,
     type: 3}
   m_PrefabInstance: {fileID: 1455217375}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1946389843 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7126895059377702492, guid: 7a5e7907c140ff24082a1bce753ce327,
+    type: 3}
+  m_PrefabInstance: {fileID: 1294307362}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1946798023 stripped
 Transform:
