@@ -341,7 +341,6 @@ public class Enemy : MonoBehaviour
         {
             anim.SetInteger("Dead", 2);
         }
-        print(gameObject.name + " died");
         if(missionManagerScript.killEnemiesMission == true)
         {
             missionManagerScript.currentKillAmount++;

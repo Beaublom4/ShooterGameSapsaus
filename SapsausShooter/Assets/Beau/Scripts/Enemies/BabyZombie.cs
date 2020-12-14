@@ -34,8 +34,7 @@ public class BabyZombie : Enemy
                 timer = spitDelay;
 
                 anim.SetTrigger("Attack");
-                Instantiate(spitPrefab, spitPoint);
-                GameObject g = spitPoint.GetChild(0).gameObject;
+                GameObject g = Instantiate(spitPrefab, spitPoint) as GameObject;
                 g.GetComponent<SpitBall>().damage = damage;
                 g.transform.SetParent(null);
                 g.GetComponent<Rigidbody>().AddRelativeForce(spitDirection);

@@ -5,6 +5,8 @@ public class MeleeAttack : MonoBehaviour
 {
     public Melee weapon;
 
+    [HideInInspector] public Slot currentSlot;
+    public AmmoCounter ammoScript;
     public GameObject mainCam, weaponWheel;
     public Transform mainCamPos;
     public Transform[] meleeCamPos;
@@ -30,31 +32,33 @@ public class MeleeAttack : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1"))
         {
-            if(weaponWheel.activeSelf == false)
-            if(weapon != null && canMelee== true)
-            {
-                canMelee = false;
-                mainCam.GetComponent<MouseLook>().enabled = !enabled;
-                GetComponent<Movement>().enabled = !enabled;
+            if (currentSlot != null && currentSlot.ammoInMag > 0)
+                if (weaponWheel.activeSelf == false)
+                    if (weapon != null && canMelee == true)
+                    {
+                        currentSlot.ammoInMag--;
+                        ammoScript.UpdateMeleeAmmo(currentSlot.ammoInMag);
 
-                for (int i = 0; i < meleeCamPos.Length; i++)
-                {
-                    print("1");
-                    if(Physics.Raycast(transform.position, meleeCamPos[i].position - transform.position, out hit, Vector3.Distance(transform.position, meleeCamPos[i].position), ~ignoreLayer, QueryTriggerInteraction.Ignore))
-                    {
-                        print(hit.collider.name);
+                        canMelee = false;
+                        mainCam.GetComponent<MouseLook>().enabled = !enabled;
+                        GetComponent<Movement>().enabled = !enabled;
+
+                        for (int i = 0; i < meleeCamPos.Length; i++)
+                        {
+                            if (Physics.Raycast(transform.position, meleeCamPos[i].position - transform.position, out hit, Vector3.Distance(transform.position, meleeCamPos[i].position), ~ignoreLayer, QueryTriggerInteraction.Ignore))
+                            {
+                                print(hit.collider.name);
+                            }
+                            else
+                            {
+                                wantedLoc = meleeCamPos[i];
+                                wantedLookAt = transform;
+                                moveCam = true;
+                                break;
+                            }
+                        }
+                        StartCoroutine(MeleeTiming());
                     }
-                    else
-                    {
-                        print("2");
-                        wantedLoc = meleeCamPos[i];
-                        wantedLookAt = transform;
-                        moveCam = true;
-                        break;
-                    }
-                }
-                StartCoroutine(MeleeTiming());
-            }
         }
     }
     void SwitchCamPos()
@@ -84,7 +88,7 @@ public class MeleeAttack : MonoBehaviour
     {
         foreach(Transform child in transform)
         {
-            if (child.GetComponent<HitBoxMelee>())
+            if (child.gameObject.tag == "MeleeHitBox")
             {
                 Destroy(child.gameObject);
             }
