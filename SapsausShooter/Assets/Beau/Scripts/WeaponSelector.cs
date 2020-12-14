@@ -185,10 +185,11 @@ public class WeaponSelector : MonoBehaviour
             {
                 selectedSlotScript = slotscript;
                 weaponImage.sprite = slotscript.meleeWeapon.uiSprite;
-
+                
                 print(slotscript.meleeWeapon.weaponName);
+                meleeScript.currentSlot = slotscript;
+                ammoCounterScript.UpdateMeleeAmmo(slotscript.ammoInMag);
                 meleeScript.weapon = slotscript.meleeWeapon;
-                ammoCounterScript.UpdateMeleeAmmo();
                 if (coroutine == null)
                     StopCoroutine(coroutine);
                 coroutine = ShowWeaponName(slotscript.meleeWeapon.weaponName);
