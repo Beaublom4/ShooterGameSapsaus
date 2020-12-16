@@ -17516,12 +17516,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d108cd2dec285c04cb2ad5b216b21cc3, type: 3}
---- !u!82 &551055552 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 7115016919082642393, guid: 7a5e7907c140ff24082a1bce753ce327,
-    type: 3}
-  m_PrefabInstance: {fileID: 1294307362}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &552731710 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5519540370047153098, guid: 41741b7a55f104944a56fc3fd51b828b,
@@ -25149,12 +25143,12 @@ PrefabInstance:
         type: 3}
       propertyPath: sounds.buyItem
       value: 
-      objectReference: {fileID: 551055552}
+      objectReference: {fileID: 0}
     - target: {fileID: 8140012836229714220, guid: 4ef8c0dca174adc4b978d817d4655f9d,
         type: 3}
       propertyPath: sounds.notEnoughMoney
       value: 
-      objectReference: {fileID: 1723624711}
+      objectReference: {fileID: 0}
     - target: {fileID: 8140012836229714223, guid: 4ef8c0dca174adc4b978d817d4655f9d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -31689,12 +31683,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d108cd2dec285c04cb2ad5b216b21cc3, type: 3}
---- !u!82 &1147034661 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 496413680667672788, guid: 7a5e7907c140ff24082a1bce753ce327,
-    type: 3}
-  m_PrefabInstance: {fileID: 1294307362}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1147850542
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32445,7 +32433,7 @@ PrefabInstance:
     - target: {fileID: 7423821309739881678, guid: b54607042c87ef942a9c3fad90d03762,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7766422322069289911, guid: b54607042c87ef942a9c3fad90d03762,
         type: 3}
@@ -36574,7 +36562,7 @@ PrefabInstance:
         type: 3}
       propertyPath: sounds.Array.data[0].sound
       value: 
-      objectReference: {fileID: 1550409647}
+      objectReference: {fileID: 0}
     - target: {fileID: 995829965692537576, guid: 7a5e7907c140ff24082a1bce753ce327,
         type: 3}
       propertyPath: sounds.Array.data[1].name
@@ -36584,7 +36572,7 @@ PrefabInstance:
         type: 3}
       propertyPath: sounds.Array.data[1].sound
       value: 
-      objectReference: {fileID: 1147034661}
+      objectReference: {fileID: 0}
     - target: {fileID: 1117009589608314569, guid: 7a5e7907c140ff24082a1bce753ce327,
         type: 3}
       propertyPath: m_Layer
@@ -44189,12 +44177,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6251076083216f4ba452d7f6508c7e6, type: 3}
---- !u!82 &1550409647 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 9183094351266996255, guid: 7a5e7907c140ff24082a1bce753ce327,
-    type: 3}
-  m_PrefabInstance: {fileID: 1294307362}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1551096953 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4937674181218171161, guid: b6251076083216f4ba452d7f6508c7e6,
@@ -49198,12 +49180,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1727391194691940186, guid: c3cda07db005fa84495c9ebf293eb966,
     type: 3}
   m_PrefabInstance: {fileID: 715077978}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &1723624711 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 7523096949963804891, guid: 7a5e7907c140ff24082a1bce753ce327,
-    type: 3}
-  m_PrefabInstance: {fileID: 1294307362}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1724451186
 PrefabInstance:
@@ -62596,7 +62572,7 @@ PrefabInstance:
     - target: {fileID: 2826353454445027687, guid: e458be2955110a744a68989e7149c87e,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3202879370604887005, guid: e458be2955110a744a68989e7149c87e,
         type: 3}
@@ -62938,7 +62914,7 @@ PrefabInstance:
     - target: {fileID: 5433026564681970298, guid: 595a79ed576d0434b85df93ea3312bcb,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5433026564681970299, guid: 595a79ed576d0434b85df93ea3312bcb,
         type: 3}
