@@ -1348,7 +1348,12 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
-  m_WarningMessage: 
+  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
+    are already bound by a Humanoid avatar. These transforms can only be changed
+    by Humanoid clips.\n\tTransform 'shoulder.R'\n\tTransform 'shoulder.L'\n\tTransform
+    'forearm.R'\n\tTransform 'shoulder.R'\n\tTransform 'f_middle.02.R'\n\tTransform
+    'f_index.02.R'\n\tTransform 'thigh.L'\n\tTransform 'toe.L'\n\tTransform 'upper_arm.L'\n\tTransform
+    'f_ring.02.R'\n\tand more ...\n\tFrom animation clip 'metarig|Attack Scythe'"
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
@@ -2506,6 +2511,36 @@ Transform:
   m_Father: {fileID: 7663461075317420662}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 9.874, y: -142.815, z: 10.939}
+--- !u!1 &7946946293041559906
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8622120088350586364}
+  m_Layer: 0
+  m_Name: MeleeSpot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8622120088350586364
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7946946293041559906}
+  m_LocalRotation: {x: -0.6159104, y: -0.67963713, z: -0.18168879, w: -0.354594}
+  m_LocalPosition: {x: -0.584, y: -0.001, z: -0.692}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7126895059377702492}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: -190.943, y: -45.961, z: -100.284}
 --- !u!1 &8861615550343276009
 GameObject:
   m_ObjectHideFlags: 0
@@ -2883,6 +2918,12 @@ Transform:
 --- !u!4 &7040708411112514756 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6686643647145634331, guid: 9f2b4f3779cc2c54b8f95a1159031801,
+    type: 3}
+  m_PrefabInstance: {fileID: 4431018696345620191}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7126895059377702492 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6888806815857526915, guid: 9f2b4f3779cc2c54b8f95a1159031801,
     type: 3}
   m_PrefabInstance: {fileID: 4431018696345620191}
   m_PrefabAsset: {fileID: 0}
