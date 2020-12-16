@@ -565,12 +565,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fpsCam: {fileID: 896554098131706639}
+  missionScript: {fileID: 0}
   useRange: 4
   sounds:
-    minSoundRange: 0.2
-    maxSoundRange: 0.2
-    itemPickUp: {fileID: 0}
-    Use: {fileID: 0}
+    minSoundRange: 0.1
+    maxSoundRange: 0.1
+    itemPickUp: {fileID: 8267335653095710312}
+    Use: {fileID: 8055060413801300174}
 --- !u!1 &896554098131706639
 GameObject:
   m_ObjectHideFlags: 0

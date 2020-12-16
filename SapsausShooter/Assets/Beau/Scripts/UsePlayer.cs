@@ -11,6 +11,7 @@ public class UsePlayer : MonoBehaviour
         public AudioSource itemPickUp, Use;
     }
     public GameObject fpsCam;
+    public MissionManager missionScript;
     public float useRange;
     RaycastHit hit;
     public Sounds sounds;
@@ -46,6 +47,13 @@ public class UsePlayer : MonoBehaviour
                 if (Input.GetButtonDown("Use"))
                 {
                     hit.transform.GetComponent<HealStation>().BuyHeal();
+                }
+            }
+            if(hit.transform.tag == "LauncherPart")
+            {
+                if (Input.GetButtonDown("Use"))
+                {
+                    missionScript.RLPickUp(hit.transform.GetComponent<LauncherPart>().partNumber, hit.transform.gameObject);
                 }
             }
         }

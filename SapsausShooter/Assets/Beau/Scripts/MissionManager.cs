@@ -32,6 +32,10 @@ public class MissionManager : MonoBehaviour
     public float timeLeft;
     public TextMeshProUGUI timeLeftText;
 
+    public GameObject partsDisplay;
+    public GameObject[] partsOnDisplay;
+    public int partsFound, partsToFind;
+
     public bool killEnemiesMission;
     public int killAmount, currentKillAmount;
     int moneyAmount;
@@ -73,7 +77,6 @@ public class MissionManager : MonoBehaviour
     }
     public void SelectMainMission()
     {
-        MainMissionSetup();
         switch (currentMainMission)
         {
             case 0:
@@ -108,32 +111,6 @@ public class MissionManager : MonoBehaviour
                 break;
         }
     }
-    public void MainMissionSetup()
-    {
-        if (currentMainMission < mainMissions.Length)
-        {
-            mainMissionNameText.text = mainMissions[currentMainMission].missionName;
-            if (mainMissions[currentMainMission].missionTasks.Length == 1)
-            {
-                mainMissionInfoText.text = mainMissions[currentMainMission].missionTasks[0];
-            }
-            else if (mainMissions[currentMainMission].missionTasks.Length == 2)
-            {
-                mainMissionInfoText.text = mainMissions[currentMainMission].missionTasks[0] + "<br>" + mainMissions[currentMainMission].missionTasks[1];
-            }
-            else if (mainMissions[currentMainMission].missionTasks.Length == 3)
-            {
-                mainMissionInfoText.text = mainMissions[currentMainMission].missionTasks[0] + "<br>" + mainMissions[currentMainMission].missionTasks[1] + "<br>" + mainMissions[currentMainMission].missionTasks[2];
-            }
-            else Debug.LogError("To many tasks for mission: " + mainMissions[currentMainMission].missionName);
-        }
-        else
-        {
-            Debug.LogError("Current mission empty");
-            mainMissionNameText.text = "";
-            mainMissionInfoText.text = "";
-        }
-    }
     public void SideMissionSetup()
     {
         if (currentSideMission < sideMissions.Length && currentSideMission >= 0)
@@ -150,6 +127,22 @@ public class MissionManager : MonoBehaviour
     public void RocketLauncherMission()
     {
         print("Start rocket launcher mission");
+        partsDisplay.SetActive(true);
+        mainMissionNameText.text = mainMissions[currentMainMission].missionName;
+        mainMissionInfoText.text = "Parts collected " + partsFound + "/" + partsToFind;
+    }
+    public void RLPickUp(int partNumber, GameObject toDestroy)
+    {
+        Destroy(toDestroy);
+        partsFound++;
+        partsOnDisplay[partNumber].SetActive(true);
+        
+        mainMissionInfoText.text = "Parts collected " + partsFound + "/" + partsToFind;
+
+        if(partsFound == partsToFind)
+        {
+            print("All parts found");
+        }
     }
     public void BossBattleMission()
     {
