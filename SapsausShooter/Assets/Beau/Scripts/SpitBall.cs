@@ -7,7 +7,6 @@ public class SpitBall : MonoBehaviour
     [HideInInspector] public float damage;
     private void OnCollisionEnter(Collision collision)
     {
-        print(collision.gameObject.name);
         if(collision.gameObject.tag == "Player")
         {
             collision.gameObject.GetComponent<HealthManager>().DoDamage(damage);

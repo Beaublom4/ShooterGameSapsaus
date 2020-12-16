@@ -1973,6 +1973,9 @@ MonoBehaviour:
   render: {fileID: 3272908040706206192}
   dissolveSpeed: 1
   dissolvingNumber: 2
+  freezeNumber: -1
+  inFreezeRange: 0
+  freezeSpeed: 0
   missionManagerScript: {fileID: 0}
   hitNumPrefab: {fileID: 3314747878335242109, guid: 8c6b2080012d1a048870d88718b62e11,
     type: 3}

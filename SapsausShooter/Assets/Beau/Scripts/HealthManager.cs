@@ -30,17 +30,17 @@ public class HealthManager : MonoBehaviour
     {
         if(death == true)
         {
-            mainCam.GetComponent<MouseLook>().enabled = !enabled;
-            if(lookDown == false)
-            {
-                lookDown = true;
-                mainCam.transform.rotation = Quaternion.Euler(90, 0, 0);
-            }
-            mainCam.transform.Rotate(0, 0, camRotateSpeed * Time.deltaTime);
-            if (mainCam.transform.position != deathCamPos.position)
-            {
-                mainCam.transform.position = Vector3.Lerp(mainCam.transform.position, deathCamPos.position, camMoveSpeed * Time.deltaTime);
-            }
+            //mainCam.GetComponent<MouseLook>().enabled = !enabled;
+            //if(lookDown == false)
+            //{
+            //    lookDown = true;
+            //    mainCam.transform.rotation = Quaternion.Euler(90, 0, 0);
+            //}
+            //mainCam.transform.Rotate(0, 0, camRotateSpeed * Time.deltaTime);
+            //if (mainCam.transform.position != deathCamPos.position)
+            //{
+            //    mainCam.transform.position = Vector3.Lerp(mainCam.transform.position, deathCamPos.position, camMoveSpeed * Time.deltaTime);
+            //}
         }
     }
     public void DoDamage(float damage)

@@ -23,6 +23,7 @@ MonoBehaviour:
   damageOverTime: 0
   damageOverTimeTime: 2
   critMultiplier: 0
+  recoil: 0
   canStun: 0
   stunTime: 0
   canSlow: 1
@@ -30,7 +31,7 @@ MonoBehaviour:
   slowTime: 5
   shootsProjectile: 0
   bulletPrefab: {fileID: 0}
-  gunType: Special
+  gunType: FreezeGun
   shotType: Rapid Fire Spray
   infinityAmmo: 0
   ammoType: 

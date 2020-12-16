@@ -62,10 +62,18 @@ public class Enemy : MonoBehaviour
     bool dissolving;
     MaterialPropertyBlock block;
 
+    public bool inFreezeRange;
+    public float freezeSpeed;
+    public float freezeNum;
+    public float freezeRenderNumber;
+    public float freezeWalkingSpeed;
+
     public MissionManager missionManagerScript;
 
     public GameObject hitNumPrefab;
     public Transform dmgTextLoc;
+
+
     public virtual void Start()
     {
         playerObj = GameObject.FindWithTag("Player");
@@ -76,6 +84,8 @@ public class Enemy : MonoBehaviour
         SpawnWithWeapon();
         block = new MaterialPropertyBlock();
         block.SetFloat("Vector1_4FF20CCE", dissolvingNumber);
+        freezeRenderNumber = -1;
+        block.SetFloat("Vector1_76374516", freezeRenderNumber);
         render.SetPropertyBlock(block);
     }
     public virtual void Update()
@@ -129,9 +139,38 @@ public class Enemy : MonoBehaviour
             render.GetPropertyBlock(block);
             block.SetFloat("Vector1_4FF20CCE", dissolvingNumber);
             render.SetPropertyBlock(block);
+        }
+        if(freezeSpeed > 0 && inFreezeRange == true)
+        {
+            freezeNum += freezeSpeed * Time.deltaTime;
+            freezeNum = Mathf.Clamp(freezeNum, 0, 1);
 
-            //block.SetFloat("Vector1_4FF20CCE", dissolvingNumber);
-            //dissolveMat.SetFloat("Vector1_4FF20CCE", dissolvingNumber);
+            //zet freeze shit
+            freezeRenderNumber += (freezeNum * 4) * Time.deltaTime;
+            freezeRenderNumber = Mathf.Clamp(freezeRenderNumber, -1, 3);
+            render.GetPropertyBlock(block);
+            block.SetFloat("Vector1_76374516", freezeRenderNumber);
+            render.SetPropertyBlock(block);
+
+            anim.SetFloat("speed", 1 - freezeNum);
+            freezeWalkingSpeed = (speed * (1 - freezeNum));
+            agent.speed = freezeWalkingSpeed;
+        }
+        if (inFreezeRange == false & freezeNum > 0)
+        {
+            freezeNum -= .2f * Time.deltaTime;
+            freezeNum = Mathf.Clamp(freezeNum, 0, 1);
+
+            //zet freeze shit
+            freezeRenderNumber -= (.2f * 4) * Time.deltaTime;
+            freezeRenderNumber = Mathf.Clamp(freezeRenderNumber, -1, 3);
+            render.GetPropertyBlock(block);
+            block.SetFloat("Vector1_76374516", freezeRenderNumber);
+            render.SetPropertyBlock(block);
+
+            anim.SetFloat("speed", 1 - freezeNum);
+            freezeWalkingSpeed = (speed * (1 - freezeNum));
+            agent.speed = freezeWalkingSpeed;
         }
     }
     public virtual void Trigger(GameObject player)
@@ -227,7 +266,14 @@ public class Enemy : MonoBehaviour
             {
                 yield return new WaitForSeconds(1);
             }
-            agent.speed = speed;
+            if(freezeNum <= 0)
+            {
+                agent.speed = speed;
+            }
+            else
+            {
+                agent.speed = freezeWalkingSpeed;
+            }
             hitCooldown = false;
             StartCoroutine(Hit());
         }
@@ -314,7 +360,14 @@ public class Enemy : MonoBehaviour
         //stun anim
         yield return new WaitForSeconds(stunTime);
         if (isDeath == false)
-        agent.speed = speed;
+            if (freezeNum <= 0)
+            {
+                agent.speed = speed;
+            }
+            else
+            {
+                agent.speed = freezeWalkingSpeed;
+            }
     }
     IEnumerator DoSlow(float slowTime, float slowSpeed)
     {
@@ -322,7 +375,14 @@ public class Enemy : MonoBehaviour
         //slow anim things
         yield return new WaitForSeconds(slowTime);
         if (isDeath == false)
-        agent.speed = speed;
+            if (freezeNum <= 0)
+            {
+                agent.speed = speed;
+            }
+            else
+            {
+                agent.speed = freezeWalkingSpeed;
+            }
     }
     public virtual IEnumerator Dead(int hitPoint)
     {
@@ -431,7 +491,14 @@ public class Enemy : MonoBehaviour
         {
             shootTimer = holdingGun.fireRate;
             playerInShootingRange = false;
-            agent.speed = speed;
+            if (freezeNum <= 0)
+            {
+                agent.speed = speed;
+            }
+            else
+            {
+                agent.speed = freezeWalkingSpeed;
+            }
         }
     }
 }

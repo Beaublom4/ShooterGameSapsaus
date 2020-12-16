@@ -21,7 +21,6 @@ public class ShootAttack : MonoBehaviour
     public Animator zombieAnimator;
     public GameObject areaColParent;
     public GameObject whiteHitMarkerObj, redHitMarkerObj, hitMarkerObj, weaponWheel;
-    public Renderer render;
     public Transform weaponHand;
 
     public FreezeHitBox freezeBox;
@@ -44,7 +43,8 @@ public class ShootAttack : MonoBehaviour
 
     public bool canShoot;
     public bool isReloading = false;
-    public bool beingFrozen;
+    public bool doingFreeze;
+    public GameObject freezeColObj;
 
     public float addAmmo;
     public Slot currentSlot;
@@ -87,16 +87,39 @@ public class ShootAttack : MonoBehaviour
 
             StartCoroutine(Reload());
         }
+        if(doingFreeze == true)
+        {
+            currentSlot.ammoInMag -= Time.deltaTime;
+            ammoScript.UpdateAmmo(currentSlot.ammoInMag);
+
+            freezeColObj.GetComponent<FreezeHitBox>().ableToDoShit = true;
+        }
     }
     void FireWeapon()
     {
-        if (Input.GetButtonDown("Fire1") && Time.time >= nextTimeToFire && weapon != null)
+        if(Input.GetButtonDown("Fire1") && Time.time >= nextTimeToFire && weapon != null)
         {
             ShootWeapon();
-
             SoundWave();
         }
-
+        if(currentSlot != null)
+        {
+            if(currentSlot.gunWeapon.gunType == "FreezeGun" && Input.GetButton("Fire1"))
+            {
+                if (currentSlot.ammoInMag > 0)
+                    doingFreeze = true;
+                else
+                {
+                    doingFreeze = false;
+                    freezeColObj.GetComponent<FreezeHitBox>().ableToDoShit = false;
+                }
+            }
+            else if(doingFreeze == true)
+            {
+                freezeColObj.GetComponent<FreezeHitBox>().ableToDoShit = false;
+                doingFreeze = false;
+            }
+        }
         //if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire && weapon != null)
         //{
         //    ShootWeapon();
@@ -200,32 +223,6 @@ public class ShootAttack : MonoBehaviour
                 ammoScript.UpdateSniperAmmoLeft();
             }
         }
-
-        if (weapon.weaponPrefab.GetComponent<GunScript>().weapon.gunType == "Freezegun")
-        {
-            //if (weapon.weaponPrefab.GetComponent<WeaponScript>().weapon.gunType == "Freezegun")
-            //{
-            //if (ammoScript.freezegunAmmo <= 0)
-            //{
-            //print("NoAmmo");
-            //return;
-            //}
-            //else
-            //{
-            //ammoScript.freezegunAmmo += currentSlot.ammoInMag;
-            //if (ammoScript.freezegunAmmo >= weapon.weaponPrefab.GetComponent<WeaponScript>().weapon.magCount)
-            //{
-            //addAmmo = weapon.weaponPrefab.GetComponent<WeaponScript>().weapon.magCount;
-            //}
-            //else
-            //{
-            //addAmmo = ammoScript.freezegunAmmo;
-            //}
-            //ammoScript.freezegunAmmo -= addAmmo;
-            //ammoScript.UpdateFreezegunAmmoLeft();
-            //}
-            //}
-        }
     }
     public IEnumerator Reload()
     {
@@ -249,6 +246,10 @@ public class ShootAttack : MonoBehaviour
     }
     void ShootWeapon()
     {
+        if(currentSlot.gunWeapon.gunType == "FreezeGun")
+        {
+            return;
+        }
         nextTimeToFire = Time.time + 1f / weapon.weaponPrefab.GetComponent<GunScript>().weapon.fireRate;
         
         if (currentSlot.ammoInMag <= 0 || weaponWheel.activeSelf == true)
@@ -364,36 +365,6 @@ public class ShootAttack : MonoBehaviour
             }
 
             //sniperAnimation.SetBool("Shoot", false);
-        }
-
-        if (weapon.weaponPrefab.GetComponent<GunScript>().weapon.gunType == "Freezegun")
-        {
-            //freezegunAnimation.SetBool("Shoot", true);
-
-            currentSlot.ammoInMag--;
-            ammoScript.UpdateAmmo(currentSlot.ammoInMag);
-
-            //weapon.muzzleFlash.Play();
-            foreach (GameObject zombie in freezeBox.Zombies)
-            {
-                hitMarkerObj = whiteHitMarkerObj;
-                StopCoroutine(coroutine);
-                coroutine = HitMarker();
-                StartCoroutine(coroutine);
-
-                dissolvingNumber -= dissolveSpeed * Time.deltaTime;
-                render.GetPropertyBlock(block);
-                block.SetFloat("Vector1_76374516", dissolvingNumber);
-                render.SetPropertyBlock(block);
-
-                zombieAnimator.SetFloat("speed", Mathf.Lerp(1, 0, timeUntilFrozen * Time.deltaTime));
-                zombieAnimator.SetFloat("Vector1_76374516", Mathf.Lerp(-2, 2, timeUntilFrozen * Time.deltaTime));
-            }
-
-            //GameObject impactGO = Instantiate(weapon.impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
-            //Destroy(impactGO, 2f);
-
-            //freezegunAnimation.SetBool("Shoot", false);
         }
     }
     public void HitMarker(GameObject obj)

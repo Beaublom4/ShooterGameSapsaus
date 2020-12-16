@@ -383,6 +383,7 @@ Transform:
   - {fileID: 896554097703259943}
   - {fileID: 8353685646032255163}
   - {fileID: 8676758482155342238}
+  - {fileID: 7897769491738090204}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -516,7 +517,6 @@ MonoBehaviour:
   redHitMarkerObj: {fileID: 0}
   hitMarkerObj: {fileID: 0}
   weaponWheel: {fileID: 0}
-  render: {fileID: 0}
   weaponHand: {fileID: 0}
   freezeBox: {fileID: 0}
   canHit:
@@ -533,11 +533,12 @@ MonoBehaviour:
   shotPellets: 8
   canShoot: 0
   isReloading: 0
-  beingFrozen: 0
+  doingFreeze: 0
+  freezeColObj: {fileID: 4831207102390669919}
   addAmmo: 0
   currentSlot: {fileID: 0}
   ammoScript: {fileID: 0}
-  camScript: {fileID: 0}
+  camScript: {fileID: 2019798694751159302}
   displayTimeHitMarker: 0.5
   sounds:
     pistolSoundVolume: 0
@@ -1704,6 +1705,66 @@ Transform:
   m_Father: {fileID: 474360227539633054}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4831207102390669919
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7897769491738090204}
+  - component: {fileID: 3227533356567734864}
+  - component: {fileID: 4858466631145907052}
+  m_Layer: 12
+  m_Name: FreezeCol
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7897769491738090204
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4831207102390669919}
+  m_LocalRotation: {x: 0, y: 0, z: 0.38268343, w: 0.92387956}
+  m_LocalPosition: {x: -0, y: 1.25, z: 0.09}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 896554098108623721}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
+--- !u!65 &3227533356567734864
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4831207102390669919}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5, z: 2.1097093}
+  m_Center: {x: 0, y: 0, z: 0.90485454}
+--- !u!114 &4858466631145907052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4831207102390669919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 430e2dce8b6a9814abb02d7bfbe577d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemies: []
+  timer: 1
+  ableToDoShit: 0
 --- !u!1 &5256586979065381243
 GameObject:
   m_ObjectHideFlags: 0
@@ -2903,12 +2964,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f2b4f3779cc2c54b8f95a1159031801, type: 3}
---- !u!4 &4248193497480751412 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9f2b4f3779cc2c54b8f95a1159031801,
-    type: 3}
-  m_PrefabInstance: {fileID: 4431018696345620191}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6166297815533482993 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -1662616379218952914, guid: 9f2b4f3779cc2c54b8f95a1159031801,
@@ -2924,6 +2979,12 @@ Transform:
 --- !u!4 &7126895059377702492 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6888806815857526915, guid: 9f2b4f3779cc2c54b8f95a1159031801,
+    type: 3}
+  m_PrefabInstance: {fileID: 4431018696345620191}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4248193497480751412 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9f2b4f3779cc2c54b8f95a1159031801,
     type: 3}
   m_PrefabInstance: {fileID: 4431018696345620191}
   m_PrefabAsset: {fileID: 0}

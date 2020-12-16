@@ -38,7 +38,7 @@ public class AmmoCounter : MonoBehaviour
     }
     public void UpdateAmmo(float ammo)
     {
-        magText.text = ammo.ToString();
+        magText.text = ammo.ToString("F0");
     }
     public void UpdateMeleeAmmo(float ammo)
     {
