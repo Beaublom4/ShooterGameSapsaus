@@ -319,9 +319,8 @@ public class Enemy : MonoBehaviour
         {
             calculatedDamage = calculatedDamage * weapon.critMultiplier;
         }
-        GameObject g = Instantiate(hitNumPrefab, hitLoc, Quaternion.identity, dmgTextLoc);
+        GameObject g = Instantiate(hitNumPrefab, hitLoc, Quaternion.identity, null);
         g.GetComponent<DmgNumberShow>().UpdateNumber(calculatedDamage);
-        //g.transform.SetParent(null);
         health -= calculatedDamage;
         if(health <= 0)
         {

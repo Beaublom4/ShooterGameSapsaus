@@ -521,7 +521,7 @@ MonoBehaviour:
   freezeBox: {fileID: 0}
   canHit:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 4294967295
   randomDir: {x: 0, y: 0, z: 0}
   freezeSpeed: 1
   nextTimeToFire: 0
@@ -2792,6 +2792,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MailboxImpact
+      objectReference: {fileID: 0}
+    - target: {fileID: 8217346071260288915, guid: fd817d4cdf22d5a47847991569e075da,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd817d4cdf22d5a47847991569e075da, type: 3}

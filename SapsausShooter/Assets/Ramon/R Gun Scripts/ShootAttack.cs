@@ -92,7 +92,7 @@ public class ShootAttack : MonoBehaviour
             currentSlot.ammoInMag -= Time.deltaTime;
             ammoScript.UpdateAmmo(currentSlot.ammoInMag);
 
-            freezeColObj.GetComponent<FreezeHitBox>().ableToDoShit = true;
+            freezeColObj.SetActive(true);
         }
     }
     void FireWeapon()
