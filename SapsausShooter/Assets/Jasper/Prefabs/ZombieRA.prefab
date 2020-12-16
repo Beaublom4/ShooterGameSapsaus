@@ -902,7 +902,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4342904933359717042}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.3153846, y: 0.8000001, z: 0.49769264}
+  m_LocalPosition: {x: 0, y: 0.772, z: 0.267}
   m_LocalScale: {x: 0.42043078, y: 0.09221538, z: 0.67231536}
   m_Children: []
   m_Father: {fileID: 7804006469807181428}
@@ -1162,7 +1162,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4795869917658826992}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.3153846, y: 0, z: 0.1538461}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.7692308, y: 0.7692308, z: 0.7692308}
   m_Children: []
   m_Father: {fileID: 7804006469807181428}
@@ -2006,6 +2006,11 @@ MonoBehaviour:
   - {fileID: 2189581674891713982}
   - {fileID: 7751079687360029560}
   isDeath: 0
+  sounds:
+    minSoundRange: 0.2
+    maxSoundRange: 0.2
+    trigger: {fileID: 0}
+    attack: {fileID: 0}
   chanceDrop: 50
   chanceDubbleDrop: 10
   ammoDrops:

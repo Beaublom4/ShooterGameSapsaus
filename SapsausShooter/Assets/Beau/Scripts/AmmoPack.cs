@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class AmmoPack : MonoBehaviour
 {
@@ -6,6 +7,9 @@ public class AmmoPack : MonoBehaviour
     public int minAmmo, maxAmmo;
     public AmmoCounter ammoScript;
     public WeaponSelector selectScript;
+
+    public AudioSource pickUpSound;
+    public float soundRange;
 
     private void Start()
     {
@@ -68,5 +72,14 @@ public class AmmoPack : MonoBehaviour
             }
             Destroy(gameObject);
         }
+    }
+    public IEnumerator PlayAudioSource(AudioSource source)
+    {
+        float standardVolume = source.volume;
+        float standardPitch = source.pitch;
+        source.volume = Random.Range(standardVolume - soundRange, standardVolume + soundRange);
+        source.pitch = Random.Range(standardPitch - soundRange, standardPitch + soundRange);
+        source.Play();
+        yield return new WaitForSeconds(source.clip.length);
     }
 }

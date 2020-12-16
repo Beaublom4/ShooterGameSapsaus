@@ -18,6 +18,8 @@ public class WeaponSelector : MonoBehaviour
     public Image weaponImage;
     public Animator playerAnim;
 
+    GameObject weaponInHand;
+
     IEnumerator coroutine;
     public TextMeshProUGUI nameText;
     public float displayNameTime;
@@ -31,8 +33,8 @@ public class WeaponSelector : MonoBehaviour
     [System.Serializable]
     public class WeaponLocations
     {
-        public GameObject shotgun;
-        public Transform shotgunLoc;
+        public GameObject pistol, shotgun;
+        public Transform pistolLoc, shotgunLoc;
     }
     public GameObject hand;
     public WeaponLocations weaponLocations;
@@ -142,6 +144,10 @@ public class WeaponSelector : MonoBehaviour
         {
             shootScript.weapon = null;
             meleeScript.weapon = null;
+
+            if (weaponInHand != null)
+                Destroy(weaponInHand);
+
             if (slotscript.gunWeapon != null)
             {
                 selectedSlotScript = slotscript;
@@ -162,6 +168,9 @@ public class WeaponSelector : MonoBehaviour
                 if (slotscript.gunWeapon.gunType == "Pistol")
                 {
                     ammoCounterScript.UpdatePistolAmmoLeft();
+                    GameObject g = Instantiate(weaponLocations.pistol, weaponLocations.shotgunLoc.transform.position, weaponLocations.shotgunLoc.rotation, hand.transform);
+                    weaponInHand = g;
+                    g.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
                 }
                 else if (slotscript.gunWeapon.gunType == "Sniper")
                 {
@@ -170,7 +179,9 @@ public class WeaponSelector : MonoBehaviour
                 else if (slotscript.gunWeapon.gunType == "Shotgun")
                 {
                     ammoCounterScript.UpdateShotgunAmmoLeft();
-                    Instantiate(weaponLocations.shotgun, weaponLocations.shotgunLoc.transform.position, weaponLocations.shotgunLoc.rotation, hand.transform);
+                    GameObject g = Instantiate(weaponLocations.shotgun, weaponLocations.shotgunLoc.transform.position, weaponLocations.shotgunLoc.rotation, hand.transform);
+                    weaponInHand = g;
+                    g.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
                 }
                 else if (slotscript.gunWeapon.gunType == "Launcher")
                 {

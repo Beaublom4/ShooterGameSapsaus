@@ -36912,11 +36912,6 @@ PrefabInstance:
       objectReference: {fileID: 1946389843}
     - target: {fileID: 5857392905529847191, guid: 7a5e7907c140ff24082a1bce753ce327,
         type: 3}
-      propertyPath: scattering
-      value: 370
-      objectReference: {fileID: 0}
-    - target: {fileID: 5857392905529847191, guid: 7a5e7907c140ff24082a1bce753ce327,
-        type: 3}
       propertyPath: zombieAnimator
       value: 
       objectReference: {fileID: 209624217}
@@ -40466,11 +40461,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4475310227875969079, guid: 8bdc3ed1e006c224797b174d03b6bf0a,
-        type: 3}
-      propertyPath: ammoInMag
-      value: 1000
-      objectReference: {fileID: 0}
     - target: {fileID: 5238231314656614426, guid: 8bdc3ed1e006c224797b174d03b6bf0a,
         type: 3}
       propertyPath: m_Name
@@ -54949,11 +54939,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shotgun
       objectReference: {fileID: 0}
-    - target: {fileID: 4912182362659050485, guid: 7d3fb976731dfd841a6c183ce35fd430,
-        type: 3}
-      propertyPath: ammoInMag
-      value: 50
-      objectReference: {fileID: 0}
     - target: {fileID: 5227300210623219339, guid: 7d3fb976731dfd841a6c183ce35fd430,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -62757,11 +62742,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sniper
       objectReference: {fileID: 0}
-    - target: {fileID: 5632102412515276665, guid: 9f52fbc56e4b8914fbbf0dc55c0d77f2,
-        type: 3}
-      propertyPath: ammoInMag
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 7177456817603773177, guid: 9f52fbc56e4b8914fbbf0dc55c0d77f2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -62984,6 +62964,31 @@ PrefabInstance:
       propertyPath: moneyManagerScript
       value: 
       objectReference: {fileID: 1627604936}
+    - target: {fileID: 7932595841917631340, guid: 344f823c1a9753447ab0f455c4f7d7bb,
+        type: 3}
+      propertyPath: shotgunAmmo
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7932595841917631340, guid: 344f823c1a9753447ab0f455c4f7d7bb,
+        type: 3}
+      propertyPath: sniperAmmo
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7932595841917631340, guid: 344f823c1a9753447ab0f455c4f7d7bb,
+        type: 3}
+      propertyPath: launcherAmmo
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7932595841917631340, guid: 344f823c1a9753447ab0f455c4f7d7bb,
+        type: 3}
+      propertyPath: specialAmmo
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7932595841917631340, guid: 344f823c1a9753447ab0f455c4f7d7bb,
+        type: 3}
+      propertyPath: pistolAmmo
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 7932595841917631342, guid: 344f823c1a9753447ab0f455c4f7d7bb,
         type: 3}
       propertyPath: player
@@ -63034,12 +63039,6 @@ PrefabInstance:
       propertyPath: weaponLocations.shotgunLoc
       value: 
       objectReference: {fileID: 1160524915}
-    - target: {fileID: 7932595841917631342, guid: 344f823c1a9753447ab0f455c4f7d7bb,
-        type: 3}
-      propertyPath: weaponLocations.shotgun
-      value: 
-      objectReference: {fileID: 4882123496227200049, guid: 7d3fb976731dfd841a6c183ce35fd430,
-        type: 3}
     - target: {fileID: 7932595842568638508, guid: 344f823c1a9753447ab0f455c4f7d7bb,
         type: 3}
       propertyPath: m_AnchorMax.x

@@ -16,6 +16,7 @@ public class Weapon : ScriptableObject
     public float damageOverTime;
     public float damageOverTimeTime = 2;
     public float critMultiplier;
+    public float recoil;
 
     public bool canStun;
     public float stunTime;

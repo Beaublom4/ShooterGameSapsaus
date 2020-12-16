@@ -3622,8 +3622,11 @@ MonoBehaviour:
       m_FadeDuration: 0.1
   hand: {fileID: 0}
   weaponLocations:
-    shotgun: {fileID: 5507285539958129479, guid: 3d705c7b09001b2468f79ecd0efdea41,
+    pistol: {fileID: 5238231314656614426, guid: 8bdc3ed1e006c224797b174d03b6bf0a,
       type: 3}
+    shotgun: {fileID: 4882123496227200049, guid: 7d3fb976731dfd841a6c183ce35fd430,
+      type: 3}
+    pistolLoc: {fileID: 0}
     shotgunLoc: {fileID: 0}
 --- !u!114 &7932595841917631340
 MonoBehaviour:

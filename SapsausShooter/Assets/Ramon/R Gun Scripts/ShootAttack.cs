@@ -4,6 +4,17 @@ using TMPro;
 
 public class ShootAttack : MonoBehaviour
 {
+    [System.Serializable]
+    public class Sounds
+    {
+        [HideInInspector] public float pistolSoundVolume, shotgunSoundVolume;
+        public AudioSource pistolShoot, pistolEmpty, pistolReload;
+        public AudioSource shotgunShoot, shotgunEmpty, shotgunReload;
+
+        [HideInInspector] public float hitmarkerSoundVolume;
+        public AudioSource hitmarker, headshot;
+    }
+
     public GameObject impactEffect, impactEffect1, impactEffect2, impactEffect3;
     public Weapon weapon;
     public Camera fpsCam;
@@ -38,15 +49,22 @@ public class ShootAttack : MonoBehaviour
     public float addAmmo;
     public Slot currentSlot;
     public AmmoCounter ammoScript;
+    public MouseLook camScript;
 
     public float displayTimeHitMarker;
     public IEnumerator coroutine;
     public IEnumerator colCoroutine;
+
+    public Sounds sounds;
     void Start()
     {
         //currentMagCount = weapon.magCount;
         coroutine = HitMarker();
         canShoot = true;
+
+        sounds.pistolSoundVolume = sounds.pistolReload.volume;
+        sounds.shotgunSoundVolume = sounds.shotgunReload.volume;
+        sounds.hitmarkerSoundVolume = sounds.hitmarker.volume;
 
         //freezeSpeed = spAnimator.GetFloat("speed");
     }
@@ -72,19 +90,19 @@ public class ShootAttack : MonoBehaviour
     }
     void FireWeapon()
     {
-        if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire && weapon != null)
-        {
-            ShootWeapon();
-
-            SoundWave();
-        }
-
         if (Input.GetButtonDown("Fire1") && Time.time >= nextTimeToFire && weapon != null)
         {
             ShootWeapon();
 
             SoundWave();
         }
+
+        //if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire && weapon != null)
+        //{
+        //    ShootWeapon();
+
+        //    SoundWave();
+        //}
     }
     public void ShotgunScatter()
     {
@@ -124,6 +142,10 @@ public class ShootAttack : MonoBehaviour
                 {
                     addAmmo = ammoScript.pistolAmmo;
                 }
+                sounds.pistolReload.volume = Random.Range(sounds.pistolSoundVolume - .1f, sounds.pistolSoundVolume + .1f);
+                sounds.pistolReload.pitch = Random.Range(1 - .1f, 1 + .1f);
+                sounds.pistolReload.Play();
+
                 ammoScript.pistolAmmo -= addAmmo;
                 ammoScript.UpdatePistolAmmoLeft();
             }
@@ -147,6 +169,10 @@ public class ShootAttack : MonoBehaviour
                 {
                     addAmmo = ammoScript.shotgunAmmo;
                 }
+                sounds.shotgunReload.volume = Random.Range(sounds.shotgunSoundVolume - .1f, sounds.shotgunSoundVolume + .1f);
+                sounds.shotgunReload.pitch = Random.Range(1 - .1f, 1 + .1f);
+                sounds.shotgunReload.Play();
+
                 ammoScript.shotgunAmmo -= addAmmo;
                 ammoScript.UpdateShotgunAmmoLeft();
             }
@@ -223,21 +249,41 @@ public class ShootAttack : MonoBehaviour
     }
     void ShootWeapon()
     {
+        nextTimeToFire = Time.time + 1f / weapon.weaponPrefab.GetComponent<GunScript>().weapon.fireRate;
+        
         if (currentSlot.ammoInMag <= 0 || weaponWheel.activeSelf == true)
         {
+            if(currentSlot.ammoInMag <= 0)
+            {
+                if(currentSlot.gunWeapon.gunType == "Pistol")
+                {
+                    sounds.pistolEmpty.volume = Random.Range(sounds.pistolSoundVolume - .1f, sounds.pistolSoundVolume + .1f);
+                    sounds.pistolEmpty.pitch = Random.Range(1 - .1f, 1 + .1f);
+                    sounds.pistolEmpty.Play();
+                }
+                else if(currentSlot.gunWeapon.gunType == "Shotgun")
+                {
+                    sounds.shotgunEmpty.volume = Random.Range(sounds.shotgunSoundVolume - .1f, sounds.shotgunSoundVolume + .1f);
+                    sounds.shotgunEmpty.pitch = Random.Range(1 - .1f, 1 + .1f);
+                    sounds.shotgunEmpty.Play();
+                }
+            }
             return;
         }
 
-        nextTimeToFire = Time.time + 1f / weapon.weaponPrefab.GetComponent<GunScript>().weapon.fireRate;
+        camScript.xRotation -= weapon.recoil;
 
         if (weapon.weaponPrefab.GetComponent<GunScript>().weapon.gunType == "Pistol")
         {
             //pistolAnimation.SetBool("Shoot", true);
 
+            sounds.pistolShoot.volume = Random.Range(sounds.pistolSoundVolume - .2f, sounds.pistolSoundVolume + .1f);
+            sounds.pistolShoot.pitch = Random.Range(1 - .1f, 1 + .1f);
+            sounds.pistolShoot.Play();
             currentSlot.ammoInMag--;
             ammoScript.UpdateAmmo(currentSlot.ammoInMag);
+            weaponHand.GetComponentInChildren<ParticleSystem>().Play();
 
-            //weapon.muzzleFlash.Play();
             RaycastHit hit;
             if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, 1000, canHit, QueryTriggerInteraction.Ignore))
             {
@@ -246,15 +292,7 @@ public class ShootAttack : MonoBehaviour
                     if (hit.collider.GetComponent<BodyHit>())
                     {
                         hit.collider.GetComponent<BodyHit>().HitPart(weapon, hit.point);
-                        if (hit.collider.GetComponent<BodyHit>().bodyType == 1)
-                        {
-                            hitMarkerObj = redHitMarkerObj;
-                        }
-                        else
-                            hitMarkerObj = whiteHitMarkerObj;
-                        StopCoroutine(coroutine);
-                        coroutine = HitMarker();
-                        StartCoroutine(coroutine);
+                        HitMarker(hit.collider.gameObject);
                     }
                 }
 
@@ -271,12 +309,16 @@ public class ShootAttack : MonoBehaviour
 
             //shotgunAnimation.SetBool("Shoot", true);
 
+            sounds.shotgunShoot.volume = Random.Range(sounds.shotgunSoundVolume - .2f, sounds.shotgunSoundVolume + .1f);
+            sounds.shotgunShoot.pitch = Random.Range(1 - .1f, 1 + .1f);
+            sounds.shotgunShoot.Play();
+            weaponHand.GetComponentInChildren<ParticleSystem>().Play();
+
             currentSlot.ammoInMag--;
             ammoScript.UpdateAmmo(currentSlot.ammoInMag);
 
             for (int i = 0; i < Mathf.Max(1, shotPellets); i++)
             {
-                weaponHand.GetComponentInChildren<ParticleSystem>().Play();
                 RaycastHit hit;
                 if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, 1000, canHit, QueryTriggerInteraction.Ignore))
                 {
@@ -286,15 +328,7 @@ public class ShootAttack : MonoBehaviour
                         {
                             hit.collider.GetComponent<BodyHit>().HitPart(weapon, hit.point);
 
-                            if (hit.collider.GetComponent<BodyHit>().bodyType == 1)
-                            {
-                                hitMarkerObj = redHitMarkerObj;
-                            }
-                            else
-                                hitMarkerObj = whiteHitMarkerObj;
-                            StopCoroutine(coroutine);
-                            coroutine = HitMarker();
-                            StartCoroutine(coroutine);
+                            HitMarker(hit.collider.gameObject);
                         }
                     }
                     //GameObject impactGO = Instantiate(weapon.impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
@@ -321,15 +355,7 @@ public class ShootAttack : MonoBehaviour
                     {
                         hit.collider.GetComponent<BodyHit>().HitPart(weapon, hit.point);
 
-                        if (hit.collider.GetComponent<BodyHit>().bodyType == 1)
-                        {
-                            hitMarkerObj = redHitMarkerObj;
-                        }
-                        else
-                            hitMarkerObj = whiteHitMarkerObj;
-                        StopCoroutine(coroutine);
-                        coroutine = HitMarker();
-                        StartCoroutine(coroutine);
+                        HitMarker(hit.collider.gameObject);
                     }
                 }
 
@@ -369,5 +395,25 @@ public class ShootAttack : MonoBehaviour
 
             //freezegunAnimation.SetBool("Shoot", false);
         }
+    }
+    public void HitMarker(GameObject obj)
+    {
+        if (obj.GetComponent<BodyHit>().bodyType == 1)
+        {
+            hitMarkerObj = redHitMarkerObj;
+            sounds.headshot.volume = Random.Range(sounds.hitmarkerSoundVolume - .1f, sounds.hitmarkerSoundVolume + .1f);
+            sounds.headshot.pitch = Random.Range(1 - .1f, 1 + .1f);
+            sounds.headshot.Play();
+        }
+        else
+        {
+            hitMarkerObj = whiteHitMarkerObj;
+            sounds.hitmarker.volume = Random.Range(sounds.hitmarkerSoundVolume - .1f, sounds.hitmarkerSoundVolume + .1f);
+            sounds.hitmarker.pitch = Random.Range(1 - .1f, 1 + .1f);
+            sounds.hitmarker.Play();
+        }
+        StopCoroutine(coroutine);
+        coroutine = HitMarker();
+        StartCoroutine(coroutine);
     }
 }

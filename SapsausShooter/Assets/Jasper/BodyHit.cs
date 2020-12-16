@@ -16,7 +16,7 @@ public class BodyHit : MonoBehaviour
     }
     public void HitPart(Weapon weapon, Vector3 hitLoc)
     {
-        print("hit");
+        print(hitLoc);
         enemyScript.DoDamage(weapon, bodyType, hitLoc);
     }
 }
