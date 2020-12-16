@@ -28,7 +28,12 @@ Material:
         m_Texture: {fileID: 2800000, guid: ddaac10f3ae959b45987511cdb270ba3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    m_Floats: []
+    - Texture2D_957B75DA:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_DFA62349: 1.12
     m_Colors:
     - Color_B2E37F2E: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []
