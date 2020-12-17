@@ -16,6 +16,7 @@ public class CPgameObject : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             cp.lastCheckPointPos = transform.position;
+            print("checkpoint touched");
         }
     }
 }
