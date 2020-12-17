@@ -15,6 +15,7 @@ public class PlayerPos : MonoBehaviour
 
     void Update()
     {
+        //om te kunnen testen of checkpoints werken
         if (Input.GetKeyDown(KeyCode.Space))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
