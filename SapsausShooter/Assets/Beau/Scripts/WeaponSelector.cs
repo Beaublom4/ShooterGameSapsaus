@@ -17,6 +17,7 @@ public class WeaponSelector : MonoBehaviour
     AmmoCounter ammoCounterScript;
     public Image weaponImage;
     public Animator playerAnim;
+    public LayerMask hittableLayer;
 
     GameObject weaponInHand;
 
@@ -70,7 +71,7 @@ public class WeaponSelector : MonoBehaviour
             if (shootScript.isReloading == false)
             {
                 RaycastHit hit;
-                if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, pickUpRange))
+                if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, pickUpRange, hittableLayer))
                 {
                     if (hit.collider.gameObject.tag == "Weapon")
                     {
@@ -169,6 +170,7 @@ public class WeaponSelector : MonoBehaviour
                 {
                     ammoCounterScript.UpdatePistolAmmoLeft();
                     GameObject g = Instantiate(weaponLocations.pistol, weaponLocations.shotgunLoc.transform.position, weaponLocations.shotgunLoc.rotation, hand.transform);
+                    g.layer = 0;
                     weaponInHand = g;
                     g.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
                 }

@@ -97,6 +97,8 @@ public class ShootAttack : MonoBehaviour
     }
     void FireWeapon()
     {
+        if (weaponWheel.activeSelf == true)
+            return;
         if(Input.GetButtonDown("Fire1") && Time.time >= nextTimeToFire && weapon != null)
         {
             ShootWeapon();
