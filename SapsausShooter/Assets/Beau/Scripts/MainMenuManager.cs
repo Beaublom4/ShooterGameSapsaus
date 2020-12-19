@@ -2,9 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
+using TMPro;
 
 public class MainMenuManager : MonoBehaviour
 {
+    [System.Serializable]
+    public class optionsThings
+    {
+        public Slider[] soundSliders;
+        public Slider sensitivitySlider;
+        public Toggle fullScreenToggle;
+        public TMP_Dropdown resDropdown;
+    }
     public GameObject mainMenuPanel, optionsPanel, exitGamePanel;
     public GameObject mainCamPos, optionsCamPos, exitGameCamPos;
     public GameObject mainCamLookAt, optionsCamLookAt, exitGameLookAt;
@@ -14,7 +24,18 @@ public class MainMenuManager : MonoBehaviour
     public float camMoveSpeed, camRotSpeed;
     public Transform wantedPos, wantedLookAt;
 
+    public AudioMixer audioMixer;
+
     public Vector3 moveButtonToPos;
+
+    public TextMeshProUGUI resText;
+
+    public optionsThings options;
+    private void Start()
+    {
+        PreScene.defaultRes = Screen.currentResolution;
+        resText.text = PreScene.defaultRes.width.ToString() + "x" + PreScene.defaultRes.height.ToString();
+    }
     private void Update()
     {
         if(moveToPos == true)
@@ -78,6 +99,57 @@ public class MainMenuManager : MonoBehaviour
     {
         print("Quit Game");
         Application.Quit();
+    }
+    public void SliderChange(SliderInfo slider)
+    {
+        audioMixer.SetFloat(slider.group.name, Mathf.Log10(slider.slider.value) * 20);
+    }
+    public void SliderUp(AudioSource audio)
+    {
+        audio.Play();
+    }
+    public void SensSliderChange()
+    {
+
+    }
+    public void FullScreenToggle(Toggle toggle)
+    {
+        if(toggle.isOn == true)
+        {
+            print("Full screen");
+            Screen.fullScreenMode = FullScreenMode.ExclusiveFullScreen;
+        }
+        else if(toggle.isOn == false)
+        {
+            print("Windowed");
+            Screen.fullScreenMode = FullScreenMode.Windowed;
+        }
+    }
+    public void ScreenResChange(TMP_Dropdown dropdown)
+    {
+        if(dropdown.value == 0)
+        {
+            Screen.SetResolution(1920, 1080, Screen.fullScreenMode);
+        }
+        else if(dropdown.value == 1)
+        {
+            Screen.SetResolution(1366, 768, Screen.fullScreenMode);
+        }
+        else if (dropdown.value == 2)
+        {
+            Screen.SetResolution(800, 600, Screen.fullScreenMode);
+        }
+        print(Screen.currentResolution);
+    }
+    public void ResetSettings()
+    {
+        print("Reset Settings");
+        foreach(Slider s in options.soundSliders)
+        {
+            s.value = 1;
+        }
+        options.fullScreenToggle.isOn = true;
+        options.resDropdown.value = 0;
     }
     void DisableAllPanels()
     {
