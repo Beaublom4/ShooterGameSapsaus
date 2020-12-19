@@ -11,6 +11,7 @@ public class MainMenuManager : MonoBehaviour
     public class optionsThings
     {
         public Slider[] soundSliders;
+        public GameObject[] soundSlidersObj;
         public Slider sensitivitySlider;
         public Toggle fullScreenToggle;
         public TMP_Dropdown resDropdown;
@@ -23,6 +24,7 @@ public class MainMenuManager : MonoBehaviour
     public bool moveToPos;
     public float camMoveSpeed, camRotSpeed;
     public Transform wantedPos, wantedLookAt;
+    public TextMeshProUGUI sensNumber;
 
     public AudioMixer audioMixer;
 
@@ -31,8 +33,38 @@ public class MainMenuManager : MonoBehaviour
     public TextMeshProUGUI resText;
 
     public optionsThings options;
+
+    public static bool devMode;
     private void Start()
     {
+        if (PlayerPrefs.GetInt("HasPlayerPrefs") == 1)
+        {
+            print("Player prefs found");
+            foreach (GameObject g in options.soundSlidersObj)
+            {
+                g.GetComponentInChildren<Slider>().value = PlayerPrefs.GetFloat(g.GetComponent<SliderInfo>().group.name);
+            }
+            options.sensitivitySlider.value = PlayerPrefs.GetFloat("Sensitivity");
+            sensNumber.text = (options.sensitivitySlider.value / 100).ToString("F1");
+            if (PlayerPrefs.GetInt("DevMode") == 1)
+                devMode = true;
+            else
+                devMode = false;
+        }
+        else
+        {
+            foreach (GameObject g in options.soundSlidersObj)
+            {
+                PlayerPrefs.SetFloat(g.GetComponent<SliderInfo>().group.name, 1);
+            }
+            PlayerPrefs.SetFloat("Sensitivity", options.sensitivitySlider.value);
+            sensNumber.text = (options.sensitivitySlider.value / 100).ToString("F1");
+            PlayerPrefs.SetInt("DevMode", 0);
+
+            PlayerPrefs.SetInt("HasPlayerPrefs", 1);
+            print("Player prefs made");
+        }
+
         PreScene.defaultRes = Screen.currentResolution;
         resText.text = PreScene.defaultRes.width.ToString() + "x" + PreScene.defaultRes.height.ToString();
     }
@@ -98,19 +130,22 @@ public class MainMenuManager : MonoBehaviour
     public void QuitGame()
     {
         print("Quit Game");
+        PlayerPrefs.Save();
         Application.Quit();
     }
     public void SliderChange(SliderInfo slider)
     {
         audioMixer.SetFloat(slider.group.name, Mathf.Log10(slider.slider.value) * 20);
+        PlayerPrefs.SetFloat(slider.group.name, slider.slider.value);
     }
     public void SliderUp(AudioSource audio)
     {
         audio.Play();
     }
-    public void SensSliderChange()
+    public void SensSliderChange(SliderInfo slider)
     {
-
+        PlayerPrefs.SetFloat("Sensitivity", slider.slider.value);
+        sensNumber.text = (slider.slider.value / 100).ToString("F1");
     }
     public void FullScreenToggle(Toggle toggle)
     {
@@ -141,15 +176,34 @@ public class MainMenuManager : MonoBehaviour
         }
         print(Screen.currentResolution);
     }
+    public void DeveloperMode(Toggle toggle)
+    {
+        if(toggle.isOn == true)
+        {
+            devMode = true;
+            PlayerPrefs.SetInt("DevMode", 1);
+        }
+        else
+        {
+            devMode = false;
+            PlayerPrefs.SetInt("DevMode", 0);
+        }
+    }
     public void ResetSettings()
     {
         print("Reset Settings");
-        foreach(Slider s in options.soundSliders)
+        foreach (GameObject g in options.soundSlidersObj)
         {
-            s.value = 1;
+            g.GetComponentInChildren<Slider>().value = 1;
+            PlayerPrefs.SetFloat(g.GetComponent<SliderInfo>().group.name, g.GetComponentInChildren<Slider>().value);
         }
+        options.sensitivitySlider.value = 250;
+        sensNumber.text = (options.sensitivitySlider.value / 100).ToString("F1");
+        PlayerPrefs.SetFloat("Sensitivity", options.sensitivitySlider.value);
         options.fullScreenToggle.isOn = true;
         options.resDropdown.value = 0;
+        devMode = false;
+        PlayerPrefs.SetInt("DevMode", 0);
     }
     void DisableAllPanels()
     {
