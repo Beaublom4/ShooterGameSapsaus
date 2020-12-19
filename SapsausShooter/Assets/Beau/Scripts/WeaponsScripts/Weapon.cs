@@ -18,6 +18,8 @@ public class Weapon : ScriptableObject
     public float critMultiplier;
     public float recoil;
 
+    public float lifeStealPercentage;
+
     public bool canStun;
     public float stunTime;
     public bool canSlow;
