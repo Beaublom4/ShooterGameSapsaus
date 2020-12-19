@@ -319,6 +319,10 @@ public class Enemy : MonoBehaviour
         {
             calculatedDamage = calculatedDamage * weapon.critMultiplier;
         }
+        if (weapon.lifeStealPercentage > 0)
+        {
+            playerObj.GetComponent<HealthManager>().health += calculatedDamage * (weapon.lifeStealPercentage / 100);
+        }
         GameObject g = Instantiate(hitNumPrefab, hitLoc, Quaternion.identity, null);
         g.GetComponent<DmgNumberShow>().UpdateNumber(calculatedDamage);
         health -= calculatedDamage;

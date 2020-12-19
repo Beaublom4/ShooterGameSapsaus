@@ -10,26 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2cba9e37e8d2194eb81d9825765e019, type: 3}
-  m_Name: MailBox 1
+  m_Name: Scythe
   m_EditorClassIdentifier: 
-  weaponPrefab: {fileID: 1678117413832924282, guid: 6206d2318e6a4bf4fa4a9cf1900fab18,
+  weaponPrefab: {fileID: 3687603999906367006, guid: 04e0249df13073a439a6cfd1de481c75,
     type: 3}
   type: Melee
-  weaponName: MailBox
-  weaponDescription: The best melee weapon right out of the garden.
-  uiSprite: {fileID: 0}
-  damage: 50
+  weaponName: Scythe
+  weaponDescription: Lets kill those suckers like we mow the grass
+  uiSprite: {fileID: 21300000, guid: 490ccb35db9498c47a94ad110c1f3634, type: 3}
+  damage: 10
   damageDropOverDist: 0
-  damageOverTime: 10
-  damageOverTimeTime: 5
+  damageOverTime: 0
+  damageOverTimeTime: 2
   critMultiplier: 0
   recoil: 0
-  lifeStealPercentage: 0
-  canStun: 1
-  stunTime: 5
+  lifeStealPercentage: 20
+  canStun: 0
+  stunTime: 0
   canSlow: 0
   slowTimesNumber: 0
   slowTime: 0
-  hitBox: {fileID: 8797601947614856193, guid: 7a8274cabe5fa9748acaa97a3dca5dfa, type: 3}
+  hitBox: {fileID: 3776177821397337149, guid: 92fe0bc4e48189b46b935105fb013a8c, type: 3}
   hitBoxForEnemy: {fileID: 0}
   knockBack: 20

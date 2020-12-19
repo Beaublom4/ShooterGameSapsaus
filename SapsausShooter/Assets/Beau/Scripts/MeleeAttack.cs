@@ -14,7 +14,11 @@ public class MeleeAttack : MonoBehaviour
     Transform wantedLoc, wantedLookAt;
     public bool canMelee = true, isReturning;
     bool moveCam;
+    public MouseLook camScript;
+    public Animator playerAnim;
     
+    public GameObject scytheParticlesParent, mailboxParticlesParent;
+
     public LayerMask ignoreLayer;
     public RaycastHit hit;
 
@@ -40,7 +44,7 @@ public class MeleeAttack : MonoBehaviour
                         ammoScript.UpdateMeleeAmmo(currentSlot.ammoInMag);
 
                         canMelee = false;
-                        mainCam.GetComponent<MouseLook>().enabled = !enabled;
+                        camScript.enabled = !enabled;
                         GetComponent<Movement>().enabled = !enabled;
 
                         for (int i = 0; i < meleeCamPos.Length; i++)
@@ -67,7 +71,7 @@ public class MeleeAttack : MonoBehaviour
         mainCam.transform.LookAt(wantedLookAt);
         if(Vector3.Distance(mainCam.transform.position, wantedLoc.transform.position) <= .1f)
         {
-            //moveCam = false;
+            moveCam = false;
             if(isReturning == true)
             {
                 isReturning = false;
@@ -77,8 +81,9 @@ public class MeleeAttack : MonoBehaviour
     }
     void ResetMelee()
     {
-        mainCam.GetComponent<MouseLook>().enabled = enabled;
+        camScript.enabled = enabled;
         GetComponent<Movement>().enabled = enabled;
+        mainCam.transform.localRotation = Quaternion.Euler(Vector3.zero);
     }
     void DoHitBox()
     {
@@ -96,9 +101,27 @@ public class MeleeAttack : MonoBehaviour
     }
     IEnumerator MeleeTiming()
     {
+        playerAnim.SetLayerWeight(playerAnim.GetLayerIndex("GunLayer"), 0);
+        if (weapon.weaponName == "Scythe")
+        {
+            playerAnim.SetTrigger("MeleeHitS");
+            foreach (Transform child in scytheParticlesParent.transform)
+            {
+                if (child.GetComponent<ParticleSystem>())
+                {
+                    child.GetComponent<ParticleSystem>().Play();
+                }
+            }
+        }
+        else if(weapon.weaponName == "MailBox")
+        {
+            playerAnim.SetTrigger("MeleeHit");
+            StartCoroutine(playVFX(mailboxParticlesParent, .5f));
+        }
         DoHitBox();
         yield return new WaitForSeconds(meleeDuration);
 
+        playerAnim.SetLayerWeight(playerAnim.GetLayerIndex("GunLayer"), 1);
         DestroyHitBox();
 
         wantedLoc = mainCamPos;
@@ -106,5 +129,16 @@ public class MeleeAttack : MonoBehaviour
         moveCam = true;
         yield return new WaitForSeconds(2);
         canMelee = true;
+    }
+    IEnumerator playVFX(GameObject parent, float time)
+    {
+        yield return new WaitForSeconds(time);
+        foreach (Transform child in parent.transform)
+        {
+            if (child.GetComponent<ParticleSystem>())
+            {
+                child.GetComponent<ParticleSystem>().Play();
+            }
+        }
     }
 }

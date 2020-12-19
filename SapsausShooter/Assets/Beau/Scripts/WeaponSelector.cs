@@ -34,8 +34,8 @@ public class WeaponSelector : MonoBehaviour
     [System.Serializable]
     public class WeaponLocations
     {
-        public GameObject pistol, shotgun;
-        public Transform pistolLoc, shotgunLoc;
+        public GameObject pistol, shotgun, mailBox, scythe;
+        public Transform gunLoc;
     }
     public GameObject hand;
     public WeaponLocations weaponLocations;
@@ -149,6 +149,10 @@ public class WeaponSelector : MonoBehaviour
             if (weaponInHand != null)
                 Destroy(weaponInHand);
 
+            playerAnim.SetBool("Melee", false);
+            playerAnim.SetBool("Gun", false);
+            playerAnim.SetLayerWeight(playerAnim.GetLayerIndex("Melee"), 0);
+
             if (slotscript.gunWeapon != null)
             {
                 selectedSlotScript = slotscript;
@@ -169,7 +173,7 @@ public class WeaponSelector : MonoBehaviour
                 if (slotscript.gunWeapon.gunType == "Pistol")
                 {
                     ammoCounterScript.UpdatePistolAmmoLeft();
-                    GameObject g = Instantiate(weaponLocations.pistol, weaponLocations.shotgunLoc.transform.position, weaponLocations.shotgunLoc.rotation, hand.transform);
+                    GameObject g = Instantiate(weaponLocations.pistol, weaponLocations.gunLoc.transform.position, weaponLocations.gunLoc.rotation, hand.transform);
                     g.layer = 0;
                     weaponInHand = g;
                     g.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
@@ -181,7 +185,8 @@ public class WeaponSelector : MonoBehaviour
                 else if (slotscript.gunWeapon.gunType == "Shotgun")
                 {
                     ammoCounterScript.UpdateShotgunAmmoLeft();
-                    GameObject g = Instantiate(weaponLocations.shotgun, weaponLocations.shotgunLoc.transform.position, weaponLocations.shotgunLoc.rotation, hand.transform);
+                    GameObject g = Instantiate(weaponLocations.shotgun, weaponLocations.gunLoc.transform.position, weaponLocations.gunLoc.rotation, hand.transform);
+                    g.layer = 0;
                     weaponInHand = g;
                     g.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
                 }
@@ -200,6 +205,22 @@ public class WeaponSelector : MonoBehaviour
                 weaponImage.sprite = slotscript.meleeWeapon.uiSprite;
 
                 playerAnim.SetBool("Melee", true);
+                playerAnim.SetLayerWeight(playerAnim.GetLayerIndex("Melee"), 1);
+
+                if(slotscript.meleeWeapon.weaponName == "MailBox")
+                {
+                    GameObject g = Instantiate(weaponLocations.mailBox, weaponLocations.gunLoc.transform.position, weaponLocations.gunLoc.rotation, hand.transform);
+                    g.layer = 0;
+                    weaponInHand = g;
+                    g.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+                }
+                else if(slotscript.meleeWeapon.weaponName == "Scythe")
+                {
+                    GameObject g = Instantiate(weaponLocations.scythe, weaponLocations.gunLoc.transform.position, weaponLocations.gunLoc.rotation, hand.transform);
+                    g.layer = 0;
+                    weaponInHand = g;
+                    g.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+                }
 
                 print(slotscript.meleeWeapon.weaponName);
                 meleeScript.currentSlot = slotscript;
