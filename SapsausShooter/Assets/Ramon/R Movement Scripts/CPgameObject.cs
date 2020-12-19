@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class CPgameObject : MonoBehaviour
 {
-    private Checkpoint cp;
+    Checkpoint checkpontManager;
 
     void Start()
     {
-        cp = GameObject.FindGameObjectWithTag("Checkpoint").GetComponent<Checkpoint>();
+        checkpontManager = GetComponentInParent<Checkpoint>();
+        print(checkpontManager);
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.gameObject.tag == ("Player"))
         {
-            cp.lastCheckPointPos = transform.position;
+            checkpontManager.lastCheckPointPos = transform.position;
             print("checkpoint touched");
         }
     }
