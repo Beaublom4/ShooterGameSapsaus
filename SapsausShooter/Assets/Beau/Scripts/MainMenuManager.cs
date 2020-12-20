@@ -40,6 +40,10 @@ public class MainMenuManager : MonoBehaviour
     public Movement movementScript;
     public bool inGame;
 
+    public GameObject loader;
+    public Slider loadingBar;
+    public TextMeshProUGUI loadingNum;
+
     public static bool devMode;
     private void Start()
     {
@@ -119,11 +123,23 @@ public class MainMenuManager : MonoBehaviour
     }
     public void StartNewGame()
     {
-
+        loader.SetActive(true);
+        StartCoroutine(LoadSceneAsync("BeauScene"));
     }
     public void LoadGame()
     {
 
+    }
+    IEnumerator LoadSceneAsync(string sceneName)
+    {
+        AsyncOperation async = SceneManager.LoadSceneAsync(sceneName);
+        while (!async.isDone)
+        {
+            float progress = Mathf.Clamp01(async.progress / 0.9f);
+            loadingBar.value = progress;
+            loadingNum.text = (progress * 100).ToString("F1") + "%";
+            yield return null;
+        }
     }
     public void Options()
     {
