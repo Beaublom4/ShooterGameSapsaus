@@ -20,7 +20,7 @@ public class ShootAttack : MonoBehaviour
     public Camera fpsCam;
     public Animator zombieAnimator;
     public GameObject areaColParent;
-    public GameObject whiteHitMarkerObj, redHitMarkerObj, hitMarkerObj, weaponWheel;
+    public GameObject whiteHitMarkerObj, redHitMarkerObj, hitMarkerObj, weaponWheel, optionsPanel;
     public Transform weaponHand;
 
     public FreezeHitBox freezeBox;
@@ -74,7 +74,7 @@ public class ShootAttack : MonoBehaviour
     }
     void Update()
     {
-        if (isReloading)
+        if (isReloading || weaponWheel.activeSelf == true || optionsPanel.activeSelf == true)
         {
             return;
         }

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class MainMenuManager : MonoBehaviour
     public GameObject mainCamPos, optionsCamPos, exitGameCamPos;
     public GameObject mainCamLookAt, optionsCamLookAt, exitGameLookAt;
 
+
     public GameObject cam;
     public bool moveToPos;
     public float camMoveSpeed, camRotSpeed;
@@ -33,6 +35,10 @@ public class MainMenuManager : MonoBehaviour
     public TextMeshProUGUI resText;
 
     public optionsThings options;
+    public GameObject optionsPanelObj;
+    public MouseLook camScript;
+    public Movement movementScript;
+    public bool inGame;
 
     public static bool devMode;
     private void Start()
@@ -46,6 +52,10 @@ public class MainMenuManager : MonoBehaviour
             }
             options.sensitivitySlider.value = PlayerPrefs.GetFloat("Sensitivity");
             sensNumber.text = (options.sensitivitySlider.value / 100).ToString("F1");
+            if(inGame == true)
+            {
+                camScript.mouseSensitivity = options.sensitivitySlider.value;
+            }
             if (PlayerPrefs.GetInt("DevMode") == 1)
                 devMode = true;
             else
@@ -70,7 +80,31 @@ public class MainMenuManager : MonoBehaviour
     }
     private void Update()
     {
-        if(moveToPos == true)
+        if(inGame == true)
+        {
+            if (Input.GetButtonDown("Cancel"))
+            {
+                if (optionsPanelObj.activeSelf == false)
+                {
+                    optionsPanelObj.SetActive(true);
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = true;
+
+                    movementScript.enabled = !enabled;
+                    camScript.enabled = !enabled;
+                }
+                else
+                {
+                    optionsPanelObj.SetActive(false);
+                    Cursor.lockState = CursorLockMode.Locked;
+                    Cursor.visible = false;
+
+                    movementScript.enabled = enabled;
+                    camScript.enabled = enabled;
+                }
+            }
+        }
+        if (moveToPos == true)
         {
             cam.transform.position = Vector3.Lerp(cam.transform.position, wantedPos.position, camMoveSpeed * Time.deltaTime);
             cam.transform.rotation = Quaternion.Lerp(cam.transform.rotation, wantedPos.rotation, camRotSpeed * Time.deltaTime);
@@ -146,6 +180,10 @@ public class MainMenuManager : MonoBehaviour
     {
         PlayerPrefs.SetFloat("Sensitivity", slider.slider.value);
         sensNumber.text = (slider.slider.value / 100).ToString("F1");
+        if (inGame == true)
+        {
+            camScript.mouseSensitivity = options.sensitivitySlider.value;
+        }
     }
     public void FullScreenToggle(Toggle toggle)
     {
@@ -204,6 +242,19 @@ public class MainMenuManager : MonoBehaviour
         options.resDropdown.value = 0;
         devMode = false;
         PlayerPrefs.SetInt("DevMode", 0);
+    }
+    public void BackToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+    public void Continue()
+    {
+        optionsPanelObj.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        movementScript.enabled = enabled;
+        camScript.enabled = enabled;
     }
     void DisableAllPanels()
     {

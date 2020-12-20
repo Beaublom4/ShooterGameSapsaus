@@ -7,7 +7,7 @@ public class MeleeAttack : MonoBehaviour
 
     [HideInInspector] public Slot currentSlot;
     public AmmoCounter ammoScript;
-    public GameObject mainCam, weaponWheel;
+    public GameObject mainCam, weaponWheel, optionsPanel;
     public Transform mainCamPos;
     public Transform[] meleeCamPos;
     public float camChangeSpeed = 5, meleeDuration;
@@ -37,7 +37,9 @@ public class MeleeAttack : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             if (currentSlot != null && currentSlot.ammoInMag > 0)
-                if (weaponWheel.activeSelf == false)
+                if (weaponWheel.activeSelf == false && optionsPanel.activeSelf == false)
+                {
+                    print("Dikke nigga");
                     if (weapon != null && canMelee == true)
                     {
                         currentSlot.ammoInMag--;
@@ -63,6 +65,7 @@ public class MeleeAttack : MonoBehaviour
                         }
                         StartCoroutine(MeleeTiming());
                     }
+                }
         }
     }
     void SwitchCamPos()
