@@ -21,7 +21,9 @@ public class ShootAttack : MonoBehaviour
     public Animator zombieAnimator;
     public GameObject areaColParent;
     public GameObject whiteHitMarkerObj, redHitMarkerObj, hitMarkerObj, weaponWheel, optionsPanel;
+    public GameObject rocketPrefab;
     public Transform weaponHand;
+    public Transform myTransform;
 
     public FreezeHitBox freezeBox;
 
@@ -38,6 +40,7 @@ public class ShootAttack : MonoBehaviour
     public float timeUntilDefrozen = 5;
     public float dissolvingNumber;
     public float dissolveSpeed;
+    public float propulsionForce;
 
     public int shotPellets = 8;
 
@@ -67,6 +70,8 @@ public class ShootAttack : MonoBehaviour
         sounds.hitmarkerSoundVolume = sounds.hitmarker.volume;
 
         //freezeSpeed = spAnimator.GetFloat("speed");
+
+        SetInstantiateReferences();
     }
     void OnEnable()
     {
@@ -87,7 +92,7 @@ public class ShootAttack : MonoBehaviour
 
             StartCoroutine(Reload());
         }
-        if(doingFreeze == true)
+        if (doingFreeze == true)
         {
             currentSlot.ammoInMag -= Time.deltaTime;
             ammoScript.UpdateAmmo(currentSlot.ammoInMag);
@@ -99,14 +104,14 @@ public class ShootAttack : MonoBehaviour
     {
         if (weaponWheel.activeSelf == true)
             return;
-        if(Input.GetButtonDown("Fire1") && Time.time >= nextTimeToFire && weapon != null)
+        if (Input.GetButtonDown("Fire1") && Time.time >= nextTimeToFire && weapon != null)
         {
             ShootWeapon();
             SoundWave();
         }
-        if(currentSlot != null)
+        if (currentSlot != null)
         {
-            if(currentSlot.gunWeapon.gunType == "FreezeGun" && Input.GetButton("Fire1"))
+            if (currentSlot.gunWeapon.gunType == "FreezeGun" && Input.GetButton("Fire1"))
             {
                 if (currentSlot.ammoInMag > 0)
                     doingFreeze = true;
@@ -116,7 +121,7 @@ public class ShootAttack : MonoBehaviour
                     freezeColObj.GetComponent<FreezeHitBox>().ableToDoShit = false;
                 }
             }
-            else if(doingFreeze == true)
+            else if (doingFreeze == true)
             {
                 freezeColObj.GetComponent<FreezeHitBox>().ableToDoShit = false;
                 doingFreeze = false;
@@ -248,23 +253,23 @@ public class ShootAttack : MonoBehaviour
     }
     void ShootWeapon()
     {
-        if(currentSlot.gunWeapon.gunType == "FreezeGun")
+        if (currentSlot.gunWeapon.gunType == "FreezeGun")
         {
             return;
         }
         nextTimeToFire = Time.time + 1f / weapon.weaponPrefab.GetComponent<GunScript>().weapon.fireRate;
-        
+
         if (currentSlot.ammoInMag <= 0 || weaponWheel.activeSelf == true)
         {
-            if(currentSlot.ammoInMag <= 0)
+            if (currentSlot.ammoInMag <= 0)
             {
-                if(currentSlot.gunWeapon.gunType == "Pistol")
+                if (currentSlot.gunWeapon.gunType == "Pistol")
                 {
                     sounds.pistolEmpty.volume = Random.Range(sounds.pistolSoundVolume - .1f, sounds.pistolSoundVolume + .1f);
                     sounds.pistolEmpty.pitch = Random.Range(1 - .1f, 1 + .1f);
                     sounds.pistolEmpty.Play();
                 }
-                else if(currentSlot.gunWeapon.gunType == "Shotgun")
+                else if (currentSlot.gunWeapon.gunType == "Shotgun")
                 {
                     sounds.shotgunEmpty.volume = Random.Range(sounds.shotgunSoundVolume - .1f, sounds.shotgunSoundVolume + .1f);
                     sounds.shotgunEmpty.pitch = Random.Range(1 - .1f, 1 + .1f);
@@ -368,6 +373,20 @@ public class ShootAttack : MonoBehaviour
 
             //sniperAnimation.SetBool("Shoot", false);
         }
+
+        if (weapon.weaponPrefab.GetComponent<GunScript>().weapon.gunType == "RPG")
+        {
+            //rpgAnimation.SetBool("Shoot", true);
+
+            GameObject rocket = (GameObject)Instantiate(rocketPrefab, myTransform.transform.TransformPoint(0, 0, 2f), myTransform.rotation);
+            rocket.GetComponent<Rigidbody>().AddForce(myTransform.up * propulsionForce, ForceMode.Impulse);
+            Destroy(rocket, 3);
+
+            //GameObject impactGO = Instantiate(weapon.impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+            //Destroy(impactGO, 2f);
+
+            //rpgAnimation.SetBool("Shoot", false);
+        }
     }
     public void HitMarker(GameObject obj)
     {
@@ -388,5 +407,10 @@ public class ShootAttack : MonoBehaviour
         StopCoroutine(coroutine);
         coroutine = HitMarker();
         StartCoroutine(coroutine);
+    }
+
+    void SetInstantiateReferences()
+    {
+        myTransform = transform;
     }
 }

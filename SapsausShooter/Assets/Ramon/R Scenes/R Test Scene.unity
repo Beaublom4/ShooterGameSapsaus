@@ -2056,6 +2056,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1200487926547216155, guid: 7a5e7907c140ff24082a1bce753ce327,
+        type: 3}
+      propertyPath: m_WarningMessage
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1221140014759976723, guid: 7a5e7907c140ff24082a1bce753ce327,
         type: 3}
       propertyPath: m_Layer
@@ -2321,6 +2326,12 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5857392905529847191, guid: 7a5e7907c140ff24082a1bce753ce327,
+        type: 3}
+      propertyPath: rocketPrefab
+      value: 
+      objectReference: {fileID: 177515519647007496, guid: c6e798e2ebc5ed542b2cacb3df5c00fb,
+        type: 3}
     - target: {fileID: 6040761117112673390, guid: 7a5e7907c140ff24082a1bce753ce327,
         type: 3}
       propertyPath: m_Layer
