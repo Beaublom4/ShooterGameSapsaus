@@ -14,6 +14,8 @@ public class HealthManager : MonoBehaviour
     public float camMoveSpeed, camRotateSpeed;
     public Transform deathCamPos;
     bool death, lookDown;
+
+    public GameObject deathPanel;
     private void Start()
     {
         if (healthText != null)
@@ -55,6 +57,7 @@ public class HealthManager : MonoBehaviour
                 GetComponent<Movement>().enabled = !enabled;
                 GetComponentInChildren<MouseLook>().enabled = !enabled;
                 death = true;
+                deathPanel.SetActive(true);
             }
             UpdateNumber();
         }
@@ -95,5 +98,9 @@ public class HealthManager : MonoBehaviour
     {
         healthText.text = health.ToString("F0");
         healthSlider.value = health;
+    }
+    public void Respawn()
+    {
+
     }
 }

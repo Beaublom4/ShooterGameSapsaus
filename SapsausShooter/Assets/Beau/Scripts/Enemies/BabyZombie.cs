@@ -10,6 +10,7 @@ public class BabyZombie : Enemy
     public GameObject spitPrefab;
     public Vector3 spitDirection;
     public Collider col;
+    public GameObject freezeCol;
 
     public float timer, spitDelay;
 
@@ -54,6 +55,7 @@ public class BabyZombie : Enemy
                 isAttacking = true;
                 anim.SetBool("Walking", true);
                 GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+                freezeCol.tag = "FreezeCol";
             }
         }
     }

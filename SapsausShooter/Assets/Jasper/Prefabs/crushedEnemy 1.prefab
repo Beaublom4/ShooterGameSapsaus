@@ -157,6 +157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyType: 2
+  enemyScript: {fileID: 0}
 --- !u!1 &489169578052163961
 GameObject:
   m_ObjectHideFlags: 0
@@ -493,6 +494,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyType: 1
+  enemyScript: {fileID: 0}
 --- !u!1 &1274285218510699903
 GameObject:
   m_ObjectHideFlags: 0
@@ -673,6 +675,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyType: 3
+  enemyScript: {fileID: 0}
 --- !u!1 &1480798547323934578
 GameObject:
   m_ObjectHideFlags: 0
@@ -796,6 +799,51 @@ Transform:
   m_Father: {fileID: 4155516105000191197}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2146301793681485831
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7770296178244030844}
+  - component: {fileID: 6575830823128900396}
+  m_Layer: 14
+  m_Name: FreezeColTest
+  m_TagString: FreezeCol
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7770296178244030844
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2146301793681485831}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.802, z: 0}
+  m_LocalScale: {x: 1, y: 1.6996, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3202879370604887005}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &6575830823128900396
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2146301793681485831}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1.0814586
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.013665827, z: 0}
 --- !u!1 &2309185697452227051
 GameObject:
   m_ObjectHideFlags: 0
@@ -1281,6 +1329,7 @@ Transform:
   - {fileID: 2370681641467188472}
   - {fileID: 2370681639413064144}
   - {fileID: 2370681639651267967}
+  - {fileID: 7770296178244030844}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1317,7 +1366,7 @@ NavMeshAgent:
   m_Acceleration: 30
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 1
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -1368,6 +1417,11 @@ MonoBehaviour:
   - {fileID: 9202720147689735598}
   - {fileID: 7459136352010449180}
   isDeath: 0
+  sounds:
+    minSoundRange: 0.2
+    maxSoundRange: 0.2
+    trigger: {fileID: 0}
+    attack: {fileID: 0}
   chanceDrop: 10
   chanceDubbleDrop: 40
   ammoDrops:
@@ -1410,13 +1464,17 @@ MonoBehaviour:
   render: {fileID: 0}
   dissolveSpeed: 1
   dissolvingNumber: 2
+  inFreezeRange: 0
+  freezeSpeed: 0
+  freezeNum: 0
+  freezeRenderNumber: 0
+  freezeWalkingSpeed: 0
   missionManagerScript: {fileID: 0}
   hitNumPrefab: {fileID: 3314747878335242109, guid: 8c6b2080012d1a048870d88718b62e11,
     type: 3}
   dmgTextLoc: {fileID: 6952385164950814564}
   canBash: 0
   runOnce: 0
-  test: 0
   reLocatePlayerTime: 0.5
   timeBetweenbashes: 5
   bashSpeed: 10
@@ -1643,6 +1701,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyType: 2
+  enemyScript: {fileID: 0}
 --- !u!1 &3329686995646873006
 GameObject:
   m_ObjectHideFlags: 0
@@ -1975,6 +2034,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyType: 2
+  enemyScript: {fileID: 0}
 --- !u!1 &4224511193607683777
 GameObject:
   m_ObjectHideFlags: 0
@@ -2316,6 +2376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyType: 4
+  enemyScript: {fileID: 0}
 --- !u!1 &5126738580704849430
 GameObject:
   m_ObjectHideFlags: 0
@@ -2853,6 +2914,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyType: 2
+  enemyScript: {fileID: 0}
 --- !u!1 &6545486143805715260
 GameObject:
   m_ObjectHideFlags: 0
@@ -3404,6 +3466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyType: 2
+  enemyScript: {fileID: 0}
 --- !u!1 &8752643819198822480
 GameObject:
   m_ObjectHideFlags: 0

@@ -162,6 +162,7 @@ public class Enemy : MonoBehaviour
             freezeNum = Mathf.Clamp(freezeNum, 0, 1);
 
             //zet freeze shit
+            freezeSpeed = 0;
             freezeRenderNumber -= (.2f * 4) * Time.deltaTime;
             freezeRenderNumber = Mathf.Clamp(freezeRenderNumber, -1, 3);
             render.GetPropertyBlock(block);

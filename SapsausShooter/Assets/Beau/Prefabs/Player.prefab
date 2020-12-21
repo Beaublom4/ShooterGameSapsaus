@@ -451,6 +451,7 @@ MonoBehaviour:
   camMoveSpeed: 0.1
   camRotateSpeed: 2
   deathCamPos: {fileID: 611054862428345567}
+  deathPanel: {fileID: 0}
 --- !u!114 &5450617156129613091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -482,6 +483,7 @@ MonoBehaviour:
   ammoScript: {fileID: 0}
   mainCam: {fileID: 896554098131706639}
   weaponWheel: {fileID: 0}
+  optionsPanel: {fileID: 0}
   mainCamPos: {fileID: 9093974041659344051}
   meleeCamPos:
   - {fileID: 8636755830087777472}
@@ -522,8 +524,11 @@ MonoBehaviour:
   redHitMarkerObj: {fileID: 0}
   hitMarkerObj: {fileID: 0}
   weaponWheel: {fileID: 0}
+  optionsPanel: {fileID: 0}
+  rocketPrefab: {fileID: 0}
   weaponHand: {fileID: 0}
-  freezeBox: {fileID: 0}
+  myTransform: {fileID: 0}
+  freezeBox: {fileID: 4858466631145907052}
   canHit:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -535,6 +540,7 @@ MonoBehaviour:
   timeUntilDefrozen: 5
   dissolvingNumber: 0
   dissolveSpeed: 0
+  propulsionForce: 0
   shotPellets: 8
   canShoot: 0
   isReloading: 0
@@ -1728,7 +1734,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7897769491738090204
 Transform:
   m_ObjectHideFlags: 0

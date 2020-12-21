@@ -114,7 +114,10 @@ public class ShootAttack : MonoBehaviour
             if (currentSlot.gunWeapon.gunType == "FreezeGun" && Input.GetButton("Fire1"))
             {
                 if (currentSlot.ammoInMag > 0)
+                {
+                    freezeColObj.GetComponent<FreezeHitBox>().ableToDoShit = true;
                     doingFreeze = true;
+                }
                 else
                 {
                     doingFreeze = false;
