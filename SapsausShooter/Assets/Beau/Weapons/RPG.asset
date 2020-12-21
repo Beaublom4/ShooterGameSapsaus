@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f4a6e8223b91104bbaee7304f22396e, type: 3}
   m_Name: RPG
   m_EditorClassIdentifier: 
-  weaponPrefab: {fileID: 0}
-  type: 
+  weaponPrefab: {fileID: 4291421332295535236, guid: d9d56beecb8f22f439283179011a74b8,
+    type: 3}
+  type: Gun
   weaponName: 
   weaponDescription: The Love Child of the Sniper and Grenade.
   uiSprite: {fileID: 0}
@@ -29,9 +30,10 @@ MonoBehaviour:
   canSlow: 0
   slowTimesNumber: 0
   slowTime: 0
-  shootsProjectile: 0
-  bulletPrefab: {fileID: 0}
-  gunType: Rocket Launcher
+  shootsProjectile: 1
+  bulletPrefab: {fileID: 2798593402515891393, guid: b84bea9a45eb97845a679c4bf6ebd354,
+    type: 3}
+  gunType: Launcher
   shotType: One Round
   infinityAmmo: 0
   ammoType: Rocket

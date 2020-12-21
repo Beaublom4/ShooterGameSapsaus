@@ -8,7 +8,8 @@ public class rocketExplosion : MonoBehaviour
     public float rocketCountdown = 6f;
     public float blastRadius = 5;
     public float force = 700;
-    public bool hasExploded = false;
+    public float speedRocket;
+    public bool hasExploded = false, ifWeCouldFly;
     void OnEnable()
     {
 
@@ -21,6 +22,11 @@ public class rocketExplosion : MonoBehaviour
             print("boom");
             Explode();
             hasExploded = true;
+        }
+        if (ifWeCouldFly)
+        {
+            transform.Translate(0, -speedRocket * Time.deltaTime, 0);
+            print("vliegjonghu");
         }
     }
 

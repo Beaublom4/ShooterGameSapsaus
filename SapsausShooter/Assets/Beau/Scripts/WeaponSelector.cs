@@ -34,8 +34,9 @@ public class WeaponSelector : MonoBehaviour
     [System.Serializable]
     public class WeaponLocations
     {
-        public GameObject pistol, shotgun, mailBox, scythe;
+        public GameObject pistol, shotgun, launcher, mailBox, scythe;
         public Transform gunLoc;
+        
     }
     public GameObject hand;
     public WeaponLocations weaponLocations;
@@ -193,6 +194,10 @@ public class WeaponSelector : MonoBehaviour
                 else if (slotscript.gunWeapon.gunType == "Launcher")
                 {
                     ammoCounterScript.UpdateLauncherAmmoLeft();
+                    GameObject g = Instantiate(weaponLocations.launcher, weaponLocations.gunLoc.transform.position, weaponLocations.gunLoc.rotation, hand.transform);
+                    g.layer = 0;
+                    weaponInHand = g;
+                    g.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
                 }
                 else if (slotscript.gunWeapon.gunType == "Special")
                 {

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8409625280574157816}
   - component: {fileID: 8920682205178317613}
   - component: {fileID: 3712014878524546595}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: FreezeGun
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -140,4 +140,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 11400000, guid: 72503205c8ab21645a3f2ab46eb3b995, type: 2}
+  prefabSpawn: {fileID: 0}
   ammoInMag: 1000

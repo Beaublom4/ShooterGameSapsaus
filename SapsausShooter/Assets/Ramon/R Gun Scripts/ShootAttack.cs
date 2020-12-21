@@ -374,12 +374,12 @@ public class ShootAttack : MonoBehaviour
             //sniperAnimation.SetBool("Shoot", false);
         }
 
-        if (weapon.weaponPrefab.GetComponent<GunScript>().weapon.gunType == "RPG")
+        if (weapon.weaponPrefab.GetComponent<GunScript>().weapon.gunType == "Launcher")
         {
             //rpgAnimation.SetBool("Shoot", true);
 
-            GameObject rocket = (GameObject)Instantiate(rocketPrefab, myTransform.transform.TransformPoint(0, 0, 2f), myTransform.rotation);
-            rocket.GetComponent<Rigidbody>().AddForce(myTransform.up * propulsionForce, ForceMode.Impulse);
+            GameObject rocket = (GameObject)Instantiate(rocketPrefab, weaponHand.GetComponentInChildren<GunScript>().prefabSpawn.position, weaponHand.GetComponentInChildren<GunScript>().prefabSpawn.rotation, null);
+            rocket.GetComponent<rocketExplosion>().ifWeCouldFly = true;
             Destroy(rocket, 3);
 
             //GameObject impactGO = Instantiate(weapon.impactEffect, hit.point, Quaternion.LookRotation(hit.normal));

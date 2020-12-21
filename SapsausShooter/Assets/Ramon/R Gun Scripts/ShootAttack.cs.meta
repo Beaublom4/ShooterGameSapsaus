@@ -3,7 +3,29 @@ guid: 927cd47094445554e8d749396cc3e068
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - impactEffect: {instanceID: 0}
+  - impactEffect1: {instanceID: 0}
+  - impactEffect2: {instanceID: 0}
+  - impactEffect3: {instanceID: 0}
+  - weapon: {instanceID: 0}
+  - fpsCam: {instanceID: 0}
+  - zombieAnimator: {instanceID: 0}
+  - areaColParent: {instanceID: 0}
+  - whiteHitMarkerObj: {instanceID: 0}
+  - redHitMarkerObj: {instanceID: 0}
+  - hitMarkerObj: {instanceID: 0}
+  - weaponWheel: {instanceID: 0}
+  - optionsPanel: {instanceID: 0}
+  - rocketPrefab: {fileID: 2798593402515891393, guid: b84bea9a45eb97845a679c4bf6ebd354,
+      type: 3}
+  - weaponHand: {instanceID: 0}
+  - myTransform: {instanceID: 0}
+  - freezeBox: {instanceID: 0}
+  - freezeColObj: {instanceID: 0}
+  - currentSlot: {instanceID: 0}
+  - ammoScript: {instanceID: 0}
+  - camScript: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
