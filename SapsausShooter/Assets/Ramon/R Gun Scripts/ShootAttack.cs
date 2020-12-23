@@ -18,7 +18,7 @@ public class ShootAttack : MonoBehaviour
     public GameObject impactEffect, impactEffect1, impactEffect2, impactEffect3;
     public Weapon weapon;
     public Camera fpsCam;
-    public Animator zombieAnimator;
+    public Animator anim;
     public GameObject areaColParent;
     public GameObject whiteHitMarkerObj, redHitMarkerObj, hitMarkerObj, weaponWheel, optionsPanel;
     public GameObject rocketPrefab;
@@ -59,6 +59,10 @@ public class ShootAttack : MonoBehaviour
     public IEnumerator colCoroutine;
 
     public Sounds sounds;
+
+    public GameObject recoilObj;
+    public float recoilResetTime;
+    IEnumerator recoilCooldown;
     void Start()
     {
         //currentMagCount = weapon.magCount;
@@ -79,6 +83,7 @@ public class ShootAttack : MonoBehaviour
     }
     void Update()
     {
+        Debug.DrawRay(recoilObj.transform.position, recoilObj.transform.forward * 5, Color.blue);
         if (isReloading || weaponWheel.activeSelf == true || optionsPanel.activeSelf == true)
         {
             return;
@@ -282,7 +287,14 @@ public class ShootAttack : MonoBehaviour
             return;
         }
 
-        camScript.xRotation -= weapon.recoil;
+        anim.SetTrigger("Shoot");
+        recoilObj.transform.Rotate(-weapon.recoil, 0, 0);
+        if(recoilCooldown != null)
+        {
+            StopCoroutine(recoilCooldown);
+        }
+        recoilCooldown = RecoilReset();
+        StartCoroutine(recoilCooldown);
 
         if (weapon.weaponPrefab.GetComponent<GunScript>().weapon.gunType == "Pistol")
         {
@@ -296,7 +308,7 @@ public class ShootAttack : MonoBehaviour
             weaponHand.GetComponentInChildren<ParticleSystem>().Play();
 
             RaycastHit hit;
-            if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, 1000, canHit, QueryTriggerInteraction.Ignore))
+            if (Physics.Raycast(recoilObj.transform.position, recoilObj.transform.forward, out hit, 1000, canHit, QueryTriggerInteraction.Ignore))
             {
                 if (hit.collider.tag == "Enemy")
                 {
@@ -331,7 +343,7 @@ public class ShootAttack : MonoBehaviour
             for (int i = 0; i < Mathf.Max(1, shotPellets); i++)
             {
                 RaycastHit hit;
-                if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, 1000, canHit, QueryTriggerInteraction.Ignore))
+                if (Physics.Raycast(recoilObj.transform.position, recoilObj.transform.forward, out hit, 1000, canHit, QueryTriggerInteraction.Ignore))
                 {
                     if (hit.collider.tag == "Enemy")
                     {
@@ -358,7 +370,7 @@ public class ShootAttack : MonoBehaviour
 
             //weapon.muzzleFlash.Play();
             RaycastHit hit;
-            if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, 1000, canHit, QueryTriggerInteraction.Ignore))
+            if (Physics.Raycast(recoilObj.transform.position, recoilObj.transform.forward, out hit, 1000, canHit, QueryTriggerInteraction.Ignore))
             {
                 if (hit.collider.tag == "Enemy")
                 {
@@ -411,9 +423,13 @@ public class ShootAttack : MonoBehaviour
         coroutine = HitMarker();
         StartCoroutine(coroutine);
     }
-
     void SetInstantiateReferences()
     {
         myTransform = transform;
+    }
+    IEnumerator RecoilReset()
+    {
+        yield return new WaitForSeconds(recoilResetTime);
+        recoilObj.transform.localRotation = Quaternion.Euler(0, 0, 0);
     }
 }

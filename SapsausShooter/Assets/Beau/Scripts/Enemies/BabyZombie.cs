@@ -32,7 +32,7 @@ public class BabyZombie : Enemy
             }
             else if(timer < 0)
             {
-                timer = spitDelay;
+                timer = spitDelay * 1 + (8 * freezeNum);
 
                 anim.SetTrigger("Attack");
                 GameObject g = Instantiate(spitPrefab, spitPoint) as GameObject;

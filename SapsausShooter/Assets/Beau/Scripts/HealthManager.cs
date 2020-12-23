@@ -58,6 +58,8 @@ public class HealthManager : MonoBehaviour
                 GetComponentInChildren<MouseLook>().enabled = !enabled;
                 death = true;
                 deathPanel.SetActive(true);
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
             }
             UpdateNumber();
         }

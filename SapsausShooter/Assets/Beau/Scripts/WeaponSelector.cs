@@ -210,7 +210,6 @@ public class WeaponSelector : MonoBehaviour
                 weaponImage.sprite = slotscript.meleeWeapon.uiSprite;
 
                 playerAnim.SetBool("Melee", true);
-                playerAnim.SetLayerWeight(playerAnim.GetLayerIndex("Melee"), 1);
 
                 if(slotscript.meleeWeapon.weaponName == "MailBox")
                 {

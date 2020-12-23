@@ -105,6 +105,7 @@ public class MeleeAttack : MonoBehaviour
     IEnumerator MeleeTiming()
     {
         playerAnim.SetLayerWeight(playerAnim.GetLayerIndex("GunLayer"), 0);
+        playerAnim.SetLayerWeight(playerAnim.GetLayerIndex("Melee"), 1);
         if (weapon.weaponName == "Scythe")
         {
             playerAnim.SetTrigger("MeleeHitS");
@@ -125,6 +126,7 @@ public class MeleeAttack : MonoBehaviour
         yield return new WaitForSeconds(meleeDuration);
 
         playerAnim.SetLayerWeight(playerAnim.GetLayerIndex("GunLayer"), 1);
+        playerAnim.SetLayerWeight(playerAnim.GetLayerIndex("Melee"), 0);
         DestroyHitBox();
 
         wantedLoc = mainCamPos;

@@ -16,16 +16,29 @@ public class MomZombie : Enemy
     }
     void TrowBaby()
     {
-        Destroy(carriedBaby);
-        Instantiate(babyZombiePrefab, trowPos.position, transform.rotation, trowPos);
-        currentBaby = trowPos.GetChild(0).gameObject;
-        currentBaby.transform.parent = spawnArea;
-        currentBaby.GetComponent<Enemy>().playerObj = playerObj;
+        if (isDeath == false)
+        {
+            Destroy(carriedBaby);
+            Instantiate(babyZombiePrefab, trowPos.position, transform.rotation, trowPos);
+            currentBaby = trowPos.GetChild(0).gameObject;
+            currentBaby.transform.parent = spawnArea;
+            currentBaby.GetComponent<Enemy>().playerObj = playerObj;
 
-        currentBaby.GetComponent<Animator>().SetTrigger("Aggro");
-        currentBaby.GetComponent<NavMeshAgent>().enabled = !enabled;
-        currentBaby.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-        currentBaby.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
-        currentBaby.GetComponent<Rigidbody>().AddRelativeForce(trowVelocity);
+            currentBaby.GetComponent<Animator>().SetTrigger("Aggro");
+            currentBaby.GetComponent<NavMeshAgent>().enabled = !enabled;
+            currentBaby.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+            currentBaby.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+            currentBaby.GetComponent<Rigidbody>().AddRelativeForce(trowVelocity);
+        }
+    }
+    public override IEnumerator Dead(int hitPoint)
+    {
+        isDeath = true;
+        if(carriedBaby != null)
+        {
+            GameObject g = Instantiate(babyZombiePrefab, trowPos.position, transform.rotation, trowPos);
+            g.transform.parent = spawnArea;
+        }
+        return base.Dead(hitPoint);
     }
 }
