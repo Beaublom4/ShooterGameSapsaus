@@ -420,6 +420,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 896554098108623723}
   playerAnimation: {fileID: 1200487926547216155}
+  col: {fileID: 0}
   speed: 6
   gravity: -9.81
   jumpHeight: 3
@@ -429,7 +430,7 @@ MonoBehaviour:
   groundDistance: 0.4
   groundMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 257
 --- !u!114 &896554098108623720
 MonoBehaviour:
   m_ObjectHideFlags: 0
