@@ -6,6 +6,7 @@ public class Movement : MonoBehaviour
 {
     public CharacterController controller;
     public Animator playerAnimation;
+    public SphereCollider col;
 
     public float speed = 12f;
     public float gravity = -9.81f;
@@ -24,6 +25,7 @@ public class Movement : MonoBehaviour
     private void Start()
     {
         controller = GetComponent<CharacterController>();
+        col = GetComponent<SphereCollider>();
         //playerAnimation = GetComponent<Animator>();
     }
     void Update()
@@ -36,7 +38,7 @@ public class Movement : MonoBehaviour
         float animX = x;
         float animZ = z;
 
-        if(x != 0 && z != 0)
+        if (x != 0 && z != 0)
         {
             x *= .7f;
             z *= .7f;
@@ -54,7 +56,7 @@ public class Movement : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
-        
+
         if (isGrounded)
         {
             playerAnimation.SetFloat("Blendy", animZ);

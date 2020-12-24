@@ -5,24 +5,15 @@ using UnityEngine;
 public class rocketExplosion : MonoBehaviour
 {
     public GameObject explosionEffect;
-    public float rocketCountdown = 6f;
+    public Collider[] hitColliders;
+    public LayerMask explosionLayers;
     public float blastRadius = 5;
-    public float force = 700;
+    public float explosionForce;
     public float speedRocket;
-    public bool hasExploded = false, ifWeCouldFly;
-    void OnEnable()
-    {
-
-    }
+    public bool ifWeCouldFly;
 
     void Update()
     {
-        if (rocketCountdown <= 0f && hasExploded)
-        {
-            print("boom");
-            Explode();
-            hasExploded = true;
-        }
         if (ifWeCouldFly)
         {
             transform.Translate(0, -speedRocket * Time.deltaTime, 0);
@@ -30,21 +21,26 @@ public class rocketExplosion : MonoBehaviour
         }
     }
 
-    public void Explode()
+    public void OnCollisionEnter(Collision rocketCol)
+    {
+        Debug.Log(rocketCol.contacts[0].point.ToString());
+        Explode(rocketCol.contacts[0].point);
+    }
+
+    public void Explode(Vector3 explosionPoint)
     {
         Instantiate(explosionEffect, transform.position, transform.rotation);
 
-        Collider[] colliders = Physics.OverlapSphere(transform.position, blastRadius);
+        hitColliders = Physics.OverlapSphere(explosionPoint, blastRadius, explosionLayers);
 
-        foreach (Collider nearbyObject in colliders)
+        foreach (Collider hitcol in hitColliders)
         {
-            Rigidbody rb = nearbyObject.GetComponent<Rigidbody>();
-            if (rb != null)
+            Debug.Log(hitcol.gameObject.name);
+            if (hitcol.GetComponent<Rigidbody>() != null)
             {
-                rb.AddExplosionForce(force, transform.position, blastRadius);
+                hitcol.GetComponent<Rigidbody>().isKinematic = false;
+                hitcol.GetComponent<Rigidbody>().AddExplosionForce(explosionForce, explosionPoint, blastRadius, 0.2f, ForceMode.Impulse);
             }
         }
-
-        Destroy(gameObject);
     }
 }
