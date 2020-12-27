@@ -205,6 +205,7 @@ public class WeaponSelector : MonoBehaviour
                     GameObject g = Instantiate(weaponLocations.freezegun, weaponLocations.freezegunLoc.transform.position, weaponLocations.freezegunLoc.rotation, hand.transform);
                     g.layer = 0;
                     weaponInHand = g;
+                    g.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
                 }
             }
             else if (slotscript.meleeWeapon != null)
