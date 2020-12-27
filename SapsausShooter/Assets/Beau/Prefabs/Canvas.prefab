@@ -10577,12 +10577,17 @@ MonoBehaviour:
       type: 3}
     shotgun: {fileID: 4882123496227200049, guid: 7d3fb976731dfd841a6c183ce35fd430,
       type: 3}
-    launcher: {fileID: 0}
+    launcher: {fileID: 4291421332295535236, guid: d9d56beecb8f22f439283179011a74b8,
+      type: 3}
+    freezegun: {fileID: 0}
     mailBox: {fileID: 7380841815764543649, guid: a5f1845523ca7e7428f903d5afbde01d,
       type: 3}
     scythe: {fileID: 3687603999906367006, guid: 04e0249df13073a439a6cfd1de481c75,
       type: 3}
-    gunLoc: {fileID: 0}
+    pistolLoc: {fileID: 0}
+    shotgunLoc: {fileID: 0}
+    launcherLoc: {fileID: 0}
+    freezegunLoc: {fileID: 0}
 --- !u!114 &7932595841917631340
 MonoBehaviour:
   m_ObjectHideFlags: 0
