@@ -9,6 +9,7 @@ public class HealthManager : MonoBehaviour
     public TextMeshProUGUI healthText;
     public Slider healthSlider;
     public Animator anim;
+    public Animator hudAnim;
 
     public GameObject mainCam;
     public float camMoveSpeed, camRotateSpeed;
@@ -50,6 +51,7 @@ public class HealthManager : MonoBehaviour
         if (canGetDmg == true)
         {
             health -= damage;
+            hudAnim.SetTrigger("ShakeScreen");
             if (health <= 0)
             {
                 health = 0;

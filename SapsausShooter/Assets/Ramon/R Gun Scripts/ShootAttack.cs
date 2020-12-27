@@ -91,7 +91,7 @@ public class ShootAttack : MonoBehaviour
 
         FireWeapon();
 
-        if (Input.GetButtonDown("Reload") && currentSlot.ammoInMag < weapon.weaponPrefab.GetComponent<GunScript>().weapon.magCount)
+        if (Input.GetButtonDown("Reload") && weapon != null && currentSlot.ammoInMag < weapon.weaponPrefab.GetComponent<GunScript>().weapon.magCount)
         {
             ReloadWeapon();
 
@@ -288,13 +288,6 @@ public class ShootAttack : MonoBehaviour
         }
 
         anim.SetTrigger("Shoot");
-        recoilObj.transform.Rotate(-weapon.recoil, 0, 0);
-        if(recoilCooldown != null)
-        {
-            StopCoroutine(recoilCooldown);
-        }
-        recoilCooldown = RecoilReset();
-        StartCoroutine(recoilCooldown);
 
         if (weapon.weaponPrefab.GetComponent<GunScript>().weapon.gunType == "Pistol")
         {
@@ -310,6 +303,13 @@ public class ShootAttack : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(recoilObj.transform.position, recoilObj.transform.forward, out hit, 1000, canHit, QueryTriggerInteraction.Ignore))
             {
+                recoilObj.transform.Rotate(-weapon.recoil, 0, 0);
+                if (recoilCooldown != null)
+                {
+                    StopCoroutine(recoilCooldown);
+                }
+                recoilCooldown = RecoilReset();
+                StartCoroutine(recoilCooldown);
                 if (hit.collider.tag == "Enemy")
                 {
                     if (hit.collider.GetComponent<BodyHit>())

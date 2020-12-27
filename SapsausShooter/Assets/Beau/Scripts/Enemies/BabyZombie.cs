@@ -67,6 +67,7 @@ public class BabyZombie : Enemy
             isAttacking = false;
             agent.speed = 0;
             agent.velocity = Vector3.zero;
+            agent.isStopped = true;
             anim.SetBool("Walking", false);
             isSpitting = true;
         }
@@ -77,6 +78,7 @@ public class BabyZombie : Enemy
         if (isTrown == true && other.gameObject.tag == "Player")
         {
             agent.speed = speed;
+            agent.isStopped = false;
             isAttacking = true;
             anim.SetBool("Walking", true);
             isSpitting = false;

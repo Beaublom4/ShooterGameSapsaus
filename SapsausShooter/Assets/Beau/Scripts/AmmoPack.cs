@@ -10,6 +10,7 @@ public class AmmoPack : MonoBehaviour
 
     public AudioSource pickUpSound;
     public float soundRange;
+    public GameObject[] objects;
 
     private void Start()
     {
