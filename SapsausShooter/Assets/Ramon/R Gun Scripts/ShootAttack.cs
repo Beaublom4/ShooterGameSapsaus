@@ -234,6 +234,50 @@ public class ShootAttack : MonoBehaviour
                 ammoScript.UpdateSniperAmmoLeft();
             }
         }
+        if(currentSlot.gunWeapon.gunType == "Launcher")
+        {
+            if (ammoScript.launcherAmmo <= 0)
+            {
+                print("NoAmmo");
+                return;
+            }
+            else
+            {
+                ammoScript.launcherAmmo += currentSlot.ammoInMag;
+                if (ammoScript.launcherAmmo >= weapon.weaponPrefab.GetComponent<GunScript>().weapon.magCount)
+                {
+                    addAmmo = weapon.weaponPrefab.GetComponent<GunScript>().weapon.magCount;
+                }
+                else
+                {
+                    addAmmo = ammoScript.launcherAmmo;
+                }
+                ammoScript.launcherAmmo -= addAmmo;
+                ammoScript.UpdateLauncherAmmoLeft();
+            }
+        }
+        if (currentSlot.gunWeapon.gunType == "FreezeGun")
+        {
+            if (ammoScript.specialAmmo <= 0)
+            {
+                print("NoAmmo");
+                return;
+            }
+            else
+            {
+                ammoScript.specialAmmo += currentSlot.ammoInMag;
+                if (ammoScript.specialAmmo >= weapon.weaponPrefab.GetComponent<GunScript>().weapon.magCount)
+                {
+                    addAmmo = weapon.weaponPrefab.GetComponent<GunScript>().weapon.magCount;
+                }
+                else
+                {
+                    addAmmo = ammoScript.specialAmmo;
+                }
+                ammoScript.specialAmmo -= addAmmo;
+                ammoScript.UpdateSpecialAmmoLeft();
+            }
+        }
     }
     public IEnumerator Reload()
     {
@@ -407,11 +451,11 @@ public class ShootAttack : MonoBehaviour
 
         if (weapon.weaponPrefab.GetComponent<GunScript>().weapon.gunType == "Launcher")
         {
-            //rpgAnimation.SetBool("Shoot", true);
+            currentSlot.ammoInMag--;
+            ammoScript.UpdateAmmo(currentSlot.ammoInMag);
 
             GameObject rocket = (GameObject)Instantiate(rocketPrefab, weaponHand.GetComponentInChildren<GunScript>().prefabSpawn.position, weaponHand.GetComponentInChildren<GunScript>().prefabSpawn.rotation, null);
             rocket.GetComponent<rocketExplosion>().ifWeCouldFly = true;
-            Destroy(rocket, 3);
 
             //GameObject impactGO = Instantiate(weapon.impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
             //Destroy(impactGO, 2f);
