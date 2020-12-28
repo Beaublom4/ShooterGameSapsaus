@@ -24,6 +24,7 @@ MonoBehaviour:
   damageOverTimeTime: 2
   critMultiplier: 1.2
   recoil: 20
+  lifeStealPercentage: 0
   canStun: 0
   stunTime: 0
   canSlow: 0
@@ -33,6 +34,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 0}
   gunType: Shotgun
   shotType: One-Round
+  slugBulletCount: 8
   infinityAmmo: 0
   ammoType: 
   magCount: 8

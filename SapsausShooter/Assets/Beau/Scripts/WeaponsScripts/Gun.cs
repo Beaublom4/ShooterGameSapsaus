@@ -7,6 +7,7 @@ public class Gun : Weapon
     public GameObject bulletPrefab;
     public string gunType;
     public string shotType; //FullAuto //One-Round //Burst
+    public int slugBulletCount;
 
     public bool infinityAmmo;
     public string ammoType;

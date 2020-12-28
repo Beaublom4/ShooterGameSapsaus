@@ -63,6 +63,8 @@ public class ShootAttack : MonoBehaviour
     public GameObject recoilObj;
     public float recoilResetTime;
     IEnumerator recoilCooldown;
+
+    public Transform scatteringObj;
     void Start()
     {
         //currentMagCount = weapon.magCount;
@@ -142,12 +144,6 @@ public class ShootAttack : MonoBehaviour
         //    SoundWave();
         //}
     }
-    public void ShotgunScatter()
-    {
-        randomDir = fpsCam.transform.forward;
-        randomDir += Random.Range(-scattering, scattering) * transform.right;
-    }
-
     public void SoundWave()
     {
         //hopen dat dit niet teveel shit gaat eisen
@@ -328,10 +324,6 @@ public class ShootAttack : MonoBehaviour
 
         if (weapon.weaponPrefab.GetComponent<GunScript>().weapon.gunType == "Shotgun")
         {
-            ShotgunScatter();
-
-            //shotgunAnimation.SetBool("Shoot", true);
-
             sounds.shotgunShoot.volume = Random.Range(sounds.shotgunSoundVolume - .2f, sounds.shotgunSoundVolume + .1f);
             sounds.shotgunShoot.pitch = Random.Range(1 - .1f, 1 + .1f);
             sounds.shotgunShoot.Play();
@@ -340,10 +332,12 @@ public class ShootAttack : MonoBehaviour
             currentSlot.ammoInMag--;
             ammoScript.UpdateAmmo(currentSlot.ammoInMag);
 
-            for (int i = 0; i < Mathf.Max(1, shotPellets); i++)
+            for (int s = 0; s < currentSlot.gunWeapon.slugBulletCount; s++)
             {
+                scatteringObj.transform.localRotation = Quaternion.Euler(0, 0, 0);
+                scatteringObj.transform.localRotation = Quaternion.Euler(Random.Range(-scattering, scattering), Random.Range(-scattering, scattering), 0);
                 RaycastHit hit;
-                if (Physics.Raycast(recoilObj.transform.position, recoilObj.transform.forward, out hit, 1000, canHit, QueryTriggerInteraction.Ignore))
+                if (Physics.Raycast(recoilObj.transform.position, scatteringObj.transform.forward, out hit, 1000, canHit, QueryTriggerInteraction.Ignore))
                 {
                     if (hit.collider.tag == "Enemy")
                     {
@@ -354,10 +348,32 @@ public class ShootAttack : MonoBehaviour
                             HitMarker(hit.collider.gameObject);
                         }
                     }
-                    //GameObject impactGO = Instantiate(weapon.impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
-                    //Destroy(impactGO, 2f);
+                    else
+                    {
+                        //Instantiate(testObj, hit.point, Quaternion.LookRotation(hit.normal), null);
+                    }
                 }
+
             }
+            //for (int i = 0; i < Mathf.Max(1, shotPellets); i++)
+            //{
+
+            //    RaycastHit hit;
+            //    if (Physics.Raycast(recoilObj.transform.position, recoilObj.transform.forward, out hit, 1000, canHit, QueryTriggerInteraction.Ignore))
+            //    {
+            //        if (hit.collider.tag == "Enemy")
+            //        {
+            //            if (hit.collider.GetComponent<BodyHit>())
+            //            {
+            //                hit.collider.GetComponent<BodyHit>().HitPart(weapon, hit.point);
+
+            //                HitMarker(hit.collider.gameObject);
+            //            }
+            //        }
+            //        //GameObject impactGO = Instantiate(weapon.impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+            //        //Destroy(impactGO, 2f);
+            //    }
+            //}
             //shotgunAnimation.SetBool("Shoot", false);
         }
 

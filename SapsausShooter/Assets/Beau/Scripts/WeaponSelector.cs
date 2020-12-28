@@ -175,7 +175,7 @@ public class WeaponSelector : MonoBehaviour
                 {
                     ammoCounterScript.UpdatePistolAmmoLeft();
                     GameObject g = Instantiate(weaponLocations.pistol, weaponLocations.pistolLoc.transform.position, weaponLocations.pistolLoc.rotation, hand.transform);
-                    g.layer = 0;
+                    g.layer = 14;
                     weaponInHand = g;
                     g.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
                 }
@@ -187,7 +187,7 @@ public class WeaponSelector : MonoBehaviour
                 {
                     ammoCounterScript.UpdateShotgunAmmoLeft();
                     GameObject g = Instantiate(weaponLocations.shotgun, weaponLocations.shotgunLoc.transform.position, weaponLocations.shotgunLoc.rotation, hand.transform);
-                    g.layer = 0;
+                    g.layer = 14;
                     weaponInHand = g;
                     g.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
                 }
@@ -195,7 +195,7 @@ public class WeaponSelector : MonoBehaviour
                 {
                     ammoCounterScript.UpdateLauncherAmmoLeft();
                     GameObject g = Instantiate(weaponLocations.launcher, weaponLocations.launcherLoc.transform.position, weaponLocations.launcherLoc.rotation, hand.transform);
-                    g.layer = 0;
+                    g.layer = 14;
                     weaponInHand = g;
                     g.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
                 }
@@ -203,7 +203,7 @@ public class WeaponSelector : MonoBehaviour
                 {
                     ammoCounterScript.UpdateSpecialAmmoLeft();
                     GameObject g = Instantiate(weaponLocations.freezegun, weaponLocations.freezegunLoc.transform.position, weaponLocations.freezegunLoc.rotation, hand.transform);
-                    g.layer = 0;
+                    g.layer = 14;
                     weaponInHand = g;
                     g.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
                 }
@@ -218,14 +218,14 @@ public class WeaponSelector : MonoBehaviour
                 if(slotscript.meleeWeapon.weaponName == "MailBox")
                 {
                     GameObject g = Instantiate(weaponLocations.mailBox, weaponLocations.pistolLoc.transform.position, weaponLocations.pistolLoc.rotation, hand.transform);
-                    g.layer = 0;
+                    g.layer = 14;
                     weaponInHand = g;
                     g.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
                 }
                 else if(slotscript.meleeWeapon.weaponName == "Scythe")
                 {
                     GameObject g = Instantiate(weaponLocations.scythe, weaponLocations.pistolLoc.transform.position, weaponLocations.pistolLoc.rotation, hand.transform);
-                    g.layer = 0;
+                    g.layer = 14;
                     weaponInHand = g;
                     g.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
                 }
