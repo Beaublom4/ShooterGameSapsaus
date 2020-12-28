@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using TMPro;
+using UnityEngine.VFX;
 
 public class ShootAttack : MonoBehaviour
 {
@@ -124,17 +125,20 @@ public class ShootAttack : MonoBehaviour
                 {
                     freezeColObj.GetComponent<FreezeHitBox>().ableToDoShit = true;
                     doingFreeze = true;
+                    weaponHand.GetComponentInChildren<VisualEffect>().Play();
                 }
                 else
                 {
                     doingFreeze = false;
                     freezeColObj.GetComponent<FreezeHitBox>().ableToDoShit = false;
+                    weaponHand.GetComponentInChildren<VisualEffect>().Stop();
                 }
             }
             else if (doingFreeze == true)
             {
                 freezeColObj.GetComponent<FreezeHitBox>().ableToDoShit = false;
                 doingFreeze = false;
+                weaponHand.GetComponentInChildren<VisualEffect>().Stop();
             }
         }
         //if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire && weapon != null)
