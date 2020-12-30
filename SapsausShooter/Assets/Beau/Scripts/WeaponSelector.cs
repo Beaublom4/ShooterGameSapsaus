@@ -34,8 +34,8 @@ public class WeaponSelector : MonoBehaviour
     [System.Serializable]
     public class WeaponLocations
     {
-        public GameObject pistol, shotgun, launcher, freezegun, mailBox, scythe;
-        public Transform pistolLoc, shotgunLoc, launcherLoc, freezegunLoc;
+        public GameObject pistol, shotgun, launcher, freezegun, gatlingNailGun, mailBox, scythe;
+        public Transform pistolLoc, shotgunLoc, launcherLoc, freezegunLoc, gatlingNailGunLoc;
         
     }
     public GameObject hand;
@@ -152,6 +152,10 @@ public class WeaponSelector : MonoBehaviour
 
             playerAnim.SetBool("Melee", false);
             playerAnim.SetBool("Gun", false);
+            playerAnim.SetBool("Shotgun", false);
+            playerAnim.SetBool("Launcher", false);
+            playerAnim.SetBool("TrashCan", false);
+
             playerAnim.SetLayerWeight(playerAnim.GetLayerIndex("Melee"), 0);
 
             if (slotscript.gunWeapon != null)
@@ -163,12 +167,12 @@ public class WeaponSelector : MonoBehaviour
                 shootScript.weapon = slotscript.gunWeapon;
                 shootScript.currentSlot = slotscript;
 
+                playerAnim.SetBool("Gun", true);
+
                 if (coroutine == null)
                     StopCoroutine(coroutine);
                 coroutine = ShowWeaponName(slotscript.gunWeapon.weaponName);
                 StartCoroutine(coroutine);
-
-                playerAnim.SetBool("Gun", true);
 
                 ammoCounterScript.UpdateAmmo(slotscript.ammoInMag);
                 if (slotscript.gunWeapon.gunType == "Pistol")
@@ -179,10 +183,6 @@ public class WeaponSelector : MonoBehaviour
                     weaponInHand = g;
                     g.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
                 }
-                else if (slotscript.gunWeapon.gunType == "Sniper")
-                {
-                    ammoCounterScript.UpdateSniperAmmoLeft();
-                }
                 else if (slotscript.gunWeapon.gunType == "Shotgun")
                 {
                     ammoCounterScript.UpdateShotgunAmmoLeft();
@@ -190,6 +190,7 @@ public class WeaponSelector : MonoBehaviour
                     g.layer = 14;
                     weaponInHand = g;
                     g.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+                    playerAnim.SetBool("Shotgun", true);
                 }
                 else if (slotscript.gunWeapon.gunType == "Launcher")
                 {
@@ -198,11 +199,24 @@ public class WeaponSelector : MonoBehaviour
                     g.layer = 14;
                     weaponInHand = g;
                     g.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+                    playerAnim.SetBool("Launcher", true);
+                    if(slotscript.ammoInMag > 0)
+                    {
+                        weaponInHand.GetComponent<GunScript>().shownBullet.SetActive(true);
+                    }
                 }
                 else if (slotscript.gunWeapon.gunType == "FreezeGun")
                 {
                     ammoCounterScript.UpdateSpecialAmmoLeft();
                     GameObject g = Instantiate(weaponLocations.freezegun, weaponLocations.freezegunLoc.transform.position, weaponLocations.freezegunLoc.rotation, hand.transform);
+                    g.layer = 14;
+                    weaponInHand = g;
+                    g.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+                }
+                else if (slotscript.gunWeapon.gunType == "GatlingNailGun")
+                {
+                    ammoCounterScript.UpdateSpecialAmmoLeft();
+                    GameObject g = Instantiate(weaponLocations.gatlingNailGun, weaponLocations.gatlingNailGunLoc.transform.position, weaponLocations.gatlingNailGunLoc.rotation, hand.transform);
                     g.layer = 14;
                     weaponInHand = g;
                     g.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;

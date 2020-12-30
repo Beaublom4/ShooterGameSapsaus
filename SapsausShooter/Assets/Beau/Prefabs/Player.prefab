@@ -1681,6 +1681,36 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &4188274838202128398
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5260650036300619868}
+  m_Layer: 0
+  m_Name: GatlingNailGunSpot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5260650036300619868
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4188274838202128398}
+  m_LocalRotation: {x: 0.77262133, y: -0.15822315, z: -0.3220521, w: -0.5237406}
+  m_LocalPosition: {x: -0.020072972, y: -0.16995113, z: -0.13000453}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7040708411112514756}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 26.585, y: -506.774, z: -456.719}
 --- !u!1 &4372717024754506170
 GameObject:
   m_ObjectHideFlags: 0
@@ -2963,15 +2993,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd817d4cdf22d5a47847991569e075da, type: 3}
---- !u!4 &6019634273106846297 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8217346070797823580, guid: fd817d4cdf22d5a47847991569e075da,
-    type: 3}
-  m_PrefabInstance: {fileID: 2415030890067905541}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6019634273106846296 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8217346070797823581, guid: fd817d4cdf22d5a47847991569e075da,
+    type: 3}
+  m_PrefabInstance: {fileID: 2415030890067905541}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6019634273106846297 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8217346070797823580, guid: fd817d4cdf22d5a47847991569e075da,
     type: 3}
   m_PrefabInstance: {fileID: 2415030890067905541}
   m_PrefabAsset: {fileID: 0}
@@ -3145,21 +3175,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f2b4f3779cc2c54b8f95a1159031801, type: 3}
---- !u!1 &3584669414102315918 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 9f2b4f3779cc2c54b8f95a1159031801,
-    type: 3}
-  m_PrefabInstance: {fileID: 4431018696345620191}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4248193497480751412 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9f2b4f3779cc2c54b8f95a1159031801,
     type: 3}
   m_PrefabInstance: {fileID: 4431018696345620191}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &7040708411112514756 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6686643647145634331, guid: 9f2b4f3779cc2c54b8f95a1159031801,
+--- !u!1 &3584669414102315918 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 9f2b4f3779cc2c54b8f95a1159031801,
     type: 3}
   m_PrefabInstance: {fileID: 4431018696345620191}
   m_PrefabAsset: {fileID: 0}
@@ -3172,6 +3196,12 @@ Transform:
 --- !u!4 &7126895059377702492 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6888806815857526915, guid: 9f2b4f3779cc2c54b8f95a1159031801,
+    type: 3}
+  m_PrefabInstance: {fileID: 4431018696345620191}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7040708411112514756 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6686643647145634331, guid: 9f2b4f3779cc2c54b8f95a1159031801,
     type: 3}
   m_PrefabInstance: {fileID: 4431018696345620191}
   m_PrefabAsset: {fileID: 0}

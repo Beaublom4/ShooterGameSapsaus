@@ -10,34 +10,38 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f4a6e8223b91104bbaee7304f22396e, type: 3}
-  m_Name: Sniper
+  m_Name: GatlingNailGun
   m_EditorClassIdentifier: 
-  weaponPrefab: {fileID: 2533554347693845448, guid: 9f52fbc56e4b8914fbbf0dc55c0d77f2,
+  weaponPrefab: {fileID: 1626597116239623421, guid: be116bf267aa80746b3a8cd39b2875f0,
     type: 3}
   type: Gun
-  weaponName: Sniper
-  weaponDescription: Long range sniper
-  uiSprite: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
-  damage: 500
-  damageDropOverDist: 0.001
+  weaponName: Gatling nail gun
+  weaponDescription: 
+  uiSprite: {fileID: 0}
+  damage: 5
+  damageDropOverDist: 0
   damageOverTime: 0
   damageOverTimeTime: 2
-  critMultiplier: 2.5
+  critMultiplier: 0
+  recoil: 1
+  lifeStealPercentage: 0
   canStun: 0
   stunTime: 0
   canSlow: 0
   slowTimesNumber: 0
   slowTime: 0
-  shootsProjectile: 0
-  bulletPrefab: {fileID: 0}
-  gunType: Sniper
-  shotType: One-Round
+  shootsProjectile: 1
+  bulletPrefab: {fileID: 4436202221981395879, guid: b6ccb85a214cfdc4b9e16773ef937e29,
+    type: 3}
+  gunType: GatlingNailGun
+  shotType: Full-Auto
+  slugBulletCount: 0
   infinityAmmo: 0
-  ammoType: Sniper
-  magCount: 6
-  bulletSpeed: 20
-  reloadSpeed: 5
-  fireRate: 6
-  soundAreaIncrease: 4
+  ammoType: Special
+  magCount: 24
+  bulletSpeed: 0
+  reloadSpeed: 2
+  fireRate: 0.2
+  soundAreaIncrease: 0.5
   muzzleFlash: {fileID: 0}
   impactEffect: {fileID: 0}

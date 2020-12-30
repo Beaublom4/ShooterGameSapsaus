@@ -24,6 +24,7 @@ MonoBehaviour:
   damageOverTimeTime: 2
   critMultiplier: 0
   recoil: 0
+  lifeStealPercentage: 0
   canStun: 0
   stunTime: 0
   canSlow: 1
@@ -33,9 +34,10 @@ MonoBehaviour:
   bulletPrefab: {fileID: 0}
   gunType: FreezeGun
   shotType: Rapid Fire Spray
+  slugBulletCount: 0
   infinityAmmo: 0
   ammoType: 
-  magCount: 100
+  magCount: 15
   bulletSpeed: 0
   reloadSpeed: 3
   fireRate: 1

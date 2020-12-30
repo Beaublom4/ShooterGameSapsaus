@@ -110,16 +110,16 @@ public class ShootAttack : MonoBehaviour
     }
     void FireWeapon()
     {
-        if (weaponWheel.activeSelf == true)
+        if (weaponWheel.activeSelf == true || currentSlot == null || Time.time < nextTimeToFire)
             return;
-        if (Input.GetButtonDown("Fire1") && Time.time >= nextTimeToFire && weapon != null)
+        if (Input.GetButtonDown("Fire1") && weapon != null)
         {
             ShootWeapon();
             SoundWave();
         }
-        if (currentSlot != null)
+        if (Input.GetButton("Fire1"))
         {
-            if (currentSlot.gunWeapon.gunType == "FreezeGun" && Input.GetButton("Fire1"))
+            if (currentSlot.gunWeapon.gunType == "FreezeGun")
             {
                 if (currentSlot.ammoInMag > 0)
                 {
@@ -140,13 +140,32 @@ public class ShootAttack : MonoBehaviour
                 doingFreeze = false;
                 weaponHand.GetComponentInChildren<VisualEffect>().Stop();
             }
-        }
-        //if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire && weapon != null)
-        //{
-        //    ShootWeapon();
+            if(currentSlot.gunWeapon.gunType == "GatlingNailGun")
+            {
+                if(currentSlot.ammoInMag <= 0)
+                {
+                    return;
+                }
+                nextTimeToFire = Time.time + currentSlot.gunWeapon.fireRate;
+                print("Shoot");
+                //sounds.pistolShoot.volume = Random.Range(sounds.pistolSoundVolume - .2f, sounds.pistolSoundVolume + .1f);
+                //sounds.pistolShoot.pitch = Random.Range(1 - .1f, 1 + .1f);
+                //sounds.pistolShoot.Play();
+                currentSlot.ammoInMag--;
+                ammoScript.UpdateAmmo(currentSlot.ammoInMag);
+                //weaponHand.GetComponentInChildren<ParticleSystem>().Play();
 
-        //    SoundWave();
-        //}
+                recoilObj.transform.Rotate(-weapon.recoil, 0, 0);
+                if (recoilCooldown != null)
+                {
+                    StopCoroutine(recoilCooldown);
+                }
+                recoilCooldown = RecoilReset();
+                StartCoroutine(recoilCooldown);
+
+                Instantiate(currentSlot.gunWeapon.bulletPrefab, weaponHand.GetComponentInChildren<GunScript>().prefabSpawn.position, recoilObj.transform.rotation, null);
+            }
+        }
     }
     public void SoundWave()
     {
@@ -258,9 +277,32 @@ public class ShootAttack : MonoBehaviour
                 }
                 ammoScript.launcherAmmo -= addAmmo;
                 ammoScript.UpdateLauncherAmmoLeft();
+                weaponHand.GetComponentInChildren<GunScript>().shownBullet.SetActive(true);
             }
         }
         if (currentSlot.gunWeapon.gunType == "FreezeGun")
+        {
+            if (ammoScript.specialAmmo <= 0)
+            {
+                print("NoAmmo");
+                return;
+            }
+            else
+            {
+                ammoScript.specialAmmo += currentSlot.ammoInMag;
+                if (ammoScript.specialAmmo >= weapon.weaponPrefab.GetComponent<GunScript>().weapon.magCount)
+                {
+                    addAmmo = weapon.weaponPrefab.GetComponent<GunScript>().weapon.magCount;
+                }
+                else
+                {
+                    addAmmo = ammoScript.specialAmmo;
+                }
+                ammoScript.specialAmmo -= addAmmo;
+                ammoScript.UpdateSpecialAmmoLeft();
+            }
+        }
+        if (currentSlot.gunWeapon.gunType == "GatlingNailGun")
         {
             if (ammoScript.specialAmmo <= 0)
             {
@@ -305,11 +347,11 @@ public class ShootAttack : MonoBehaviour
     }
     void ShootWeapon()
     {
-        if (currentSlot.gunWeapon.gunType == "FreezeGun")
+        if (currentSlot.gunWeapon.gunType == "FreezeGun" || currentSlot.gunWeapon.shotType == "Full-Auto")
         {
             return;
         }
-        nextTimeToFire = Time.time + 1f / weapon.weaponPrefab.GetComponent<GunScript>().weapon.fireRate;
+        nextTimeToFire = Time.time + weapon.weaponPrefab.GetComponent<GunScript>().weapon.fireRate;
 
         if (currentSlot.ammoInMag <= 0 || weaponWheel.activeSelf == true)
         {
@@ -343,11 +385,11 @@ public class ShootAttack : MonoBehaviour
             currentSlot.ammoInMag--;
             ammoScript.UpdateAmmo(currentSlot.ammoInMag);
             weaponHand.GetComponentInChildren<ParticleSystem>().Play();
+            recoilObj.transform.Rotate(-weapon.recoil, 0, 0);
 
             RaycastHit hit;
             if (Physics.Raycast(recoilObj.transform.position, recoilObj.transform.forward, out hit, 1000, canHit, QueryTriggerInteraction.Ignore))
             {
-                recoilObj.transform.Rotate(-weapon.recoil, 0, 0);
                 if (recoilCooldown != null)
                 {
                     StopCoroutine(recoilCooldown);
@@ -366,8 +408,6 @@ public class ShootAttack : MonoBehaviour
                 GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
                 Destroy(impactGO, 2f);
             }
-
-            //pistolAnimation.SetBool("Shoot", false);
         }
 
         if (weapon.weaponPrefab.GetComponent<GunScript>().weapon.gunType == "Shotgun")
@@ -376,6 +416,7 @@ public class ShootAttack : MonoBehaviour
             sounds.shotgunShoot.pitch = Random.Range(1 - .1f, 1 + .1f);
             sounds.shotgunShoot.Play();
             weaponHand.GetComponentInChildren<ParticleSystem>().Play();
+            recoilObj.transform.Rotate(-weapon.recoil, 0, 0);
 
             currentSlot.ammoInMag--;
             ammoScript.UpdateAmmo(currentSlot.ammoInMag);
@@ -403,56 +444,7 @@ public class ShootAttack : MonoBehaviour
                 }
 
             }
-            //for (int i = 0; i < Mathf.Max(1, shotPellets); i++)
-            //{
-
-            //    RaycastHit hit;
-            //    if (Physics.Raycast(recoilObj.transform.position, recoilObj.transform.forward, out hit, 1000, canHit, QueryTriggerInteraction.Ignore))
-            //    {
-            //        if (hit.collider.tag == "Enemy")
-            //        {
-            //            if (hit.collider.GetComponent<BodyHit>())
-            //            {
-            //                hit.collider.GetComponent<BodyHit>().HitPart(weapon, hit.point);
-
-            //                HitMarker(hit.collider.gameObject);
-            //            }
-            //        }
-            //        //GameObject impactGO = Instantiate(weapon.impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
-            //        //Destroy(impactGO, 2f);
-            //    }
-            //}
-            //shotgunAnimation.SetBool("Shoot", false);
         }
-
-        if (weapon.weaponPrefab.GetComponent<GunScript>().weapon.gunType == "Sniper")
-        {
-            //sniperAnimation.SetBool("Shoot", true);
-
-            currentSlot.ammoInMag--;
-            ammoScript.UpdateAmmo(currentSlot.ammoInMag);
-
-            //weapon.muzzleFlash.Play();
-            RaycastHit hit;
-            if (Physics.Raycast(recoilObj.transform.position, recoilObj.transform.forward, out hit, 1000, canHit, QueryTriggerInteraction.Ignore))
-            {
-                if (hit.collider.tag == "Enemy")
-                {
-                    if (hit.collider.GetComponent<BodyHit>())
-                    {
-                        hit.collider.GetComponent<BodyHit>().HitPart(weapon, hit.point);
-
-                        HitMarker(hit.collider.gameObject);
-                    }
-                }
-
-                //GameObject impactGO = Instantiate(weapon.impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
-                //Destroy(impactGO, 2f);
-            }
-
-            //sniperAnimation.SetBool("Shoot", false);
-        }
-
         if (weapon.weaponPrefab.GetComponent<GunScript>().weapon.gunType == "Launcher")
         {
             currentSlot.ammoInMag--;
@@ -460,6 +452,8 @@ public class ShootAttack : MonoBehaviour
 
             GameObject rocket = (GameObject)Instantiate(rocketPrefab, weaponHand.GetComponentInChildren<GunScript>().prefabSpawn.position, weaponHand.GetComponentInChildren<GunScript>().prefabSpawn.rotation, null);
             rocket.GetComponent<rocketExplosion>().ifWeCouldFly = true;
+
+            weaponHand.GetComponentInChildren<GunScript>().shownBullet.SetActive(false);
 
             //GameObject impactGO = Instantiate(weapon.impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
             //Destroy(impactGO, 2f);
