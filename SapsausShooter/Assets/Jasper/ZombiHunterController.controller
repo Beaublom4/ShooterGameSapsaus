@@ -101,6 +101,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: Gun
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Shotgun
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 3893517393458592855}
   m_Solo: 0
@@ -792,6 +795,9 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 1
     m_ConditionEvent: Gun
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Launcher
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 3893517393458592855}
@@ -2610,7 +2616,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -5778218280168929602, guid: 494188066a23aa0419a291bd921a10f4,
+  m_Motion: {fileID: -5778218280168929602, guid: 84718867bd875f84da3d3e863aded168,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
