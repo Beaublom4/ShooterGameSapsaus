@@ -35,7 +35,7 @@ public class WeaponSelector : MonoBehaviour
     public class WeaponLocations
     {
         public GameObject pistol, shotgun, launcher, freezegun, gatlingNailGun, mailBox, scythe;
-        public Transform pistolLoc, shotgunLoc, launcherLoc, freezegunLoc, gatlingNailGunLoc;
+        public Transform pistolLoc, shotgunLoc, launcherLoc, freezegunLoc, gatlingNailGunLoc, meleeLoc;
         
     }
     public GameObject hand;
@@ -231,14 +231,14 @@ public class WeaponSelector : MonoBehaviour
 
                 if(slotscript.meleeWeapon.weaponName == "MailBox")
                 {
-                    GameObject g = Instantiate(weaponLocations.mailBox, weaponLocations.pistolLoc.transform.position, weaponLocations.pistolLoc.rotation, hand.transform);
+                    GameObject g = Instantiate(weaponLocations.mailBox, weaponLocations.meleeLoc.transform.position, weaponLocations.meleeLoc.rotation, hand.transform);
                     g.layer = 14;
                     weaponInHand = g;
                     g.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
                 }
                 else if(slotscript.meleeWeapon.weaponName == "Scythe")
                 {
-                    GameObject g = Instantiate(weaponLocations.scythe, weaponLocations.pistolLoc.transform.position, weaponLocations.pistolLoc.rotation, hand.transform);
+                    GameObject g = Instantiate(weaponLocations.scythe, weaponLocations.meleeLoc.transform.position, weaponLocations.meleeLoc.rotation, hand.transform);
                     g.layer = 14;
                     weaponInHand = g;
                     g.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;

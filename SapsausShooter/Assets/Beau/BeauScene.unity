@@ -243,7 +243,7 @@ Transform:
   m_Children:
   - {fileID: 306392738}
   m_Father: {fileID: 1707761930}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &58882803
 MonoBehaviour:
@@ -1074,6 +1074,12 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -4115324759130499706, guid: e290e300def7891428020757e2d51400, type: 3}
+--- !u!4 &669066665 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8622120088350586364, guid: 7a5e7907c140ff24082a1bce753ce327,
+    type: 3}
+  m_PrefabInstance: {fileID: 1294307362}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &697948802
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1793,7 +1799,7 @@ Transform:
   m_Children:
   - {fileID: 1530323560}
   m_Father: {fileID: 1707761930}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1165650001
 MonoBehaviour:
@@ -2164,17 +2170,17 @@ PrefabInstance:
     - target: {fileID: 967404120579985946, guid: 7a5e7907c140ff24082a1bce753ce327,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -63.183
+      value: -64.584
       objectReference: {fileID: 0}
     - target: {fileID: 967404120579985946, guid: 7a5e7907c140ff24082a1bce753ce327,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -169.145
+      value: -139.264
       objectReference: {fileID: 0}
     - target: {fileID: 967404120579985946, guid: 7a5e7907c140ff24082a1bce753ce327,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -70.584
+      value: -97.533
       objectReference: {fileID: 0}
     - target: {fileID: 995829965692537576, guid: 7a5e7907c140ff24082a1bce753ce327,
         type: 3}
@@ -2221,11 +2227,12 @@ PrefabInstance:
       propertyPath: m_WarningMessage
       value: "\nBinding warning: Some generic clip(s) animate transforms that are
         already bound by a Humanoid avatar. These transforms can only be changed
-        by Humanoid clips.\n\tTransform 'shoulder.R'\n\tTransform 'shoulder.L'\n\tTransform
-        'forearm.R'\n\tTransform 'shoulder.R'\n\tTransform 'thigh.L'\n\tTransform
-        'upper_arm.L'\n\tTransform 'spine.006'\n\tTransform 'shin.R'\n\tTransform
-        'spine.003'\n\tTransform 'upper_arm.R'\n\tand more ...\n\tFrom animation
-        clip 'metarig|AttackgTrashCan'\n\tFrom animation clip 'metarig|HoldingTrashCan'"
+        by Humanoid clips.\n\tTransform 'shoulder.R'\n\tTransform 'palm.01.R'\n\tTransform
+        'palm.03.R'\n\tTransform 'palm.02.R'\n\tTransform 'palm.04.R'\n\tTransform
+        'shoulder.L'\n\tTransform 'thumb.03.R'\n\tTransform 'forearm.R'\n\tTransform
+        'shoulder.R'\n\tTransform 'f_middle.02.R'\n\tand more ...\n\tFrom animation
+        clip 'metarig|AttackgTrashCan'\n\tFrom animation clip 'metarig|HoldingTrashCan'\n\tFrom
+        animation clip 'metarig|Heal'"
       objectReference: {fileID: 0}
     - target: {fileID: 1221140014759976723, guid: 7a5e7907c140ff24082a1bce753ce327,
         type: 3}
@@ -2656,17 +2663,17 @@ PrefabInstance:
     - target: {fileID: 6167806556468247990, guid: 7a5e7907c140ff24082a1bce753ce327,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -67.246
+      value: -62.292
       objectReference: {fileID: 0}
     - target: {fileID: 6167806556468247990, guid: 7a5e7907c140ff24082a1bce753ce327,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -145.671
+      value: -193.044
       objectReference: {fileID: 0}
     - target: {fileID: 6167806556468247990, guid: 7a5e7907c140ff24082a1bce753ce327,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -81.277
+      value: -39.113
       objectReference: {fileID: 0}
     - target: {fileID: 6250574894369474441, guid: 7a5e7907c140ff24082a1bce753ce327,
         type: 3}
@@ -2773,6 +2780,21 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7922064388269993806, guid: 7a5e7907c140ff24082a1bce753ce327,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -82.497
+      objectReference: {fileID: 0}
+    - target: {fileID: 7922064388269993806, guid: 7a5e7907c140ff24082a1bce753ce327,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -219.983
+      objectReference: {fileID: 0}
+    - target: {fileID: 7922064388269993806, guid: 7a5e7907c140ff24082a1bce753ce327,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -18.968
+      objectReference: {fileID: 0}
     - target: {fileID: 8113281401320574168, guid: 7a5e7907c140ff24082a1bce753ce327,
         type: 3}
       propertyPath: m_Layer
@@ -2826,17 +2848,17 @@ PrefabInstance:
     - target: {fileID: 8622120088350586364, guid: 7a5e7907c140ff24082a1bce753ce327,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -201.045
+      value: -196.484
       objectReference: {fileID: 0}
     - target: {fileID: 8622120088350586364, guid: 7a5e7907c140ff24082a1bce753ce327,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -75.94202
+      value: -71.298004
       objectReference: {fileID: 0}
     - target: {fileID: 8622120088350586364, guid: 7a5e7907c140ff24082a1bce753ce327,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -106.20999
+      value: -106.916
       objectReference: {fileID: 0}
     - target: {fileID: 8747277831763982856, guid: 7a5e7907c140ff24082a1bce753ce327,
         type: 3}
@@ -3364,9 +3386,9 @@ Transform:
   m_LocalPosition: {x: -54.712738, y: -1.07, z: -36.63754}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1165650000}
-  - {fileID: 1416854902}
   - {fileID: 58882802}
+  - {fileID: 1416854902}
+  - {fileID: 1165650000}
   - {fileID: 1009929192}
   - {fileID: 1783616466}
   - {fileID: 2081795152}
@@ -4882,6 +4904,11 @@ PrefabInstance:
       propertyPath: weaponLocations.gatlingNailGunLoc
       value: 
       objectReference: {fileID: 2136643792}
+    - target: {fileID: 7932595841917631342, guid: 344f823c1a9753447ab0f455c4f7d7bb,
+        type: 3}
+      propertyPath: weaponLocations.meleeLoc
+      value: 
+      objectReference: {fileID: 669066665}
     - target: {fileID: 7932595842019998230, guid: 344f823c1a9753447ab0f455c4f7d7bb,
         type: 3}
       propertyPath: m_IsActive
