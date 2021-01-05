@@ -6,6 +6,7 @@ public class Nail : MonoBehaviour
 {
     public Vector3 moveDirection;
     public float lifeTime;
+    public Weapon weapon;
 
     bool move = true;
     private void Update()
@@ -19,7 +20,7 @@ public class Nail : MonoBehaviour
         print(collision.gameObject);
         if(collision.gameObject.tag == "Enemy")
         {
-
+            collision.gameObject.GetComponent<BodyHit>().HitPart(weapon, transform.position);
         }
         transform.SetParent(collision.transform);
         move = false;

@@ -39,7 +39,6 @@ public class MeleeAttack : MonoBehaviour
             if (currentSlot != null && currentSlot.ammoInMag > 0)
                 if (weaponWheel.activeSelf == false && optionsPanel.activeSelf == false)
                 {
-                    print("Dikke nigga");
                     if (weapon != null && canMelee == true)
                     {
                         currentSlot.ammoInMag--;

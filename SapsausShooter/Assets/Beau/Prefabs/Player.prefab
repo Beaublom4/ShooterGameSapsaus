@@ -560,10 +560,11 @@ MonoBehaviour:
   rocketPrefab: {fileID: 0}
   weaponHand: {fileID: 0}
   myTransform: {fileID: 0}
+  hitVfx: {fileID: 8209287071311382381, guid: 595c584ea2ca26e4e96b8b2a5d1b3c8a, type: 3}
   freezeBox: {fileID: 4858466631145907052}
   canHit:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 16183
   randomDir: {x: 0, y: 0, z: 0}
   freezeSpeed: 1
   nextTimeToFire: 0

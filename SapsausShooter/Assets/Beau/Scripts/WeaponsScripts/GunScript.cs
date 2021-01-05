@@ -13,6 +13,7 @@ public class GunScript : MonoBehaviour
     {
         if(ammoInMag > 0)
         {
+            if(shownBullet != null)
             shownBullet.SetActive(true);
         }
     }

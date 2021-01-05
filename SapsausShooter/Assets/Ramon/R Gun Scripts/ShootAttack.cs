@@ -25,6 +25,7 @@ public class ShootAttack : MonoBehaviour
     public GameObject rocketPrefab;
     public Transform weaponHand;
     public Transform myTransform;
+    public GameObject hitVfx;
 
     public FreezeHitBox freezeBox;
 
@@ -174,7 +175,6 @@ public class ShootAttack : MonoBehaviour
         {
             if (child.gameObject.activeSelf == true)
             {
-                print(child.GetComponent<SphereCollider>());
                 child.GetComponent<AreaColScript>().IncreaseSizeStart(weapon.weaponPrefab.GetComponent<GunScript>().weapon.soundAreaIncrease);
             }
         }
@@ -385,21 +385,15 @@ public class ShootAttack : MonoBehaviour
             currentSlot.ammoInMag--;
             ammoScript.UpdateAmmo(currentSlot.ammoInMag);
             weaponHand.GetComponentInChildren<ParticleSystem>().Play();
-            recoilObj.transform.Rotate(-weapon.recoil, 0, 0);
 
             RaycastHit hit;
             if (Physics.Raycast(recoilObj.transform.position, recoilObj.transform.forward, out hit, 1000, canHit, QueryTriggerInteraction.Ignore))
             {
-                if (recoilCooldown != null)
-                {
-                    StopCoroutine(recoilCooldown);
-                }
-                recoilCooldown = RecoilReset();
-                StartCoroutine(recoilCooldown);
                 if (hit.collider.tag == "Enemy")
                 {
                     if (hit.collider.GetComponent<BodyHit>())
                     {
+                        Instantiate(hitVfx, hit.point, Quaternion.LookRotation(hit.normal), null);
                         hit.collider.GetComponent<BodyHit>().HitPart(weapon, hit.point);
                         HitMarker(hit.collider.gameObject);
                     }
@@ -408,6 +402,13 @@ public class ShootAttack : MonoBehaviour
                 GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
                 Destroy(impactGO, 2f);
             }
+            recoilObj.transform.Rotate(-weapon.recoil, 0, 0);
+            if (recoilCooldown != null)
+            {
+                StopCoroutine(recoilCooldown);
+            }
+            recoilCooldown = RecoilReset();
+            StartCoroutine(recoilCooldown);
         }
 
         if (weapon.weaponPrefab.GetComponent<GunScript>().weapon.gunType == "Shotgun")
@@ -416,7 +417,6 @@ public class ShootAttack : MonoBehaviour
             sounds.shotgunShoot.pitch = Random.Range(1 - .1f, 1 + .1f);
             sounds.shotgunShoot.Play();
             weaponHand.GetComponentInChildren<ParticleSystem>().Play();
-            recoilObj.transform.Rotate(-weapon.recoil, 0, 0);
 
             currentSlot.ammoInMag--;
             ammoScript.UpdateAmmo(currentSlot.ammoInMag);
@@ -442,8 +442,14 @@ public class ShootAttack : MonoBehaviour
                         //Instantiate(testObj, hit.point, Quaternion.LookRotation(hit.normal), null);
                     }
                 }
-
             }
+            recoilObj.transform.Rotate(-weapon.recoil, 0, 0);
+            if (recoilCooldown != null)
+            {
+                StopCoroutine(recoilCooldown);
+            }
+            recoilCooldown = RecoilReset();
+            StartCoroutine(recoilCooldown);
         }
         if (weapon.weaponPrefab.GetComponent<GunScript>().weapon.gunType == "Launcher")
         {
