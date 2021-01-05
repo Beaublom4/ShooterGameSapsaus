@@ -215,7 +215,6 @@ public class Enemy : MonoBehaviour
             if (chanceToHoldGun > 0 || chanceToHoldMelee > 0)
             {
                 int randomNumber = Random.Range(0, 100);
-                print(randomNumber);
                 if (randomNumber <= chanceToHoldGun)
                 {
                     int weaponNumber = Random.Range(0, gunOptions.Length);
