@@ -130,6 +130,7 @@ public class ShootAttack : MonoBehaviour
                 }
                 else
                 {
+                    print("stop");
                     doingFreeze = false;
                     freezeColObj.GetComponent<FreezeHitBox>().ableToDoShit = false;
                     weaponHand.GetComponentInChildren<VisualEffect>().Stop();
@@ -137,6 +138,7 @@ public class ShootAttack : MonoBehaviour
             }
             else if (doingFreeze == true)
             {
+                print("stop");
                 freezeColObj.GetComponent<FreezeHitBox>().ableToDoShit = false;
                 doingFreeze = false;
                 weaponHand.GetComponentInChildren<VisualEffect>().Stop();
@@ -165,6 +167,16 @@ public class ShootAttack : MonoBehaviour
                 StartCoroutine(recoilCooldown);
 
                 Instantiate(currentSlot.gunWeapon.bulletPrefab, weaponHand.GetComponentInChildren<GunScript>().prefabSpawn.position, recoilObj.transform.rotation, null);
+            }
+        }
+        if (Input.GetButtonUp("Fire1"))
+        {
+            if(doingFreeze == true)
+            {
+                print("stop");
+                doingFreeze = false;
+                freezeColObj.GetComponent<FreezeHitBox>().ableToDoShit = false;
+                weaponHand.GetComponentInChildren<VisualEffect>().Stop();
             }
         }
     }
