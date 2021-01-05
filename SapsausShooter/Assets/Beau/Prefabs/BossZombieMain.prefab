@@ -1,0 +1,157 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4732765805534417152
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4367341969945207776}
+  - component: {fileID: 1544427481278864950}
+  - component: {fileID: 6019262791092362214}
+  m_Layer: 0
+  m_Name: BossZombieMain
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4367341969945207776
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4732765805534417152}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -174.39015, y: -19.519491, z: -102.53585}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4639638691204560902}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!195 &1544427481278864950
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4732765805534417152}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0.51
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &6019262791092362214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4732765805534417152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f8c4c723c7eb28478e2bb83743b1eb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  timeBetweenAttacks: 0
+  playerObj: {fileID: 0}
+  dog: {fileID: 0}
+  maxRangeMeleeAttack: 0
+  meleePlace: {fileID: 0}
+  weaponList: []
+  selectedWeapon: {fileID: 0}
+  nuclearBarrel: {fileID: 0}
+  currentBarrel: {fileID: 0}
+  barrelSpawnPoint: {fileID: 0}
+  dissolvingNumber: -1
+  freezeRenderNumber: 0
+--- !u!1001 &8435595487977457469
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4367341969945207776}
+    m_Modifications:
+    - target: {fileID: 3851157853548003131, guid: 29640df6c869b9a4da8428a134de09c8,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 3851157853548003131, guid: 29640df6c869b9a4da8428a134de09c8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.0804996
+      objectReference: {fileID: 0}
+    - target: {fileID: 3851157853548003131, guid: 29640df6c869b9a4da8428a134de09c8,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3851157853548003131, guid: 29640df6c869b9a4da8428a134de09c8,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3851157853548003131, guid: 29640df6c869b9a4da8428a134de09c8,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3851157853548003131, guid: 29640df6c869b9a4da8428a134de09c8,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3851157853548003131, guid: 29640df6c869b9a4da8428a134de09c8,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3851157853548003131, guid: 29640df6c869b9a4da8428a134de09c8,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3851157853548003131, guid: 29640df6c869b9a4da8428a134de09c8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3851157853548003131, guid: 29640df6c869b9a4da8428a134de09c8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3851157853548003131, guid: 29640df6c869b9a4da8428a134de09c8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4483860117667669377, guid: 29640df6c869b9a4da8428a134de09c8,
+        type: 3}
+      propertyPath: m_Name
+      value: BossZombie
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 29640df6c869b9a4da8428a134de09c8, type: 3}
+--- !u!4 &4639638691204560902 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3851157853548003131, guid: 29640df6c869b9a4da8428a134de09c8,
+    type: 3}
+  m_PrefabInstance: {fileID: 8435595487977457469}
+  m_PrefabAsset: {fileID: 0}

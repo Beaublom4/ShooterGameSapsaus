@@ -393,7 +393,8 @@ public class ShootAttack : MonoBehaviour
                 {
                     if (hit.collider.GetComponent<BodyHit>())
                     {
-                        Instantiate(hitVfx, hit.point, Quaternion.LookRotation(hit.normal), null);
+                        GameObject g = Instantiate(hitVfx, hit.point, Quaternion.LookRotation(hit.normal), null);
+                        Destroy(g, 3);
                         hit.collider.GetComponent<BodyHit>().HitPart(weapon, hit.point);
                         HitMarker(hit.collider.gameObject);
                     }
@@ -432,6 +433,8 @@ public class ShootAttack : MonoBehaviour
                     {
                         if (hit.collider.GetComponent<BodyHit>())
                         {
+                            GameObject g = Instantiate(hitVfx, hit.point, Quaternion.LookRotation(hit.normal), null);
+                            Destroy(g, 3);
                             hit.collider.GetComponent<BodyHit>().HitPart(weapon, hit.point);
 
                             HitMarker(hit.collider.gameObject);

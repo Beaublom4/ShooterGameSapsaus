@@ -351,15 +351,15 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.214
       objectReference: {fileID: 0}
-    - target: {fileID: 8224453804101588000, guid: 67f420e94101fd34d9107c95a872f83e,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8282535807657914725, guid: 67f420e94101fd34d9107c95a872f83e,
         type: 3}
       propertyPath: waitTimeBeforeTrow
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8282535807657914725, guid: 67f420e94101fd34d9107c95a872f83e,
+        type: 3}
+      propertyPath: chanceToHoldGun
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8463677753485028893, guid: 67f420e94101fd34d9107c95a872f83e,
         type: 3}
@@ -4368,11 +4368,6 @@ PrefabInstance:
       propertyPath: missionManagerScript
       value: 
       objectReference: {fileID: 165476546}
-    - target: {fileID: 5433026564681970299, guid: 595a79ed576d0434b85df93ea3312bcb,
-        type: 3}
-      propertyPath: damage
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 5559333383584965784, guid: 595a79ed576d0434b85df93ea3312bcb,
         type: 3}
       propertyPath: m_Height

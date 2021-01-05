@@ -14,15 +14,27 @@ public class BossZombie : MonoBehaviour
     public GameObject nuclearBarrel;
     public GameObject currentBarrel;
     public Transform barrelSpawnPoint;
+    SkinnedMeshRenderer render;
+    MaterialPropertyBlock block;
+    public float dissolvingNumber, freezeRenderNumber;
 
     bool isMeleeAttacking, lookAtPlayer;
     NavMeshAgent agent;
+
+
     private void Start()
     {
         agent = gameObject.GetComponent<NavMeshAgent>();
         agent.speed = speed;
 
-        RandomAttack();
+        render = GetComponentInChildren<SkinnedMeshRenderer>();
+        block = new MaterialPropertyBlock();
+        block.SetFloat("Vector1_4FF20CCE", dissolvingNumber);
+        freezeRenderNumber = -1;
+        block.SetFloat("Vector1_76374516", freezeRenderNumber);
+        render.SetPropertyBlock(block);
+
+        agent.SetDestination(playerObj.transform.position);
     }
     private void Update()
     {

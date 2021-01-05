@@ -14,7 +14,6 @@ public class HealthManager : MonoBehaviour
     public GameObject mainCam;
     public float camMoveSpeed, camRotateSpeed;
     public Transform deathCamPos;
-    bool death, lookDown;
 
     public GameObject deathPanel;
     private void Start()
@@ -29,23 +28,6 @@ public class HealthManager : MonoBehaviour
             print("NoHealthShitAssigned");
         }
     }
-    private void Update()
-    {
-        if(death == true)
-        {
-            //mainCam.GetComponent<MouseLook>().enabled = !enabled;
-            //if(lookDown == false)
-            //{
-            //    lookDown = true;
-            //    mainCam.transform.rotation = Quaternion.Euler(90, 0, 0);
-            //}
-            //mainCam.transform.Rotate(0, 0, camRotateSpeed * Time.deltaTime);
-            //if (mainCam.transform.position != deathCamPos.position)
-            //{
-            //    mainCam.transform.position = Vector3.Lerp(mainCam.transform.position, deathCamPos.position, camMoveSpeed * Time.deltaTime);
-            //}
-        }
-    }
     public void DoDamage(float damage)
     {
         if (canGetDmg == true)
@@ -58,7 +40,6 @@ public class HealthManager : MonoBehaviour
                 anim.SetTrigger("Dead");
                 GetComponent<Movement>().enabled = !enabled;
                 GetComponentInChildren<MouseLook>().enabled = !enabled;
-                death = true;
                 deathPanel.SetActive(true);
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
@@ -78,7 +59,6 @@ public class HealthManager : MonoBehaviour
             {
                 health = 0;
                 anim.SetTrigger("Dead");
-                death = true;
                 GetComponent<Movement>().enabled = !enabled;
                 GetComponent<MouseLook>().enabled = !enabled;
             }
