@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     public class Sounds
     {
         public float minSoundRange = .2f, maxSoundRange = .2f;
-        public AudioSource trigger, attack;
+        public AudioSource trigger, attack, death;
     }
 
     public float speed;
@@ -106,6 +106,7 @@ public class Enemy : MonoBehaviour
             {
                 isDeath = true;
                 StartCoroutine(Dead(2));
+                PlayDeathSound(sounds.death);
             }
         }
         if (moveTowardMain == true)
@@ -283,6 +284,16 @@ public class Enemy : MonoBehaviour
         source.pitch = standardPitch;
     }
     public virtual void PlayAttackSound(AudioSource source)
+    {
+        float standardVolume = source.volume;
+        float standardPitch = source.pitch;
+        source.volume = Random.Range(standardVolume - sounds.minSoundRange, standardVolume + sounds.maxSoundRange);
+        source.pitch = Random.Range(standardPitch - sounds.minSoundRange, standardPitch + sounds.maxSoundRange);
+        source.Play();
+        source.volume = standardVolume;
+        source.pitch = standardPitch;
+    }
+    public virtual void PlayDeathSound(AudioSource source)
     {
         float standardVolume = source.volume;
         float standardPitch = source.pitch;
