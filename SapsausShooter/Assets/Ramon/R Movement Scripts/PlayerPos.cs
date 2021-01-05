@@ -2,24 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class PlayerPos : MonoBehaviour
 {
-    private Checkpoint cp;
+    public GameObject player;
+    Checkpoint spawnLocation;
+    HealthManager health;
+    public Button respawnButton;
 
-    void Start()
+    public void Start()
     {
-        cp = GameObject.FindGameObjectWithTag("GM").GetComponent<Checkpoint>();
-        transform.position = cp.lastCheckPointPos;
-        print("starting position set");
+        Button button = respawnButton.GetComponent<Button>();
+        button.onClick.AddListener(SpawnPlayer);
     }
-
-    void Update()
+    void SpawnPlayer()
     {
-        //om te kunnen testen of checkpoints werken
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            //print("reset scene");
-        //}
+        Instantiate(player, spawnLocation.lastCheckPointPos);
     }
 }

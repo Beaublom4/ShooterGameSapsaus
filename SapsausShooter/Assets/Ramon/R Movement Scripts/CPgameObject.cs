@@ -16,7 +16,7 @@ public class CPgameObject : MonoBehaviour
     {
         if (other.gameObject.tag == ("Player"))
         {
-            checkpontManager.lastCheckPointPos = transform.position;
+            checkpontManager.lastCheckPointPos = transform;
             print("checkpoint touched");
         }
     }

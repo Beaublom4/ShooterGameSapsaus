@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
 {
-    public Vector3 lastCheckPointPos;
+    public Transform lastCheckPointPos;
 }

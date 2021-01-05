@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class GarageDoor : MonoBehaviour
 {
+    public class Sounds
+    {
+        [HideInInspector] public float garageDoorSoundVolume;
+        public AudioSource garageDoorSound;
+    }
+
+    public Sounds garageSounds;
+
     public int currentWave;
     public float doorOpeningSpeed;
     public Transform enemieSpawnPoint, enemyHolder, doorObjWantedLoc;
@@ -26,6 +34,9 @@ public class GarageDoor : MonoBehaviour
     {
         if(openDoor == true)
         {
+            garageSounds.garageDoorSound.volume = garageSounds.garageDoorSoundVolume;
+            garageSounds.garageDoorSound.Play();
+
             doorObj.transform.position = Vector3.Lerp(doorObj.transform.position, doorObjWantedLoc.position, doorOpeningSpeed * Time.deltaTime);
             if (Vector3.Distance(doorObj.transform.position, doorObjWantedLoc.position) < .5f)
             {

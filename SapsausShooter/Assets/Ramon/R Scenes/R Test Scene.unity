@@ -498,6 +498,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37f7bb33ae4c67244987c55252b4423c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!4 &220565997 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4624682574727440576, guid: 595a79ed576d0434b85df93ea3312bcb,
@@ -893,7 +894,7 @@ GameObject:
   - component: {fileID: 674394994}
   m_Layer: 0
   m_Name: CheckpointManager
-  m_TagString: GM
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -910,7 +911,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eb4f4fb4006df7419bfe4896ffd3066, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lastCheckPointPos: {x: 0, y: 1.1, z: 0}
+  lastCheckPointPos: {fileID: 0}
 --- !u!4 &674394995
 Transform:
   m_ObjectHideFlags: 0
