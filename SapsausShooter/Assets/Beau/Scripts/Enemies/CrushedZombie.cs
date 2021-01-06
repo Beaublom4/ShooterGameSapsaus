@@ -44,22 +44,19 @@ public class CrushedZombie : Enemy
     }
     public override void OnCollisionEnter(Collision collision)
     {
-        if (canBash == true)
+        if (collision.gameObject.tag == "Player")
         {
-            if (collision.gameObject.tag == "Player")
+            isColliding = true;
+            playerObj = collision.gameObject;
+            StartCoroutine(Hit());
+            StartCoroutine(HitBash());
+        }
+        else
+        {
+            if (collision.gameObject.tag != "Floor")
             {
-                isColliding = true;
-                playerObj = collision.gameObject;
-                StartCoroutine(Hit());
+                print("hit bash");
                 StartCoroutine(HitBash());
-            }
-            else
-            {
-                if (collision.gameObject.tag != "Floor")
-                {
-                    print("hit bash");
-                    StartCoroutine(HitBash());
-                }
             }
         }
     }

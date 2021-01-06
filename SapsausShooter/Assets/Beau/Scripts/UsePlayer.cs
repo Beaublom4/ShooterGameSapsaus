@@ -46,7 +46,7 @@ public class UsePlayer : MonoBehaviour
                 }
                 if (Input.GetButtonDown("Use"))
                 {
-                    hit.transform.GetComponent<HealStation>().BuyHeal(gameObject);
+                    hit.transform.GetComponent<HealStation>().BuyHeal();
                 }
             }
             if(hit.transform.tag == "LauncherPart")

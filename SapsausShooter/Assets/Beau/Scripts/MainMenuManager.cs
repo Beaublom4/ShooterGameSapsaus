@@ -50,41 +50,39 @@ public class MainMenuManager : MonoBehaviour
     public TextMeshProUGUI loadingNum;
 
     public static bool devMode;
-
-    public GameObject deathPanel;
     private void Start()
     {
-        //if (PlayerPrefs.GetInt("HasPlayerPrefs") == 1)
-        //{
-        //    print("Player prefs found");
-        //    foreach (GameObject g in options.soundSlidersObj)
-        //    {
-        //        g.GetComponentInChildren<Slider>().value = PlayerPrefs.GetFloat(g.GetComponent<SliderInfo>().group.name);
-        //    }
-        //    options.sensitivitySlider.value = PlayerPrefs.GetFloat("Sensitivity");
-        //    sensNumber.text = (options.sensitivitySlider.value / 100).ToString("F1");
-        //    if(inGame == true)
-        //    {
-        //        camScript.mouseSensitivity = options.sensitivitySlider.value;
-        //    }
-        //    if (PlayerPrefs.GetInt("DevMode") == 1)
-        //        devMode = true;
-        //    else
-        //        devMode = false;
-        //}
-        //else
-        //{
-        //    foreach (GameObject g in options.soundSlidersObj)
-        //    {
-        //        PlayerPrefs.SetFloat(g.GetComponent<SliderInfo>().group.name, 1);
-        //    }
-        //    PlayerPrefs.SetFloat("Sensitivity", options.sensitivitySlider.value);
-        //    sensNumber.text = (options.sensitivitySlider.value / 100).ToString("F1");
-        //    PlayerPrefs.SetInt("DevMode", 0);
+        if (PlayerPrefs.GetInt("HasPlayerPrefs") == 1)
+        {
+            print("Player prefs found");
+            foreach (GameObject g in options.soundSlidersObj)
+            {
+                g.GetComponentInChildren<Slider>().value = PlayerPrefs.GetFloat(g.GetComponent<SliderInfo>().group.name);
+            }
+            options.sensitivitySlider.value = PlayerPrefs.GetFloat("Sensitivity");
+            sensNumber.text = (options.sensitivitySlider.value / 100).ToString("F1");
+            if(inGame == true)
+            {
+                camScript.mouseSensitivity = options.sensitivitySlider.value;
+            }
+            if (PlayerPrefs.GetInt("DevMode") == 1)
+                devMode = true;
+            else
+                devMode = false;
+        }
+        else
+        {
+            foreach (GameObject g in options.soundSlidersObj)
+            {
+                PlayerPrefs.SetFloat(g.GetComponent<SliderInfo>().group.name, 1);
+            }
+            PlayerPrefs.SetFloat("Sensitivity", options.sensitivitySlider.value);
+            sensNumber.text = (options.sensitivitySlider.value / 100).ToString("F1");
+            PlayerPrefs.SetInt("DevMode", 0);
 
-        //    PlayerPrefs.SetInt("HasPlayerPrefs", 1);
-        //    print("Player prefs made");
-        //}
+            PlayerPrefs.SetInt("HasPlayerPrefs", 1);
+            print("Player prefs made");
+        }
 
         PreScene.defaultRes = Screen.currentResolution;
         resText.text = PreScene.defaultRes.width.ToString() + "x" + PreScene.defaultRes.height.ToString();
@@ -93,7 +91,7 @@ public class MainMenuManager : MonoBehaviour
     {
         if(inGame == true)
         {
-            if (Input.GetButtonDown("Cancel") && deathPanel)
+            if (Input.GetButtonDown("Cancel"))
             {
                 if (optionsPanelObj.activeSelf == false)
                 {
