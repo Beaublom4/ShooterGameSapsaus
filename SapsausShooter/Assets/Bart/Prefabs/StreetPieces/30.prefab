@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 7759293693371432059}
   - component: {fileID: 6629675877046825950}
   - component: {fileID: 8927718154424731412}
+  - component: {fileID: 2468275031188395080}
   m_Layer: 0
-  m_Name: SpeedSign (1)
+  m_Name: 30
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -81,3 +82,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2468275031188395080
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6982088143367661249}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.14837438, y: 2.2370834, z: 0.15227127}
+  m_Center: {x: -0.010178655, y: 1.1185417, z: 0.004026413}

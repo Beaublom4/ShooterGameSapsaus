@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8098363235287646766}
   - component: {fileID: 5173776024292838795}
   - component: {fileID: 6928795346163775809}
+  - component: {fileID: 8258906995304897012}
   m_Layer: 0
   m_Name: ArcadeMachine
   m_TagString: Untagged
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8258906995304897012
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8874618871484979348}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.3886211, y: 2.6177912, z: 1.6287332}
+  m_Center: {x: -0.06822249, y: 1.3002803, z: -0.019406945}

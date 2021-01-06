@@ -103,6 +103,7 @@ GameObject:
   - component: {fileID: 600685015866951782}
   - component: {fileID: 4609949080614422467}
   - component: {fileID: 1737583558378763017}
+  - component: {fileID: 8009792024746291630}
   m_Layer: 0
   m_Name: _antarn
   m_TagString: Untagged
@@ -174,3 +175,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8009792024746291630
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 224581273565663964}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.45259857, y: 4.8563147, z: 0.383223}
+  m_Center: {x: -0.03961563, y: 2.4281573, z: -0.000016152859}

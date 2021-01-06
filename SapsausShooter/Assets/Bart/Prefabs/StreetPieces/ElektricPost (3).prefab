@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 610476052180367178}
   - component: {fileID: 3698229070928201395}
   - component: {fileID: 4053624361322102788}
+  - component: {fileID: 6296956570390419369}
   m_Layer: 0
   m_Name: ElektricPost (3)
   m_TagString: Untagged
@@ -81,3 +82,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6296956570390419369
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1157752378069660221}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5594313128314999151, guid: 93c2ea09ae67c4e4aba00ea56f7949e8, type: 3}
