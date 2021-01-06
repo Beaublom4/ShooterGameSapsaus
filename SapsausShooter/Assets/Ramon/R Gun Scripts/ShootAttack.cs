@@ -347,9 +347,6 @@ public class ShootAttack : MonoBehaviour
         yield return new WaitForSeconds(weapon.weaponPrefab.GetComponent<GunScript>().weapon.reloadSpeed);
 
         print("Reloaded");
-        sounds.pistolReload.volume = Random.Range(sounds.pistolSoundVolume - .1f, sounds.pistolSoundVolume + .1f);
-        sounds.pistolReload.pitch = Random.Range(1.5f - .1f, 1.5f + .1f);
-        sounds.pistolReload.Play();
         currentSlot.ammoInMag = addAmmo;
         ammoScript.UpdateAmmo(currentSlot.ammoInMag);
         isReloading = false;

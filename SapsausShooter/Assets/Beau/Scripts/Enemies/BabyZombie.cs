@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class BabyZombie : Enemy
 {
-    public bool isTrown = true, isSpitting;
+    public bool isTrown = false, isSpitting;
     public Transform spitPoint;
     public GameObject spitPrefab;
     public Vector3 spitDirection;

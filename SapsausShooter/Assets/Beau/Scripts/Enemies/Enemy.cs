@@ -49,6 +49,10 @@ public class Enemy : MonoBehaviour
     public bool isColliding;
     bool hitCooldown;
 
+    public Transform shootPos;
+    [HideInInspector] public bool playerInShootingRange;
+    [HideInInspector] public float shootTimer;
+
     [HideInInspector] public bool getDamageOverTime;
     [HideInInspector] public float damageOverTime;
 
@@ -77,6 +81,7 @@ public class Enemy : MonoBehaviour
         agent.speed = speed;
         render = GetComponentInChildren<SkinnedMeshRenderer>();
         missionManagerScript = GameObject.FindWithTag("MissionManager").GetComponent<MissionManager>();
+        SpawnWithWeapon();
         block = new MaterialPropertyBlock();
         block.SetFloat("Vector1_4FF20CCE", dissolvingNumber);
         freezeRenderNumber = -1;
@@ -115,6 +120,18 @@ public class Enemy : MonoBehaviour
             else if(Vector3.Distance(main, transform.position) <= 1 && isMainBody == true)
             {
                 GetComponent<DefaultZombie>().MainAtLoc = true;
+            }
+        }
+        if(playerInShootingRange == true)
+        {
+            if(shootTimer > 0)
+            {
+                shootTimer -= Time.deltaTime;
+            }
+            else if(shootTimer <= 0)
+            {
+                Shoot();
+                shootTimer = holdingGun.fireRate;
             }
         }
         if(dissolving == true)
@@ -186,17 +203,26 @@ public class Enemy : MonoBehaviour
             Invoke("GoAttack", length);
         }
     }
-    public void UnTrigger()
-    {
-        isWalking = false;
-        isAttacking = false;
-        anim.SetBool("Walking", false);
-    }
     public void GoAttack()
     {
         isAttacking = true;
         if(anim != null)
         anim.SetBool("Walking", true);
+    }
+    public void SpawnWithWeapon()
+    {
+        if (chanceToHoldGun != 0 || chanceToHoldMelee != 0)
+        {
+            if (chanceToHoldGun > 0 || chanceToHoldMelee > 0)
+            {
+                int randomNumber = Random.Range(0, 100);
+                if (randomNumber <= chanceToHoldGun)
+                {
+                    int weaponNumber = Random.Range(0, gunOptions.Length);
+                    holdingGun = gunOptions[weaponNumber];
+                }
+            }
+        }
     }
     public virtual void OnCollisionEnter(Collision collision)
     {
@@ -386,6 +412,7 @@ public class Enemy : MonoBehaviour
         {
             missionManagerScript.currentKillAmount++;
         }
+        playerInShootingRange = false;
         Drop();
         DropMoney();
         DropWeapon();
@@ -444,5 +471,42 @@ public class Enemy : MonoBehaviour
     void CountsToBigZombieCooldown()
     {
         countTowardsBigZomb = true;
+    }
+    void Shoot()
+    {
+        RaycastHit hit;
+        if(Physics.Raycast(shootPos.position, playerObj.transform.position - transform.position, out hit, 1000, -5, QueryTriggerInteraction.Ignore))
+        {
+            if(hit.collider.transform.parent.tag == "Player")
+            {
+                playerObj.transform.GetComponent<HealthManager>().DoDamageWithGun(holdingGun, gameObject);
+            }
+        }
+    }
+    public void PlayerInShootingRange()
+    {
+        if (isDeath == false)
+        {
+            agent.speed = 0;
+            agent.velocity = Vector3.zero;
+            playerInShootingRange = true;
+            transform.LookAt(playerObj.transform);
+        }
+    }
+    public void PlayerOutOfShootingRange()
+    {
+        if (isDeath == false)
+        {
+            shootTimer = holdingGun.fireRate;
+            playerInShootingRange = false;
+            if (freezeNum <= 0)
+            {
+                agent.speed = speed;
+            }
+            else
+            {
+                agent.speed = freezeWalkingSpeed;
+            }
+        }
     }
 }

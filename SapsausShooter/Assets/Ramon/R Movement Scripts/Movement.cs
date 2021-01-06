@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    [System.Serializable]
     public class Sounds
     {
-        public float walkSoundVolume = .2f, jumpSoundVolume = .5f;
+        [HideInInspector] public float walkSoundVolume, jumpSoundVolume;
         public AudioSource walkSound, jumpSound, jumplandSound;
     }
 
@@ -32,16 +31,17 @@ public class Movement : MonoBehaviour
     Vector3 velocity;
     bool isGrounded;
 
-    bool playWalkingSound;
-    public float stepTimerTime;
-    public float stepTimer;
-
     private void Start()
     {
         controller = GetComponent<CharacterController>();
         col = GetComponent<SphereCollider>();
-        stepTimer = stepTimerTime;
         //playerAnimation = GetComponent<Animator>();
+    }
+    private void Step()
+    {
+        movementSounds.walkSound.volume = Random.Range(movementSounds.walkSoundVolume - .1f, movementSounds.walkSoundVolume + .1f);
+        movementSounds.walkSound.pitch = Random.Range(1 - .1f, 1 + .1f);
+        movementSounds.walkSound.Play();
     }
     void Update()
     {
@@ -67,35 +67,42 @@ public class Movement : MonoBehaviour
 
         controller.Move(velocity * Time.deltaTime);
 
-        if(x != 0 || z != 0)
-        {
-            playWalkingSound = true;
-        }
-        else
-        {
-            playWalkingSound = false;
-        }
-
         if (isGrounded)
         {
             playerAnimation.SetFloat("Blendy", animZ);
             playerAnimation.SetFloat("Blendx", animX);
 
-            if (playWalkingSound)
-            {
-                if (stepTimer > 0)
-                {
-                    stepTimer -= Time.deltaTime;
-                }
-                else if (stepTimer < 0)
-                {
-                    stepTimer = stepTimerTime;
+            Step();
 
-                    movementSounds.walkSound.volume = Random.Range(movementSounds.walkSoundVolume - .001f, movementSounds.walkSoundVolume + .001f);
-                    movementSounds.walkSound.pitch = Random.Range(1 - .1f, 1 + .1f);
-                    movementSounds.walkSound.Play();
-                }
+            //velocity.y = -2f;
+            //animationTime += Time.deltaTime / animationLength;
+
+            /*
+            if (move.z > 0)
+            {
+                playerAnimation.SetFloat("Blendx", Mathf.Lerp(0, 1, animationLength * Time.deltaTime));
             }
+            if (move.z < 0)
+            {
+                playerAnimation.SetFloat("Blendx", Mathf.Lerp(0, 1, animationLength * Time.deltaTime));
+            }
+            if (move.z == 0)
+            {
+                playerAnimation.SetFloat("Blendx", 0);
+            }
+            if (move.x > 0)
+            {
+                playerAnimation.SetFloat("blendy", Mathf.Lerp(0, 1, 1));
+            }
+            if (move.x < 0)
+            {
+                playerAnimation.SetFloat("blendy", Mathf.Lerp(0, -1, 1));
+            }
+            if (move.x == 0)
+            {
+                playerAnimation.SetFloat("blendy", 0);
+            }
+            */
         }
 
         if (Input.GetButtonDown("Jump") && isGrounded)
@@ -104,13 +111,26 @@ public class Movement : MonoBehaviour
 
             velocity.y = Mathf.Sqrt(jumpHeight = -2f * gravity);
 
-            movementSounds.jumpSound.volume = Random.Range(movementSounds.jumpSoundVolume - .001f, movementSounds.jumpSoundVolume + .001f);
+            movementSounds.jumpSound.volume = Random.Range(movementSounds.jumpSoundVolume - .1f, movementSounds.jumpSoundVolume + .1f);
             movementSounds.jumpSound.pitch = Random.Range(1 - .1f, 1 + .1f);
             movementSounds.jumpSound.Play();
         }
         else
         {
             return;
+        }
+    }
+    public void OnCollisionEnter(Collision haslanded)
+    {
+        if (isGrounded == true)
+        {
+            canPlayLandingSound = true;
+            if (canPlayLandingSound == true)
+            {
+                movementSounds.jumplandSound.volume = Random.Range(movementSounds.jumpSoundVolume - .1f, movementSounds.jumpSoundVolume + .1f);
+                movementSounds.jumplandSound.pitch = Random.Range(1 - .1f, 1 + .1f);
+                movementSounds.jumplandSound.Play();
+            }
         }
     }
 }
