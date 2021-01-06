@@ -448,6 +448,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb6dc2d4315add947b057e9efe6cab49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canPlayLandingSound: 0
   controller: {fileID: 896554098108623723}
   playerAnimation: {fileID: 1200487926547216155}
   col: {fileID: 0}
@@ -2014,8 +2015,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5523106121708465322}
-  m_LocalRotation: {x: -0.47341713, y: 0.66218007, z: 0.55137074, w: 0.1827133}
-  m_LocalPosition: {x: -0.033, y: 0.109, z: 0.051}
+  m_LocalRotation: {x: -0.40024713, y: 0.63391364, z: 0.6065771, w: 0.2646129}
+  m_LocalPosition: {x: -0.027, y: 0.159, z: 0.065}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7040708411112514756}
