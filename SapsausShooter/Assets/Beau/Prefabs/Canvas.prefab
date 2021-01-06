@@ -702,20 +702,6 @@ MonoBehaviour:
   audioMixer: {fileID: 24100000, guid: d1567cd5055296547b550833238b7a58, type: 2}
   moveButtonToPos: {x: 15, y: 0, z: 0}
   resText: {fileID: 3157279590848654033}
-  options:
-    soundSliders:
-    - {fileID: 785373114840755459}
-    - {fileID: 8620814179237140750}
-    - {fileID: 8064144628916142138}
-    - {fileID: 1985416261649015557}
-    soundSlidersObj:
-    - {fileID: 5706764762346168816}
-    - {fileID: 5135230340975972401}
-    - {fileID: 4210346541635333088}
-    - {fileID: 6133406434927022179}
-    sensitivitySlider: {fileID: 7156651864417751846}
-    fullScreenToggle: {fileID: 5816585851708429399}
-    resDropdown: {fileID: 648236285141955964}
   optionsPanelObj: {fileID: 9194064795846517227}
   camScript: {fileID: 0}
   movementScript: {fileID: 0}
@@ -9693,7 +9679,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7932595841736770102
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10592,6 +10578,7 @@ MonoBehaviour:
     launcherLoc: {fileID: 0}
     freezegunLoc: {fileID: 0}
     gatlingNailGunLoc: {fileID: 0}
+    meleeLoc: {fileID: 0}
 --- !u!114 &7932595841917631340
 MonoBehaviour:
   m_ObjectHideFlags: 0

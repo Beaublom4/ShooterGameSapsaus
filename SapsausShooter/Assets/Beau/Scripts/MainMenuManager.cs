@@ -14,9 +14,9 @@ public class MainMenuManager : MonoBehaviour
         [HideInInspector] public float buttonSoundVolume;
         public AudioSource buttonPressSound;
     }
+    [System.Serializable]
     public class optionsThings
     {
-        public Slider[] soundSliders;
         public GameObject[] soundSlidersObj;
         public Slider sensitivitySlider;
         public Toggle fullScreenToggle;
