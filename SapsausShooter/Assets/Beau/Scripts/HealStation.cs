@@ -28,7 +28,7 @@ public class HealStation : MonoBehaviour
         infoPanel.SetActive(true);
         Invoke("hideObj", 2);
     }
-    public void BuyHeal()
+    public void BuyHeal(GameObject player)
     {
         if(moneyScript.money > priceHeal)
         {
@@ -37,6 +37,7 @@ public class HealStation : MonoBehaviour
 
             healthScript.health += healthScript.healthSlider.maxValue - healthScript.health;
             healthScript.UpdateNumber();
+            player.GetComponentInChildren<Animator>().SetTrigger("Heal");
             ShowPrice();
             return;
         }

@@ -12,7 +12,8 @@ public class MomZombie : Enemy
     public override void Trigger(GameObject player)
     {
         base.Trigger(player);
-        Invoke("TrowBaby", anim.GetCurrentAnimatorStateInfo(0).length);
+        if (gameObject.activeSelf == true)
+            Invoke("TrowBaby", anim.GetCurrentAnimatorStateInfo(0).length);
     }
     void TrowBaby()
     {
@@ -21,6 +22,7 @@ public class MomZombie : Enemy
             Destroy(carriedBaby);
             Instantiate(babyZombiePrefab, trowPos.position, transform.rotation, trowPos);
             currentBaby = trowPos.GetChild(0).gameObject;
+            currentBaby.GetComponent<BabyZombie>().isTrown = false;
             currentBaby.transform.parent = spawnArea;
             currentBaby.GetComponent<Enemy>().playerObj = playerObj;
 
@@ -34,7 +36,7 @@ public class MomZombie : Enemy
     public override IEnumerator Dead(int hitPoint)
     {
         isDeath = true;
-        if(carriedBaby != null)
+        if(carriedBaby != null && gameObject.activeSelf == true)
         {
             GameObject g = Instantiate(babyZombiePrefab, trowPos.position, transform.rotation, trowPos);
             g.transform.parent = spawnArea;
