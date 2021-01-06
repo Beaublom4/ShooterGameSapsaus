@@ -91,7 +91,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1456947592974731157}
   m_Layer: 0
-  m_Name: StylizedHouse (1)
+  m_Name: XmasHouse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 2908062359404874852}
   - component: {fileID: 8480399214579837654}
   - component: {fileID: 1076798782989448979}
+  - component: {fileID: 7472245101669736049}
   m_Layer: 0
   m_Name: OutsideHouse
   m_TagString: Untagged
@@ -197,3 +198,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7472245101669736049
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3298358472468174578}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5896392765032908654, guid: 8d41003fefbc2924b9fb6871e102cbda, type: 3}

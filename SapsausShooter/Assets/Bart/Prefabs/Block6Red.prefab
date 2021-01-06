@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1384899589805632515}
   - component: {fileID: 2636854573838230438}
   - component: {fileID: 248553443842398060}
+  - component: {fileID: 3141138261941083966}
   m_Layer: 0
   m_Name: Block6Red
   m_TagString: Untagged
@@ -81,3 +82,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3141138261941083966
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762022885112854201}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.074869156, y: 0.056803185, z: 0.036740635}
+  m_Center: {x: -0.000106545165, y: 0.000098710865, z: 0.018224457}

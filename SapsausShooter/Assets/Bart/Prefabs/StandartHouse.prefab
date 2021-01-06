@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 942408045018061696}
   m_Layer: 0
-  m_Name: StylizedHouse (2)
+  m_Name: StandartHouse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 3564465293450809457}
   - component: {fileID: 7826248063178208963}
   - component: {fileID: 1719684340376644358}
+  - component: {fileID: 7750188565683875859}
   m_Layer: 0
   m_Name: OutsideHouse
   m_TagString: Untagged
@@ -197,3 +198,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7750188565683875859
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3812889224295123687}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5896392765032908654, guid: 8d41003fefbc2924b9fb6871e102cbda, type: 3}

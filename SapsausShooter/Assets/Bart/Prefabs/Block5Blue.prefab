@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8519031036192837144}
   - component: {fileID: 4726094610751963581}
   - component: {fileID: 7382104902007436663}
+  - component: {fileID: -5596833052270599344}
   m_Layer: 0
   m_Name: Block5Blue
   m_TagString: Untagged
@@ -81,3 +82,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &-5596833052270599344
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9039425098410169506}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.06562069, y: 0.054526683, z: 0.030022975}
+  m_Center: {x: -0.000035304576, y: -0.000029946672, z: 0.014543515}

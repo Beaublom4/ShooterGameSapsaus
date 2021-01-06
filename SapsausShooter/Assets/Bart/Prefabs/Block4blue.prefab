@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2536280718402639621}
   - component: {fileID: 1485473698612828320}
   - component: {fileID: 3709137865147427946}
+  - component: {fileID: 3174292270822462389}
   m_Layer: 0
   m_Name: Block4blue
   m_TagString: Untagged
@@ -81,3 +82,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3174292270822462389
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2916500002253540799}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.06740372, y: 0.055836607, z: 0.030092781}
+  m_Center: {x: 0.000056570396, y: 0.0000047469503, z: 0.0150088975}

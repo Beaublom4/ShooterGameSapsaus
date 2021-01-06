@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3338711335137956475}
   - component: {fileID: 1871993108606541278}
   - component: {fileID: 4476103700102261012}
+  - component: {fileID: -8706099561952812890}
   m_Layer: 0
   m_Name: RoofTopBurned
   m_TagString: Untagged
@@ -81,3 +82,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &-8706099561952812890
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2674765348532095169}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 7.3804865, y: 4.9990067, z: 6.210105}
+  m_Center: {x: -0.08042872, y: 0.5562276, z: -0.042497993}

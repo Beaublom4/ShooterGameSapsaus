@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 722976205334664746}
   - component: {fileID: 4442621341606566287}
   - component: {fileID: 1892545227929398597}
+  - component: {fileID: -547142628308128520}
   m_Layer: 0
   m_Name: GolfPlaatHut
   m_TagString: Untagged
@@ -81,3 +82,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &-547142628308128520
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91012812225645712}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 434299625111055720, guid: e6bbd23fb8ee0714e97e90322e6524c9, type: 3}
