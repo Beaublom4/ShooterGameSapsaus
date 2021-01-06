@@ -9,6 +9,11 @@ using UnityEngine.SceneManagement;
 public class MainMenuManager : MonoBehaviour
 {
     [System.Serializable]
+    public class Sounds
+    {
+        [HideInInspector] public float buttonSoundVolume;
+        public AudioSource buttonPressSound;
+    }
     public class optionsThings
     {
         public Slider[] soundSliders;
