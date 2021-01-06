@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 779917722059480539}
   - component: {fileID: 4430707076648145534}
   - component: {fileID: 1916844409223964340}
+  - component: {fileID: 4689010110077574764}
   m_Layer: 0
   m_Name: _eadTree
   m_TagString: Untagged
@@ -81,3 +82,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4689010110077574764
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 115127275427678049}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.7314606, y: 8.162718, z: 0.81097794}
+  m_Center: {x: -0.011421204, y: 4.081359, z: -0.016038895}
