@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 9103699462836026914}
   - component: {fileID: 5330306996368208263}
   - component: {fileID: 7934773757625664845}
-  - component: {fileID: 9187038138078019941}
   m_Layer: 0
   m_Name: _oad_Corner
   m_TagString: Untagged
@@ -82,16 +81,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &9187038138078019941
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8438908702944208024}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 4.0001135, y: 0.07485764, z: 4.0000553}
-  m_Center: {x: -0.000063061714, y: 0.037428953, z: 0.000033795834}

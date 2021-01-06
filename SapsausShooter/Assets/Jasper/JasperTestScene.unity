@@ -442,8 +442,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82497ffce6a9756499e4a7d704eb0d4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skyBoxShaderMaterial: {fileID: 2100000, guid: ee1a83a44edff3e4b9285ccff892ecd2,
-    type: 2}
+  skyBoxShaderMaterial: {fileID: 0}
   woosh: 0.3
   wooshKeer: 0.01
 --- !u!1 &2017258967
@@ -574,6 +573,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: -7.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 6829126050031342382, guid: be95bf0695c721545a0873a700abfff2,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -11.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6829126050031342382, guid: be95bf0695c721545a0873a700abfff2,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -70.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 6829126050031342382, guid: be95bf0695c721545a0873a700abfff2,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8656560255813006125, guid: be95bf0695c721545a0873a700abfff2,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 8656560255813006125, guid: be95bf0695c721545a0873a700abfff2,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 79.62
       objectReference: {fileID: 0}
     - target: {fileID: 8656560256984834431, guid: be95bf0695c721545a0873a700abfff2,
         type: 3}
