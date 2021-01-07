@@ -535,7 +535,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5239026313498435726
 Transform:
   m_ObjectHideFlags: 0
@@ -1977,9 +1977,6 @@ MonoBehaviour:
   agent: {fileID: 0}
   hitCooldownTime: 2
   isColliding: 0
-  shootPos: {fileID: 4624682574727440576}
-  playerInShootingRange: 0
-  shootTimer: 0
   getDamageOverTime: 0
   damageOverTime: 0
   render: {fileID: 3272908040706206192}
