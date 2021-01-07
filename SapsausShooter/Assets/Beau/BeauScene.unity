@@ -4377,13 +4377,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 358520333}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: 0.000597994, z: -0, w: 0.9999998}
   m_LocalPosition: {x: -53.89, y: -1.25, z: -38.826015}
   m_LocalScale: {x: 50, y: 0.1, z: 50}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0.069, z: 0}
 --- !u!4 &409595872 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1312193529368192724, guid: f2c82e542de52e243b2aebb9195cb285,
@@ -4586,6 +4586,101 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8622120088350586364, guid: 7a5e7907c140ff24082a1bce753ce327,
     type: 3}
   m_PrefabInstance: {fileID: 1294307362}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &699230074
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1527900074}
+    m_Modifications:
+    - target: {fileID: 1312193529368192724, guid: f2c82e542de52e243b2aebb9195cb285,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.0467305
+      objectReference: {fileID: 0}
+    - target: {fileID: 1312193529368192724, guid: f2c82e542de52e243b2aebb9195cb285,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.6171098
+      objectReference: {fileID: 0}
+    - target: {fileID: 1312193529368192724, guid: f2c82e542de52e243b2aebb9195cb285,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.3568566
+      objectReference: {fileID: 0}
+    - target: {fileID: 1312193529368192724, guid: f2c82e542de52e243b2aebb9195cb285,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1312193529368192724, guid: f2c82e542de52e243b2aebb9195cb285,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.39476055
+      objectReference: {fileID: 0}
+    - target: {fileID: 1312193529368192724, guid: f2c82e542de52e243b2aebb9195cb285,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1312193529368192724, guid: f2c82e542de52e243b2aebb9195cb285,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.918784
+      objectReference: {fileID: 0}
+    - target: {fileID: 1312193529368192724, guid: f2c82e542de52e243b2aebb9195cb285,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1312193529368192724, guid: f2c82e542de52e243b2aebb9195cb285,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1312193529368192724, guid: f2c82e542de52e243b2aebb9195cb285,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1312193529368192724, guid: f2c82e542de52e243b2aebb9195cb285,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1312193529368192724, guid: f2c82e542de52e243b2aebb9195cb285,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.8619258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1312193529368192724, guid: f2c82e542de52e243b2aebb9195cb285,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.013952939
+      objectReference: {fileID: 0}
+    - target: {fileID: 1312193529368192724, guid: f2c82e542de52e243b2aebb9195cb285,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.012806946
+      objectReference: {fileID: 0}
+    - target: {fileID: 1312193529368192728, guid: f2c82e542de52e243b2aebb9195cb285,
+        type: 3}
+      propertyPath: m_Name
+      value: RocketPartBeam (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1312193529368192728, guid: f2c82e542de52e243b2aebb9195cb285,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f2c82e542de52e243b2aebb9195cb285, type: 3}
+--- !u!1 &699230075 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1312193529368192728, guid: f2c82e542de52e243b2aebb9195cb285,
+    type: 3}
+  m_PrefabInstance: {fileID: 699230074}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &716678357
 GameObject:
@@ -6729,6 +6824,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1281715561}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1527900074 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9119883537550808471, guid: be95bf0695c721545a0873a700abfff2,
+    type: 3}
+  m_PrefabInstance: {fileID: 263203747}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1530323560 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1312193529368192724, guid: f2c82e542de52e243b2aebb9195cb285,
@@ -8210,9 +8311,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7932595841853102745, guid: 344f823c1a9753447ab0f455c4f7d7bb,
         type: 3}
+      propertyPath: mainMissions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7932595841853102745, guid: 344f823c1a9753447ab0f455c4f7d7bb,
+        type: 3}
+      propertyPath: mainMissions.Array.data[1].missionTasks.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7932595841853102745, guid: 344f823c1a9753447ab0f455c4f7d7bb,
+        type: 3}
       propertyPath: moneyManagerScript
       value: 
       objectReference: {fileID: 1627604936}
+    - target: {fileID: 7932595841853102745, guid: 344f823c1a9753447ab0f455c4f7d7bb,
+        type: 3}
+      propertyPath: particlesWall
+      value: 
+      objectReference: {fileID: 699230075}
+    - target: {fileID: 7932595841853102745, guid: 344f823c1a9753447ab0f455c4f7d7bb,
+        type: 3}
+      propertyPath: mainMissions.Array.data[1].missionName
+      value: Boss Battle
+      objectReference: {fileID: 0}
+    - target: {fileID: 7932595841853102745, guid: 344f823c1a9753447ab0f455c4f7d7bb,
+        type: 3}
+      propertyPath: mainMissions.Array.data[1].missionTasks.Array.data[0]
+      value: Destroy the wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 7932595841853102745, guid: 344f823c1a9753447ab0f455c4f7d7bb,
+        type: 3}
+      propertyPath: mainMissions.Array.data[1].missionTasks.Array.data[1]
+      value: Defeat the boss
+      objectReference: {fileID: 0}
     - target: {fileID: 7932595841917631340, guid: 344f823c1a9753447ab0f455c4f7d7bb,
         type: 3}
       propertyPath: shotgunAmmo

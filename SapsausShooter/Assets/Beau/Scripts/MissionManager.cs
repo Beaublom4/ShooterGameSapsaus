@@ -35,6 +35,7 @@ public class MissionManager : MonoBehaviour
     public GameObject partsDisplay;
     public GameObject[] partsOnDisplay;
     public int partsFound, partsToFind;
+    public GameObject particlesWall;
 
     public bool killEnemiesMission;
     public int killAmount, currentKillAmount;
@@ -42,7 +43,7 @@ public class MissionManager : MonoBehaviour
 
     private void Start()
     {
-        SelectMainMission();
+        RocketLauncherMission();
         StartCoroutine(SelectSideMission());
     }
     private void Update()
@@ -73,18 +74,6 @@ public class MissionManager : MonoBehaviour
                 StartCoroutine(SelectSideMission());
                 currentKillAmount = 0;
             }
-        }
-    }
-    public void SelectMainMission()
-    {
-        switch (currentMainMission)
-        {
-            case 0:
-                RocketLauncherMission();
-                break;
-            case 1:
-                BossBattleMission();
-                break;
         }
     }
     public IEnumerator SelectSideMission()
@@ -141,12 +130,21 @@ public class MissionManager : MonoBehaviour
 
         if(partsFound == partsToFind)
         {
+            BossBattleMission();
             print("All parts found");
         }
     }
     public void BossBattleMission()
     {
+        currentMainMission++;
+        particlesWall.SetActive(true);
+        mainMissionNameText.text = mainMissions[currentMainMission].missionName;
+        mainMissionInfoText.text = mainMissions[currentMainMission].missionTasks[0] + "<br>" + mainMissions[currentMainMission].missionTasks[1];
         print("Start boss battle mission");
+    }
+    public void DestroyWall()
+    {
+        mainMissionInfoText.text = mainMissions[currentMainMission].missionTasks[1];
     }
     public void KillMobsSideMission()
     {
