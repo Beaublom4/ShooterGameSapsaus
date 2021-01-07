@@ -360,6 +360,12 @@ MonoBehaviour:
     type: 2}
   woosh: 0.3
   wooshKeer: 0.01
+--- !u!95 &1923399831 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8423492619017376587, guid: be95bf0695c721545a0873a700abfff2,
+    type: 3}
+  m_PrefabInstance: {fileID: 9119883537172986670}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2017258967
 GameObject:
   m_ObjectHideFlags: 0
@@ -494,6 +500,16 @@ PrefabInstance:
       propertyPath: facePlayer
       value: 
       objectReference: {fileID: 703599640}
+    - target: {fileID: 1289190517199260990, guid: be95bf0695c721545a0873a700abfff2,
+        type: 3}
+      propertyPath: shopKeeper
+      value: 
+      objectReference: {fileID: 1923399831}
+    - target: {fileID: 2653381990803439908, guid: be95bf0695c721545a0873a700abfff2,
+        type: 3}
+      propertyPath: shopKeeper
+      value: 
+      objectReference: {fileID: 1923399831}
     - target: {fileID: 2653381991597948016, guid: be95bf0695c721545a0873a700abfff2,
         type: 3}
       propertyPath: facePlayer
@@ -504,6 +520,11 @@ PrefabInstance:
       propertyPath: facePlayer
       value: 
       objectReference: {fileID: 703599640}
+    - target: {fileID: 3920416593931891869, guid: be95bf0695c721545a0873a700abfff2,
+        type: 3}
+      propertyPath: shopKeeper
+      value: 
+      objectReference: {fileID: 1923399831}
     - target: {fileID: 6829126050031342382, guid: be95bf0695c721545a0873a700abfff2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -518,6 +539,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8317295931332359722, guid: be95bf0695c721545a0873a700abfff2,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 59.55
       objectReference: {fileID: 0}
     - target: {fileID: 8656560255813006125, guid: be95bf0695c721545a0873a700abfff2,
         type: 3}

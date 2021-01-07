@@ -13,6 +13,7 @@ public class ShopItem : MonoBehaviour
     public string nameObj;
     public int price;
     public Sounds sounds;
+    public Animator shopKeeper;
 
     public GameObject canvas;
 
@@ -34,6 +35,7 @@ public class ShopItem : MonoBehaviour
         MoneyManager moneyManagerScript = player.GetComponent<MoneyManager>();
         if (moneyManagerScript.money >= price) 
         {
+            shopKeeper.SetTrigger("Sold");
             moneyManagerScript.DecreaseMoney(price);
             Destroy(gameObject);
         }

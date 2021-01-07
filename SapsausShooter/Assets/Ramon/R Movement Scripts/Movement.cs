@@ -113,4 +113,8 @@ public class Movement : MonoBehaviour
             return;
         }
     }
+    public void WalkSound()
+    {
+        print("ahha");
+    }
 }
