@@ -7,7 +7,7 @@ public class UsePlayer : MonoBehaviour
     [System.Serializable]
     public class Sounds
     {
-        public float minSoundRange = .2f, maxSoundRange = .2f;
+        public float SoundVolume = .5f;
         public AudioSource itemPickUp, Use;
     }
     public GameObject fpsCam;
@@ -23,7 +23,7 @@ public class UsePlayer : MonoBehaviour
             {
                 if (hit.transform.GetComponent<GarageDoor>())
                 {
-                    StartCoroutine(PlayAudioSource(sounds.Use));
+                    PlayAudioSource(sounds.Use);
                     hit.transform.GetComponent<GarageDoor>().OpenGarageDoor();
                 }
             }
@@ -58,15 +58,10 @@ public class UsePlayer : MonoBehaviour
             }
         }
     }
-    public IEnumerator PlayAudioSource(AudioSource source)
+    public void PlayAudioSource(AudioSource source)
     {
-        float standardVolume = source.volume;
-        float standardPitch = source.pitch;
-        source.volume = Random.Range(standardVolume - sounds.minSoundRange, standardVolume + sounds.maxSoundRange);
-        source.pitch = Random.Range(standardPitch - sounds.minSoundRange, standardPitch + sounds.maxSoundRange);
+        source.volume = Random.Range(sounds.SoundVolume - .1f, sounds.SoundVolume + .1f);
+        source.pitch = Random.Range(1 - .1f, 1 + .1f);
         source.Play();
-        yield return new WaitForSeconds(0.000000001f);
-        source.volume = standardVolume;
-        source.pitch = standardPitch;
     }
 }

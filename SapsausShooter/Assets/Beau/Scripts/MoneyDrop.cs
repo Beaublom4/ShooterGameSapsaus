@@ -26,7 +26,7 @@ public class MoneyDrop : MonoBehaviour
     {
         if (other.gameObject.tag == "PickUpCol")
         {
-            StartCoroutine(other.GetComponentInParent<UsePlayer>().PlayAudioSource(other.GetComponentInParent<UsePlayer>().sounds.itemPickUp));
+            other.GetComponentInParent<UsePlayer>().PlayAudioSource(other.GetComponentInParent<UsePlayer>().sounds.itemPickUp);
             other.GetComponentInParent<MoneyManager>().GetMoney(moneyAmount);
             Destroy(gameObject);
         }
