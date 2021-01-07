@@ -19,13 +19,14 @@ MonoBehaviour:
   weaponDescription: 'Starter pistol
 
     Infinite ammo'
-  uiSprite: {fileID: 21300000, guid: 3f08b711124e8e542b27c4fe278fc27a, type: 3}
+  uiSprite: {fileID: 21300000, guid: 0189746d9e075994a83473326b5dfee6, type: 3}
   damage: 100
   damageDropOverDist: 0.1
   damageOverTime: 0
   damageOverTimeTime: 2
   critMultiplier: 1.2
   recoil: 5
+  lifeStealPercentage: 0
   canStun: 0
   stunTime: 0
   canSlow: 0
@@ -35,6 +36,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 0}
   gunType: Pistol
   shotType: One-Round
+  slugBulletCount: 0
   infinityAmmo: 0
   ammoType: Infinity
   magCount: 12
