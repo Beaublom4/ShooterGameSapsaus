@@ -1845,11 +1845,6 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 40
       objectReference: {fileID: 0}
-    - target: {fileID: 4141975305831342475, guid: be95bf0695c721545a0873a700abfff2,
-        type: 3}
-      propertyPath: wooshKeer
-      value: 0.03
-      objectReference: {fileID: 0}
     - target: {fileID: 4615658356771519283, guid: be95bf0695c721545a0873a700abfff2,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -4311,7 +4306,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!108 &344752541
 Light:
   m_ObjectHideFlags: 0
@@ -5722,17 +5717,17 @@ PrefabInstance:
     - target: {fileID: 967404120579985946, guid: 7a5e7907c140ff24082a1bce753ce327,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -78.771
+      value: -64.584
       objectReference: {fileID: 0}
     - target: {fileID: 967404120579985946, guid: 7a5e7907c140ff24082a1bce753ce327,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -129.585
+      value: -139.264
       objectReference: {fileID: 0}
     - target: {fileID: 967404120579985946, guid: 7a5e7907c140ff24082a1bce753ce327,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -106.795
+      value: -97.533
       objectReference: {fileID: 0}
     - target: {fileID: 995829965692537576, guid: 7a5e7907c140ff24082a1bce753ce327,
         type: 3}
