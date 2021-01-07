@@ -190,7 +190,8 @@ public class Enemy : MonoBehaviour
     {
         isWalking = false;
         isAttacking = false;
-        anim.SetBool("Walking", false);
+        //anim.SetBool("Walking", false);
+        anim.SetBool("Aggro", false);
     }
     public void GoAttack()
     {

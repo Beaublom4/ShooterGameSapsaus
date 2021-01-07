@@ -17,6 +17,7 @@ public class HealthManager : MonoBehaviour
     public float camMoveSpeed, camRotateSpeed;
     public Transform deathCamPos;
 
+    public GameObject menuPanel;
     public GameObject deathPanel;
     public Transform spawnPoint;
     public List<GameObject> areasTriggered = new List<GameObject>();
@@ -58,6 +59,7 @@ public class HealthManager : MonoBehaviour
     IEnumerator waitForDeath()
     {
         yield return new WaitForSeconds(2);
+        menuPanel.SetActive(false);
         deathPanel.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -68,6 +70,7 @@ public class HealthManager : MonoBehaviour
         Time.timeScale = 1;
         foreach(GameObject g in areasTriggered)
         {
+            g.GetComponent<AreaColScript>().isAlreadyTriggered = false;
             foreach(Transform child in g.transform)
             {
                 if (child.GetComponent<Enemy>())
