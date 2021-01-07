@@ -415,7 +415,7 @@ public class ShootAttack : MonoBehaviour
                     }
                 }
 
-                GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+                GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation-180(hit.normal));
                 Destroy(impactGO, 2f);
             }
             recoilObj.transform.Rotate(-weapon.recoil, 0, 0);
