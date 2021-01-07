@@ -11,6 +11,7 @@ public class BabyZombie : Enemy
     public Vector3 spitDirection;
     public Collider col;
     public GameObject freezeCol;
+    public bool heldByMother = false;
 
     public float timer, spitDelay;
 
@@ -45,17 +46,20 @@ public class BabyZombie : Enemy
 
     public override void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Floor")
+        if (heldByMother == true)
         {
-            if (isTrown == false)
+            if (collision.gameObject.tag == "Floor")
             {
-                GetComponent<NavMeshAgent>().enabled = enabled;
-                col.enabled = enabled;
-                isTrown = true;
-                isAttacking = true;
-                anim.SetBool("Walking", true);
-                GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
-                freezeCol.tag = "FreezeCol";
+                if (isTrown == false)
+                {
+                    GetComponent<NavMeshAgent>().enabled = enabled;
+                    col.enabled = enabled;
+                    isTrown = true;
+                    isAttacking = true;
+                    anim.SetBool("Walking", true);
+                    GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+                    freezeCol.tag = "FreezeCol";
+                }
             }
         }
     }

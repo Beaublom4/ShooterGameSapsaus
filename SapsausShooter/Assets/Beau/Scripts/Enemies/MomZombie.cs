@@ -23,6 +23,7 @@ public class MomZombie : Enemy
             Instantiate(babyZombiePrefab, trowPos.position, transform.rotation, trowPos);
             currentBaby = trowPos.GetChild(0).gameObject;
             currentBaby.GetComponent<BabyZombie>().isTrown = false;
+            currentBaby.GetComponent<BabyZombie>().heldByMother = true;
             currentBaby.transform.parent = spawnArea;
             currentBaby.GetComponent<Enemy>().playerObj = playerObj;
 

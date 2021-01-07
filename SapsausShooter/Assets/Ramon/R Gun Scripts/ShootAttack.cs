@@ -414,9 +414,16 @@ public class ShootAttack : MonoBehaviour
                         HitMarker(hit.collider.gameObject);
                     }
                 }
-
-                GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
-                Destroy(impactGO, 2f);
+                else if (hit.collider.tag == "BossHitBox")
+                {
+                    if (hit.collider.GetComponent<BossBodyHit>())
+                    {
+                        GameObject g = Instantiate(hitVfx, hit.point, Quaternion.LookRotation(hit.normal), null);
+                        Destroy(g, 3);
+                        hit.collider.GetComponent<BossBodyHit>().HitPart(weapon, hit.point);
+                        HitMarker(hit.collider.gameObject);
+                    }
+                }
             }
             recoilObj.transform.Rotate(-weapon.recoil, 0, 0);
             if (recoilCooldown != null)
@@ -453,6 +460,16 @@ public class ShootAttack : MonoBehaviour
                             hit.collider.GetComponent<BodyHit>().HitPart(weapon, hit.point);
 
                             HitMarker(hit.collider.gameObject);
+                        }
+                        else if (hit.collider.tag == "BossHitBox")
+                        {
+                            if (hit.collider.GetComponent<BossBodyHit>())
+                            {
+                                GameObject g = Instantiate(hitVfx, hit.point, Quaternion.LookRotation(hit.normal), null);
+                                Destroy(g, 3);
+                                hit.collider.GetComponent<BossBodyHit>().HitPart(weapon, hit.point);
+                                HitMarker(hit.collider.gameObject);
+                            }
                         }
                     }
                     else

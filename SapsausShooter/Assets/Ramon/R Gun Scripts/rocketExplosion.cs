@@ -38,6 +38,13 @@ public class rocketExplosion : MonoBehaviour
             ifWeCouldFly = false;
             //Explode(rocketCol.contacts[0].point);
         }
+        if (rocketCol.gameObject.tag == "BossHitBox")
+        {
+            if (rocketCol.gameObject.GetComponent<BossBodyHit>())
+            {
+                rocketCol.gameObject.GetComponent<BossBodyHit>().HitPart(gunScObj, transform.position);
+            }
+        }
     }
     public void OnTriggerEnter(Collider other)
     {
@@ -56,7 +63,6 @@ public class rocketExplosion : MonoBehaviour
     {
         foreach (Enemy enemyScript in enemieInRange)
         {
-            print(enemyScript.gameObject.name);
             enemyScript.DoDamage(gunScObj, 2, enemyScript.dmgTextLoc.position);
         }
         Destroy(gameObject);
