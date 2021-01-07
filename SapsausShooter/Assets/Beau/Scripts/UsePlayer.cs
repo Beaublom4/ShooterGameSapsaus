@@ -15,9 +15,22 @@ public class UsePlayer : MonoBehaviour
     public float useRange;
     RaycastHit hit;
     public Sounds sounds;
-    public GameObject pickUpPanel, healPanel, shopPanel;
+    public GameObject pickUpPanel, healPanel, shopPanel, startPanel;
+
+
+    private void Start()
+    {
+        startPanel.SetActive(true);
+    }
+
     private void Update()
     {
+        if (Input.GetButtonDown("Jump") && startPanel.activeSelf==true)
+        {
+            startPanel.SetActive(false);
+        }
+
+
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, useRange))
         {
             if (Input.GetButtonDown("Use"))

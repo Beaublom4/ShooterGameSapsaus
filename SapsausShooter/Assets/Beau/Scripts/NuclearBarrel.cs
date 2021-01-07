@@ -6,8 +6,7 @@ public class NuclearBarrel : MonoBehaviour
 {
     public float health;
     public float hitDamage;
-    public ParticleSystem gasParticles;
-    public GameObject SphereTestParticles;
+    public GameObject gasSphere;
     public float gasStayTime;
     bool exploded;
     public void GetDamage(Weapon weapon)
@@ -38,7 +37,7 @@ public class NuclearBarrel : MonoBehaviour
         GetComponent<MeshRenderer>().enabled = !enabled;
         print("gas");
         //explosion particles
-        Instantiate(SphereTestParticles, transform.position, Quaternion.identity, null);
+        Instantiate(gasSphere, transform.position, Quaternion.identity, null);
         Destroy(gameObject);
     }
 }
