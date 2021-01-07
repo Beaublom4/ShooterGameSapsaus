@@ -15,6 +15,7 @@ public class UsePlayer : MonoBehaviour
     public float useRange;
     RaycastHit hit;
     public Sounds sounds;
+    public GameObject pickUpPanel, healPanel, shopPanel;
     private void Update()
     {
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, useRange))
@@ -27,8 +28,9 @@ public class UsePlayer : MonoBehaviour
                     hit.transform.GetComponent<GarageDoor>().OpenGarageDoor();
                 }
             }
-            if(hit.transform.tag == "ShopItem")
+            if (hit.transform.tag == "ShopItem")
             {
+                shopPanel.SetActive(true);
                 if (hit.transform.GetComponent<ShopItem>().canvas.activeSelf == false)
                 {
                     hit.transform.GetComponent<ShopItem>().ActivateScript();
@@ -38,8 +40,14 @@ public class UsePlayer : MonoBehaviour
                     hit.transform.GetComponent<ShopItem>().BuyItem(gameObject);
                 }
             }
-            if(hit.transform.tag == "HealStation")
+            else if (shopPanel.activeSelf == true)
             {
+                shopPanel.SetActive(false);
+
+            }
+            if (hit.transform.tag == "HealStation")
+            {
+                healPanel.SetActive(true);
                 if (hit.transform.GetComponent<HealStation>().infoPanel.activeSelf == false)
                 {
                     hit.transform.GetComponent<HealStation>().ShowPrice();
@@ -48,14 +56,31 @@ public class UsePlayer : MonoBehaviour
                 {
                     hit.transform.GetComponent<HealStation>().BuyHeal(gameObject);
                 }
+
             }
-            if(hit.transform.tag == "LauncherPart")
+            else if (healPanel.activeSelf == true)
             {
+                healPanel.SetActive(false);
+            }
+            if (hit.transform.tag == "LauncherPart")
+            {
+                pickUpPanel.SetActive(true);
                 if (Input.GetButtonDown("Use"))
                 {
                     missionScript.RLPickUp(hit.transform.GetComponent<LauncherPart>().partNumber, hit.transform.gameObject);
                 }
             }
+            else if (shopPanel.activeSelf == true)
+            {
+                pickUpPanel.SetActive(false);
+
+            }
+        }
+        else
+        {
+            healPanel.SetActive(false);
+            shopPanel.SetActive(false);
+            pickUpPanel.SetActive(false);
         }
     }
     public void PlayAudioSource(AudioSource source)

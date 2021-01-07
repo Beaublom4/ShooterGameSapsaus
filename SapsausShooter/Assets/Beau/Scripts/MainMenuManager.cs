@@ -22,7 +22,7 @@ public class MainMenuManager : MonoBehaviour
         public Toggle fullScreenToggle;
         public TMP_Dropdown resDropdown;
     }
-    public GameObject mainMenuPanel, optionsPanel, exitGamePanel;
+    public GameObject mainMenuPanel, optionsPanel, exitGamePanel, startPanel, pickupPanel, interactPanel;
     public GameObject mainCamPos, optionsCamPos, exitGameCamPos;
     public GameObject mainCamLookAt, optionsCamLookAt, exitGameLookAt;
 
