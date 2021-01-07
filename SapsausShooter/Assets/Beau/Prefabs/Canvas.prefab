@@ -304,7 +304,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 8661595946855024900}
           m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
           m_MethodName: MouseOverButton
           m_Mode: 2
@@ -320,7 +320,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 8661595946855024900}
           m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
           m_MethodName: MouseHoverStop
           m_Mode: 2
@@ -702,6 +702,11 @@ MonoBehaviour:
   audioMixer: {fileID: 24100000, guid: d1567cd5055296547b550833238b7a58, type: 2}
   moveButtonToPos: {x: 15, y: 0, z: 0}
   resText: {fileID: 3157279590848654033}
+  options:
+    soundSlidersObj: []
+    sensitivitySlider: {fileID: 0}
+    fullScreenToggle: {fileID: 0}
+    resDropdown: {fileID: 0}
   optionsPanelObj: {fileID: 9194064795846517227}
   camScript: {fileID: 0}
   movementScript: {fileID: 0}
@@ -1685,7 +1690,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 8661595946855024900}
         m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
         m_MethodName: StartNewGame
         m_Mode: 1
@@ -1714,7 +1719,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 8661595946855024900}
           m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
           m_MethodName: MouseOverButton
           m_Mode: 2
@@ -1730,7 +1735,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 8661595946855024900}
           m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
           m_MethodName: MouseHoverStop
           m_Mode: 2
@@ -3660,7 +3665,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Respawn from checkpoint
+  m_text: Respawn
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -15807,7 +15812,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 8661595946855024900}
         m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
         m_MethodName: BackToMainMenu
         m_Mode: 1
@@ -15836,7 +15841,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 8661595946855024900}
           m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
           m_MethodName: MouseOverButton
           m_Mode: 2
@@ -15852,7 +15857,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 8661595946855024900}
           m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
           m_MethodName: MouseHoverStop
           m_Mode: 2

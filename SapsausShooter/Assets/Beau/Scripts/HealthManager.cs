@@ -1,4 +1,6 @@
 ﻿using TMPro;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,6 +18,8 @@ public class HealthManager : MonoBehaviour
     public Transform deathCamPos;
 
     public GameObject deathPanel;
+    public Transform spawnPoint;
+    public List<GameObject> areasTriggered = new List<GameObject>();
     private void Start()
     {
         if (healthText != null)
@@ -37,44 +41,12 @@ public class HealthManager : MonoBehaviour
             if (health <= 0)
             {
                 health = 0;
+                canGetDmg = false;
                 anim.SetTrigger("Dead");
                 GetComponent<Movement>().enabled = !enabled;
                 GetComponentInChildren<MouseLook>().enabled = !enabled;
-                deathPanel.SetActive(true);
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
+                StartCoroutine(waitForDeath());
             }
-            UpdateNumber();
-        }
-    }
-    public void DoDamageWithGun(Weapon weapon, GameObject enemy)
-    {
-        if (canGetDmg == true)
-        {
-            float range = Vector3.Distance(enemy.transform.position, transform.position);
-            float calculatedDamage = weapon.damage - (weapon.damageDropOverDist * range);
-            health -= calculatedDamage;
-            print(calculatedDamage);
-            if (health <= 0)
-            {
-                health = 0;
-                anim.SetTrigger("Dead");
-                GetComponent<Movement>().enabled = !enabled;
-                GetComponent<MouseLook>().enabled = !enabled;
-            }
-            //if (weapon.damageOverTime != 0)
-            //{
-            //    float getDamageOverTime = weapon.damageOverTime / weapon.damageOverTimeTime;
-            //    StartCoroutine(DoDamageOvertime(getDamageOverTime, weapon.damageOverTimeTime));
-            //}
-            //if (weapon.canStun == true)
-            //{
-            //    StartCoroutine(DoStun(weapon.stunTime));
-            //}
-            //else if (weapon.canSlow == true)
-            //{
-            //    StartCoroutine(DoSlow(weapon.slowTime, weapon.slowTimesNumber));
-            //}
             UpdateNumber();
         }
     }
@@ -83,8 +55,47 @@ public class HealthManager : MonoBehaviour
         healthText.text = health.ToString("F0");
         healthSlider.value = health;
     }
+    IEnumerator waitForDeath()
+    {
+        yield return new WaitForSeconds(2);
+        deathPanel.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        Time.timeScale = 0;
+    }
     public void Respawn()
     {
+        Time.timeScale = 1;
+        foreach(GameObject g in areasTriggered)
+        {
+            foreach(Transform child in g.transform)
+            {
+                if (child.GetComponent<Enemy>())
+                {
+                    child.GetComponent<Enemy>().UnTrigger();
+                }
+            }
+        }
+        StartCoroutine(InvisableFrames());
+    }
+    IEnumerator InvisableFrames()
+    {
+        gameObject.transform.position = spawnPoint.position;
 
+        yield return new WaitForSeconds(0.00001f);
+
+        health = healthSlider.maxValue;
+        UpdateNumber();
+        anim.SetTrigger("Respawn");
+        deathPanel.SetActive(false);
+        
+        GetComponent<Movement>().enabled = enabled;
+        GetComponentInChildren<MouseLook>().enabled = enabled;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        yield return new WaitForSeconds(5);
+
+        canGetDmg = true;
     }
 }

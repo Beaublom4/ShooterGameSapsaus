@@ -17,6 +17,7 @@ public class AreaColScript : MonoBehaviour
             if (other.gameObject.tag == "Player")
             {
                 TriggerArea(other.gameObject);
+                other.GetComponent<HealthManager>().areasTriggered.Add(gameObject);
             }
         }
     }
