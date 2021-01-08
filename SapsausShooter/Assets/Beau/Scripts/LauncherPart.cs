@@ -5,4 +5,5 @@ using UnityEngine;
 public class LauncherPart : MonoBehaviour
 {
     public int partNumber;
+    public bool cantPickUp;
 }

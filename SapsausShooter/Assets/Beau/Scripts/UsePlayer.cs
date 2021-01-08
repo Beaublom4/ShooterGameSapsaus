@@ -8,7 +8,7 @@ public class UsePlayer : MonoBehaviour
     public class Sounds
     {
         public float SoundVolume = .5f;
-        public AudioSource itemPickUp, Use;
+        public AudioSource itemPickUp, Use, shock;
     }
     public GameObject fpsCam;
     public MissionManager missionScript;
@@ -80,7 +80,15 @@ public class UsePlayer : MonoBehaviour
                 pickUpPanel.SetActive(true);
                 if (Input.GetButtonDown("Use"))
                 {
-                    missionScript.RLPickUp(hit.transform.GetComponent<LauncherPart>().partNumber, hit.transform.gameObject);
+                    if (hit.transform.GetComponent<LauncherPart>().cantPickUp == true)
+                    {
+                        GetComponent<HealthManager>().DoDamage(2);
+                        sounds.shock.Play();
+                    }
+                    else
+                    {
+                        missionScript.RLPickUp(hit.transform.GetComponent<LauncherPart>().partNumber, hit.transform.gameObject);
+                    }
                 }
             }
             else if (shopPanel.activeSelf == true)

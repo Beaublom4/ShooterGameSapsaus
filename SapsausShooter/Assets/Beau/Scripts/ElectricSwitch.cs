@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class ElectricSwitch : MonoBehaviour
 {
-    public Collider itemInWires;
+    public LauncherPart itemInWires;
     public GameObject electricShader;
 
     public void UseSwitch()
     {
         GetComponent<Animator>().SetTrigger("Lever");
         GetComponent<Collider>().enabled = !enabled;
-        itemInWires.enabled = enabled;
+        itemInWires.cantPickUp = false;
         electricShader.SetActive(false);
     }
 }
