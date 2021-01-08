@@ -130,6 +130,7 @@ public class MissionManager : MonoBehaviour
 
         if(partsFound == partsToFind)
         {
+            partsDisplay.SetActive(false);
             BossBattleMission();
             print("All parts found");
         }
@@ -150,7 +151,6 @@ public class MissionManager : MonoBehaviour
     {
         print("Start kill mobs side mission");
         int randomKillAmount = Random.Range(0, 3);
-        print(randomKillAmount);
         switch (randomKillAmount)
         {
             case 0:

@@ -12,6 +12,7 @@ public class ShopItem : MonoBehaviour
     }
     public string nameObj;
     public int price;
+    public GameObject shopObject;
     public Sounds sounds;
     public Animator shopKeeper;
 
@@ -37,6 +38,7 @@ public class ShopItem : MonoBehaviour
         {
             shopKeeper.SetTrigger("Sold");
             moneyManagerScript.DecreaseMoney(price);
+            Instantiate(shopObject, transform.position, transform.rotation, null);
             Destroy(gameObject);
         }
         else

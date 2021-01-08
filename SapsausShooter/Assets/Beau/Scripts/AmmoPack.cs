@@ -47,7 +47,7 @@ public class AmmoPack : MonoBehaviour
                 int ammo = Random.Range(minAmmo, maxAmmo);
                 ammoScript.specialAmmo += ammo;
             }
-            if (selectScript.selectedSlotScript.gunWeapon.type != "Gun")
+            if (selectScript.selectedSlotScript == null)
             {
                 Destroy(gameObject);
             }

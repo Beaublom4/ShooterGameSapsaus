@@ -26,6 +26,8 @@ public class ShootAttack : MonoBehaviour
     public Transform weaponHand;
     public Transform myTransform;
     public GameObject hitVfx;
+    public GameObject PistolMag, ShotgunShells, launcherBullet, freezeBatery;
+    public GameObject magLoc, rlMagLoc;
 
     public FreezeHitBox freezeBox;
 
@@ -202,6 +204,9 @@ public class ShootAttack : MonoBehaviour
             }
             else
             {
+                anim.SetTrigger("Reload");
+                GameObject mag = Instantiate(PistolMag, magLoc.transform.position, magLoc.transform.rotation, magLoc.transform);
+                Destroy(mag, 1);
                 ammoScript.pistolAmmo += currentSlot.ammoInMag;
                 if (ammoScript.pistolAmmo >= weapon.weaponPrefab.GetComponent<GunScript>().weapon.magCount)
                 {
@@ -229,6 +234,9 @@ public class ShootAttack : MonoBehaviour
             }
             else
             {
+                anim.SetTrigger("Reload");
+                GameObject mag = Instantiate(ShotgunShells, magLoc.transform.position, magLoc.transform.rotation, magLoc.transform);
+                Destroy(mag, 1);
                 ammoScript.shotgunAmmo += currentSlot.ammoInMag;
                 if (ammoScript.shotgunAmmo >= weapon.weaponPrefab.GetComponent<GunScript>().weapon.magCount)
                 {
@@ -246,29 +254,6 @@ public class ShootAttack : MonoBehaviour
                 ammoScript.UpdateShotgunAmmoLeft();
             }
         }
-
-        if (weapon.weaponPrefab.GetComponent<GunScript>().weapon.gunType == "Sniper")
-        {
-            if (ammoScript.sniperAmmo <= 0)
-            {
-                print("NoAmmo");
-                return;
-            }
-            else
-            {
-                ammoScript.sniperAmmo += currentSlot.ammoInMag;
-                if (ammoScript.sniperAmmo >= weapon.weaponPrefab.GetComponent<GunScript>().weapon.magCount)
-                {
-                    addAmmo = weapon.weaponPrefab.GetComponent<GunScript>().weapon.magCount;
-                }
-                else
-                {
-                    addAmmo = ammoScript.sniperAmmo;
-                }
-                ammoScript.sniperAmmo -= addAmmo;
-                ammoScript.UpdateSniperAmmoLeft();
-            }
-        }
         if(currentSlot.gunWeapon.gunType == "Launcher")
         {
             if (ammoScript.launcherAmmo <= 0)
@@ -278,6 +263,9 @@ public class ShootAttack : MonoBehaviour
             }
             else
             {
+                anim.SetTrigger("Reload");
+                GameObject mag = Instantiate(launcherBullet, rlMagLoc.transform.position, rlMagLoc.transform.rotation, rlMagLoc.transform);
+                Destroy(mag, 1);
                 ammoScript.launcherAmmo += currentSlot.ammoInMag;
                 if (ammoScript.launcherAmmo >= weapon.weaponPrefab.GetComponent<GunScript>().weapon.magCount)
                 {
@@ -289,7 +277,6 @@ public class ShootAttack : MonoBehaviour
                 }
                 ammoScript.launcherAmmo -= addAmmo;
                 ammoScript.UpdateLauncherAmmoLeft();
-                weaponHand.GetComponentInChildren<GunScript>().shownBullet.SetActive(true);
             }
         }
         if (currentSlot.gunWeapon.gunType == "FreezeGun")
@@ -301,6 +288,9 @@ public class ShootAttack : MonoBehaviour
             }
             else
             {
+                anim.SetTrigger("Reload");
+                GameObject mag = Instantiate(freezeBatery, magLoc.transform.position, magLoc.transform.rotation, magLoc.transform);
+                Destroy(mag, 1);
                 ammoScript.specialAmmo += currentSlot.ammoInMag;
                 if (ammoScript.specialAmmo >= weapon.weaponPrefab.GetComponent<GunScript>().weapon.magCount)
                 {
@@ -353,6 +343,10 @@ public class ShootAttack : MonoBehaviour
         currentSlot.ammoInMag = addAmmo;
         ammoScript.UpdateAmmo(currentSlot.ammoInMag);
         isReloading = false;
+        if(currentSlot.gunWeapon.gunType == "Launcher")
+        {
+            weaponHand.GetComponentInChildren<GunScript>().shownBullet.SetActive(true);
+        }
     }
     public IEnumerator HitMarker()
     {

@@ -15,7 +15,7 @@ public class UsePlayer : MonoBehaviour
     public float useRange;
     RaycastHit hit;
     public Sounds sounds;
-    public GameObject pickUpPanel, healPanel, shopPanel, startPanel;
+    public GameObject pickUpPanel, healPanel, shopPanel, startPanel, usePanel;
 
 
     private void Start()
@@ -25,7 +25,7 @@ public class UsePlayer : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Jump") && startPanel.activeSelf==true)
+        if (Input.GetButtonDown("Use") && startPanel.activeSelf==true)
         {
             startPanel.SetActive(false);
         }
@@ -88,12 +88,33 @@ public class UsePlayer : MonoBehaviour
                 pickUpPanel.SetActive(false);
 
             }
+            if(hit.transform.tag == "ElectricSwitch" || hit.transform.tag == "ChurchRope")
+            {
+                usePanel.SetActive(true);
+                if (Input.GetButtonDown("Use"))
+                {
+                    if(hit.transform.tag == "ElectricSwitch")
+                    {
+                        hit.transform.GetComponent<ElectricSwitch>().UseSwitch();
+                    }
+                    else if(hit.transform.tag == "ChurchRope")
+                    {
+                        hit.transform.GetComponent<ChurchRope>().DoChurchRope();
+                        missionScript.RLPickUp(hit.transform.GetComponent<ChurchRope>().launcherPartScript.partNumber, hit.transform.gameObject);
+                    }
+                }
+            }
+            else if (usePanel.activeSelf == true)
+            {
+                usePanel.SetActive(false);
+            }
         }
         else
         {
             healPanel.SetActive(false);
             shopPanel.SetActive(false);
             pickUpPanel.SetActive(false);
+            usePanel.SetActive(false);
         }
     }
     public void PlayAudioSource(AudioSource source)

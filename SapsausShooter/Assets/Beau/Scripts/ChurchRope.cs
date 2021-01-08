@@ -6,7 +6,7 @@ public class ChurchRope : MonoBehaviour
 {
     public LauncherPart launcherPartScript;
 
-    public void UseRope()
+    public void DoChurchRope()
     {
 
     }
