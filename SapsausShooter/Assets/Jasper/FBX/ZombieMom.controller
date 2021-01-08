@@ -391,37 +391,37 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Weapon
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Walking
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Dead
     m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: speed
     m_Type: 1
     m_DefaultFloat: 1
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Attack
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -455,7 +455,7 @@ AnimatorStateMachine:
     m_Position: {x: 420, y: 50, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4258922985046947667}
-    m_Position: {x: 670, y: 80, z: 0}
+    m_Position: {x: 680, y: 80, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6044458894719881633}
     m_Position: {x: 440, y: -30, z: 0}
@@ -509,8 +509,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -4027686426356288868, guid: faf280c5777c3ab46aca126660a2da5c,
-    type: 3}
+  m_Motion: {fileID: 7400000, guid: aa0675a38d61b2e42b694568772265cf, type: 2}
   m_Tag: 
   m_SpeedParameter: speed
   m_MirrorParameter: 

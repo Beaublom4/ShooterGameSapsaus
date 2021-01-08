@@ -14,6 +14,8 @@ public class BabyZombie : Enemy
     public bool heldByMother = false;
 
     public float timer, spitDelay;
+    public float spitVolume, spitChange;
+    public AudioSource spit;
 
     public override void Start()
     {
@@ -36,6 +38,9 @@ public class BabyZombie : Enemy
                 timer = spitDelay * 1 + (8 * freezeNum);
 
                 anim.SetTrigger("Attack");
+                spit.volume = Random.Range(spitVolume - spitChange, spitVolume + spitChange);
+                spit.pitch = Random.Range(1 - spitChange, 1 + spitChange);
+                spit.Play();
                 GameObject g = Instantiate(spitPrefab, spitPoint) as GameObject;
                 g.GetComponent<SpitBall>().damage = damage;
                 g.transform.SetParent(null);

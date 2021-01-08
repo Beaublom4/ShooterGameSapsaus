@@ -10,6 +10,9 @@ public class CrushedZombie : Enemy
     public float bashSpeed;
     public Transform walkToLoc;
     public GameObject bashRangeObj;
+
+    public float bashVolumeSound, bashrangeSound;
+    public AudioSource bashImpact;
     public override void Update()
     {
         base.Update();
@@ -70,6 +73,9 @@ public class CrushedZombie : Enemy
     }
     IEnumerator HitBash()
     {
+        bashImpact.volume = Random.Range(bashVolumeSound - bashrangeSound, bashVolumeSound + bashrangeSound);
+        bashImpact.pitch = Random.Range(1 - bashrangeSound, 1 + bashrangeSound);
+        bashImpact.Play();
         canBash = false;
         runOnce = false;
         bashRangeObj.SetActive(false);

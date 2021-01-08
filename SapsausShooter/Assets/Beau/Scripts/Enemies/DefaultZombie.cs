@@ -12,12 +12,18 @@ public class DefaultZombie : Enemy
     public GameObject bigBoyParticles;
     public bool MainAtLoc;
     bool hasRunned;
+
+    public float mergeVolume, mergeChange;
+    public AudioSource merge;
     public override void Update()
     {
         base.Update();
         if (MainAtLoc == true && hasRunned == false)
         {
             hasRunned = true;
+            merge.volume = Random.Range(mergeVolume - mergeChange, mergeVolume + mergeChange);
+            merge.pitch = Random.Range(1 - mergeChange, 1 + mergeChange);
+            merge.Play();
             Instantiate(bigZombie, transform.position, transform.rotation, bigBoySpawnPoint);
             GameObject particles = Instantiate(bigBoyParticles, transform.position, transform.rotation, null);
             Destroy(particles, 5);

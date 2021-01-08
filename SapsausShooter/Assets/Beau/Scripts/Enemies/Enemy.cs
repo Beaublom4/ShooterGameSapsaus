@@ -8,8 +8,8 @@ public class Enemy : MonoBehaviour
     [System.Serializable]
     public class Sounds
     {
-        public float minSoundRange = .2f, maxSoundRange = .2f;
-        public AudioSource trigger, attack, death;
+        public float soundVolume = .5f, walkSoundVolume = 0.01f, soundRange = .05f, walkSoundRange = 0.005f;
+        public AudioSource trigger, attack, death, walk;
     }
 
     public float speed;
@@ -250,33 +250,27 @@ public class Enemy : MonoBehaviour
     }
     public virtual void PlayTriggerSound(AudioSource source)
     {
-        float standardVolume = source.volume;
-        float standardPitch = source.pitch;
-        source.volume = Random.Range(standardVolume - sounds.minSoundRange, standardVolume + sounds.maxSoundRange);
-        source.pitch = Random.Range(standardPitch - sounds.minSoundRange, standardPitch + sounds.maxSoundRange);
+        source.volume = Random.Range(sounds.soundVolume - sounds.soundRange, sounds.soundVolume + sounds.soundRange);
+        source.pitch = Random.Range(1 - sounds.soundRange, 1 + sounds.soundRange);
         source.Play();
-        source.volume = standardVolume;
-        source.pitch = standardPitch;
     }
     public virtual void PlayAttackSound(AudioSource source)
     {
-        float standardVolume = source.volume;
-        float standardPitch = source.pitch;
-        source.volume = Random.Range(standardVolume - sounds.minSoundRange, standardVolume + sounds.maxSoundRange);
-        source.pitch = Random.Range(standardPitch - sounds.minSoundRange, standardPitch + sounds.maxSoundRange);
+        source.volume = Random.Range(sounds.soundVolume - sounds.soundRange, sounds.soundVolume + sounds.soundRange);
+        source.pitch = Random.Range(1 - sounds.soundRange, 1 + sounds.soundRange);
         source.Play();
-        source.volume = standardVolume;
-        source.pitch = standardPitch;
     }
     public virtual void PlayDeathSound(AudioSource source)
     {
-        float standardVolume = source.volume;
-        float standardPitch = source.pitch;
-        source.volume = Random.Range(standardVolume - sounds.minSoundRange, standardVolume + sounds.maxSoundRange);
-        source.pitch = Random.Range(standardPitch - sounds.minSoundRange, standardPitch + sounds.maxSoundRange);
+        source.volume = Random.Range(sounds.soundVolume - sounds.soundRange, sounds.soundVolume + sounds.soundRange);
+        source.pitch = Random.Range(1 - sounds.soundRange, 1 + sounds.soundRange);
         source.Play();
-        source.volume = standardVolume;
-        source.pitch = standardPitch;
+    }
+    public void WalkSound()
+    {
+        sounds.walk.volume = Random.Range(sounds.soundVolume - sounds.walkSoundRange, sounds.soundVolume + sounds.walkSoundRange);
+        sounds.walk.pitch = Random.Range(1 - sounds.soundRange, 1 + sounds.soundRange);
+        sounds.walk.Play();
     }
     public void HitBoxHit()
     {
