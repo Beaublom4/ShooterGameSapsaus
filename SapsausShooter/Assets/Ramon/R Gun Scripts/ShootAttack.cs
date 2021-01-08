@@ -27,7 +27,7 @@ public class ShootAttack : MonoBehaviour
     public Transform myTransform;
     public GameObject hitVfx;
     public GameObject PistolMag, ShotgunShells, launcherBullet, freezeBatery;
-    public GameObject magLoc, rlMagLoc;
+    public GameObject magLoc, rlMagLoc, blikkieLoc;
 
     public FreezeHitBox freezeBox;
 
@@ -265,7 +265,7 @@ public class ShootAttack : MonoBehaviour
             {
                 anim.SetTrigger("Reload");
                 GameObject mag = Instantiate(launcherBullet, rlMagLoc.transform.position, rlMagLoc.transform.rotation, rlMagLoc.transform);
-                Destroy(mag, 1);
+                Destroy(mag, .7f);
                 ammoScript.launcherAmmo += currentSlot.ammoInMag;
                 if (ammoScript.launcherAmmo >= weapon.weaponPrefab.GetComponent<GunScript>().weapon.magCount)
                 {
