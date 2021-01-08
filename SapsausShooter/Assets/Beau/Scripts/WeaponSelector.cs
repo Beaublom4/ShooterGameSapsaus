@@ -163,7 +163,6 @@ public class WeaponSelector : MonoBehaviour
                 selectedSlotScript = slotscript;
                 weaponImage.sprite = slotscript.gunWeapon.uiSprite;
 
-                print(slotscript.gunWeapon.weaponName);
                 shootScript.weapon = slotscript.gunWeapon;
                 shootScript.currentSlot = slotscript;
 

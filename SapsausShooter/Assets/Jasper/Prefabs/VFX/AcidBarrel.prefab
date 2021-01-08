@@ -4829,7 +4829,7 @@ GameObject:
   - component: {fileID: 1931172566636457097}
   m_Layer: 0
   m_Name: AcidBarrel
-  m_TagString: Untagged
+  m_TagString: Barrel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4909,9 +4909,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5000001
-  m_Height: 2
+  m_Height: 1.5710777
   m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Center: {x: 0.000000074505806, y: 0.7746932, z: -0.000000074505806}
 --- !u!54 &7383876889096290899
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4923,7 +4923,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -4942,7 +4942,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   hitDamage: 30
-  gasParticles: {fileID: 0}
-  SphereTestParticles: {fileID: 3207312196069210939, guid: 243b7a91e0b0068498d7231a5dd286d8,
+  gasSphere: {fileID: 1063224838781948620, guid: e9fc1eb54173b3344ba97830fb9d0d25,
     type: 3}
   gasStayTime: 10

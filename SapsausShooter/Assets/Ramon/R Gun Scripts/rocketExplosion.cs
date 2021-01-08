@@ -45,6 +45,10 @@ public class rocketExplosion : MonoBehaviour
                 rocketCol.gameObject.GetComponent<BossBodyHit>().HitPart(gunScObj, transform.position);
             }
         }
+        if(rocketCol.collider.tag == "BreakableWall")
+        {
+            rocketCol.collider.GetComponent<BreakableWall>().Break();
+        }
     }
     public void OnTriggerEnter(Collider other)
     {

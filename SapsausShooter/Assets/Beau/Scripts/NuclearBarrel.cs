@@ -23,7 +23,11 @@ public class NuclearBarrel : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Player")
+        if(collision.gameObject.tag == "Barrel" || collision.collider.tag == "BossHitBox" || collision.collider.isTrigger == true)
+        {
+            return;
+        }
+        if (collision.gameObject.tag == "Player")
         {
             collision.gameObject.GetComponent<HealthManager>().DoDamage(hitDamage);
         }
@@ -35,7 +39,6 @@ public class NuclearBarrel : MonoBehaviour
         //play explosion anim
         yield return new WaitForSeconds(.1f);
         GetComponent<MeshRenderer>().enabled = !enabled;
-        print("gas");
         //explosion particles
         Instantiate(gasSphere, transform.position, Quaternion.identity, null);
         Destroy(gameObject);

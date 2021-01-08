@@ -100,7 +100,6 @@ public class UsePlayer : MonoBehaviour
                     else if(hit.transform.tag == "ChurchRope")
                     {
                         hit.transform.GetComponent<ChurchRope>().DoChurchRope();
-                        missionScript.RLPickUp(hit.transform.GetComponent<ChurchRope>().launcherPartScript.partNumber, hit.transform.gameObject);
                     }
                 }
             }

@@ -34,7 +34,7 @@ public class BossZombie : MonoBehaviour
     public float bossHealth;
     public Slider bossHealthBar;
     public GameObject hitNumPrefab;
-    bool isDead;
+    public bool isDead, hasRunned;
 
     private void Start()
     {
@@ -55,10 +55,6 @@ public class BossZombie : MonoBehaviour
         if (isBiteAttacking == true)
         {
             agent.SetDestination(playerObj.transform.position);
-        }
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            Trigger();
         }
         if (isSpinAttacking == true)
         {
@@ -107,15 +103,21 @@ public class BossZombie : MonoBehaviour
             anim.SetTrigger("Dead");
         }
     }
-    public void Trigger()
+    public IEnumerator Trigger()
     {
+        if (hasRunned == false)
+        {
+            hasRunned = true;
+            anim.SetTrigger("Intro");
+        }
+        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length + timeBetweenAttacks);
         RandomAttack();
     }
     public void RandomAttack()
     {
         if (isDead == true)
             return;
-        int randomNum = Random.Range(0,4);
+        int randomNum = Random.Range(1,2);
         switch (randomNum)
         {
             case 0:
@@ -150,8 +152,8 @@ public class BossZombie : MonoBehaviour
         agent.velocity = Vector3.zero;
         anim.SetTrigger("Spin");
         anim.SetBool("Walking", false);
-        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
-        Invoke("Trigger", timeBetweenAttacks);
+        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length + timeBetweenAttacks);
+        StartCoroutine(Trigger());
     }
     public void HitWithSpin()
     {
@@ -161,29 +163,47 @@ public class BossZombie : MonoBehaviour
     {
         isBiteAttacking = true;
         agent.speed = chargeSpeed;
-        rushHitBox.enabled = enabled;
+        Invoke("SetHitBoxTrue", 2);
         anim.SetBool("Charge", true);
         anim.SetBool("Walking", false);
+    }
+    void SetHitBoxTrue()
+    {
+        rushHitBox.enabled = enabled;
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.isTrigger == false)
         {
+            print(other.gameObject.name);
+            print(other.gameObject.tag);
+            if (
+                other.gameObject.tag == "Floor" || other.gameObject.tag == "Enemy" || other.gameObject.tag == "FreezeCol" || other.gameObject.tag == "Weapon" || other.gameObject.tag == "PickUpCol" || other.gameObject.GetComponent<Terrain>())
+            {
+                return;
+            }
             if (other.gameObject.tag == "Player")
             {
                 other.gameObject.GetComponent<HealthManager>().DoDamage(chargeDmg);
+                if(coroutine != null)
+                {
+                    StopCoroutine(coroutine);
+                }
                 coroutine = StopDashAttack();
                 StartCoroutine(coroutine);
             }
-            else if (other.gameObject.tag != "Floor" || other.gameObject.tag != "Enemy" || other.gameObject.tag != "FreezeCol")
+            else
             {
-                print(other.gameObject.tag);
-                print(other.gameObject.name);
-                test = other.gameObject;
-                coroutine = StopDashAttack();
+                coroutine = HitSomething();
                 StartCoroutine(coroutine);
             }
         }
+    }
+    IEnumerator HitSomething()
+    {
+        yield return new WaitForSeconds(1);
+        coroutine = StopDashAttack();
+        StartCoroutine(coroutine);
     }
     IEnumerator StopDashAttack()
     {
@@ -191,8 +211,8 @@ public class BossZombie : MonoBehaviour
         agent.velocity = Vector3.zero;
         rushHitBox.enabled = !enabled;
         anim.SetBool("Charge", false);
-        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
-        Invoke("Trigger", 3);
+        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length + timeBetweenAttacks);
+        StartCoroutine(Trigger());
     }
     IEnumerator ShockWaveAttack()
     {
@@ -202,7 +222,8 @@ public class BossZombie : MonoBehaviour
         agent.velocity = Vector3.zero;
         yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
         shockWaveParticles.Play();
-        Invoke("Trigger", 8);
+        yield return new WaitForSeconds(timeBetweenAttacks);
+        StartCoroutine(Trigger());
     } 
     void ToxicBoyTrow()
     {
@@ -217,13 +238,13 @@ public class BossZombie : MonoBehaviour
         anim.SetTrigger("Spit");
         yield return new WaitForSeconds(.3f);
         spitParticles.Play();
-        Instantiate(nuclearBarrel, barrelSpawnPoint.transform.position, barrelSpawnPoint.rotation, barrelSpawnPoint);
-        currentBarrel = barrelSpawnPoint.GetChild(0).gameObject;
-        currentBarrel.transform.SetParent(null);
-        currentBarrel.GetComponent<Rigidbody>().useGravity = true;
-        yield return new WaitForEndOfFrame();
-        float calculatedForce = Vector3.Distance(currentBarrel.transform.position, playerObj.transform.position) * 12;
-        currentBarrel.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, 1000, calculatedForce));
-        currentBarrel.GetComponent<Rigidbody>().AddRelativeTorque(new Vector3(100, 100, 100));
+        for (int i = 0; i < barrelSpawnPoint.childCount; i++)
+        {
+            GameObject currentBarrel = Instantiate(nuclearBarrel, barrelSpawnPoint.transform.position, barrelSpawnPoint.GetChild(i).rotation, null);
+            float calculatedForce = Vector3.Distance(currentBarrel.transform.position, playerObj.transform.position) * 12;
+            currentBarrel.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, 1000, calculatedForce));
+            currentBarrel.GetComponent<Rigidbody>().AddRelativeTorque(new Vector3(100, 100, 100));
+        }
+        StartCoroutine(Trigger());
     }
 }
