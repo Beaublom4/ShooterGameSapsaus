@@ -5881,12 +5881,11 @@ PrefabInstance:
       propertyPath: m_WarningMessage
       value: "\nBinding warning: Some generic clip(s) animate transforms that are
         already bound by a Humanoid avatar. These transforms can only be changed
-        by Humanoid clips.\n\tTransform 'shoulder.R'\n\tTransform 'palm.01.R'\n\tTransform
-        'palm.03.R'\n\tTransform 'palm.02.R'\n\tTransform 'palm.04.R'\n\tTransform
-        'shoulder.L'\n\tTransform 'thumb.03.R'\n\tTransform 'forearm.R'\n\tTransform
-        'shoulder.R'\n\tTransform 'f_middle.02.R'\n\tand more ...\n\tFrom animation
-        clip 'metarig|AttackgTrashCan'\n\tFrom animation clip 'metarig|HoldingTrashCan'\n\tFrom
-        animation clip 'metarig|Heal'"
+        by Humanoid clips.\n\tTransform 'shoulder.R'\n\tTransform 'shoulder.L'\n\tTransform
+        'forearm.R'\n\tTransform 'shoulder.R'\n\tTransform 'thigh.L'\n\tTransform
+        'upper_arm.L'\n\tTransform 'spine.006'\n\tTransform 'shin.R'\n\tTransform
+        'spine.003'\n\tTransform 'upper_arm.R'\n\tand more ...\n\tFrom animation
+        clip 'metarig|AttackgTrashCan'\n\tFrom animation clip 'metarig|HoldingTrashCan'"
       objectReference: {fileID: 0}
     - target: {fileID: 1221140014759976723, guid: 7a5e7907c140ff24082a1bce753ce327,
         type: 3}

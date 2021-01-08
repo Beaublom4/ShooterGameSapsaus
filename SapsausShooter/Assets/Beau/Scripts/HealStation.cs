@@ -9,12 +9,18 @@ public class HealStation : MonoBehaviour
     public MoneyManager moneyScript;
 
     public float priceHeal;
-    float wantedPrice;
+    public float wantedPrice;
     public float increaseNum;
 
     public TextMeshProUGUI text;
     public GameObject infoPanel;
     public GameObject blikkkkieeee;
+    private void Start()
+    {
+        GameObject deNigga = GameObject.FindGameObjectWithTag("Player");
+        healthScript = deNigga.GetComponent<HealthManager>();
+        moneyScript = deNigga.GetComponent<MoneyManager>();
+    }
     public void ShowPrice()
     {
         if (healthScript.health == healthScript.healthSlider.maxValue)
@@ -33,21 +39,36 @@ public class HealStation : MonoBehaviour
     {
         if(moneyScript.money > priceHeal)
         {
-            moneyScript.money -= (int) wantedPrice;
+            moneyScript.DecreaseMoney((int)wantedPrice);
             priceHeal *= increaseNum;
 
             healthScript.health += healthScript.healthSlider.maxValue - healthScript.health;
             healthScript.UpdateNumber();
-            if (player.GetComponent<ShootAttack>().currentSlot.gunWeapon != null)
+            if (player.GetComponent<ShootAttack>().currentSlot != null)
             {
-                player.GetComponentInChildren<Animator>().SetTrigger("Heal");
-                GameObject g = Instantiate(blikkkkieeee, player.GetComponent<ShootAttack>().blikkieLoc.transform.position, player.GetComponent<ShootAttack>().blikkieLoc.transform.rotation, player.GetComponent<ShootAttack>().blikkieLoc.transform);
-                Destroy(g, .7f);
+                if (player.GetComponent<ShootAttack>().currentSlot.gunWeapon != null)
+                {
+                    print("Heal2");
+                    StartCoroutine(Drink(player));
+                }
             }
+            else
+            {
+                print("Heal2");
+                StartCoroutine(Drink(player));
+            }
+            GetComponent<AudioSource>().Play();
             ShowPrice();
             return;
         }
         print("Not enough money");
+    }
+    IEnumerator Drink(GameObject nig)
+    {
+        yield return new WaitForSeconds(3);
+        nig.GetComponentInChildren<Animator>().SetTrigger("Heal");
+        GameObject g = Instantiate(blikkkkieeee, nig.GetComponent<ShootAttack>().blikkieLoc.transform.position, nig.GetComponent<ShootAttack>().blikkieLoc.transform.rotation, nig.GetComponent<ShootAttack>().blikkieLoc.transform);
+        Destroy(g, .7f);
     }
     void hideObj()
     {

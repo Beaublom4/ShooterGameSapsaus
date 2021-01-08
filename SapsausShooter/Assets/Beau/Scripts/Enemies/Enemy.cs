@@ -127,7 +127,7 @@ public class Enemy : MonoBehaviour
         if(freezeSpeed > 0 && inFreezeRange == true)
         {
             freezeNum += freezeSpeed * Time.deltaTime;
-            freezeNum = Mathf.Clamp(freezeNum, 0, 1);
+            freezeNum = Mathf.Clamp(freezeNum, 0, 2);
 
             //zet freeze shit
             freezeRenderNumber += (freezeNum * 4) * Time.deltaTime;
@@ -136,26 +136,32 @@ public class Enemy : MonoBehaviour
             block.SetFloat("Vector1_76374516", freezeRenderNumber);
             render.SetPropertyBlock(block);
 
-            anim.SetFloat("speed", 1 - freezeNum);
-            freezeWalkingSpeed = (speed * (1 - freezeNum));
-            agent.speed = freezeWalkingSpeed;
+            if (freezeNum < 1)
+            {
+                anim.SetFloat("speed", 1 - freezeNum);
+                freezeWalkingSpeed = (speed * (1 - freezeNum));
+                agent.speed = freezeWalkingSpeed;
+            }
         }
         if (inFreezeRange == false & freezeNum > 0)
         {
             freezeNum -= .2f * Time.deltaTime;
-            freezeNum = Mathf.Clamp(freezeNum, 0, 1);
+            freezeNum = Mathf.Clamp(freezeNum, 0, 2);
 
             //zet freeze shit
-            freezeSpeed = 0;
-            freezeRenderNumber -= (.2f * 4) * Time.deltaTime;
-            freezeRenderNumber = Mathf.Clamp(freezeRenderNumber, -1, 3);
-            render.GetPropertyBlock(block);
-            block.SetFloat("Vector1_76374516", freezeRenderNumber);
-            render.SetPropertyBlock(block);
+            if (freezeNum < 1)
+            {
+                freezeSpeed = 0;
+                freezeRenderNumber -= (.2f * 4) * Time.deltaTime;
+                freezeRenderNumber = Mathf.Clamp(freezeRenderNumber, -1, 3);
+                render.GetPropertyBlock(block);
+                block.SetFloat("Vector1_76374516", freezeRenderNumber);
+                render.SetPropertyBlock(block);
 
-            anim.SetFloat("speed", 1 - freezeNum);
-            freezeWalkingSpeed = (speed * (1 - freezeNum));
-            agent.speed = freezeWalkingSpeed;
+                anim.SetFloat("speed", 1 - freezeNum);
+                freezeWalkingSpeed = (speed * (1 - freezeNum));
+                agent.speed = freezeWalkingSpeed;
+            }
         }
     }
     public virtual void Trigger(GameObject player)
