@@ -17,7 +17,7 @@ public class MeleeAttack : MonoBehaviour
     public MouseLook camScript;
     public Animator playerAnim;
     
-    public GameObject scytheParticlesParent, mailboxParticlesParent;
+    public GameObject scytheParticlesParent, mailboxParticlesParent, trashCanParticle;
 
     public LayerMask ignoreLayer;
     public RaycastHit hit;
@@ -116,10 +116,20 @@ public class MeleeAttack : MonoBehaviour
                 }
             }
         }
-        else if(weapon.weaponName == "MailBox")
+        else if (weapon.weaponName == "MailBox")
         {
             playerAnim.SetTrigger("MeleeHit");
             StartCoroutine(playVFX(mailboxParticlesParent, .5f));
+        }
+        else if (weapon.weaponName == "TrashCan")
+        {
+            foreach (Transform child in trashCanParticle.transform)
+            {
+                if (child.GetComponent<ParticleSystem>())
+                {
+                    child.GetComponent<ParticleSystem>().Play();
+                }
+            }
         }
         DoHitBox();
         yield return new WaitForSeconds(meleeDuration);
