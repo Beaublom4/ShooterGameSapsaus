@@ -4339,6 +4339,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be95bf0695c721545a0873a700abfff2, type: 3}
+--- !u!82 &263203748 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6145449393687365548, guid: be95bf0695c721545a0873a700abfff2,
+    type: 3}
+  m_PrefabInstance: {fileID: 263203747}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &263203749 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 9028867046306326836, guid: be95bf0695c721545a0873a700abfff2,
+    type: 3}
+  m_PrefabInstance: {fileID: 263203747}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &306392738 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1312193529368192724, guid: f2c82e542de52e243b2aebb9195cb285,
@@ -5849,6 +5861,16 @@ PrefabInstance:
       propertyPath: usePanel
       value: 
       objectReference: {fileID: 424221252}
+    - target: {fileID: 995829965692537576, guid: 7a5e7907c140ff24082a1bce753ce327,
+        type: 3}
+      propertyPath: sounds.lever
+      value: 
+      objectReference: {fileID: 263203749}
+    - target: {fileID: 995829965692537576, guid: 7a5e7907c140ff24082a1bce753ce327,
+        type: 3}
+      propertyPath: sounds.powerOut
+      value: 
+      objectReference: {fileID: 263203748}
     - target: {fileID: 1117009589608314569, guid: 7a5e7907c140ff24082a1bce753ce327,
         type: 3}
       propertyPath: m_Layer

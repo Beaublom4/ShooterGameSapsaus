@@ -8,7 +8,7 @@ public class UsePlayer : MonoBehaviour
     public class Sounds
     {
         public float SoundVolume = .5f;
-        public AudioSource itemPickUp, Use, shock;
+        public AudioSource itemPickUp, Use, shock, lever, powerOut;
     }
     public GameObject fpsCam;
     public MissionManager missionScript;
@@ -104,6 +104,8 @@ public class UsePlayer : MonoBehaviour
                     if(hit.transform.tag == "ElectricSwitch")
                     {
                         hit.transform.GetComponent<ElectricSwitch>().UseSwitch();
+                        sounds.lever.Play();
+                        sounds.powerOut.Play();
                     }
                     else if(hit.transform.tag == "ChurchRope")
                     {
