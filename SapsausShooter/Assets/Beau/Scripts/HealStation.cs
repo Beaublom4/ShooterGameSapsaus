@@ -14,6 +14,7 @@ public class HealStation : MonoBehaviour
 
     public TextMeshProUGUI text;
     public GameObject infoPanel;
+    public GameObject blikkkkieeee;
     public void ShowPrice()
     {
         if (healthScript.health == healthScript.healthSlider.maxValue)
@@ -37,7 +38,12 @@ public class HealStation : MonoBehaviour
 
             healthScript.health += healthScript.healthSlider.maxValue - healthScript.health;
             healthScript.UpdateNumber();
-            player.GetComponentInChildren<Animator>().SetTrigger("Heal");
+            if (player.GetComponent<ShootAttack>().currentSlot.gunWeapon != null)
+            {
+                player.GetComponentInChildren<Animator>().SetTrigger("Heal");
+                GameObject g = Instantiate(blikkkkieeee, player.GetComponent<ShootAttack>().blikkieLoc.transform.position, player.GetComponent<ShootAttack>().blikkieLoc.transform.rotation, player.GetComponent<ShootAttack>().blikkieLoc.transform);
+                Destroy(g, .7f);
+            }
             ShowPrice();
             return;
         }
