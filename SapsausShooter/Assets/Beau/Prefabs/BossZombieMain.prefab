@@ -209,12 +209,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f8c4c723c7eb28478e2bb83743b1eb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  test: {fileID: 0}
   speed: 5
   chargeSpeed: 10
   timeBetweenAttacks: 3
   spinHitDmg: 50
-  chargeDmg: 50
-  shockWaveParticleDmg: 5
+  chargeDmg: 30
+  shockWaveParticleDmg: 10
   meleeScript: {fileID: 4155770710118370997}
   playerObj: {fileID: 0}
   spinAttackPlace: {fileID: 2342272719971839116}

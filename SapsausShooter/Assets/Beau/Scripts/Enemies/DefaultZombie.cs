@@ -9,6 +9,7 @@ public class DefaultZombie : Enemy
     public int wantedEnemiesInRange;
     public List<GameObject> enemiesInRange = new List<GameObject>();
     public Transform bigBoySpawnPoint;
+    public GameObject bigBoyParticles;
     public bool MainAtLoc;
     bool hasRunned;
     public override void Update()
@@ -18,6 +19,8 @@ public class DefaultZombie : Enemy
         {
             hasRunned = true;
             Instantiate(bigZombie, transform.position, transform.rotation, bigBoySpawnPoint);
+            GameObject particles = Instantiate(bigBoyParticles, transform.position, transform.rotation, null);
+            Destroy(particles, 5);
             GameObject bigBoy = bigBoySpawnPoint.GetChild(0).gameObject;
             bigBoy.GetComponent<Enemy>().Trigger(playerObj);
             bigBoy.transform.SetParent(null);
@@ -71,6 +74,8 @@ public class DefaultZombie : Enemy
     {
         foreach (GameObject g in enemiesInRange)
         {
+            if (g == null)
+                return;
             x += g.transform.position.x;
             y += g.transform.position.y;
             z += g.transform.position.z;

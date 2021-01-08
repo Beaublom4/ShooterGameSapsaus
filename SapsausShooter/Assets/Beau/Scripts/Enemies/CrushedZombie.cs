@@ -40,6 +40,11 @@ public class CrushedZombie : Enemy
     public override void Trigger(GameObject player)
     {
         base.Trigger(player);
+        StartCoroutine(canBashWait());
+    }
+    IEnumerator canBashWait()
+    {
+        yield return new WaitForSeconds(5);
         bashRangeObj.SetActive(true);
     }
     public override void OnCollisionEnter(Collision collision)

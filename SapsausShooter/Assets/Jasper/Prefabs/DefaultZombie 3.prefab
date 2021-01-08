@@ -1950,8 +1950,6 @@ MonoBehaviour:
   - {fileID: 4554482358237007466, guid: d00c633f6fdada74e996bda89f6b5d56, type: 3}
   - {fileID: 1541059378753458314, guid: 46766076764a82145a738bc01cbdc56c, type: 3}
   - {fileID: 5947956227818997311, guid: cdc2462a714d82d45b603c7f3294bc6e, type: 3}
-  - {fileID: 6799256733241002017, guid: 93a1ec50547c4b146978a1b6874ccfee, type: 3}
-  - {fileID: 2607677896226761017, guid: c9fd6300b22cd12448e3932e0306fe1a, type: 3}
   - {fileID: 669375285450597423, guid: c31da346040480e458b0b50f2a91ceae, type: 3}
   - {fileID: 8959282217942888637, guid: c437315f83f584d4ab3dcbcbf66d280d, type: 3}
   ammoDropLoc: {fileID: 6189699180259460753}
@@ -1991,11 +1989,13 @@ MonoBehaviour:
   hitNumPrefab: {fileID: 3314747878335242109, guid: 8c6b2080012d1a048870d88718b62e11,
     type: 3}
   dmgTextLoc: {fileID: 2380250253158241888}
-  bigZombie: {fileID: 3225309657445313045, guid: b19454070a0ea164fac569d39e410b3b,
+  bigZombie: {fileID: 4049090637509514779, guid: b9812abbdd3d2384ba358a71ca1338ab,
     type: 3}
   wantedEnemiesInRange: 7
   enemiesInRange: []
   bigBoySpawnPoint: {fileID: 2827421405967121659}
+  bigBoyParticles: {fileID: 3983026260802509406, guid: 1851c62b29f7fde478645eee611d5686,
+    type: 3}
   MainAtLoc: 0
 --- !u!135 &5249116921635213906
 SphereCollider:

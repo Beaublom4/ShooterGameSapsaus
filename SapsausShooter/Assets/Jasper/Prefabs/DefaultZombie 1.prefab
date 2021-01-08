@@ -2460,20 +2460,20 @@ MonoBehaviour:
   speed: 3
   health: 100
   damage: 5
-  hitBox: {fileID: 2867053998018581936, guid: 595a79ed576d0434b85df93ea3312bcb, type: 3}
-  anim: {fileID: 5162415114572009269, guid: 595a79ed576d0434b85df93ea3312bcb, type: 3}
+  hitBox: {fileID: 1074859312891229156}
+  anim: {fileID: 7964595617094183265}
   hitBoxes:
-  - {fileID: 7598201190423344014, guid: 595a79ed576d0434b85df93ea3312bcb, type: 3}
-  - {fileID: 2009911799899002223, guid: 595a79ed576d0434b85df93ea3312bcb, type: 3}
-  - {fileID: 8710966231203092915, guid: 595a79ed576d0434b85df93ea3312bcb, type: 3}
-  - {fileID: 3012517835818312502, guid: 595a79ed576d0434b85df93ea3312bcb, type: 3}
-  - {fileID: 6016144155625642350, guid: 595a79ed576d0434b85df93ea3312bcb, type: 3}
-  - {fileID: 4388317586788336706, guid: 595a79ed576d0434b85df93ea3312bcb, type: 3}
-  - {fileID: 6787964406030114087, guid: 595a79ed576d0434b85df93ea3312bcb, type: 3}
-  - {fileID: 3222426532917294069, guid: 595a79ed576d0434b85df93ea3312bcb, type: 3}
-  - {fileID: 725994317605919353, guid: 595a79ed576d0434b85df93ea3312bcb, type: 3}
-  - {fileID: 2933292571516763205, guid: 595a79ed576d0434b85df93ea3312bcb, type: 3}
-  - {fileID: 5416326369221511462, guid: 595a79ed576d0434b85df93ea3312bcb, type: 3}
+  - {fileID: 5890964569189040103}
+  - {fileID: 66962116457694562}
+  - {fileID: 8817726523474706234}
+  - {fileID: 1568685515937047062}
+  - {fileID: 8579578411546033011}
+  - {fileID: 4634559209563100634}
+  - {fileID: 3659135733722821435}
+  - {fileID: 403955529198605729}
+  - {fileID: 2535604991993740333}
+  - {fileID: 114383016656656913}
+  - {fileID: 7064406811136470898}
   isDeath: 0
   sounds:
     minSoundRange: 0.2
@@ -2484,13 +2484,13 @@ MonoBehaviour:
   chanceDrop: 20
   chanceDubbleDrop: 5
   ammoDrops:
-  - {fileID: 1319509033163920919, guid: 9f5a6a88f32c7a14baaa047fe84387d2, type: 3}
-  - {fileID: 3115787131044623474, guid: 904151794a5747a49a960c8f5b86aaf3, type: 3}
-  - {fileID: 2921278145093864353, guid: cebbdc06acaef454f99cd55e7ad37e57, type: 3}
-  - {fileID: 8959282217942888637, guid: c437315f83f584d4ab3dcbcbf66d280d, type: 3}
+  - {fileID: 5052875826255277196, guid: 3f7474d993aa995438b5cd2c54cadc25, type: 3}
+  - {fileID: 4554482358237007466, guid: d00c633f6fdada74e996bda89f6b5d56, type: 3}
+  - {fileID: 1541059378753458314, guid: 46766076764a82145a738bc01cbdc56c, type: 3}
+  - {fileID: 5947956227818997311, guid: cdc2462a714d82d45b603c7f3294bc6e, type: 3}
   - {fileID: 669375285450597423, guid: c31da346040480e458b0b50f2a91ceae, type: 3}
-  ammoDropLoc: {fileID: 6189699180259460753, guid: 595a79ed576d0434b85df93ea3312bcb,
-    type: 3}
+  - {fileID: 8959282217942888637, guid: c437315f83f584d4ab3dcbcbf66d280d, type: 3}
+  ammoDropLoc: {fileID: 8990664997495398597}
   minDropAmount: 1
   maxDropAmount: 30
   moneyDropPrefab: {fileID: 2030928626577662909, guid: 446e29ffe71723b4db774c3d271eb33d,
@@ -2526,13 +2526,13 @@ MonoBehaviour:
   missionManagerScript: {fileID: 0}
   hitNumPrefab: {fileID: 3314747878335242109, guid: 8c6b2080012d1a048870d88718b62e11,
     type: 3}
-  dmgTextLoc: {fileID: 2380250253158241888, guid: 595a79ed576d0434b85df93ea3312bcb,
-    type: 3}
-  bigZombie: {fileID: 3225309657445313045, guid: b19454070a0ea164fac569d39e410b3b,
+  dmgTextLoc: {fileID: 588599689635688500}
+  bigZombie: {fileID: 4049090637509514779, guid: b9812abbdd3d2384ba358a71ca1338ab,
     type: 3}
   wantedEnemiesInRange: 7
   enemiesInRange: []
-  bigBoySpawnPoint: {fileID: 2827421405967121659, guid: 595a79ed576d0434b85df93ea3312bcb,
+  bigBoySpawnPoint: {fileID: 1017387436820748975}
+  bigBoyParticles: {fileID: 3983026260802509406, guid: 1851c62b29f7fde478645eee611d5686,
     type: 3}
   MainAtLoc: 0
 --- !u!135 &7060488308705145862
