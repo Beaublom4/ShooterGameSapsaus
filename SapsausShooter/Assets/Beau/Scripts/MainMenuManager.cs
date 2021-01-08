@@ -12,7 +12,7 @@ public class MainMenuManager : MonoBehaviour
     public class Sounds
     {
         [HideInInspector] public float buttonSoundVolume;
-        public AudioSource buttonPressSound;
+        public AudioSource buttonPressSound, buttonHoverSound;
     }
     [System.Serializable]
     public class optionsThings
@@ -28,6 +28,7 @@ public class MainMenuManager : MonoBehaviour
 
 
     public GameObject cam;
+    public Sounds sounds;
     public bool moveToPos;
     public float camMoveSpeed, camRotSpeed;
     public Transform wantedPos, wantedLookAt;
@@ -179,6 +180,7 @@ public class MainMenuManager : MonoBehaviour
     public void MouseOverButton(GameObject text)
     {
         text.transform.localPosition = moveButtonToPos;
+        sounds.buttonHoverSound.Play();
     }
     public void MouseHoverStop(GameObject text)
     {
@@ -306,5 +308,9 @@ public class MainMenuManager : MonoBehaviour
                 MouseHoverStop(child.GetChild(0).gameObject);
             }
         }
+    }
+    public void ClickSound()
+    {
+        sounds.buttonPressSound.Play();
     }
 }
