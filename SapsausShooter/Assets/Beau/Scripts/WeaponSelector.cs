@@ -34,8 +34,8 @@ public class WeaponSelector : MonoBehaviour
     [System.Serializable]
     public class WeaponLocations
     {
-        public GameObject pistol, shotgun, launcher, freezegun, gatlingNailGun, mailBox, scythe;
-        public Transform pistolLoc, shotgunLoc, launcherLoc, freezegunLoc, gatlingNailGunLoc, meleeLoc;
+        public GameObject pistol, shotgun, launcher, freezegun, gatlingNailGun, mailBox, scythe,trashCan;
+        public Transform pistolLoc, shotgunLoc, launcherLoc, freezegunLoc, gatlingNailGunLoc, meleeLoc, trashCanLoc;
         
     }
     public GameObject hand;
@@ -238,6 +238,14 @@ public class WeaponSelector : MonoBehaviour
                 else if(slotscript.meleeWeapon.weaponName == "Scythe")
                 {
                     GameObject g = Instantiate(weaponLocations.scythe, weaponLocations.meleeLoc.transform.position, weaponLocations.meleeLoc.rotation, hand.transform);
+                    g.layer = 14;
+                    weaponInHand = g;
+                    g.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+                }
+                else if (slotscript.meleeWeapon.weaponName == "TrashCan")
+                {
+                    playerAnim.SetBool("TrashCan", true);
+                    GameObject g = Instantiate(weaponLocations.trashCan, weaponLocations.trashCanLoc.transform.position, weaponLocations.trashCanLoc.rotation, hand.transform);
                     g.layer = 14;
                     weaponInHand = g;
                     g.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
