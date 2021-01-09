@@ -6,8 +6,6 @@ using UnityEngine.UI;
 
 public class BossZombie : MonoBehaviour
 {
-    public GameObject test;
-
     public float speed, chargeSpeed, timeBetweenAttacks;
     public float spinHitDmg, chargeDmg, shockWaveParticleDmg;
 
@@ -36,6 +34,7 @@ public class BossZombie : MonoBehaviour
     public GameObject hitNumPrefab;
     public bool isDead, hasRunned;
 
+    public AudioSource walk, spit, chargeHit, chargeLoop, shockWave, spin;
     private void Start()
     {
         agent = gameObject.GetComponent<NavMeshAgent>();
@@ -117,7 +116,7 @@ public class BossZombie : MonoBehaviour
     {
         if (isDead == true)
             return;
-        int randomNum = Random.Range(1,2);
+        int randomNum = Random.Range(0,4);
         switch (randomNum)
         {
             case 0:
@@ -148,6 +147,7 @@ public class BossZombie : MonoBehaviour
     IEnumerator DoSpinAttack()
     {
         //instantiate hitbox
+        spin.Play();
         agent.speed = 0;
         agent.velocity = Vector3.zero;
         anim.SetTrigger("Spin");
@@ -161,6 +161,7 @@ public class BossZombie : MonoBehaviour
     }
     void BiteAttack()
     {
+        chargeLoop.Play();
         isBiteAttacking = true;
         agent.speed = chargeSpeed;
         Invoke("SetHitBoxTrue", 2);
@@ -175,8 +176,6 @@ public class BossZombie : MonoBehaviour
     {
         if (other.isTrigger == false)
         {
-            print(other.gameObject.name);
-            print(other.gameObject.tag);
             if (
                 other.gameObject.tag == "Floor" || other.gameObject.tag == "Enemy" || other.gameObject.tag == "FreezeCol" || other.gameObject.tag == "Weapon" || other.gameObject.tag == "PickUpCol" || other.gameObject.GetComponent<Terrain>())
             {
@@ -207,6 +206,7 @@ public class BossZombie : MonoBehaviour
     }
     IEnumerator StopDashAttack()
     {
+        chargeHit.Play();
         agent.speed = 0;
         agent.velocity = Vector3.zero;
         rushHitBox.enabled = !enabled;
@@ -216,6 +216,7 @@ public class BossZombie : MonoBehaviour
     }
     IEnumerator ShockWaveAttack()
     {
+        shockWave.Play();
         anim.SetTrigger("Shockwave");
         anim.SetBool("Walking", false);
         agent.speed = 0;
@@ -237,6 +238,7 @@ public class BossZombie : MonoBehaviour
     {
         anim.SetTrigger("Spit");
         yield return new WaitForSeconds(.3f);
+        spit.Play();
         spitParticles.Play();
         for (int i = 0; i < barrelSpawnPoint.childCount; i++)
         {
@@ -246,5 +248,10 @@ public class BossZombie : MonoBehaviour
             currentBarrel.GetComponent<Rigidbody>().AddRelativeTorque(new Vector3(100, 100, 100));
         }
         StartCoroutine(Trigger());
+    }
+    public void WalkSound()
+    {
+        walk.pitch = Random.Range(0.9f, 1.1f);
+        walk.Play();
     }
 }

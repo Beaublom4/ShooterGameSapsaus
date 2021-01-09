@@ -31,18 +31,24 @@ public class rocketExplosion : MonoBehaviour
     }
     public void OnCollisionEnter(Collision rocketCol)
     {
+        if (rocketCol.collider.isTrigger == true)
+            return;
         if ((hittableMasks & (1<<rocketCol.gameObject.layer)) != 0)
         {
             Explode();
-            Instantiate(explosionEffect, transform.position, transform.rotation, null);
+            GameObject explosion = Instantiate(explosionEffect, transform.position, transform.rotation, null);
+            explosion.GetComponent<AudioSource>().Play();
             ifWeCouldFly = false;
             //Explode(rocketCol.contacts[0].point);
         }
-        if (rocketCol.gameObject.tag == "BossHitBox")
+        print(rocketCol.collider.name);
+        print(rocketCol.collider.tag);
+        if (rocketCol.collider.tag == "BossHitBox")
         {
-            if (rocketCol.gameObject.GetComponent<BossBodyHit>())
+            if (rocketCol.collider.GetComponent<BossBodyHit>())
             {
-                rocketCol.gameObject.GetComponent<BossBodyHit>().HitPart(gunScObj, transform.position);
+                print("Dikke yeet");
+                rocketCol.collider.GetComponent<BossBodyHit>().HitPart(gunScObj, transform.position);
             }
         }
         if(rocketCol.collider.tag == "BreakableWall")

@@ -400,18 +400,15 @@ public class Enemy : MonoBehaviour
         int randomNum = Random.Range(0, 100);
         if(randomNum < chanceDrop)
         {
-            print("Drop");
             DropAmmo();
         }
         else if(randomNum > chanceDrop && randomNum < chanceDubbleDrop + chanceDrop)
         {
-            print("Dubble drop");
             Drop();
             DropAmmo();
         }
         else
         {
-            print("GetNothing");
             return;
         }
     }

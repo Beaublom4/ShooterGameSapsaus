@@ -11,6 +11,7 @@ public class ShootAttack : MonoBehaviour
         [HideInInspector] public float pistolSoundVolume, shotgunSoundVolume;
         public AudioSource pistolShoot, pistolEmpty, pistolReload;
         public AudioSource shotgunShoot, shotgunEmpty, shotgunReload;
+        public AudioSource launcherShoot;
 
         [HideInInspector] public float hitmarkerSoundVolume;
         public AudioSource hitmarker, headshot;
@@ -28,8 +29,6 @@ public class ShootAttack : MonoBehaviour
     public GameObject hitVfx;
     public GameObject PistolMag, ShotgunShells, launcherBullet, freezeBatery;
     public GameObject magLoc, rlMagLoc, blikkieLoc;
-
-    public FreezeHitBox freezeBox;
 
     public MaterialPropertyBlock block;
 
@@ -485,6 +484,7 @@ public class ShootAttack : MonoBehaviour
             currentSlot.ammoInMag--;
             ammoScript.UpdateAmmo(currentSlot.ammoInMag);
 
+            sounds.launcherShoot.Play();
             GameObject rocket = (GameObject)Instantiate(rocketPrefab, weaponHand.GetComponentInChildren<GunScript>().prefabSpawn.position, weaponHand.GetComponentInChildren<GunScript>().prefabSpawn.rotation, null);
             rocket.GetComponent<rocketExplosion>().ifWeCouldFly = true;
 

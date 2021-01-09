@@ -9,7 +9,6 @@ public class BossMelleeHitboxScript : MonoBehaviour
     {
         if(other.gameObject.tag == "PickUpCol")
         {
-            print("YEEEEEEEETT");
             bossScript.HitWithSpin();
         }
     }

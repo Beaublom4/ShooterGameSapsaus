@@ -6152,11 +6152,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4831207102390669919, guid: 7a5e7907c140ff24082a1bce753ce327,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4844409351409631939, guid: 7a5e7907c140ff24082a1bce753ce327,
         type: 3}
       propertyPath: m_Layer
@@ -6437,6 +6432,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7284877674840384925, guid: 7a5e7907c140ff24082a1bce753ce327,
+        type: 3}
+      propertyPath: m_Name
+      value: LauncherShoot
       objectReference: {fileID: 0}
     - target: {fileID: 7385273388293799310, guid: 7a5e7907c140ff24082a1bce753ce327,
         type: 3}
