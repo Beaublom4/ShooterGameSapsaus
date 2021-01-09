@@ -20,11 +20,11 @@ MonoBehaviour:
 
     Infinite ammo'
   uiSprite: {fileID: 21300000, guid: 0189746d9e075994a83473326b5dfee6, type: 3}
-  damage: 100
+  damage: 50
   damageDropOverDist: 0.1
   damageOverTime: 0
   damageOverTimeTime: 2
-  critMultiplier: 1.2
+  critMultiplier: 2
   recoil: 5
   lifeStealPercentage: 0
   canStun: 0
@@ -41,7 +41,7 @@ MonoBehaviour:
   ammoType: Infinity
   magCount: 12
   bulletSpeed: 20
-  reloadSpeed: 2
+  reloadSpeed: 1
   fireRate: 0.2
   soundAreaIncrease: 0.5
   muzzleFlash: {fileID: 0}

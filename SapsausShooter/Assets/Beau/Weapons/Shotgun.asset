@@ -18,15 +18,15 @@ MonoBehaviour:
   weaponName: Shotgun
   weaponDescription: Shotgun...
   uiSprite: {fileID: 21300000, guid: f71feea76f805ee48af81df31be47e38, type: 3}
-  damage: 50
-  damageDropOverDist: 0.1
+  damage: 25
+  damageDropOverDist: 2
   damageOverTime: 0
-  damageOverTimeTime: 2
-  critMultiplier: 1.2
-  recoil: 10
+  damageOverTimeTime: 0
+  critMultiplier: 2
+  recoil: 6
   lifeStealPercentage: 0
-  canStun: 0
-  stunTime: 0
+  canStun: 1
+  stunTime: 0.1
   canSlow: 0
   slowTimesNumber: 0
   slowTime: 0
@@ -39,7 +39,7 @@ MonoBehaviour:
   ammoType: 
   magCount: 2
   bulletSpeed: 0
-  reloadSpeed: 2
+  reloadSpeed: 1
   fireRate: 0.1
   soundAreaIncrease: 2
   muzzleFlash: {fileID: 0}

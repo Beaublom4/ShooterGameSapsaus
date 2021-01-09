@@ -131,31 +131,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   normalStats:
-    normalSpeed: 0
-    normalChargeSpeed: 0
-    normalTimeBetweenAttacks: 3
-    spinHitDmg: 0
-    chargeDmg: 0
-    shockWaveParticleDmg: 0
-    spitTimes: 1
+    normalSpeed: 5
+    normalChargeSpeed: 7
+    normalTimeBetweenAttacks: 1.2
+    spinHitDmg: 9
+    chargeDmg: 12
+    shockWaveParticleDmg: 10
+    spitTimes: 2
   enragedStats:
     wantedHealthPercentage: 50
-    enragedSpeed: 0
-    enragedChargeSpeed: 0
-    enragedTimeBetweenAttacks: 0
-    spinHitDmg: 0
-    chargeDmg: 0
-    shockWaveParticleDmg: 0
-    spitTimes: 0
+    enragedSpeed: 8
+    enragedChargeSpeed: 10
+    enragedTimeBetweenAttacks: 0.9
+    spinHitDmg: 11
+    chargeDmg: 15
+    shockWaveParticleDmg: 12
+    spitTimes: 4
   madAFStats:
-    wantedHealthPercentage: 10
-    madAFSpeed: 0
-    madAFChargeSpeed: 0
-    madAFTimeBetweenAttacks: 0
-    spinHitDmg: 0
-    chargeDmg: 0
-    shockWaveParticleDmg: 0
-    spitTimes: 0
+    wantedHealthPercentage: 20
+    madAFSpeed: 8
+    madAFChargeSpeed: 12
+    madAFTimeBetweenAttacks: 0.6
+    spinHitDmg: 15
+    chargeDmg: 20
+    shockWaveParticleDmg: 15
+    spitTimes: 6
   speed: 5
   chargeSpeed: 10
   timeBetweenAttacks: 1
@@ -179,7 +179,7 @@ MonoBehaviour:
   isBiteAttacking: 0
   isSpinAttacking: 0
   lookAtPlayer: 0
-  bossHealth: 10000
+  bossHealth: 4000
   bossHealthBarObj: {fileID: 0}
   bossHealthBar: {fileID: 0}
   bossHealthPercentage: {fileID: 0}

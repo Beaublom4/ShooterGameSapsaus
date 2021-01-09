@@ -1345,7 +1345,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.5
-  health: 100
+  health: 250
   damage: 10
   hitBox: {fileID: 6211243011951933005}
   anim: {fileID: 29911715758452648}
@@ -1368,6 +1368,7 @@ MonoBehaviour:
     attack: {fileID: 8792280216003893893}
     death: {fileID: 3258921089992860367}
     walk: {fileID: 8792280216003893893}
+    gettingFreezed: {fileID: 0}
   chanceDrop: 10
   chanceDubbleDrop: 40
   ammoDrops:
@@ -1413,6 +1414,7 @@ MonoBehaviour:
   freezeNum: 0
   freezeRenderNumber: 0
   freezeWalkingSpeed: 0
+  didFreezeSound: 0
   missionManagerScript: {fileID: 0}
   hitNumPrefab: {fileID: 3314747878335242109, guid: 8c6b2080012d1a048870d88718b62e11,
     type: 3}
