@@ -43,6 +43,14 @@ public class UsePlayer : MonoBehaviour
             }
             if (hit.transform.tag == "ShopItem")
             {
+                pickUpPanel.SetActive(true);
+                if (Input.GetButtonDown("Use"))
+                {
+                    pickUpPanel.SetActive(false);
+                }
+            }
+            if (hit.transform.tag == "ShopItem")
+            {
                 shopPanel.SetActive(true);
                 if (hit.transform.GetComponent<ShopItem>().canvas.activeSelf == false)
                 {
