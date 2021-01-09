@@ -126,6 +126,7 @@ public class MeleeAttack : MonoBehaviour
             playerAnim.SetTrigger("MeleeHitT");
             foreach (Transform child in trashCanParticle.transform)
             {
+                print(child.name);
                 if (child.GetComponent<ParticleSystem>())
                 {
                     child.GetComponent<ParticleSystem>().Play();
