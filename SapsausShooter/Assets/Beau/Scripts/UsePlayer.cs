@@ -17,10 +17,11 @@ public class UsePlayer : MonoBehaviour
     public Sounds sounds;
     public GameObject pickUpPanel, healPanel, shopPanel, startPanel, usePanel;
 
-
+    public VoiceLineCol startLetter, endLetter;
     private void Start()
     {
         startPanel.SetActive(true);
+        startLetter.StartSound();
     }
 
     private void Update()
@@ -28,6 +29,7 @@ public class UsePlayer : MonoBehaviour
         if (Input.GetButtonDown("Use") && startPanel.activeSelf==true)
         {
             startPanel.SetActive(false);
+            endLetter.StartSound();
         }
 
 

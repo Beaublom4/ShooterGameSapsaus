@@ -37,6 +37,7 @@ public class MissionManager : MonoBehaviour
     public int partsFound, partsToFind;
     public GameObject particlesWall;
     public AudioSource foundPart, allPartsFound;
+    public AudioSource startSideMis, winSideMis, failSideMis;
 
     public bool killEnemiesMission;
     public int killAmount, currentKillAmount;
@@ -58,6 +59,7 @@ public class MissionManager : MonoBehaviour
         {
             timeLeft = 0;
 
+            failSideMis.Play();
             currentSideMission = -1;
             killEnemiesMission = false;
 
@@ -68,6 +70,7 @@ public class MissionManager : MonoBehaviour
             sideMission1InfoText.text = currentKillAmount.ToString() + "/" + killAmount.ToString();
             if(currentKillAmount >= killAmount)
             {
+                winSideMis.Play();
                 killEnemiesMission = false;
                 currentSideMission = -1;
                 timeLeft = 0;
@@ -79,10 +82,10 @@ public class MissionManager : MonoBehaviour
     }
     public IEnumerator SelectSideMission()
     {
-        SideMissionSetup();
         timeLeftText.text = "";
         int waitForSeconds = Random.Range(0, 60);
         yield return new WaitForSeconds(waitForSeconds);
+        startSideMis.Play();
         int randomSideMission = Random.Range(0, 1);
         switch (randomSideMission)
         {

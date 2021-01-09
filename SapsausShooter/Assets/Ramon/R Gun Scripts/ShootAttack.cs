@@ -228,7 +228,7 @@ public class ShootAttack : MonoBehaviour
             else
             {
                 anim.SetTrigger("Reload");
-                weaponHand.GetComponentInChildren<Animator>().SetTrigger("ShootP");
+                weaponHand.GetComponentInChildren<Animator>().SetTrigger("ReloadP");
                 GameObject mag = Instantiate(PistolMag, magLoc.transform.position, magLoc.transform.rotation, magLoc.transform);
                 Destroy(mag, 1);
                 ammoScript.pistolAmmo += currentSlot.ammoInMag;
