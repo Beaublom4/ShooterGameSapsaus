@@ -50,6 +50,7 @@ public class AmmoPack : MonoBehaviour
             if (selectScript.selectedSlotScript == null)
             {
                 Destroy(gameObject);
+                return;
             }
             if (selectScript.selectedSlotScript.gunWeapon.gunType == "Pistol")
             {

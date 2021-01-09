@@ -45,7 +45,16 @@ public class Movement : MonoBehaviour
     }
     void Update()
     {
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        //isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, new Vector3(0, -groundDistance, 0), out hit, groundDistance , groundMask, QueryTriggerInteraction.Ignore))
+        {
+            isGrounded = true;
+        }
+        else if(isGrounded == true)
+        {
+            isGrounded = false;
+        }
 
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");

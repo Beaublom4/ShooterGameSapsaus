@@ -14,6 +14,7 @@ public class UsePlayer : MonoBehaviour
     public MissionManager missionScript;
     public float useRange;
     RaycastHit hit;
+    public LayerMask hitLayer;
     public Sounds sounds;
     public GameObject pickUpPanel, healPanel, shopPanel, startPanel, usePanel;
 
@@ -32,8 +33,10 @@ public class UsePlayer : MonoBehaviour
         }
 
 
-        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, useRange))
+        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, useRange, hitLayer))
         {
+            print(hit.transform.name);
+            print(hit.transform.tag);
             if (Input.GetButtonDown("Use"))
             {
                 if (hit.collider.GetComponent<GarageDoor>())
@@ -42,7 +45,7 @@ public class UsePlayer : MonoBehaviour
                     hit.collider.GetComponent<GarageDoor>().OpenGarageDoor();
                 }
             }
-            if (hit.transform.tag == "ShopItem")
+            if (hit.transform.tag == "Weapon")
             {
                 pickUpPanel.SetActive(true);
                 if (Input.GetButtonDown("Use"))

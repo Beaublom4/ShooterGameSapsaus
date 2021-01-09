@@ -101,8 +101,6 @@ public class ShootAttack : MonoBehaviour
         if (Input.GetButtonDown("Reload") && weapon != null && currentSlot.ammoInMag < weapon.weaponPrefab.GetComponent<GunScript>().weapon.magCount)
         {
             ReloadWeapon();
-
-            StartCoroutine(Reload());
         }
         if (doingFreeze == true)
         {
@@ -232,8 +230,9 @@ public class ShootAttack : MonoBehaviour
                 weaponHand.GetComponentInChildren<Animator>().SetTrigger("ReloadP");
                 GameObject mag = Instantiate(PistolMag, magLoc.transform.position, magLoc.transform.rotation, magLoc.transform);
                 Destroy(mag, 1);
+                print(ammoScript.pistolAmmo += currentSlot.ammoInMag);
                 ammoScript.pistolAmmo += currentSlot.ammoInMag;
-                if (ammoScript.pistolAmmo >= weapon.weaponPrefab.GetComponent<GunScript>().weapon.magCount)
+                if (ammoScript.pistolAmmo >= currentSlot.ammoInMag)
                 {
                     addAmmo = weapon.weaponPrefab.GetComponent<GunScript>().weapon.magCount;
                 }
@@ -246,6 +245,7 @@ public class ShootAttack : MonoBehaviour
                 sounds.pistolReload.Play();
 
                 ammoScript.pistolAmmo -= addAmmo;
+                StartCoroutine(Reload());
                 ammoScript.UpdatePistolAmmoLeft();
             }
         }
@@ -356,9 +356,6 @@ public class ShootAttack : MonoBehaviour
     {
         isReloading = true;
         Debug.Log("Reloading...");
-
-        //pistolAnimation.SetTrigger("Reload");
-
         yield return new WaitForSeconds(weapon.weaponPrefab.GetComponent<GunScript>().weapon.reloadSpeed);
 
         print("Reloaded");

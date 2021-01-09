@@ -6555,7 +6555,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Sensitivity
+  m_text: Voice line volume
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -10889,7 +10889,7 @@ MonoBehaviour:
   m_MinValue: 0.001
   m_MaxValue: 1000
   m_WholeNumbers: 0
-  m_Value: 250
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -14183,6 +14183,11 @@ MonoBehaviour:
   mainMissionInfoText: {fileID: 7932595841932654841}
   sideMission1InfoText: {fileID: 7932595841869873776}
   moneyManagerScript: {fileID: 0}
+  killCount: 0
+  kills: {fileID: 0}
+  partVoiceLIie: 0
+  partBetweenVoiceLine: {fileID: 0}
+  partVoiceLines: []
   timeLeft: 0
   timeLeftText: {fileID: 7932595841348855203}
   partsDisplay: {fileID: 6376531498629309627}

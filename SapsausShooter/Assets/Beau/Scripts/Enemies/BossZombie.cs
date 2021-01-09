@@ -67,7 +67,7 @@ public class BossZombie : MonoBehaviour
     public GameObject hitNumPrefab;
     public bool isDead, hasRunned;
 
-    public AudioSource walk, spit, chargeHit, chargeLoop, shockWave, spin;
+    public AudioSource walk, spit, chargeHit, chargeLoop, shockWave, spin, battleMusic;
     private void Start()
     {
         ChangeStats(normalStats.normalSpeed, normalStats.normalChargeSpeed, normalStats.normalTimeBetweenAttacks, normalStats.spinHitDmg, normalStats.chargeDmg, normalStats.shockWaveParticleDmg, normalStats.spitTimes);
@@ -88,27 +88,30 @@ public class BossZombie : MonoBehaviour
     }
     private void Update()
     {
-        if (isBiteAttacking == true)
+        if (isDead == false)
         {
-            agent.SetDestination(playerObj.transform.position);
-        }
-        if (isSpinAttacking == true)
-        {
-            agent.SetDestination(playerObj.transform.position);
-            if(Vector3.Distance(spinAttackPlace.position, playerObj.transform.position) < rangeForSpinAttack)
+            if (isBiteAttacking == true)
             {
-                isSpinAttacking = false;
-                if(coroutine != null)
-                {
-                    StopCoroutine(coroutine);
-                }
-                coroutine = DoSpinAttack();
-                StartCoroutine(coroutine);
+                agent.SetDestination(playerObj.transform.position);
             }
-        }
-        if(lookAtPlayer == true)
-        {
-            transform.LookAt(new Vector3(playerObj.transform.position.x, transform.position.y, playerObj.transform.position.z));
+            if (isSpinAttacking == true)
+            {
+                agent.SetDestination(playerObj.transform.position);
+                if (Vector3.Distance(spinAttackPlace.position, playerObj.transform.position) < rangeForSpinAttack)
+                {
+                    isSpinAttacking = false;
+                    if (coroutine != null)
+                    {
+                        StopCoroutine(coroutine);
+                    }
+                    coroutine = DoSpinAttack();
+                    StartCoroutine(coroutine);
+                }
+            }
+            if (lookAtPlayer == true)
+            {
+                transform.LookAt(new Vector3(playerObj.transform.position.x, transform.position.y, playerObj.transform.position.z));
+            }
         }
     }
     public void GetDamage(Weapon weapon, int hitPoint, Vector3 hitLoc)
@@ -148,6 +151,7 @@ public class BossZombie : MonoBehaviour
         {
             bossHealth = 0;
 
+            battleMusic.Stop();
             bossDead.StartSound();
             isDead = true;
             agent.speed = 0;
@@ -173,6 +177,7 @@ public class BossZombie : MonoBehaviour
         if (hasRunned == false)
         {
             hasRunned = true;
+            battleMusic.Play();
             bossHealthBarObj.SetActive(true);
             anim.SetTrigger("Intro");
         }

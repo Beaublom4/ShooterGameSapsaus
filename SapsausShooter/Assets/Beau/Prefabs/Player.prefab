@@ -625,10 +625,10 @@ MonoBehaviour:
   animationLength: 1
   animationTime: 0
   groundCheck: {fileID: 896554097703259943}
-  groundDistance: 0.4
+  groundDistance: 0.1
   groundMask:
     serializedVersion: 2
-    m_Bits: 257
+    m_Bits: 256
   stepTimerTime: 0.6
   stepTimer: 0
 --- !u!114 &896554098108623720
@@ -656,6 +656,8 @@ MonoBehaviour:
   menuPanel: {fileID: 0}
   deathPanel: {fileID: 0}
   spawnPoint: {fileID: 0}
+  firstRespawn: {fileID: 0}
+  hpIsLow: {fileID: 0}
   areasTriggered: []
 --- !u!114 &5450617156129613091
 MonoBehaviour:
@@ -746,6 +748,7 @@ MonoBehaviour:
   magLoc: {fileID: 7114464551234141258}
   rlMagLoc: {fileID: 863813493233262398}
   blikkieLoc: {fileID: 6997825234313494988}
+  thisOneIsUselessNow: {fileID: 0}
   canHit:
     serializedVersion: 2
     m_Bits: 16183
@@ -801,6 +804,9 @@ MonoBehaviour:
   fpsCam: {fileID: 896554098131706639}
   missionScript: {fileID: 0}
   useRange: 4
+  hitLayer:
+    serializedVersion: 2
+    m_Bits: 0
   sounds:
     SoundVolume: 0.5
     itemPickUp: {fileID: 8267335653095710312}
@@ -814,7 +820,7 @@ MonoBehaviour:
   startPanel: {fileID: 0}
   usePanel: {fileID: 0}
   startLetter: {fileID: 0}
-  endLetter: {fileID: 0}
+  aahhCantPickUp: {fileID: 0}
 --- !u!195 &3042882126323487722
 NavMeshAgent:
   m_ObjectHideFlags: 0

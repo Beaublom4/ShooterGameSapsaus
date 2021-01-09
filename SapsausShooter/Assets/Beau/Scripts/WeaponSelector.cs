@@ -84,6 +84,7 @@ public class WeaponSelector : MonoBehaviour
                                 {
                                     rings[0].transform.GetChild(i).GetComponent<Slot>().gunWeapon = hit.collider.GetComponent<GunScript>().weapon;
                                     rings[0].transform.GetChild(i).GetComponent<Slot>().ammoInMag = hit.collider.GetComponent<GunScript>().ammoInMag;
+                                    Destroy(hit.collider.GetComponent<GunScript>().blueBalls);
                                     Destroy(hit.collider.gameObject);
                                     if (selectedSlotScript == null)
                                     {
@@ -100,6 +101,7 @@ public class WeaponSelector : MonoBehaviour
                                     selectedSlotScript.gunWeapon = hit.collider.GetComponent<GunScript>().weapon;
                                     selectedSlotScript.ammoInMag = hit.collider.GetComponent<GunScript>().ammoInMag;
                                     g.transform.SetParent(null);
+                                    Destroy(hit.collider.GetComponent<MeleeScript>().blueBalls);
                                     Destroy(hit.collider.gameObject);
                                     break;
                                 }

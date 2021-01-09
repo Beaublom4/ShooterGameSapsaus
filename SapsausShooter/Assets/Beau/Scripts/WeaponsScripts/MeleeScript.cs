@@ -6,4 +6,5 @@ public class MeleeScript : MonoBehaviour
 {
     public Melee weapon;
     public float uses;
+    public GameObject blueBalls;
 }

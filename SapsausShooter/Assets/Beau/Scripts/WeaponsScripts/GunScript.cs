@@ -8,6 +8,7 @@ public class GunScript : MonoBehaviour
     public Transform prefabSpawn;
     public float ammoInMag;
     public GameObject shownBullet;
+    public GameObject blueBalls;
 
     private void Start()
     {
