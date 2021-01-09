@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     public class Sounds
     {
         public float soundVolume = .5f, walkSoundVolume = 0.01f, soundRange = .05f, walkSoundRange = 0.005f;
-        public AudioSource trigger, attack, death, walk;
+        public AudioSource trigger, attack, death, walk, gettingFreezed;
     }
 
     public float speed;
@@ -63,6 +63,7 @@ public class Enemy : MonoBehaviour
     public float freezeNum;
     public float freezeRenderNumber;
     public float freezeWalkingSpeed;
+    public bool didFreezeSound;
 
     public MissionManager missionManagerScript;
 
@@ -138,6 +139,12 @@ public class Enemy : MonoBehaviour
 
             if (freezeNum < 1)
             {
+                if(didFreezeSound == false)
+                {
+                    didFreezeSound = true;
+                    sounds.gettingFreezed.Play();
+                }
+
                 anim.SetFloat("speed", 1 - freezeNum);
                 freezeWalkingSpeed = (speed * (1 - freezeNum));
                 agent.speed = freezeWalkingSpeed;
@@ -151,6 +158,10 @@ public class Enemy : MonoBehaviour
             //zet freeze shit
             if (freezeNum < 1)
             {
+                if(didFreezeSound == true)
+                {
+                    didFreezeSound = false;
+                }
                 freezeSpeed = 0;
                 freezeRenderNumber -= (.2f * 4) * Time.deltaTime;
                 freezeRenderNumber = Mathf.Clamp(freezeRenderNumber, -1, 3);

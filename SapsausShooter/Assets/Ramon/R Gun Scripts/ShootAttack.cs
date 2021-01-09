@@ -12,6 +12,7 @@ public class ShootAttack : MonoBehaviour
         public AudioSource pistolShoot, pistolEmpty, pistolReload;
         public AudioSource shotgunShoot, shotgunEmpty, shotgunReload;
         public AudioSource launcherShoot;
+        public AudioSource freezeLoopShoot, freezeDry;
 
         [HideInInspector] public float hitmarkerSoundVolume;
         public AudioSource hitmarker, headshot;
@@ -116,6 +117,13 @@ public class ShootAttack : MonoBehaviour
             return;
         if (Input.GetButtonDown("Fire1") && weapon != null)
         {
+            if(currentSlot.gunWeapon.gunType == "FreezeGun")
+            {
+                if(currentSlot.ammoInMag <= 0)
+                {
+                    sounds.freezeDry.Play();
+                }
+            }
             ShootWeapon();
             SoundWave();
         }
@@ -125,12 +133,20 @@ public class ShootAttack : MonoBehaviour
             {
                 if (currentSlot.ammoInMag > 0)
                 {
+                    if(sounds.freezeLoopShoot.isPlaying == false)
+                    {
+                        sounds.freezeLoopShoot.Play();
+                    }
                     freezeColObj.GetComponent<FreezeHitBox>().ableToDoShit = true;
                     doingFreeze = true;
                     weaponHand.GetComponentInChildren<VisualEffect>().Play();
                 }
                 else
                 {
+                    if (sounds.freezeLoopShoot.isPlaying == true)
+                    {
+                        sounds.freezeLoopShoot.Stop();
+                    }
                     print("stop");
                     doingFreeze = false;
                     freezeColObj.GetComponent<FreezeHitBox>().ableToDoShit = false;
@@ -139,6 +155,10 @@ public class ShootAttack : MonoBehaviour
             }
             else if (doingFreeze == true)
             {
+                if (sounds.freezeLoopShoot.isPlaying == true)
+                {
+                    sounds.freezeLoopShoot.Stop();
+                }
                 print("stop");
                 freezeColObj.GetComponent<FreezeHitBox>().ableToDoShit = false;
                 doingFreeze = false;
@@ -174,6 +194,10 @@ public class ShootAttack : MonoBehaviour
         {
             if(doingFreeze == true)
             {
+                if (sounds.freezeLoopShoot.isPlaying == true)
+                {
+                    sounds.freezeLoopShoot.Stop();
+                }
                 print("stop");
                 doingFreeze = false;
                 freezeColObj.GetComponent<FreezeHitBox>().ableToDoShit = false;

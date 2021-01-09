@@ -14,6 +14,7 @@ public class Gas : MonoBehaviour
     private void Start()
     {
         Invoke("Destroy", lifeTime);
+        if (GetComponent<AudioSource>())
         GetComponent<AudioSource>().Play();
     }
     private void Update()
