@@ -92,7 +92,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 11400000, guid: 82064f2ed23da984f99791fd3a2590dc, type: 2}
   prefabSpawn: {fileID: 0}
-  ammoInMag: 100
+  ammoInMag: 0
+  shownBullet: {fileID: 0}
 --- !u!1001 &7729585352629764623
 PrefabInstance:
   m_ObjectHideFlags: 0

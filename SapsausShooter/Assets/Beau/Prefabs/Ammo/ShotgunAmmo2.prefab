@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 5299504057551349738}
   - component: {fileID: 3131108843096157199}
   - component: {fileID: 8072815615152525694}
-  - component: {fileID: 8274339036245275906}
   - component: {fileID: 3246894721179763253}
+  - component: {fileID: 5206127362974780588}
   m_Layer: 0
-  m_Name: Shotgun Slugs2
+  m_Name: ShotgunAmmo2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -114,19 +114,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &8274339036245275906
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5947956227818997311}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3246894721179763253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,3 +135,16 @@ MonoBehaviour:
     type: 3}
   soundRange: 0.2
   objects: []
+--- !u!65 &5206127362974780588
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5947956227818997311}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.17476441, y: 0.14182958, z: 0.15035391}
+  m_Center: {x: -0.034906976, y: 0.068785205, z: -0.056676954}

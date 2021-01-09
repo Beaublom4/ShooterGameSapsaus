@@ -36,6 +36,7 @@ public class MissionManager : MonoBehaviour
     public GameObject[] partsOnDisplay;
     public int partsFound, partsToFind;
     public GameObject particlesWall;
+    public AudioSource foundPart, allPartsFound;
 
     public bool killEnemiesMission;
     public int killAmount, currentKillAmount;
@@ -123,6 +124,7 @@ public class MissionManager : MonoBehaviour
     public void RLPickUp(int partNumber, GameObject toDestroy)
     {
         Destroy(toDestroy);
+        foundPart.Play();
         partsFound++;
         partsOnDisplay[partNumber].SetActive(true);
         
@@ -131,6 +133,7 @@ public class MissionManager : MonoBehaviour
         if(partsFound == partsToFind)
         {
             partsDisplay.SetActive(false);
+            allPartsFound.Play();
             BossBattleMission();
             print("All parts found");
         }

@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 8573027905680971379}
   - component: {fileID: 3575738819152664199}
   - component: {fileID: 8607371180509697391}
-  - component: {fileID: 7924524897260371262}
   - component: {fileID: 1250404729668679507}
   - component: {fileID: 2885986858542859635}
   - component: {fileID: 1900206443861523334}
+  - component: {fileID: 8074835970498407641}
   m_Layer: 0
   m_Name: Money
   m_TagString: Untagged
@@ -85,19 +85,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7924524897260371262
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2030928626577662909}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &1250404729668679507
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -140,9 +127,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moneyAmount: 0
-  low: {fileID: 2100000, guid: ca5146d77a02a584296334f641a1c9db, type: 2}
-  medium: {fileID: 2100000, guid: 716190e2894e78b42bcd2d56ccd96714, type: 2}
-  lot: {fileID: 2100000, guid: 0b774160ee43a284682546a0c2304146, type: 2}
+  low: {fileID: 2100000, guid: 7753d24f210fb3840be45f474fccd25b, type: 2}
+  medium: {fileID: 2100000, guid: 7753d24f210fb3840be45f474fccd25b, type: 2}
+  lot: {fileID: 2100000, guid: 7753d24f210fb3840be45f474fccd25b, type: 2}
   hitable:
     serializedVersion: 2
     m_Bits: 4096
+--- !u!65 &8074835970498407641
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2030928626577662909}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.28103864, y: 0.12981914, z: 0.45727137}
+  m_Center: {x: 0, y: 0, z: 0.000510782}

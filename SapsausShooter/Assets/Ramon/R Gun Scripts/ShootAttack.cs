@@ -228,6 +228,7 @@ public class ShootAttack : MonoBehaviour
             else
             {
                 anim.SetTrigger("Reload");
+                weaponHand.GetComponentInChildren<Animator>().SetTrigger("ShootP");
                 GameObject mag = Instantiate(PistolMag, magLoc.transform.position, magLoc.transform.rotation, magLoc.transform);
                 Destroy(mag, 1);
                 ammoScript.pistolAmmo += currentSlot.ammoInMag;
@@ -409,7 +410,7 @@ public class ShootAttack : MonoBehaviour
 
         if (weapon.weaponPrefab.GetComponent<GunScript>().weapon.gunType == "Pistol")
         {
-            //pistolAnimation.SetBool("Shoot", true);
+            weaponHand.GetComponentInChildren<Animator>().SetTrigger("ShootP");
 
             sounds.pistolShoot.volume = Random.Range(sounds.pistolSoundVolume - .2f, sounds.pistolSoundVolume + .1f);
             sounds.pistolShoot.pitch = Random.Range(1 - .1f, 1 + .1f);

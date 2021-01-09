@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 6710248798560783705}
   - component: {fileID: 4925021625030223673}
   - component: {fileID: 7181346120847166265}
-  - component: {fileID: 1433807474828847079}
   - component: {fileID: 1501973339028731178}
+  - component: {fileID: 3529887455968135242}
   m_Layer: 0
-  m_Name: Pistol Bullets1
+  m_Name: PistolAmmo1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -114,19 +114,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &1433807474828847079
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5052875826255277196}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1501973339028731178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,3 +135,16 @@ MonoBehaviour:
     type: 3}
   soundRange: 0.2
   objects: []
+--- !u!65 &3529887455968135242
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5052875826255277196}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.059829943, y: 0.059487447, z: 0.07003613}
+  m_Center: {x: -0.01995477, y: 0.0297007, z: -0.002131557}

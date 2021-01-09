@@ -76,6 +76,7 @@ public class BabyZombie : Enemy
             isAttacking = false;
             agent.speed = 0;
             agent.velocity = Vector3.zero;
+            col.enabled = enabled;
             agent.isStopped = true;
             anim.SetBool("Walking", false);
             isSpitting = true;

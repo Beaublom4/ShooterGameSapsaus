@@ -549,6 +549,7 @@ GameObject:
   - component: {fileID: 5857392905529847191}
   - component: {fileID: 995829965692537576}
   - component: {fileID: 3042882126323487722}
+  - component: {fileID: 5675035080738279335}
   m_Layer: 12
   m_Name: Player
   m_TagString: Player
@@ -781,7 +782,7 @@ MonoBehaviour:
     hitmarker: {fileID: 7829332732988999521}
     headshot: {fileID: 4998139942456942554}
   recoilObj: {fileID: 1464542826873379567}
-  recoilResetTime: 2
+  recoilResetTime: 0.5
   scatteringObj: {fileID: 4716097358563218485}
 --- !u!114 &995829965692537576
 MonoBehaviour:
@@ -832,6 +833,22 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!54 &5675035080738279335
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 896554098108623724}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &896554098131706639
 GameObject:
   m_ObjectHideFlags: 0

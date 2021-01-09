@@ -35,10 +35,10 @@ public class UsePlayer : MonoBehaviour
         {
             if (Input.GetButtonDown("Use"))
             {
-                if (hit.transform.GetComponent<GarageDoor>())
+                if (hit.collider.GetComponent<GarageDoor>())
                 {
                     PlayAudioSource(sounds.Use);
-                    hit.transform.GetComponent<GarageDoor>().OpenGarageDoor();
+                    hit.collider.GetComponent<GarageDoor>().OpenGarageDoor();
                 }
             }
             if (hit.transform.tag == "ShopItem")

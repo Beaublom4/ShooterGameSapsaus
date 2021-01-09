@@ -249,66 +249,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &4754708048410597254
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8209036338119234569}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8811f164970a58d47b40cc4677a612cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentWave: 0
-  doorOpeningSpeed: 2
-  enemieSpawnPoint: {fileID: 8644029681487765435}
-  enemyHolder: {fileID: 8644029683537741214}
-  doorObjWantedLoc: {fileID: 8644029682537106105}
-  doorObj: {fileID: 445860382446722084}
-  waves:
-  - enemies:
-    - randomEnemyPrefabs:
-      - {fileID: 5433026564681970298, guid: 595a79ed576d0434b85df93ea3312bcb, type: 3}
-      - {fileID: 4049090637509514779, guid: af807e3177d7f9242b87bb7d77668bb9, type: 3}
-      - {fileID: 7081492952287351854, guid: bf80cc3780578f74c9d760369f7afbfd, type: 3}
-      enemieNumber: 5
-    - randomEnemyPrefabs:
-      - {fileID: 5433026564681970298, guid: 595a79ed576d0434b85df93ea3312bcb, type: 3}
-      - {fileID: 4049090637509514779, guid: af807e3177d7f9242b87bb7d77668bb9, type: 3}
-      - {fileID: 7081492952287351854, guid: bf80cc3780578f74c9d760369f7afbfd, type: 3}
-      enemieNumber: 5
-    - randomEnemyPrefabs:
-      - {fileID: 5433026564681970298, guid: 595a79ed576d0434b85df93ea3312bcb, type: 3}
-      - {fileID: 4049090637509514779, guid: af807e3177d7f9242b87bb7d77668bb9, type: 3}
-      - {fileID: 7081492952287351854, guid: bf80cc3780578f74c9d760369f7afbfd, type: 3}
-      enemieNumber: 5
-    - randomEnemyPrefabs:
-      - {fileID: 5433026564681970298, guid: 595a79ed576d0434b85df93ea3312bcb, type: 3}
-      - {fileID: 4049090637509514779, guid: af807e3177d7f9242b87bb7d77668bb9, type: 3}
-      - {fileID: 7081492952287351854, guid: bf80cc3780578f74c9d760369f7afbfd, type: 3}
-      enemieNumber: 5
-    timeBetweenWave: 20
-  - enemies:
-    - randomEnemyPrefabs:
-      - {fileID: 5433026564681970298, guid: 595a79ed576d0434b85df93ea3312bcb, type: 3}
-      enemieNumber: 5
-    - randomEnemyPrefabs:
-      - {fileID: 5433026564681970298, guid: 595a79ed576d0434b85df93ea3312bcb, type: 3}
-      enemieNumber: 5
-    - randomEnemyPrefabs:
-      - {fileID: 5433026564681970298, guid: 595a79ed576d0434b85df93ea3312bcb, type: 3}
-      enemieNumber: 5
-    - randomEnemyPrefabs:
-      - {fileID: 5433026564681970298, guid: 595a79ed576d0434b85df93ea3312bcb, type: 3}
-      enemieNumber: 5
-    timeBetweenWave: 20
-  - enemies:
-    - randomEnemyPrefabs:
-      - {fileID: 5433026564681970298, guid: 595a79ed576d0434b85df93ea3312bcb, type: 3}
-      enemieNumber: 5
-    timeBetweenWave: 20
 --- !u!1 &8644029681487765432
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,7 +303,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8644029682537106110}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.030360525, y: 0.00048663982, z: 0.0439}
+  m_LocalPosition: {x: -0.030360525, y: 0.0005, z: 0.0391}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 445860382048766503}
@@ -406,15 +346,47 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 445860382048766503}
     m_Modifications:
+    - target: {fileID: 72459350135187426, guid: 3c3803ed87c3c534f91b0eb15dfa542f,
+        type: 3}
+      propertyPath: enemieSpawnPoint
+      value: 
+      objectReference: {fileID: 8644029681487765435}
+    - target: {fileID: 72459350135187426, guid: 3c3803ed87c3c534f91b0eb15dfa542f,
+        type: 3}
+      propertyPath: enemyHolder
+      value: 
+      objectReference: {fileID: 8644029683537741214}
+    - target: {fileID: 72459350135187426, guid: 3c3803ed87c3c534f91b0eb15dfa542f,
+        type: 3}
+      propertyPath: doorObjWantedLoc
+      value: 
+      objectReference: {fileID: 8644029682537106105}
+    - target: {fileID: 72459350135187426, guid: 3c3803ed87c3c534f91b0eb15dfa542f,
+        type: 3}
+      propertyPath: doorObj
+      value: 
+      objectReference: {fileID: 445860382446722084}
+    - target: {fileID: 72459350135187426, guid: 3c3803ed87c3c534f91b0eb15dfa542f,
+        type: 3}
+      propertyPath: waves.Array.data[0].enemies.Array.data[0].randomEnemyPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 7081492952287351854, guid: bf80cc3780578f74c9d760369f7afbfd,
+        type: 3}
+    - target: {fileID: 72459350135187426, guid: 3c3803ed87c3c534f91b0eb15dfa542f,
+        type: 3}
+      propertyPath: waves.Array.data[0].enemies.Array.data[0].randomEnemyPrefabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 7081492952287351854, guid: bf80cc3780578f74c9d760369f7afbfd,
+        type: 3}
     - target: {fileID: 1390876664382010390, guid: 3c3803ed87c3c534f91b0eb15dfa542f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.03264
+      value: -0.03655
       objectReference: {fileID: 0}
     - target: {fileID: 1390876664382010390, guid: 3c3803ed87c3c534f91b0eb15dfa542f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.02272
+      value: 0.02239
       objectReference: {fileID: 0}
     - target: {fileID: 1390876664382010390, guid: 3c3803ed87c3c534f91b0eb15dfa542f,
         type: 3}
@@ -446,49 +418,38 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 1390876664382010390, guid: 3c3803ed87c3c534f91b0eb15dfa542f,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -101.11
-      objectReference: {fileID: 0}
-    - target: {fileID: 1390876664382010390, guid: 3c3803ed87c3c534f91b0eb15dfa542f,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 89.898
-      objectReference: {fileID: 0}
-    - target: {fileID: 1390876664382010390, guid: 3c3803ed87c3c534f91b0eb15dfa542f,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 90.104
-      objectReference: {fileID: 0}
-    - target: {fileID: 1390876664382010390, guid: 3c3803ed87c3c534f91b0eb15dfa542f,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 1390876664382010390, guid: 3c3803ed87c3c534f91b0eb15dfa542f,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.0100000035
-      objectReference: {fileID: 0}
-    - target: {fileID: 1390876664382010390, guid: 3c3803ed87c3c534f91b0eb15dfa542f,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.0100000035
-      objectReference: {fileID: 0}
     - target: {fileID: 1731267204649774764, guid: 3c3803ed87c3c534f91b0eb15dfa542f,
         type: 3}
       propertyPath: m_Name
       value: GarageButton
       objectReference: {fileID: 0}
+    - target: {fileID: 7205014079129324291, guid: 3c3803ed87c3c534f91b0eb15dfa542f,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.41152588
+      objectReference: {fileID: 0}
+    - target: {fileID: 7205014079129324291, guid: 3c3803ed87c3c534f91b0eb15dfa542f,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 0.13117255
+      objectReference: {fileID: 0}
+    - target: {fileID: 7205014079129324291, guid: 3c3803ed87c3c534f91b0eb15dfa542f,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0.013057326
+      objectReference: {fileID: 0}
+    - target: {fileID: 7205014079129324291, guid: 3c3803ed87c3c534f91b0eb15dfa542f,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 0.57091445
+      objectReference: {fileID: 0}
+    - target: {fileID: 7205014079129324291, guid: 3c3803ed87c3c534f91b0eb15dfa542f,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 0.46656713
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c3803ed87c3c534f91b0eb15dfa542f, type: 3}
---- !u!1 &8209036338119234569 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1731267204649774764, guid: 3c3803ed87c3c534f91b0eb15dfa542f,
-    type: 3}
-  m_PrefabInstance: {fileID: 7632169082593229477}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8838186325857177267 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1390876664382010390, guid: 3c3803ed87c3c534f91b0eb15dfa542f,

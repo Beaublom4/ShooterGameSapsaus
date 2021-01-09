@@ -4,19 +4,13 @@ using UnityEngine;
 
 public class GarageDoor : MonoBehaviour
 {
-    public class Sounds
-    {
-        [HideInInspector] public float garageDoorSoundVolume;
-        public AudioSource garageDoorSound;
-    }
-
-    public Sounds garageSounds;
-
     public int currentWave;
     public float doorOpeningSpeed;
     public Transform enemieSpawnPoint, enemyHolder, doorObjWantedLoc;
+    public Vector3 doorStartLoc;
     public GameObject doorObj;
     bool openDoor, canPress = true;
+    public AudioSource garageDoor;
     [System.Serializable]
     public class Wave
     {
@@ -34,13 +28,11 @@ public class GarageDoor : MonoBehaviour
     {
         if(openDoor == true)
         {
-            garageSounds.garageDoorSound.volume = garageSounds.garageDoorSoundVolume;
-            garageSounds.garageDoorSound.Play();
-
-            doorObj.transform.position = Vector3.Lerp(doorObj.transform.position, doorObjWantedLoc.position, doorOpeningSpeed * Time.deltaTime);
+            doorObj.transform.position = Vector3.Lerp(doorObj.transform.position, doorObjWantedLoc.position, (Vector3.Distance(doorStartLoc, doorObjWantedLoc.position) / doorOpeningSpeed) * Time.deltaTime);
             if (Vector3.Distance(doorObj.transform.position, doorObjWantedLoc.position) < .5f)
             {
                 openDoor = false;
+                garageDoor.Stop();
                 print("Door opened");
             }
         }
@@ -49,7 +41,9 @@ public class GarageDoor : MonoBehaviour
     {
         if (canPress == true)
         {
+            doorStartLoc = doorObj.transform.position;
             canPress = false;
+            garageDoor.Play();
             print("Open door");
             openDoor = true;
             StartWave();
@@ -71,6 +65,7 @@ public class GarageDoor : MonoBehaviour
                 }
             }
             currentWave++;
+            print(waves[-1 + currentWave].timeBetweenWave);
             Invoke("StartWave", waves[-1 + currentWave].timeBetweenWave);
         }
         else

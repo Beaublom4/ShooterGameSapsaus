@@ -23,7 +23,7 @@ MonoBehaviour:
   damageOverTime: 0
   damageOverTimeTime: 2
   critMultiplier: 1.2
-  recoil: 20
+  recoil: 10
   lifeStealPercentage: 0
   canStun: 0
   stunTime: 0
@@ -37,10 +37,10 @@ MonoBehaviour:
   slugBulletCount: 8
   infinityAmmo: 0
   ammoType: 
-  magCount: 8
+  magCount: 2
   bulletSpeed: 0
   reloadSpeed: 2
-  fireRate: 3
+  fireRate: 0.1
   soundAreaIncrease: 2
   muzzleFlash: {fileID: 0}
   impactEffect: {fileID: 0}
