@@ -273,7 +273,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8644029681487765432}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.008099999, y: -0.05149997, z: 0}
+  m_LocalPosition: {x: 0.0361, y: 0.0049, z: -0}
   m_LocalScale: {x: 0.01, y: 0.010000003, z: 0.010000003}
   m_Children: []
   m_Father: {fileID: 445860382048766503}
@@ -348,6 +348,41 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 72459350135187426, guid: 3c3803ed87c3c534f91b0eb15dfa542f,
         type: 3}
+      propertyPath: waves.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 72459350135187426, guid: 3c3803ed87c3c534f91b0eb15dfa542f,
+        type: 3}
+      propertyPath: waves.Array.data[1].enemies.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 72459350135187426, guid: 3c3803ed87c3c534f91b0eb15dfa542f,
+        type: 3}
+      propertyPath: waves.Array.data[1].enemies.Array.data[0].randomEnemyPrefabs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 72459350135187426, guid: 3c3803ed87c3c534f91b0eb15dfa542f,
+        type: 3}
+      propertyPath: waves.Array.data[2].enemies.Array.data[0].randomEnemyPrefabs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 72459350135187426, guid: 3c3803ed87c3c534f91b0eb15dfa542f,
+        type: 3}
+      propertyPath: waves.Array.data[3].enemies.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 72459350135187426, guid: 3c3803ed87c3c534f91b0eb15dfa542f,
+        type: 3}
+      propertyPath: waves.Array.data[3].enemies.Array.data[0].randomEnemyPrefabs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 72459350135187426, guid: 3c3803ed87c3c534f91b0eb15dfa542f,
+        type: 3}
+      propertyPath: waves.Array.data[1].enemies.Array.data[1].randomEnemyPrefabs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 72459350135187426, guid: 3c3803ed87c3c534f91b0eb15dfa542f,
+        type: 3}
       propertyPath: enemieSpawnPoint
       value: 
       objectReference: {fileID: 8644029681487765435}
@@ -377,6 +412,75 @@ PrefabInstance:
       propertyPath: waves.Array.data[0].enemies.Array.data[0].randomEnemyPrefabs.Array.data[4]
       value: 
       objectReference: {fileID: 7081492952287351854, guid: bf80cc3780578f74c9d760369f7afbfd,
+        type: 3}
+    - target: {fileID: 72459350135187426, guid: 3c3803ed87c3c534f91b0eb15dfa542f,
+        type: 3}
+      propertyPath: waves.Array.data[1].enemies.Array.data[0].randomEnemyPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 7081492952287351854, guid: bf80cc3780578f74c9d760369f7afbfd,
+        type: 3}
+    - target: {fileID: 72459350135187426, guid: 3c3803ed87c3c534f91b0eb15dfa542f,
+        type: 3}
+      propertyPath: waves.Array.data[1].enemies.Array.data[0].randomEnemyPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 4049090637509514779, guid: af807e3177d7f9242b87bb7d77668bb9,
+        type: 3}
+    - target: {fileID: 72459350135187426, guid: 3c3803ed87c3c534f91b0eb15dfa542f,
+        type: 3}
+      propertyPath: waves.Array.data[2].enemies.Array.data[0].randomEnemyPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 7423821309739881678, guid: b54607042c87ef942a9c3fad90d03762,
+        type: 3}
+    - target: {fileID: 72459350135187426, guid: 3c3803ed87c3c534f91b0eb15dfa542f,
+        type: 3}
+      propertyPath: waves.Array.data[2].enemies.Array.data[0].randomEnemyPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 7423821309739881678, guid: b54607042c87ef942a9c3fad90d03762,
+        type: 3}
+    - target: {fileID: 72459350135187426, guid: 3c3803ed87c3c534f91b0eb15dfa542f,
+        type: 3}
+      propertyPath: waves.Array.data[2].enemies.Array.data[0].enemieNumber
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 72459350135187426, guid: 3c3803ed87c3c534f91b0eb15dfa542f,
+        type: 3}
+      propertyPath: waves.Array.data[3].enemies.Array.data[0].randomEnemyPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 7423821309739881678, guid: b54607042c87ef942a9c3fad90d03762,
+        type: 3}
+    - target: {fileID: 72459350135187426, guid: 3c3803ed87c3c534f91b0eb15dfa542f,
+        type: 3}
+      propertyPath: waves.Array.data[3].enemies.Array.data[0].randomEnemyPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 8463677753485028893, guid: 67f420e94101fd34d9107c95a872f83e,
+        type: 3}
+    - target: {fileID: 72459350135187426, guid: 3c3803ed87c3c534f91b0eb15dfa542f,
+        type: 3}
+      propertyPath: waves.Array.data[3].enemies.Array.data[0].randomEnemyPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 2826353454445027687, guid: e458be2955110a744a68989e7149c87e,
+        type: 3}
+    - target: {fileID: 72459350135187426, guid: 3c3803ed87c3c534f91b0eb15dfa542f,
+        type: 3}
+      propertyPath: waves.Array.data[3].enemies.Array.data[0].enemieNumber
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 72459350135187426, guid: 3c3803ed87c3c534f91b0eb15dfa542f,
+        type: 3}
+      propertyPath: waves.Array.data[3].timeBetweenWave
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 72459350135187426, guid: 3c3803ed87c3c534f91b0eb15dfa542f,
+        type: 3}
+      propertyPath: waves.Array.data[1].enemies.Array.data[1].randomEnemyPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 2826353454445027687, guid: e458be2955110a744a68989e7149c87e,
+        type: 3}
+    - target: {fileID: 72459350135187426, guid: 3c3803ed87c3c534f91b0eb15dfa542f,
+        type: 3}
+      propertyPath: waves.Array.data[1].enemies.Array.data[1].randomEnemyPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 7423821309739881678, guid: b54607042c87ef942a9c3fad90d03762,
         type: 3}
     - target: {fileID: 1390876664382010390, guid: 3c3803ed87c3c534f91b0eb15dfa542f,
         type: 3}
