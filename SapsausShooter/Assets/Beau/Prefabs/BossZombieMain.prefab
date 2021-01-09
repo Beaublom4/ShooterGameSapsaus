@@ -130,12 +130,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f8c4c723c7eb28478e2bb83743b1eb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normalStats:
+    normalSpeed: 0
+    normalChargeSpeed: 0
+    normalTimeBetweenAttacks: 3
+    spinHitDmg: 0
+    chargeDmg: 0
+    shockWaveParticleDmg: 0
+    spitTimes: 1
+  enragedStats:
+    wantedHealthPercentage: 50
+    enragedSpeed: 0
+    enragedChargeSpeed: 0
+    enragedTimeBetweenAttacks: 0
+    spinHitDmg: 0
+    chargeDmg: 0
+    shockWaveParticleDmg: 0
+    spitTimes: 0
+  madAFStats:
+    wantedHealthPercentage: 10
+    madAFSpeed: 0
+    madAFChargeSpeed: 0
+    madAFTimeBetweenAttacks: 0
+    spinHitDmg: 0
+    chargeDmg: 0
+    shockWaveParticleDmg: 0
+    spitTimes: 0
   speed: 5
   chargeSpeed: 10
-  timeBetweenAttacks: 0.5
+  timeBetweenAttacks: 1
   spinHitDmg: 50
   chargeDmg: 30
   shockWaveParticleDmg: 10
+  barrelSpitTimes: 0
   meleeScript: {fileID: 4155770710118370997}
   playerObj: {fileID: 0}
   spinAttackPlace: {fileID: 2342272719971839116}
@@ -152,8 +179,10 @@ MonoBehaviour:
   isBiteAttacking: 0
   isSpinAttacking: 0
   lookAtPlayer: 0
-  bossHealth: 100
+  bossHealth: 10000
+  bossHealthBarObj: {fileID: 0}
   bossHealthBar: {fileID: 0}
+  bossHealthPercentage: {fileID: 0}
   hitNumPrefab: {fileID: 3314747878335242109, guid: 8c6b2080012d1a048870d88718b62e11,
     type: 3}
   isDead: 0
@@ -329,6 +358,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4367341969945207776}
     m_Modifications:
+    - target: {fileID: 232856374533141604, guid: 29640df6c869b9a4da8428a134de09c8,
+        type: 3}
+      propertyPath: MaxDistance
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 1271926520222148296, guid: 29640df6c869b9a4da8428a134de09c8,
+        type: 3}
+      propertyPath: bossScript
+      value: 
+      objectReference: {fileID: 6019262791092362214}
+    - target: {fileID: 1878098670077109081, guid: 29640df6c869b9a4da8428a134de09c8,
+        type: 3}
+      propertyPath: MaxDistance
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 3591597097919522255, guid: 29640df6c869b9a4da8428a134de09c8,
+        type: 3}
+      propertyPath: MaxDistance
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 3851157853548003131, guid: 29640df6c869b9a4da8428a134de09c8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -384,6 +433,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3942226801912887879, guid: 29640df6c869b9a4da8428a134de09c8,
+        type: 3}
+      propertyPath: MaxDistance
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 4012621799257878397, guid: 29640df6c869b9a4da8428a134de09c8,
         type: 3}
       propertyPath: TriggerModule.inside
@@ -409,6 +463,11 @@ PrefabInstance:
       propertyPath: CollisionModule.m_Bounce.scalar
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4290758744352538256, guid: 29640df6c869b9a4da8428a134de09c8,
+        type: 3}
+      propertyPath: bossScript
+      value: 
+      objectReference: {fileID: 6019262791092362214}
     - target: {fileID: 4483860117667669377, guid: 29640df6c869b9a4da8428a134de09c8,
         type: 3}
       propertyPath: m_Name
@@ -449,10 +508,25 @@ PrefabInstance:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: a042e8124e1c50f49acc696391315251, type: 3}
+    - target: {fileID: 5088270872346481140, guid: 29640df6c869b9a4da8428a134de09c8,
+        type: 3}
+      propertyPath: MaxDistance
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 5373187367045418493, guid: 29640df6c869b9a4da8428a134de09c8,
+        type: 3}
+      propertyPath: MaxDistance
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 6763041438655241691, guid: 29640df6c869b9a4da8428a134de09c8,
         type: 3}
       propertyPath: m_Name
       value: ChargeHit
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157725837503857823, guid: 29640df6c869b9a4da8428a134de09c8,
+        type: 3}
+      propertyPath: m_TagString
+      value: BossHitBox
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29640df6c869b9a4da8428a134de09c8, type: 3}

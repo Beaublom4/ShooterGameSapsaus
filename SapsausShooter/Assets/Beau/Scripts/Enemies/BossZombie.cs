@@ -3,11 +3,41 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
+using TMPro;
 
 public class BossZombie : MonoBehaviour
 {
-    public float speed, chargeSpeed, timeBetweenAttacks;
-    public float spinHitDmg, chargeDmg, shockWaveParticleDmg;
+    [System.Serializable]
+    public class NormalStats
+    {
+        public float normalSpeed, normalChargeSpeed, normalTimeBetweenAttacks;
+        public float spinHitDmg, chargeDmg, shockWaveParticleDmg;
+        public int spitTimes;
+    }
+    [System.Serializable]
+    public class EnragedStats
+    {
+        public float wantedHealthPercentage;
+        public float enragedSpeed, enragedChargeSpeed, enragedTimeBetweenAttacks;
+        public float spinHitDmg, chargeDmg, shockWaveParticleDmg;
+        public int spitTimes;
+    }
+    [System.Serializable]
+    public class MadAFStats
+    {
+        public float wantedHealthPercentage;
+        public float madAFSpeed, madAFChargeSpeed, madAFTimeBetweenAttacks;
+        public float spinHitDmg, chargeDmg, shockWaveParticleDmg;
+        public int spitTimes;
+    }
+
+    public NormalStats normalStats;
+    public EnragedStats enragedStats;
+    public MadAFStats madAFStats;
+
+    [HideInInspector] public float speed, chargeSpeed, timeBetweenAttacks;
+    [HideInInspector] public float spinHitDmg, chargeDmg, shockWaveParticleDmg;
+    [HideInInspector] public int barrelSpitTimes;
 
     public BossMelleeHitboxScript meleeScript;
     public GameObject playerObj;
@@ -30,13 +60,19 @@ public class BossZombie : MonoBehaviour
     IEnumerator coroutine;
 
     public float bossHealth;
+    public GameObject bossHealthBarObj;
     public Slider bossHealthBar;
+    public TextMeshProUGUI bossHealthPercentage;
     public GameObject hitNumPrefab;
     public bool isDead, hasRunned;
 
     public AudioSource walk, spit, chargeHit, chargeLoop, shockWave, spin;
     private void Start()
     {
+        ChangeStats(normalStats.normalSpeed, normalStats.normalChargeSpeed, normalStats.normalTimeBetweenAttacks, normalStats.spinHitDmg, normalStats.chargeDmg, normalStats.shockWaveParticleDmg, normalStats.spitTimes);
+
+        bossHealthBar.maxValue = bossHealth;
+        bossHealthBar.value = bossHealth;
         agent = gameObject.GetComponent<NavMeshAgent>();
         agent.speed = speed;
         anim = GetComponentInChildren<Animator>();
@@ -61,6 +97,10 @@ public class BossZombie : MonoBehaviour
             if(Vector3.Distance(spinAttackPlace.position, playerObj.transform.position) < rangeForSpinAttack)
             {
                 isSpinAttacking = false;
+                if(coroutine != null)
+                {
+                    StopCoroutine(coroutine);
+                }
                 coroutine = DoSpinAttack();
                 StartCoroutine(coroutine);
             }
@@ -89,6 +129,20 @@ public class BossZombie : MonoBehaviour
         GameObject g = Instantiate(hitNumPrefab, hitLoc, Quaternion.identity, null);
         g.GetComponent<DmgNumberShow>().UpdateNumber(calculatedDamage);
         bossHealth -= calculatedDamage;
+
+        if((bossHealth / bossHealthBar.maxValue) * 100 <= enragedStats.wantedHealthPercentage && (bossHealth / bossHealthBar.maxValue) * 100 > madAFStats.wantedHealthPercentage)
+        {
+            print("Boss is enraged");
+            ChangeStats(enragedStats.enragedSpeed, enragedStats.enragedChargeSpeed, enragedStats.enragedTimeBetweenAttacks, enragedStats.spinHitDmg, enragedStats.chargeDmg, enragedStats.shockWaveParticleDmg, enragedStats.spitTimes);
+        }
+        else if((bossHealth / bossHealthBar.maxValue) * 100 <= madAFStats.wantedHealthPercentage)
+        {
+            print("Boss is Mad As Fuck");
+            ChangeStats(madAFStats.madAFSpeed, madAFStats.madAFChargeSpeed, madAFStats.madAFTimeBetweenAttacks, madAFStats.spinHitDmg, madAFStats.chargeDmg, madAFStats.shockWaveParticleDmg, madAFStats.spitTimes);
+        }
+
+        bossHealthBar.value = bossHealth;
+        bossHealthPercentage.text = ((bossHealth / bossHealthBar.maxValue) * 100).ToString("F0") + "%";
         if (bossHealth <= 0)
         {
             bossHealth = 0;
@@ -102,11 +156,22 @@ public class BossZombie : MonoBehaviour
             anim.SetTrigger("Dead");
         }
     }
+    void ChangeStats(float _Speed, float _chargeSpeed, float _timeBetweenAttacks, float _spinHitDmg, float _chargeDmg, float _shockWaveParticleDmg, int _SpitTimes)
+    {
+        speed = _Speed;
+        chargeSpeed = _chargeSpeed;
+        timeBetweenAttacks = _timeBetweenAttacks;
+        spinHitDmg = _spinHitDmg;
+        chargeDmg = _chargeDmg;
+        shockWaveParticleDmg = _shockWaveParticleDmg;
+        barrelSpitTimes = _SpitTimes;
+    }
     public IEnumerator Trigger()
     {
         if (hasRunned == false)
         {
             hasRunned = true;
+            bossHealthBarObj.SetActive(true);
             anim.SetTrigger("Intro");
         }
         yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length + timeBetweenAttacks);
@@ -116,7 +181,7 @@ public class BossZombie : MonoBehaviour
     {
         if (isDead == true)
             return;
-        int randomNum = Random.Range(0,4);
+        int randomNum = Random.Range(3,4);
         switch (randomNum)
         {
             case 0:
@@ -129,6 +194,10 @@ public class BossZombie : MonoBehaviour
                 break;
             case 2:
                 print("Shockwave attack");
+                if (coroutine != null)
+                {
+                    StopCoroutine(coroutine);
+                }
                 coroutine = ShockWaveAttack();
                 StartCoroutine(coroutine);
                 break;
@@ -153,6 +222,10 @@ public class BossZombie : MonoBehaviour
         anim.SetTrigger("Spin");
         anim.SetBool("Walking", false);
         yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length + timeBetweenAttacks);
+        if (coroutine != null)
+        {
+            StopCoroutine(coroutine);
+        }
         StartCoroutine(Trigger());
     }
     public void HitWithSpin()
@@ -193,6 +266,10 @@ public class BossZombie : MonoBehaviour
             }
             else
             {
+                if (coroutine != null)
+                {
+                    StopCoroutine(coroutine);
+                }
                 coroutine = HitSomething();
                 StartCoroutine(coroutine);
             }
@@ -200,18 +277,27 @@ public class BossZombie : MonoBehaviour
     }
     IEnumerator HitSomething()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(.2f);
+        if (coroutine != null)
+        {
+            StopCoroutine(coroutine);
+        }
         coroutine = StopDashAttack();
         StartCoroutine(coroutine);
     }
     IEnumerator StopDashAttack()
     {
+        chargeLoop.Stop();
         chargeHit.Play();
         agent.speed = 0;
         agent.velocity = Vector3.zero;
         rushHitBox.enabled = !enabled;
         anim.SetBool("Charge", false);
         yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length + timeBetweenAttacks);
+        if (coroutine != null)
+        {
+            StopCoroutine(coroutine);
+        }
         StartCoroutine(Trigger());
     }
     IEnumerator ShockWaveAttack()
@@ -224,6 +310,10 @@ public class BossZombie : MonoBehaviour
         yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
         shockWaveParticles.Play();
         yield return new WaitForSeconds(timeBetweenAttacks);
+        if (coroutine != null)
+        {
+            StopCoroutine(coroutine);
+        }
         StartCoroutine(Trigger());
     } 
     void ToxicBoyTrow()
@@ -231,10 +321,30 @@ public class BossZombie : MonoBehaviour
         agent.speed = 0;
         agent.velocity = Vector3.zero;
         lookAtPlayer = true;
+        if (coroutine != null)
+        {
+            StopCoroutine(coroutine);
+        }
         coroutine = DoToxicBarrelTrow();
         StartCoroutine(coroutine);
     }
     IEnumerator DoToxicBarrelTrow()
+    {
+        for (int i = 0; i < barrelSpitTimes; i++)
+        {
+            print("Spit");
+            StartCoroutine(Spit());
+            yield return new WaitForSeconds(1);
+        }
+
+        yield return new WaitForSeconds(timeBetweenAttacks);
+        if (coroutine != null)
+        {
+            StopCoroutine(coroutine);
+        }
+        StartCoroutine(Trigger());
+    }
+    IEnumerator Spit()
     {
         anim.SetTrigger("Spit");
         yield return new WaitForSeconds(.3f);
@@ -247,7 +357,6 @@ public class BossZombie : MonoBehaviour
             currentBarrel.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, 1000, calculatedForce));
             currentBarrel.GetComponent<Rigidbody>().AddRelativeTorque(new Vector3(100, 100, 100));
         }
-        StartCoroutine(Trigger());
     }
     public void WalkSound()
     {
