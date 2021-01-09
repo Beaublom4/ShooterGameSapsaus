@@ -123,6 +123,7 @@ public class MeleeAttack : MonoBehaviour
         }
         else if (weapon.weaponName == "TrashCan")
         {
+            playerAnim.SetTrigger("MeleeHitT");
             foreach (Transform child in trashCanParticle.transform)
             {
                 if (child.GetComponent<ParticleSystem>())
