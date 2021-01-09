@@ -11,6 +11,7 @@ public class GarageDoor : MonoBehaviour
     public GameObject doorObj;
     bool openDoor, canPress = true;
     public AudioSource garageDoor;
+    public VoiceLineCol stillWorking;
     [System.Serializable]
     public class Wave
     {
@@ -41,6 +42,7 @@ public class GarageDoor : MonoBehaviour
     {
         if (canPress == true)
         {
+            stillWorking.StartSound();
             doorStartLoc = doorObj.transform.position;
             canPress = false;
             garageDoor.Play();

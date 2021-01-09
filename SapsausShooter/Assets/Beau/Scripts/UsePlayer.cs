@@ -17,7 +17,7 @@ public class UsePlayer : MonoBehaviour
     public Sounds sounds;
     public GameObject pickUpPanel, healPanel, shopPanel, startPanel, usePanel;
 
-    public VoiceLineCol startLetter, endLetter;
+    public VoiceLineCol startLetter, aahhCantPickUp;
     private void Start()
     {
         startPanel.SetActive(true);
@@ -29,7 +29,6 @@ public class UsePlayer : MonoBehaviour
         if (Input.GetButtonDown("Use") && startPanel.activeSelf==true)
         {
             startPanel.SetActive(false);
-            endLetter.StartSound();
         }
 
 
@@ -92,6 +91,7 @@ public class UsePlayer : MonoBehaviour
                 {
                     if (hit.transform.GetComponent<LauncherPart>().cantPickUp == true)
                     {
+                        aahhCantPickUp.StartSound();
                         GetComponent<HealthManager>().DoDamage(2);
                         sounds.shock.Play();
                     }

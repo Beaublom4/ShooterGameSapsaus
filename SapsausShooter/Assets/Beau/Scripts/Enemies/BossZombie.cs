@@ -52,6 +52,7 @@ public class BossZombie : MonoBehaviour
     SkinnedMeshRenderer render;
     MaterialPropertyBlock block;
     public float dissolvingNumber, freezeRenderNumber;
+    public VoiceLineCol bossDead;
 
     public bool isBiteAttacking, isSpinAttacking, lookAtPlayer;
     NavMeshAgent agent;
@@ -147,6 +148,7 @@ public class BossZombie : MonoBehaviour
         {
             bossHealth = 0;
 
+            bossDead.StartSound();
             isDead = true;
             agent.speed = 0;
             agent.velocity = Vector3.zero;

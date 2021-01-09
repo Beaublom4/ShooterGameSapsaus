@@ -20,6 +20,7 @@ public class HealthManager : MonoBehaviour
     public GameObject menuPanel;
     public GameObject deathPanel;
     public Transform spawnPoint;
+    public VoiceLineCol firstRespawn, hpIsLow;
     public List<GameObject> areasTriggered = new List<GameObject>();
     private void Start()
     {
@@ -39,6 +40,10 @@ public class HealthManager : MonoBehaviour
         {
             health -= damage;
             hudAnim.SetTrigger("ShakeScreen");
+            if(health <= 20)
+            {
+                hpIsLow.StartSound();
+            }
             if (health <= 0)
             {
                 health = 0;
@@ -68,7 +73,8 @@ public class HealthManager : MonoBehaviour
     public void Respawn()
     {
         Time.timeScale = 1;
-        foreach(GameObject g in areasTriggered)
+        firstRespawn.StartSound();
+        foreach (GameObject g in areasTriggered)
         {
             g.GetComponent<AreaColScript>().isAlreadyTriggered = false;
             foreach(Transform child in g.transform)

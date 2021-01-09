@@ -323,6 +323,7 @@ public class Enemy : MonoBehaviour
             if(isDeath == false)
             {
                 isDeath = true;
+                missionManagerScript.AddToKillCount();
                 StartCoroutine(Dead(hitPoint));
             }
         }

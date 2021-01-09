@@ -30,6 +30,7 @@ public class ShootAttack : MonoBehaviour
     public GameObject hitVfx;
     public GameObject PistolMag, ShotgunShells, launcherBullet, freezeBatery;
     public GameObject magLoc, rlMagLoc, blikkieLoc;
+    public VoiceLineCol thisOneIsUselessNow;
 
     public MaterialPropertyBlock block;
 
@@ -390,6 +391,7 @@ public class ShootAttack : MonoBehaviour
         {
             if (currentSlot.ammoInMag <= 0)
             {
+                thisOneIsUselessNow.StartSound();
                 if (currentSlot.gunWeapon.gunType == "Pistol")
                 {
                     sounds.pistolEmpty.volume = Random.Range(sounds.pistolSoundVolume - .1f, sounds.pistolSoundVolume + .1f);

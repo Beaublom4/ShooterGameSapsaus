@@ -29,6 +29,13 @@ public class MissionManager : MonoBehaviour
     public TextMeshProUGUI mainMissionInfoText, sideMission1InfoText;
     public MoneyManager moneyManagerScript;
 
+    public int killCount;
+    public VoiceLineCol kills;
+
+    public int partVoiceLIie;
+    public VoiceLineCol partBetweenVoiceLine;
+    public VoiceLineCol[] partVoiceLines;
+
     public float timeLeft;
     public TextMeshProUGUI timeLeftText;
 
@@ -128,6 +135,12 @@ public class MissionManager : MonoBehaviour
     {
         Destroy(toDestroy);
         foundPart.Play();
+
+        partVoiceLines[partsFound].StartSound();
+        if(partsFound == 2)
+        {
+            StartCoroutine(WaitForPartSound());
+        }
         partsFound++;
         partsOnDisplay[partNumber].SetActive(true);
         
@@ -140,6 +153,11 @@ public class MissionManager : MonoBehaviour
             BossBattleMission();
             print("All parts found");
         }
+    }
+    IEnumerator WaitForPartSound()
+    {
+        yield return new WaitForSeconds(10);
+        partBetweenVoiceLine.StartSound();
     }
     public void BossBattleMission()
     {
@@ -176,5 +194,13 @@ public class MissionManager : MonoBehaviour
                 break;
         }
         killEnemiesMission = true;
+    }
+    public void AddToKillCount()
+    {
+        killCount++;
+        if(killCount >= 30)
+        {
+            kills.StartSound();
+        }
     }
 }
