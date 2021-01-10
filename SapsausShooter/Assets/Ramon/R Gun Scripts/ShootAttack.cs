@@ -233,12 +233,10 @@ public class ShootAttack : MonoBehaviour
                 ammoScript.pistolAmmo += currentSlot.ammoInMag;
                 if (ammoScript.pistolAmmo >= currentSlot.gunWeapon.magCount)
                 {
-                    print("Stap 1");
                     addAmmo = weapon.weaponPrefab.GetComponent<GunScript>().weapon.magCount;
                 }
                 else
                 {
-                    print("Stap 2");
                     addAmmo = ammoScript.pistolAmmo;
                 }
                 currentSlot.ammoInMag = 0;
@@ -265,7 +263,7 @@ public class ShootAttack : MonoBehaviour
                 GameObject mag = Instantiate(ShotgunShells, magLoc.transform.position, magLoc.transform.rotation, magLoc.transform);
                 Destroy(mag, 1);
                 ammoScript.shotgunAmmo += currentSlot.ammoInMag;
-                if (ammoScript.shotgunAmmo >= weapon.weaponPrefab.GetComponent<GunScript>().weapon.magCount)
+                if (ammoScript.shotgunAmmo >= currentSlot.gunWeapon.magCount)
                 {
                     addAmmo = weapon.weaponPrefab.GetComponent<GunScript>().weapon.magCount;
                 }
@@ -295,7 +293,7 @@ public class ShootAttack : MonoBehaviour
                 GameObject mag = Instantiate(launcherBullet, rlMagLoc.transform.position, rlMagLoc.transform.rotation, rlMagLoc.transform);
                 Destroy(mag, .7f);
                 ammoScript.launcherAmmo += currentSlot.ammoInMag;
-                if (ammoScript.launcherAmmo >= weapon.weaponPrefab.GetComponent<GunScript>().weapon.magCount)
+                if (ammoScript.launcherAmmo >= currentSlot.gunWeapon.magCount)
                 {
                     addAmmo = weapon.weaponPrefab.GetComponent<GunScript>().weapon.magCount;
                 }
@@ -321,7 +319,7 @@ public class ShootAttack : MonoBehaviour
                 GameObject mag = Instantiate(freezeBatery, magLoc.transform.position, magLoc.transform.rotation, magLoc.transform);
                 Destroy(mag, 1);
                 ammoScript.specialAmmo += currentSlot.ammoInMag;
-                if (ammoScript.specialAmmo >= weapon.weaponPrefab.GetComponent<GunScript>().weapon.magCount)
+                if (ammoScript.specialAmmo >= currentSlot.gunWeapon.magCount)
                 {
                     addAmmo = weapon.weaponPrefab.GetComponent<GunScript>().weapon.magCount;
                 }
@@ -528,6 +526,8 @@ public class ShootAttack : MonoBehaviour
     }
     public void HitMarker(GameObject obj)
     {
+        redHitMarkerObj.SetActive(false);
+        whiteHitMarkerObj.SetActive(false);
         if (obj.GetComponent<BodyHit>().bodyType == 1)
         {
             hitMarkerObj = redHitMarkerObj;
