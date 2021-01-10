@@ -47,15 +47,26 @@ public class MissionManager : MonoBehaviour
     public AudioSource startSideMis, winSideMis, failSideMis;
     public Transform launcherSpawnPoint;
     public GameObject launcher;
+    public bool foundAllParts;
 
     public bool killEnemiesMission;
     public int killAmount, currentKillAmount;
     int moneyAmount;
+    public GameObject saveAndQuit;
 
     private void Start()
     {
         RocketLauncherMission();
         StartCoroutine(SelectSideMission());
+        if(MainMenuManager.loadGame == true)
+            if (PlayerPrefs.HasKey("AllPartsFound"))
+            {
+                saveAndQuit.SetActive(true);
+                if (PlayerPrefs.GetInt("AllPartsFound") == 1)
+                {
+                    foundAllParts = true;
+                }
+            }
     }
     private void Update()
     {
@@ -138,6 +149,7 @@ public class MissionManager : MonoBehaviour
         Destroy(toDestroy);
         foundPart.Play();
 
+        saveAndQuit.SetActive(true);
         partVoiceLines[partsFound].StartSound();
         if(partsFound == 2)
         {
@@ -151,10 +163,11 @@ public class MissionManager : MonoBehaviour
         if(partsFound == partsToFind)
         {
             partsDisplay.SetActive(false);
+            foundAllParts = true;
             Instantiate(launcher, launcherSpawnPoint.position, launcherSpawnPoint.rotation, null);
             allPartsFound.Play();
             BossBattleMission();
-            print("All parts found");
+            print("AllPartsFound");
         }
     }
     IEnumerator WaitForPartSound()

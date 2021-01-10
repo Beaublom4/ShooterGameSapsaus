@@ -47,6 +47,7 @@ public class MainMenuManager : MonoBehaviour
     public MouseLook camScript;
     public Movement movementScript;
     public bool inGame;
+    public MissionManager missionScript;
 
     public GameObject loader;
     public Slider loadingBar;
@@ -56,11 +57,17 @@ public class MainMenuManager : MonoBehaviour
     public static bool timer;
     
     public static float masterVolume = -1, soundVolume = -1, musicVolume = -1, footstepVolume= -1, voiceLineVolume = -1, sensitiviy = -1;
+    public static bool loadGame;
 
     public GameObject deathPanel;
 
     private void Start()
     {
+        if(inGame == false)
+        {
+            loadGame = false;
+        }
+
         if (masterVolume != -1)
         {
             options.soundSlidersObj[0].GetComponent<Slider>().value = masterVolume;
@@ -85,6 +92,18 @@ public class MainMenuManager : MonoBehaviour
         {
             options.sensitivitySlider.value = sensitiviy;
             options.sensNum.text = (sensitiviy / 100).ToString("F1");
+        }
+
+         if(loadGame == true)
+         if(PlayerPrefs.HasKey(parts[0].name) || inGame == true)
+        {
+            foreach(GameObject part in parts)
+            {
+                if(PlayerPrefs.GetInt(part.gameObject.name) == 0)
+                {
+                        missionScript.RLPickUp(part.GetComponent<LauncherPart>().partNumber, part);
+                }
+            }
         }
     }
     private void Update()
@@ -128,13 +147,21 @@ public class MainMenuManager : MonoBehaviour
     }
     public void StartNewGame()
     {
+        Time.timeScale = 1;
         if(loader != null)
         loader.SetActive(true);
         StartCoroutine(LoadSceneAsync("BeauScene"));
     }
     public void LoadGame()
     {
-
+        if (PlayerPrefs.HasKey("AllPartsFound"))
+        {
+            loadGame = true;
+            Time.timeScale = 1;
+            if (loader != null)
+                loader.SetActive(true);
+            StartCoroutine(LoadSceneAsync("BeauScene"));
+        }
     }
     IEnumerator LoadSceneAsync(string sceneName)
     {
@@ -299,9 +326,35 @@ public class MainMenuManager : MonoBehaviour
         devMode = false;
         PlayerPrefs.SetInt("DevMode", 0);
     }
-    public void BackToMainMenu()
+    public GameObject[] parts;
+    public string[] names;
+    public void BackToMainMenu(bool save)
     {
         Time.timeScale = 1;
+
+        if (save == true)
+        {
+            if (missionScript.foundAllParts == true)
+            {
+                PlayerPrefs.SetInt("AllPartsFound", 1);
+            }
+            else
+            {
+                PlayerPrefs.SetInt("AllPartsFound", 0);
+            }
+            for (int i = 0; i < parts.Length; i++)
+            {
+                if (parts[i] != null)
+                {
+                    PlayerPrefs.SetInt(parts[i].gameObject.name, 1);
+                }
+                else
+                {
+                    PlayerPrefs.SetInt(names[i], 0);
+                }
+            }
+        }
+
         SceneManager.LoadScene("MainMenu");
     }
     public void Continue()

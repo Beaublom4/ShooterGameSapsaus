@@ -190,7 +190,7 @@ public class BossZombie : MonoBehaviour
     {
         if (isDead == true)
             return;
-        int randomNum = Random.Range(3,4);
+        int randomNum = Random.Range(0,4);
         switch (randomNum)
         {
             case 0:
