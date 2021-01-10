@@ -91,6 +91,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6240593103974495410}
     m_Modifications:
+    - target: {fileID: 7936998372772320586, guid: d64c38c4f43ea8045a905e79e3471e57,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8441185546417288351, guid: d64c38c4f43ea8045a905e79e3471e57,
         type: 3}
       propertyPath: m_Name
@@ -181,6 +186,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6240593103974495410}
     m_Modifications:
+    - target: {fileID: 7294412089039706109, guid: 277e890ab73cb5d42b39868b7409e9ad,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8462784840030825618, guid: 277e890ab73cb5d42b39868b7409e9ad,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -271,6 +281,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6240593103974495410}
     m_Modifications:
+    - target: {fileID: 5034833994474818461, guid: 5c3602b1a8ea8314aa6feade7779613d,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6166692376353206514, guid: 5c3602b1a8ea8314aa6feade7779613d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -361,6 +376,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6240593103974495410}
     m_Modifications:
+    - target: {fileID: 5034833994474818461, guid: 5c3602b1a8ea8314aa6feade7779613d,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6166692376353206514, guid: 5c3602b1a8ea8314aa6feade7779613d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -526,6 +546,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.94
       objectReference: {fileID: 0}
+    - target: {fileID: 4132706291787622007, guid: c9bc98677cd51e547b7555d91bc97d4e,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9bc98677cd51e547b7555d91bc97d4e, type: 3}
 --- !u!4 &8150852080001710426 stripped
@@ -616,6 +641,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WindowRoundDoored (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 3667340233067376068, guid: 7a1e554ad91942141aa9ef60a6347a56,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a1e554ad91942141aa9ef60a6347a56, type: 3}
 --- !u!4 &8836893919112534451 stripped
@@ -631,6 +661,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6240593103974495410}
     m_Modifications:
+    - target: {fileID: 5034833994474818461, guid: 5c3602b1a8ea8314aa6feade7779613d,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6166692376353206514, guid: 5c3602b1a8ea8314aa6feade7779613d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -796,6 +831,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: _indowRound (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5950398744322186170, guid: 28858225039e59244b37c3c4e471dc90,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28858225039e59244b37c3c4e471dc90, type: 3}
 --- !u!4 &1933142173054956036 stripped
@@ -885,6 +925,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Block1Brown
+      objectReference: {fileID: 0}
+    - target: {fileID: 6223851115449048062, guid: 57aa90903177e91449eee2395e3b7798,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57aa90903177e91449eee2395e3b7798, type: 3}
