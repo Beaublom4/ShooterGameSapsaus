@@ -53,44 +53,14 @@ public class MainMenuManager : MonoBehaviour
 
     public static bool devMode;
     public static bool timer;
+    
+    public static float masterVolume, soundVolume, musicVolume, footstepVolume, voiceLineVolume, sensitiviy;
 
     public GameObject deathPanel;
+
     private void Start()
     {
-        //if (PlayerPrefs.GetInt("HasPlayerPrefs") == 1)
-        //{
-        //    print("Player prefs found");
-        //    foreach (GameObject g in options.soundSlidersObj)
-        //    {
-        //        g.GetComponentInChildren<Slider>().value = PlayerPrefs.GetFloat(g.GetComponent<SliderInfo>().group.name);
-        //    }
-        //    options.sensitivitySlider.value = PlayerPrefs.GetFloat("Sensitivity");
-        //    sensNumber.text = (options.sensitivitySlider.value / 100).ToString("F1");
-        //    if(inGame == true)
-        //    {
-        //        camScript.mouseSensitivity = options.sensitivitySlider.value;
-        //    }
-        //    if (PlayerPrefs.GetInt("DevMode") == 1)
-        //        devMode = true;
-        //    else
-        //        devMode = false;
-        //}
-        //else
-        //{
-        //    foreach (GameObject g in options.soundSlidersObj)
-        //    {
-        //        PlayerPrefs.SetFloat(g.GetComponent<SliderInfo>().group.name, 1);
-        //    }
-        //    PlayerPrefs.SetFloat("Sensitivity", options.sensitivitySlider.value);
-        //    sensNumber.text = (options.sensitivitySlider.value / 100).ToString("F1");
-        //    PlayerPrefs.SetInt("DevMode", 0);
-
-        //    PlayerPrefs.SetInt("HasPlayerPrefs", 1);
-        //    print("Player prefs made");
-        //}
-
-        PreScene.defaultRes = Screen.currentResolution;
-        resText.text = PreScene.defaultRes.width.ToString() + "x" + PreScene.defaultRes.height.ToString();
+        
     }
     private void Update()
     {
@@ -198,7 +168,7 @@ public class MainMenuManager : MonoBehaviour
     public void SliderChange(SliderInfo slider)
     {
         audioMixer.SetFloat(slider.group.name, Mathf.Log10(slider.slider.value) * 20);
-        PlayerPrefs.SetFloat(slider.group.name, slider.slider.value);
+        
     }
     public void SliderUp(AudioSource audio)
     {
@@ -247,6 +217,7 @@ public class MainMenuManager : MonoBehaviour
         if(toggle.isOn == true)
         {
             devMode = true;
+            print("DevMode on");
             PlayerPrefs.SetInt("DevMode", 1);
         }
         else

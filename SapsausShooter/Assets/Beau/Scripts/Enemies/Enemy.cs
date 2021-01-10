@@ -306,7 +306,9 @@ public class Enemy : MonoBehaviour
         float calculatedDamage = weapon.damage - (weapon.damageDropOverDist * range);
         if (calculatedDamage <= 0)
             calculatedDamage = 0;
-        if(hitPoint == 1)
+        if (MainMenuManager.devMode == true)
+            calculatedDamage *= 10;
+        if (hitPoint == 1)
         {
             calculatedDamage = calculatedDamage * weapon.critMultiplier;
         }

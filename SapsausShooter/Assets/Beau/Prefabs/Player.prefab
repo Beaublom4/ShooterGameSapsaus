@@ -624,7 +624,7 @@ MonoBehaviour:
   animationLength: 1
   animationTime: 0
   groundCheck: {fileID: 896554097703259943}
-  groundDistance: 0.1
+  groundDistance: 0.2
   groundMask:
     serializedVersion: 2
     m_Bits: 256
@@ -648,6 +648,7 @@ MonoBehaviour:
   healthSlider: {fileID: 0}
   anim: {fileID: 0}
   hudAnim: {fileID: 0}
+  deaths: 0
   mainCam: {fileID: 896554098131706639}
   camMoveSpeed: 0.1
   camRotateSpeed: 2
@@ -700,6 +701,8 @@ MonoBehaviour:
   isReturning: 0
   camScript: {fileID: 2019798694751159302}
   playerAnim: {fileID: 1200487926547216155}
+  weaponSelectScript: {fileID: 0}
+  isBreaking: 0
   scytheParticlesParent: {fileID: 9197001312056224764}
   mailboxParticlesParent: {fileID: 6019634273106846296}
   trashCanParticle: {fileID: 6026999339485468171}

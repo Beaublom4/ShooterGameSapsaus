@@ -8,4 +8,5 @@ public class SliderInfo : MonoBehaviour
 {
     public Slider slider;
     public AudioMixerGroup group;
+    public string staticName;
 }

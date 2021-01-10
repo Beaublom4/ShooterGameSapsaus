@@ -10,6 +10,8 @@ public class MoneyManager : MonoBehaviour
 
     private void Start()
     {
+        if (MainMenuManager.devMode == true)
+            money = 9999999;
         UpdateMoney();
     }
     public void GetMoney(int getMoney)

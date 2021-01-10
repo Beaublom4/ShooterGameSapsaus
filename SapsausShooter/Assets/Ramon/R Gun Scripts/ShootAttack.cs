@@ -174,6 +174,7 @@ public class ShootAttack : MonoBehaviour
                 //sounds.pistolShoot.volume = Random.Range(sounds.pistolSoundVolume - .2f, sounds.pistolSoundVolume + .1f);
                 //sounds.pistolShoot.pitch = Random.Range(1 - .1f, 1 + .1f);
                 //sounds.pistolShoot.Play();
+                if(MainMenuManager.devMode==false)
                 currentSlot.ammoInMag--;
                 ammoScript.UpdateAmmo(currentSlot.ammoInMag);
                 //weaponHand.GetComponentInChildren<ParticleSystem>().Play();
@@ -418,6 +419,7 @@ public class ShootAttack : MonoBehaviour
             sounds.pistolShoot.volume = Random.Range(sounds.pistolSoundVolume - .2f, sounds.pistolSoundVolume + .1f);
             sounds.pistolShoot.pitch = Random.Range(1 - .1f, 1 + .1f);
             sounds.pistolShoot.Play();
+            if(MainMenuManager.devMode==false)
             currentSlot.ammoInMag--;
             ammoScript.UpdateAmmo(currentSlot.ammoInMag);
             weaponHand.GetComponentInChildren<ParticleSystem>().Play();
@@ -462,6 +464,7 @@ public class ShootAttack : MonoBehaviour
             sounds.shotgunShoot.Play();
             weaponHand.GetComponentInChildren<ParticleSystem>().Play();
 
+            if(MainMenuManager.devMode==false)
             currentSlot.ammoInMag--;
             ammoScript.UpdateAmmo(currentSlot.ammoInMag);
 
@@ -509,6 +512,7 @@ public class ShootAttack : MonoBehaviour
         }
         if (weapon.weaponPrefab.GetComponent<GunScript>().weapon.gunType == "Launcher")
         {
+            if(MainMenuManager.devMode==false)
             currentSlot.ammoInMag--;
             ammoScript.UpdateAmmo(currentSlot.ammoInMag);
 

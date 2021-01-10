@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 445860381570186438}
   - component: {fileID: 445860381570186432}
   - component: {fileID: 445860381570186433}
+  - component: {fileID: 8955973477115739630}
   m_Layer: 0
   m_Name: GarageDoor
   m_TagString: Untagged
@@ -81,6 +82,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8955973477115739630
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445860381570186439}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8413500779974791126, guid: 9a33c9ea101611443acf4e4106ab2a62, type: 3}
 --- !u!1 &445860382048766506
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,6 +107,7 @@ GameObject:
   - component: {fileID: 445860382048766503}
   - component: {fileID: 445860382048766500}
   - component: {fileID: 445860382048766501}
+  - component: {fileID: 9196779486949911707}
   m_Layer: 0
   m_Name: GarageSideMission
   m_TagString: Untagged
@@ -168,6 +184,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &9196779486949911707
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445860382048766506}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6185082884934666913, guid: 9a33c9ea101611443acf4e4106ab2a62, type: 3}
 --- !u!1 &445860382446722084
 GameObject:
   m_ObjectHideFlags: 0
@@ -179,6 +209,7 @@ GameObject:
   - component: {fileID: 445860382446722087}
   - component: {fileID: 445860382446722081}
   - component: {fileID: 445860382446722086}
+  - component: {fileID: 2153269564349195428}
   m_Layer: 0
   m_Name: GarageDoor withGap
   m_TagString: Untagged
@@ -249,6 +280,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2153269564349195428
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445860382446722084}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.001551361, y: 0.040449373, z: 0.024871359}
+  m_Center: {x: 0.00000082253246, y: -0.0004388233, z: 0.00080414297}
 --- !u!1 &8644029681487765432
 GameObject:
   m_ObjectHideFlags: 0

@@ -41,6 +41,11 @@ public class Movement : MonoBehaviour
         controller = GetComponent<CharacterController>();
         col = GetComponent<SphereCollider>();
         stepTimer = stepTimerTime;
+        if (MainMenuManager.devMode == true)
+        {
+            stepTimerTime /= 2;
+            speed *= 2;
+        }
         //playerAnimation = GetComponent<Animator>();
     }
     void Update()

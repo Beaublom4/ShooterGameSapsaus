@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8687716349666726255}
   - component: {fileID: 8687716349666726251}
   - component: {fileID: 7125311828545198150}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HealStation
   m_TagString: HealStation
   m_Icon: {fileID: 0}
@@ -113,6 +113,7 @@ MonoBehaviour:
   healthScript: {fileID: 0}
   moneyScript: {fileID: 0}
   priceHeal: 0.5
+  wantedPrice: 0
   increaseNum: 2
   text: {fileID: 8687716351299310276}
   infoPanel: {fileID: 8687716350464399535}

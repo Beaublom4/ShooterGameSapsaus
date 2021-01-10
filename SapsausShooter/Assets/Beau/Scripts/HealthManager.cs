@@ -34,6 +34,8 @@ public class HealthManager : MonoBehaviour
         {
             print("NoHealthShitAssigned");
         }
+        if (MainMenuManager.devMode == true)
+            canGetDmg = false;
     }
     public void DoDamage(float damage)
     {

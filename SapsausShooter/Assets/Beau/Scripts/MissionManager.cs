@@ -165,7 +165,6 @@ public class MissionManager : MonoBehaviour
     public void BossBattleMission()
     {
         currentMainMission++;
-        particlesWall.SetActive(true);
         mainMissionNameText.text = mainMissions[currentMainMission].missionName;
         mainMissionInfoText.text = mainMissions[currentMainMission].missionTasks[0] + "<br>" + mainMissions[currentMainMission].missionTasks[1];
         print("Start boss battle mission");
