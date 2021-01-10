@@ -230,16 +230,18 @@ public class ShootAttack : MonoBehaviour
                 weaponHand.GetComponentInChildren<Animator>().SetTrigger("ReloadP");
                 GameObject mag = Instantiate(PistolMag, magLoc.transform.position, magLoc.transform.rotation, magLoc.transform);
                 Destroy(mag, 1);
-                print(ammoScript.pistolAmmo += currentSlot.ammoInMag);
                 ammoScript.pistolAmmo += currentSlot.ammoInMag;
-                if (ammoScript.pistolAmmo >= currentSlot.ammoInMag)
+                if (ammoScript.pistolAmmo >= currentSlot.gunWeapon.magCount)
                 {
+                    print("Stap 1");
                     addAmmo = weapon.weaponPrefab.GetComponent<GunScript>().weapon.magCount;
                 }
                 else
                 {
+                    print("Stap 2");
                     addAmmo = ammoScript.pistolAmmo;
                 }
+                currentSlot.ammoInMag = 0;
                 sounds.pistolReload.volume = Random.Range(sounds.pistolSoundVolume - .1f, sounds.pistolSoundVolume + .1f);
                 sounds.pistolReload.pitch = Random.Range(1 - .1f, 1 + .1f);
                 sounds.pistolReload.Play();

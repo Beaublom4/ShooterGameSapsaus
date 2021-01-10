@@ -384,7 +384,7 @@ GameObject:
   - component: {fileID: 2202730041926123632}
   - component: {fileID: 5416326369221511462}
   - component: {fileID: 7221817646100023331}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: upper_arm.R
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -415,7 +415,7 @@ BoxCollider:
   m_GameObject: {fileID: 1544547659529551038}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.1, y: 0.45598096, z: 0.100001015}
   m_Center: {x: 0.00000005946158, y: 0.17799045, z: 0.000000011590044}
@@ -444,7 +444,7 @@ GameObject:
   - component: {fileID: 7388626064915183268}
   - component: {fileID: 3012517835818312502}
   - component: {fileID: 1544685385417079462}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: forearm.L
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -475,7 +475,7 @@ BoxCollider:
   m_GameObject: {fileID: 2119830646545380622}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.11418688, y: 0.52302104, z: 0.100003265}
   m_Center: {x: -0.007093446, y: 0.21150239, z: 0.000000007609163}
@@ -535,7 +535,7 @@ BoxCollider:
   m_GameObject: {fileID: 2531266138023809997}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.11048249, y: 0.5249195, z: 0.116527036}
   m_Center: {x: 0.0035547037, y: 0.2375401, z: -0.010122045}
@@ -595,7 +595,7 @@ BoxCollider:
   m_GameObject: {fileID: 2786573757053237501}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.28384268, y: 0.2573658, z: 0.36459032}
   m_Center: {x: 0.0047714273, y: 0.055125736, z: 0.015529091}
@@ -1231,7 +1231,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 3773161737461596511}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   m_Radius: 0.124272004
   m_Height: 0.43230137
   m_Direction: 1
@@ -2010,14 +2010,14 @@ NavMeshAgent:
   m_GameObject: {fileID: 5433026564681970298}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.1
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 1
+  m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
+  m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 2
   m_BaseOffset: 0
@@ -2192,7 +2192,7 @@ BoxCollider:
   m_GameObject: {fileID: 5787493384923545512}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.12884866, y: 0.4688179, z: 0.15270942}
   m_Center: {x: -0.012851397, y: 0.07095806, z: -0.0062657143}
@@ -2282,7 +2282,7 @@ GameObject:
   - component: {fileID: 679877017895677976}
   - component: {fileID: 2933292571516763205}
   - component: {fileID: 887908414937203678}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: upper_arm.L
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -2313,7 +2313,7 @@ BoxCollider:
   m_GameObject: {fileID: 6127017139606797461}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.107310496, y: 0.4492646, z: 0.11483818}
   m_Center: {x: 0.014935951, y: 0.16727579, z: -0.008673282}
@@ -3016,7 +3016,7 @@ GameObject:
   - component: {fileID: 1394833112330949797}
   - component: {fileID: 6016144155625642350}
   - component: {fileID: 8983179641174721519}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: forearm.R
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -3047,7 +3047,7 @@ BoxCollider:
   m_GameObject: {fileID: 7658083211358128340}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.10254252, y: 0.48747298, z: 0.11856777}
   m_Center: {x: -0.003428177, y: 0.24550466, z: 0.0027268764}
@@ -3239,7 +3239,7 @@ BoxCollider:
   m_GameObject: {fileID: 7900663007646431175}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.40049392, y: 0.31483555, z: 0.28634635}
   m_Center: {x: -0.007166356, y: 0.030000273, z: -0.009551906}

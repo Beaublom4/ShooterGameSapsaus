@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ChurchRope : MonoBehaviour
 {
-    public Collider launcherPartCol;
+    public BoxCollider launcherPartCol;
     public GameObject rope1, rope2;
 
     public GameObject[] areas;

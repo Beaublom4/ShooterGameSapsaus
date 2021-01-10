@@ -241,13 +241,13 @@ public class Enemy : MonoBehaviour
             hitCooldown = true;
             agent.speed = 0;
             agent.velocity = Vector3.zero;
-            hitBox.SetActive(true);
-            yield return new WaitForSeconds(0.1f);
-            hitBox.SetActive(false);
             if (anim != null)
             {
+                transform.LookAt(playerObj.transform.position);
                 anim.SetTrigger("Attack");
+                hitBox.SetActive(true);
                 yield return new WaitForSeconds(anim.GetCurrentAnimatorClipInfo(0).Length);
+                hitBox.SetActive(false);
             }
             else
             {
