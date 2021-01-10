@@ -76,8 +76,8 @@ public class Enemy : MonoBehaviour
         playerObj = GameObject.FindWithTag("Player");
         agent = GetComponent<NavMeshAgent>();
         agent.speed = speed;
-        render = GetComponentInChildren<SkinnedMeshRenderer>();
         missionManagerScript = GameObject.FindWithTag("MissionManager").GetComponent<MissionManager>();
+        render = GetComponentInChildren<SkinnedMeshRenderer>();
         block = new MaterialPropertyBlock();
         block.SetFloat("Vector1_4FF20CCE", dissolvingNumber);
         freezeRenderNumber = -1;

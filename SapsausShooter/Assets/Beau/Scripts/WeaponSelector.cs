@@ -19,7 +19,7 @@ public class WeaponSelector : MonoBehaviour
     public Animator playerAnim;
     public LayerMask hittableLayer;
 
-    GameObject weaponInHand;
+    public GameObject weaponInHand;
 
     IEnumerator coroutine;
     public TextMeshProUGUI nameText;
@@ -128,7 +128,8 @@ public class WeaponSelector : MonoBehaviour
                                 {
                                     print("Switch " + selectedSlotScript.meleeWeapon.name + " for " + hit.collider.GetComponent<MeleeScript>().weapon.name + " at slot " + selectedSlotScript.gameObject.name);
                                     GameObject g = Instantiate(selectedSlotScript.meleeWeapon.weaponPrefab, dropLoc.transform.position, Quaternion.identity, null);
-                                    //g rigidbody
+                                    g.GetComponent<Rigidbody>().useGravity = true;
+                                    g.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                                     print(hit.collider.GetComponent<MeleeScript>().weapon.name);
                                     print(hit.collider.GetComponent<MeleeScript>().uses);
                                     selectedSlotScript.meleeWeapon = hit.collider.GetComponent<MeleeScript>().weapon;
@@ -147,7 +148,9 @@ public class WeaponSelector : MonoBehaviour
     }
     public void SelectSlot(Slot slotscript)
     {
-        if (shootScript.isReloading == false)
+        if (slotscript.gunWeapon == null && slotscript.meleeWeapon == null)
+            return;
+        if (shootScript.isReloading == false || meleeScript.isBreaking)
         {
             shootScript.weapon = null;
             meleeScript.weapon = null;

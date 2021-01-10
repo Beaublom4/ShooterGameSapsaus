@@ -11,10 +11,12 @@ public class Ending : MonoBehaviour
     public TextMeshProUGUI kills, deaths, timePlayed;
     public MissionManager missionScript;
     public HealthManager healthScript;
+    public GameObject speedRunTimer;
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "Player")
         {
+            speedRunTimer.SetActive(false);
             kills.text = "Kills: " + missionScript.killCount.ToString();
             deaths.text = "Deaths: " + healthScript.deaths.ToString();
             TimeSpan timeSpan = TimeSpan.FromSeconds(Time.timeSinceLevelLoad);

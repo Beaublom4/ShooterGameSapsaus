@@ -49,6 +49,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 11400000, guid: 344945122d554214eb7e673c9dc18eee, type: 2}
   uses: 1
+  blueBalls: {fileID: 0}
+  destroy: 0
+  dissolveSpeed: 1
+  dissolvingNumber: 2
 --- !u!65 &9185219341871621995
 BoxCollider:
   m_ObjectHideFlags: 0

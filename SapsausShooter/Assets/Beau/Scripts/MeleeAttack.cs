@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class MeleeAttack : MonoBehaviour
 {
@@ -16,7 +17,9 @@ public class MeleeAttack : MonoBehaviour
     bool moveCam;
     public MouseLook camScript;
     public Animator playerAnim;
-    
+    public WeaponSelector weaponSelectScript;
+    public bool isBreaking;
+
     public GameObject scytheParticlesParent, mailboxParticlesParent, trashCanParticle;
 
     public LayerMask ignoreLayer;
@@ -28,7 +31,6 @@ public class MeleeAttack : MonoBehaviour
         {
             Debug.DrawRay(transform.position, t.position - transform.position, Color.red);
         }
-
         if (moveCam == true)
         {
             SwitchCamPos();
@@ -42,6 +44,7 @@ public class MeleeAttack : MonoBehaviour
                     if (weapon != null && canMelee == true)
                     {
                         currentSlot.ammoInMag--;
+                        isBreaking = true;
                         ammoScript.UpdateMeleeAmmo(currentSlot.ammoInMag);
 
                         canMelee = false;
@@ -145,6 +148,7 @@ public class MeleeAttack : MonoBehaviour
         moveCam = true;
         yield return new WaitForSeconds(2);
         canMelee = true;
+        isBreaking = false;
     }
     IEnumerator playVFX(GameObject parent, float time)
     {
