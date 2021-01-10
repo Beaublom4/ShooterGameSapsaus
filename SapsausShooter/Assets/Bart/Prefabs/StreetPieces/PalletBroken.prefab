@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7556743112725297528}
   - component: {fileID: 6877324592999954141}
   - component: {fileID: 8689094110172217879}
+  - component: {fileID: 8985202607431372119}
   m_Layer: 0
   m_Name: PalletBroken
   m_TagString: Untagged
@@ -81,3 +82,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8985202607431372119
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7175678407516005314}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.89998317, y: 0.14390768, z: 2.5756104}
+  m_Center: {x: -0.0005872231, y: 0.03153446, z: -0.05585344}

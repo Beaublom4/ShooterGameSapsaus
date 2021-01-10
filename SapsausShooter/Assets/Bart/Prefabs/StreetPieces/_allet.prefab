@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1328844215736668720}
   - component: {fileID: 2728859575219264917}
   - component: {fileID: 160489230073522527}
+  - component: {fileID: 7145034331485133191}
   m_Layer: 0
   m_Name: _allet
   m_TagString: Untagged
@@ -81,3 +82,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7145034331485133191
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1817994555604158602}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.89998317, y: 0.20680031, z: 2.6492662}
+  m_Center: {x: -0.00058722496, y: 0.00008621441, z: -0.019025028}

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1202588093506092235}
   - component: {fileID: 2819157617325405038}
   - component: {fileID: 70755374727464868}
+  - component: {fileID: 4012812690735828214}
   m_Layer: 0
   m_Name: StreetBenchBroken
   m_TagString: Untagged
@@ -81,3 +82,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &4012812690735828214
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2016385385990137457}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2212009239438826721, guid: f7db56afdf8e4fd409a958b1540778b8, type: 3}

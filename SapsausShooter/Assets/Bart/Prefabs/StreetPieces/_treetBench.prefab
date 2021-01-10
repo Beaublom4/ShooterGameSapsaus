@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3051440937676331585}
   - component: {fileID: 2159263578572936676}
   - component: {fileID: 4184910035640885550}
+  - component: {fileID: 4657756003151970603}
   m_Layer: 0
   m_Name: _treetBench
   m_TagString: Untagged
@@ -81,3 +82,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &4657756003151970603
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2383307937246871803}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5053925668127403250, guid: b24902611660ff24080da690033f0a6f, type: 3}
