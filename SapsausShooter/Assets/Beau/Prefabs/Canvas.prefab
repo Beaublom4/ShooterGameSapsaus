@@ -785,6 +785,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 6727257179900013522}
   group: {fileID: -5616411320371582992, guid: d1567cd5055296547b550833238b7a58, type: 2}
+  staticName: 
 --- !u!1 &650615401486593126
 GameObject:
   m_ObjectHideFlags: 0
@@ -1404,11 +1405,13 @@ MonoBehaviour:
   resText: {fileID: 3157279590848654033}
   options:
     soundSlidersObj:
-    - {fileID: 5706764762346168816}
-    - {fileID: 5135230340975972401}
-    - {fileID: 4210346541635333088}
-    - {fileID: 6133406434927022179}
+    - {fileID: 6188327457634435947}
+    - {fileID: 4829052957623384971}
+    - {fileID: 6996980391175294808}
+    - {fileID: 3993474493506329116}
+    - {fileID: 7597281823279892309}
     sensitivitySlider: {fileID: 7156651864417751846}
+    sensNum: {fileID: 6146852969392536730}
     fullScreenToggle: {fileID: 5816585851708429399}
     timerToggle: {fileID: 0}
     resDropdown: {fileID: 648236285141955964}
@@ -5864,6 +5867,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 7156651864417751846}
   group: {fileID: 0}
+  staticName: 
 --- !u!1 &3993474493506329116
 GameObject:
   m_ObjectHideFlags: 0
@@ -6214,6 +6218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 8064144628916142138}
   group: {fileID: -1068948443516090709, guid: d1567cd5055296547b550833238b7a58, type: 2}
+  staticName: 
 --- !u!1 &4239535786796366096
 GameObject:
   m_ObjectHideFlags: 0
@@ -7790,6 +7795,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 8620814179237140750}
   group: {fileID: -2091677596814273647, guid: d1567cd5055296547b550833238b7a58, type: 2}
+  staticName: 
 --- !u!1 &5197647348371261536
 GameObject:
   m_ObjectHideFlags: 0
@@ -8913,6 +8919,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 785373114840755459}
   group: {fileID: 24300002, guid: d1567cd5055296547b550833238b7a58, type: 2}
+  staticName: 
 --- !u!1 &5752934987133548490
 GameObject:
   m_ObjectHideFlags: 0
@@ -9255,6 +9262,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 1985416261649015557}
   group: {fileID: -2013101532435762767, guid: d1567cd5055296547b550833238b7a58, type: 2}
+  staticName: 
 --- !u!1 &6183609798600595679
 GameObject:
   m_ObjectHideFlags: 0

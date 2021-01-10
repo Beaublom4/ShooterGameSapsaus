@@ -35589,6 +35589,11 @@ PrefabInstance:
       propertyPath: movementScript
       value: 
       objectReference: {fileID: 1627604938}
+    - target: {fileID: 8661595946855024900, guid: 344f823c1a9753447ab0f455c4f7d7bb,
+        type: 3}
+      propertyPath: options.soundSlidersObj.Array.data[5]
+      value: 
+      objectReference: {fileID: 7932595842009653856}
     - target: {fileID: 8723065194912240569, guid: 344f823c1a9753447ab0f455c4f7d7bb,
         type: 3}
       propertyPath: m_fontSize
@@ -35715,6 +35720,12 @@ MonoBehaviour:
 --- !u!1 &7932595842009653855 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1438442950108839266, guid: 344f823c1a9753447ab0f455c4f7d7bb,
+    type: 3}
+  m_PrefabInstance: {fileID: 7932595842009653851}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7932595842009653856 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6226614393532283876, guid: 344f823c1a9753447ab0f455c4f7d7bb,
     type: 3}
   m_PrefabInstance: {fileID: 7932595842009653851}
   m_PrefabAsset: {fileID: 0}

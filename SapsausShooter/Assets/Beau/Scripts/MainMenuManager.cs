@@ -19,6 +19,7 @@ public class MainMenuManager : MonoBehaviour
     {
         public GameObject[] soundSlidersObj;
         public Slider sensitivitySlider;
+        public TextMeshProUGUI sensNum;
         public Toggle fullScreenToggle;
         public Toggle timerToggle;
         public TMP_Dropdown resDropdown;
@@ -54,13 +55,37 @@ public class MainMenuManager : MonoBehaviour
     public static bool devMode;
     public static bool timer;
     
-    public static float masterVolume, soundVolume, musicVolume, footstepVolume, voiceLineVolume, sensitiviy;
+    public static float masterVolume = -1, soundVolume = -1, musicVolume = -1, footstepVolume= -1, voiceLineVolume = -1, sensitiviy = -1;
 
     public GameObject deathPanel;
 
     private void Start()
     {
-        
+        if (masterVolume != -1)
+        {
+            options.soundSlidersObj[0].GetComponent<Slider>().value = masterVolume;
+        }
+         if (soundVolume != -1)
+        {
+            options.soundSlidersObj[1].GetComponent<Slider>().value = soundVolume;
+        }
+         if(musicVolume != -1)
+        {
+            options.soundSlidersObj[2].GetComponent<Slider>().value = soundVolume;
+        }
+         if (footstepVolume != -1)
+        {
+            options.soundSlidersObj[3].GetComponent<Slider>().value = footstepVolume;
+        }
+         if (voiceLineVolume != -1)
+        {
+            options.soundSlidersObj[4].GetComponent<Slider>().value = voiceLineVolume;
+        }
+         if (sensitiviy != -1)
+        {
+            options.sensitivitySlider.value = sensitiviy;
+            options.sensNum.text = (sensitiviy / 100).ToString("F1");
+        }
     }
     private void Update()
     {
@@ -168,7 +193,26 @@ public class MainMenuManager : MonoBehaviour
     public void SliderChange(SliderInfo slider)
     {
         audioMixer.SetFloat(slider.group.name, Mathf.Log10(slider.slider.value) * 20);
-        
+        if(slider.staticName == "masterVolume")
+        {
+            masterVolume = slider.slider.value;
+        }
+        else if(slider.staticName == "soundVolume")
+        {
+            soundVolume = slider.slider.value;
+        }
+        else if (slider.staticName == "musicVolume")
+        {
+            musicVolume = slider.slider.value;
+        }
+        else if (slider.staticName == "footstepVolume")
+        {
+            footstepVolume = slider.slider.value;
+        }
+        else if (slider.staticName == "voiceLineVolume")
+        {
+            voiceLineVolume = slider.slider.value;
+        }
     }
     public void SliderUp(AudioSource audio)
     {
@@ -176,7 +220,7 @@ public class MainMenuManager : MonoBehaviour
     }
     public void SensSliderChange(SliderInfo slider)
     {
-        PlayerPrefs.SetFloat("Sensitivity", slider.slider.value);
+        sensitiviy = slider.slider.value;
         sensNumber.text = (slider.slider.value / 100).ToString("F1");
         if (inGame == true)
         {
