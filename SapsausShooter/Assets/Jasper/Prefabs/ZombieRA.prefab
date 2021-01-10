@@ -2655,6 +2655,7 @@ GameObject:
   - component: {fileID: 8595899746975539010}
   - component: {fileID: 528668862846703579}
   - component: {fileID: 6160112124193575748}
+  - component: {fileID: 5733738218223495995}
   m_Layer: 0
   m_Name: ZombieRA
   m_TagString: Untagged
@@ -2769,6 +2770,7 @@ MonoBehaviour:
   - {fileID: 4420389506428466735}
   - {fileID: 2189581674891713982}
   - {fileID: 7751079687360029560}
+  - {fileID: 7132389072938861009}
   isDeath: 0
   sounds:
     soundVolume: 0.5
@@ -2830,6 +2832,19 @@ MonoBehaviour:
   playerInRange: 0
   timer: 0
   addTimeToTimer: 2
+--- !u!135 &5733738218223495995
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7423821309739881678}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7445029356047433900
 GameObject:
   m_ObjectHideFlags: 0
@@ -3272,6 +3287,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7804006469807181428}
     m_Modifications:
+    - target: {fileID: 8068438653099284104, guid: 5fa5a6633bbce424ea55612b79508421,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8068438653325201733, guid: 5fa5a6633bbce424ea55612b79508421,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3357,6 +3377,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: ToxicSphere
       objectReference: {fileID: 0}
+    - target: {fileID: 1063224838781948620, guid: e9fc1eb54173b3344ba97830fb9d0d25,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1378265381953294963, guid: e9fc1eb54173b3344ba97830fb9d0d25,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1378265382144578993, guid: e9fc1eb54173b3344ba97830fb9d0d25,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5376191520074728272, guid: e9fc1eb54173b3344ba97830fb9d0d25,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5833044535197192227, guid: e9fc1eb54173b3344ba97830fb9d0d25,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7972092738975693696, guid: e9fc1eb54173b3344ba97830fb9d0d25,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3414,6 +3459,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4107471045131516672, guid: e9fc1eb54173b3344ba97830fb9d0d25, type: 3}
+    - {fileID: 5833044535197192227, guid: e9fc1eb54173b3344ba97830fb9d0d25, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e9fc1eb54173b3344ba97830fb9d0d25, type: 3}
 --- !u!4 &301880504770146337 stripped
 Transform:

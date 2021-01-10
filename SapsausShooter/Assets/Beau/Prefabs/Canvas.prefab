@@ -3393,7 +3393,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -5616411320371582992, guid: d1567cd5055296547b550833238b7a58,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: fff314ca9ba5642479e25e555444b6e1, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 9eb0a5fa57289e448978efbf634f8933, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -14207,6 +14207,9 @@ MonoBehaviour:
   startSideMis: {fileID: 1569000175862666397}
   winSideMis: {fileID: 8022381809031033519}
   failSideMis: {fileID: 8022381809031033519}
+  launcherSpawnPoint: {fileID: 0}
+  launcher: {fileID: 4291421332295535236, guid: d9d56beecb8f22f439283179011a74b8,
+    type: 3}
   killEnemiesMission: 0
   killAmount: 0
   currentKillAmount: 0

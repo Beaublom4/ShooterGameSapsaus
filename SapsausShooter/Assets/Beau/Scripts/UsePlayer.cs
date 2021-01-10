@@ -35,8 +35,6 @@ public class UsePlayer : MonoBehaviour
 
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, useRange, hitLayer))
         {
-            print(hit.transform.name);
-            print(hit.transform.tag);
             if (Input.GetButtonDown("Use"))
             {
                 if (hit.collider.GetComponent<GarageDoor>())

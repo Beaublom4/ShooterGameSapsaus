@@ -52,6 +52,11 @@ public class AmmoPack : MonoBehaviour
                 Destroy(gameObject);
                 return;
             }
+            else if(selectScript.selectedSlotScript.gunWeapon == null)
+            {
+                Destroy(gameObject);
+                return;
+            }
             if (selectScript.selectedSlotScript.gunWeapon.gunType == "Pistol")
             {
                 ammoScript.UpdatePistolAmmoLeft();

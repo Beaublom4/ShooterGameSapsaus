@@ -101,7 +101,7 @@ public class WeaponSelector : MonoBehaviour
                                     selectedSlotScript.gunWeapon = hit.collider.GetComponent<GunScript>().weapon;
                                     selectedSlotScript.ammoInMag = hit.collider.GetComponent<GunScript>().ammoInMag;
                                     g.transform.SetParent(null);
-                                    Destroy(hit.collider.GetComponent<MeleeScript>().blueBalls);
+                                    Destroy(hit.collider.GetComponent<GunScript>().blueBalls);
                                     Destroy(hit.collider.gameObject);
                                     break;
                                 }
@@ -116,6 +116,7 @@ public class WeaponSelector : MonoBehaviour
                                 {
                                     rings[1].transform.GetChild(i).GetComponent<Slot>().meleeWeapon = hit.collider.GetComponent<MeleeScript>().weapon;
                                     rings[1].transform.GetChild(i).GetComponent<Slot>().ammoInMag = hit.collider.GetComponent<MeleeScript>().uses;
+                                    Destroy(hit.collider.GetComponent<MeleeScript>().blueBalls);
                                     Destroy(hit.collider.gameObject);
                                     if (selectedSlotScript == null)
                                     {
@@ -126,12 +127,14 @@ public class WeaponSelector : MonoBehaviour
                                 else if (i + 1 == rings[1].transform.childCount)
                                 {
                                     print("Switch " + selectedSlotScript.meleeWeapon.name + " for " + hit.collider.GetComponent<MeleeScript>().weapon.name + " at slot " + selectedSlotScript.gameObject.name);
-                                    Instantiate(selectedSlotScript.meleeWeapon.weaponPrefab, dropLoc.transform.position, Quaternion.identity, dropLoc.transform);
-                                    GameObject g = dropLoc.transform.GetChild(0).gameObject;
-                                    g.GetComponent<MeleeScript>().uses = selectedSlotScript.ammoInMag;
+                                    GameObject g = Instantiate(selectedSlotScript.meleeWeapon.weaponPrefab, dropLoc.transform.position, Quaternion.identity, null);
+                                    //g rigidbody
+                                    print(hit.collider.GetComponent<MeleeScript>().weapon.name);
+                                    print(hit.collider.GetComponent<MeleeScript>().uses);
                                     selectedSlotScript.meleeWeapon = hit.collider.GetComponent<MeleeScript>().weapon;
                                     selectedSlotScript.ammoInMag = hit.collider.GetComponent<MeleeScript>().uses;
-                                    g.transform.SetParent(null);
+                                    SelectSlot(selectedSlotScript);
+                                    Destroy(hit.collider.GetComponent<MeleeScript>().blueBalls);
                                     Destroy(hit.collider.gameObject);
                                     break;
                                 }

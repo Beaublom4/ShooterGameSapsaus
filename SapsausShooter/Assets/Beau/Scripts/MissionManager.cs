@@ -45,6 +45,8 @@ public class MissionManager : MonoBehaviour
     public GameObject particlesWall;
     public AudioSource foundPart, allPartsFound;
     public AudioSource startSideMis, winSideMis, failSideMis;
+    public Transform launcherSpawnPoint;
+    public GameObject launcher;
 
     public bool killEnemiesMission;
     public int killAmount, currentKillAmount;
@@ -149,6 +151,7 @@ public class MissionManager : MonoBehaviour
         if(partsFound == partsToFind)
         {
             partsDisplay.SetActive(false);
+            Instantiate(launcher, launcherSpawnPoint.position, launcherSpawnPoint.rotation, null);
             allPartsFound.Play();
             BossBattleMission();
             print("All parts found");

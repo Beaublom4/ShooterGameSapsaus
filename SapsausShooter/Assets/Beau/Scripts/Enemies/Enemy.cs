@@ -381,7 +381,8 @@ public class Enemy : MonoBehaviour
     }
     public virtual IEnumerator Dead(int hitPoint)
     {
-        agent.isStopped = true;
+        agent.speed = 0;
+        agent.velocity = Vector3.zero;
         agent.enabled = !enabled;
         foreach(Collider c in hitBoxes)
         {

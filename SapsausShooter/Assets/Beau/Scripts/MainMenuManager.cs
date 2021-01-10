@@ -131,6 +131,7 @@ public class MainMenuManager : MonoBehaviour
     }
     public void StartNewGame()
     {
+        if(loader != null)
         loader.SetActive(true);
         StartCoroutine(LoadSceneAsync("BeauScene"));
     }
@@ -270,6 +271,7 @@ public class MainMenuManager : MonoBehaviour
     }
     public void BackToMainMenu()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("MainMenu");
     }
     public void Continue()

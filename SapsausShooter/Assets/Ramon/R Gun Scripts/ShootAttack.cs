@@ -278,6 +278,7 @@ public class ShootAttack : MonoBehaviour
                 sounds.shotgunReload.Play();
 
                 ammoScript.shotgunAmmo -= addAmmo;
+                StartCoroutine(Reload());
                 ammoScript.UpdateShotgunAmmoLeft();
             }
         }
@@ -303,6 +304,7 @@ public class ShootAttack : MonoBehaviour
                     addAmmo = ammoScript.launcherAmmo;
                 }
                 ammoScript.launcherAmmo -= addAmmo;
+                StartCoroutine(Reload());
                 ammoScript.UpdateLauncherAmmoLeft();
             }
         }
@@ -328,6 +330,7 @@ public class ShootAttack : MonoBehaviour
                     addAmmo = ammoScript.specialAmmo;
                 }
                 ammoScript.specialAmmo -= addAmmo;
+                StartCoroutine(Reload());
                 ammoScript.UpdateSpecialAmmoLeft();
             }
         }
@@ -350,6 +353,7 @@ public class ShootAttack : MonoBehaviour
                     addAmmo = ammoScript.specialAmmo;
                 }
                 ammoScript.specialAmmo -= addAmmo;
+                StartCoroutine(Reload());
                 ammoScript.UpdateSpecialAmmoLeft();
             }
         }

@@ -45,7 +45,6 @@ public class Gas : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            playerObj = null;
             playerInRange = false;
         }
     }
