@@ -12,6 +12,7 @@ public class HealthManager : MonoBehaviour
     public Slider healthSlider;
     public Animator anim;
     public Animator hudAnim;
+    public int deaths;
 
     public GameObject mainCam;
     public float camMoveSpeed, camRotateSpeed;
@@ -74,6 +75,7 @@ public class HealthManager : MonoBehaviour
     {
         Time.timeScale = 1;
         firstRespawn.StartSound();
+        deaths++;
         foreach (GameObject g in areasTriggered)
         {
             g.GetComponent<AreaColScript>().isAlreadyTriggered = false;

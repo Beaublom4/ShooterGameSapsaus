@@ -189,12 +189,14 @@ MonoBehaviour:
     type: 3}
   isDead: 0
   hasRunned: 0
+  ending: {fileID: 0}
   walk: {fileID: 3714460346726291145}
   spit: {fileID: 7998702644591633508}
   chargeHit: {fileID: 4575696899215133376}
   chargeLoop: {fileID: 4955837483424801522}
   shockWave: {fileID: 4874261509796167034}
   spin: {fileID: 8514623288015811417}
+  battleMusic: {fileID: 7679181208926855698}
 --- !u!65 &4583719566458134809
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -66,6 +66,7 @@ public class BossZombie : MonoBehaviour
     public TextMeshProUGUI bossHealthPercentage;
     public GameObject hitNumPrefab;
     public bool isDead, hasRunned;
+    public GameObject ending;
 
     public AudioSource walk, spit, chargeHit, chargeLoop, shockWave, spin, battleMusic;
     private void Start()
@@ -154,6 +155,7 @@ public class BossZombie : MonoBehaviour
             battleMusic.Stop();
             bossDead.StartSound();
             isDead = true;
+            ending.SetActive(true);
             agent.speed = 0;
             agent.velocity = Vector3.zero;
             if (coroutine != null)
