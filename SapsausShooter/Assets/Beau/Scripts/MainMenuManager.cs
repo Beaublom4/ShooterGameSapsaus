@@ -20,6 +20,7 @@ public class MainMenuManager : MonoBehaviour
         public GameObject[] soundSlidersObj;
         public Slider sensitivitySlider;
         public Toggle fullScreenToggle;
+        public Toggle timerToggle;
         public TMP_Dropdown resDropdown;
     }
     public GameObject mainMenuPanel, optionsPanel, exitGamePanel;
@@ -51,6 +52,7 @@ public class MainMenuManager : MonoBehaviour
     public TextMeshProUGUI loadingNum;
 
     public static bool devMode;
+    public static bool timer;
 
     public GameObject deathPanel;
     private void Start()
@@ -251,6 +253,19 @@ public class MainMenuManager : MonoBehaviour
         {
             devMode = false;
             PlayerPrefs.SetInt("DevMode", 0);
+        }
+    }
+    public void TimerToggle(Toggle toggle)
+    {
+        if(toggle.isOn == true)
+        {
+            timer = true;
+            PlayerPrefs.SetInt("Timer", 1);
+        }
+        if (toggle.isOn == true)
+        {
+            timer = false;
+            PlayerPrefs.SetInt("Timer", 0);
         }
     }
     public void ResetSettings()
