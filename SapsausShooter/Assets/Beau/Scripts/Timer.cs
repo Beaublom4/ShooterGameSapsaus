@@ -12,10 +12,10 @@ public class Timer : MonoBehaviour
 
     private void Start()
     {
-        if(MainMenuManager.timer == true)
+        if(MainMenuManager.timerBool)
         {
             timer.SetActive(true);
-            isTiming = MainMenuManager.timer;
+            isTiming = true;
         }
     }
     private void Update()

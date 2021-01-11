@@ -64,14 +64,11 @@ public class MissionManager : MonoBehaviour
         RocketLauncherMission();
         StartCoroutine(SelectSideMission());
         if(MainMenuManager.loadGame == true)
-            if (PlayerPrefs.HasKey("AllPartsFound"))
-            {
                 saveAndQuit.SetActive(true);
                 if (PlayerPrefs.GetInt("AllPartsFound") == 1)
                 {
                     foundAllParts = true;
                 }
-            }
     }
     private void Update()
     {
@@ -168,7 +165,10 @@ public class MissionManager : MonoBehaviour
         Destroy(toDestroy);
         foundPart.Play();
 
-        saveAndQuit.SetActive(true);
+        if (MainMenuManager.devMode == false)
+        {
+            saveAndQuit.SetActive(true);
+        }
         partVoiceLines[partsFound].StartSound();
         if(partsFound == 2)
         {
@@ -236,7 +236,7 @@ public class MissionManager : MonoBehaviour
         {
             kills.StartSound();
         }
-        if(killCount >= allEnemiesInMap || hasRunned == false)
+        if(PlayerPrefs.GetInt("KillAllZombies") != 1 && MainMenuManager.devMode == false && killCount >= allEnemiesInMap && hasRunned == false)
         {
             hasRunned = true;
             achievementScript.ShowAchievement(3);

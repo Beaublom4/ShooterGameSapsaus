@@ -161,39 +161,45 @@ public class BossZombie : MonoBehaviour
             bossHealthBar.value = bossHealth;
             bossHealthPercentage.text = ((bossHealth / bossHealthBar.maxValue) * 100).ToString("F0") + "%";
 
-            if(healthManager.deaths == 0)
+            if (MainMenuManager.devMode == false)
             {
-                achievementScript.ShowAchievement(0);
-                PlayerPrefs.SetInt("WinWithoutDying", 1);
+                if (PlayerPrefs.GetInt("WinWithoutDying") != 1 && healthManager.deaths == 0)
+                {
+                    achievementScript.ShowAchievement(0);
+                    PlayerPrefs.SetInt("WinWithoutDying", 1);
+                }
+                if (PlayerPrefs.GetInt("WinWithoutKilling") != 1 && missionManager.killCount == 0)
+                {
+                    achievementScript.ShowAchievement(1);
+                    PlayerPrefs.SetInt("WinWithoutKilling", 1);
+                }
+                if (PlayerPrefs.GetInt("WinUnderMinutes") != 1 && timeForAchievementMin * 60 >= Time.timeSinceLevelLoad)
+                {
+                    achievementScript.ShowAchievement(2);
+                    PlayerPrefs.SetInt("WinUnderMinutes", 1);
+                }
+                if (PlayerPrefs.GetInt("WinWithoutTakingDamage") != 1 && healthManager.hasTakenDmg == false)
+                {
+                    achievementScript.ShowAchievement(4);
+                    PlayerPrefs.SetInt("WinWithoutTakingDamage", 1);
+                }
+                if (PlayerPrefs.GetInt("FinishAllChallanges") != 1 && missionManager.smallKillChallange == true && missionManager.mediumKillChallange == true && missionManager.bigKillChallange == true)
+                {
+                    achievementScript.ShowAchievement(6);
+                    PlayerPrefs.SetInt("FinishAllChallanges", 1);
+                }
+                if (PlayerPrefs.GetInt("OnlyUseMelee") != 1 && shootScript.hasShoot == false)
+                {
+                    achievementScript.ShowAchievement(7);
+                    PlayerPrefs.SetInt("OnlyUseMelee", 1);
+                }
+
+                if (PlayerPrefs.GetInt("KillRufus") != 1)
+                {
+                    achievementScript.ShowAchievement(5);
+                    PlayerPrefs.SetInt("KillRufus", 1);
+                }
             }
-            if(missionManager.killCount == 0)
-            {
-                achievementScript.ShowAchievement(1);
-                PlayerPrefs.SetInt("WinWithoutKilling", 1);
-            }
-            if(timeForAchievementMin * 60 >= Time.timeSinceLevelLoad)
-            {
-                achievementScript.ShowAchievement(2);
-                PlayerPrefs.SetInt("WinUnderMinutes", 1);
-            }
-            if(healthManager.hasTakenDmg == false)
-            {
-                achievementScript.ShowAchievement(4);
-                PlayerPrefs.SetInt("WinWithoutTakingDamage", 1);
-            }
-            if(missionManager.smallKillChallange == true && missionManager.mediumKillChallange == true && missionManager.bigKillChallange == true)
-            {
-                achievementScript.ShowAchievement(6);
-                PlayerPrefs.SetInt("FinishAllChallanges", 1);
-            }
-            if(shootScript.hasShoot == false)
-            {
-                achievementScript.ShowAchievement(7);
-                PlayerPrefs.SetInt("OnlyUseMelee", 1);
-            }
-            
-            achievementScript.ShowAchievement(5);
-            PlayerPrefs.SetInt("KillRufus", 1);
 
             battleMusic.Stop();
             bossDead.StartSound();

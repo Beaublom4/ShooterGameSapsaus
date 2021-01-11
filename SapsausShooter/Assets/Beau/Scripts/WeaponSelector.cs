@@ -126,11 +126,15 @@ public class WeaponSelector : MonoBehaviour
                                 }
                                 else if (i + 1 == rings[1].transform.childCount)
                                 {
+                                    if (selectedSlotScript.gunWeapon != null)
+                                    {
+                                        return;
+                                    }
                                     print("Switch " + selectedSlotScript.meleeWeapon.name + " for " + hit.collider.GetComponent<MeleeScript>().weapon.name + " at slot " + selectedSlotScript.gameObject.name);
                                     GameObject g = Instantiate(selectedSlotScript.meleeWeapon.weaponPrefab, dropLoc.transform.position, Quaternion.identity, null);
                                     g.GetComponent<Rigidbody>().useGravity = true;
                                     g.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-                                    g.GetComponent<MeleeScript>().uses = 0;
+                                    g.GetComponent<MeleeScript>().uses = selectedSlotScript.ammoInMag;
                                     print(hit.collider.GetComponent<MeleeScript>().weapon.name);
                                     print(hit.collider.GetComponent<MeleeScript>().uses);
                                     selectedSlotScript.meleeWeapon = hit.collider.GetComponent<MeleeScript>().weapon;

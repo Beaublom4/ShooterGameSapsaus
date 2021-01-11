@@ -54,7 +54,7 @@ public class MainMenuManager : MonoBehaviour
     public TextMeshProUGUI loadingNum;
 
     public static bool devMode;
-    public static bool timer;
+    public static bool timerBool;
     
     public static float masterVolume = -1, soundVolume = -1, musicVolume = -1, footstepVolume= -1, voiceLineVolume = -1, sensitiviy = -1;
     public static bool loadGame;
@@ -66,6 +66,8 @@ public class MainMenuManager : MonoBehaviour
         if(inGame == false)
         {
             loadGame = false;
+            devMode = false;
+            timerBool = false;
         }
 
         if (masterVolume != -1)
@@ -154,13 +156,16 @@ public class MainMenuManager : MonoBehaviour
     }
     public void LoadGame()
     {
-        if (PlayerPrefs.HasKey("AllPartsFound"))
+        if (devMode == false)
         {
-            loadGame = true;
-            Time.timeScale = 1;
-            if (loader != null)
-                loader.SetActive(true);
-            StartCoroutine(LoadSceneAsync("BeauScene"));
+            if (PlayerPrefs.HasKey("AllPartsFound"))
+            {
+                loadGame = true;
+                Time.timeScale = 1;
+                if (loader != null)
+                    loader.SetActive(true);
+                StartCoroutine(LoadSceneAsync("BeauScene"));
+            }
         }
     }
     IEnumerator LoadSceneAsync(string sceneName)
@@ -298,25 +303,22 @@ public class MainMenuManager : MonoBehaviour
         {
             devMode = true;
             print("DevMode on");
-            PlayerPrefs.SetInt("DevMode", 1);
         }
         else
         {
             devMode = false;
-            PlayerPrefs.SetInt("DevMode", 0);
         }
     }
     public void TimerToggle(Toggle toggle)
     {
         if(toggle.isOn == true)
         {
-            timer = true;
-            PlayerPrefs.SetInt("Timer", 1);
+            timerBool = true;
+            print("Timer on");
         }
-        if (toggle.isOn == true)
+        else
         {
-            timer = false;
-            PlayerPrefs.SetInt("Timer", 0);
+            timerBool = false;
         }
     }
     public void ResetSettings()
@@ -343,23 +345,20 @@ public class MainMenuManager : MonoBehaviour
 
         if (save == true)
         {
+            PlayerPrefs.DeleteKey("AllPartsFound");
+            foreach (string part in names) 
+            {
+                PlayerPrefs.DeleteKey(part);
+            }
             if (missionScript.foundAllParts == true)
             {
                 PlayerPrefs.SetInt("AllPartsFound", 1);
-            }
-            else
-            {
-                PlayerPrefs.SetInt("AllPartsFound", 0);
             }
             for (int i = 0; i < parts.Length; i++)
             {
                 if (parts[i] != null)
                 {
                     PlayerPrefs.SetInt(parts[i].gameObject.name, 1);
-                }
-                else
-                {
-                    PlayerPrefs.SetInt(names[i], 0);
                 }
             }
         }
