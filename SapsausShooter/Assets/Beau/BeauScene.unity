@@ -2015,6 +2015,18 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 554087341040046169, guid: be95bf0695c721545a0873a700abfff2,
+        type: 3}
+      propertyPath: wave1.Array.data[5]
+      value: 
+      objectReference: {fileID: 4049090637509514779, guid: af807e3177d7f9242b87bb7d77668bb9,
+        type: 3}
+    - target: {fileID: 554087341040046169, guid: be95bf0695c721545a0873a700abfff2,
+        type: 3}
+      propertyPath: wave2.Array.data[2]
+      value: 
+      objectReference: {fileID: 4049090637509514779, guid: af807e3177d7f9242b87bb7d77668bb9,
+        type: 3}
     - target: {fileID: 559835747836512029, guid: be95bf0695c721545a0873a700abfff2,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -4242,6 +4254,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1620119322730260390, guid: be95bf0695c721545a0873a700abfff2,
         type: 3}
+      propertyPath: waves.Array.data[1].enemies.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1620119322730260390, guid: be95bf0695c721545a0873a700abfff2,
+        type: 3}
       propertyPath: stillWorking
       value: 
       objectReference: {fileID: 1266406195}
@@ -4274,6 +4291,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7081492952287351854, guid: bf80cc3780578f74c9d760369f7afbfd,
         type: 3}
+    - target: {fileID: 1620119322730260390, guid: be95bf0695c721545a0873a700abfff2,
+        type: 3}
+      propertyPath: doorOpeningSpeed
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 1620119323804324191, guid: be95bf0695c721545a0873a700abfff2,
         type: 3}
       propertyPath: waves.Array.data[1].enemies.Array.size
@@ -4516,6 +4538,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7081492952287351854, guid: bf80cc3780578f74c9d760369f7afbfd,
         type: 3}
+    - target: {fileID: 1620119323804324191, guid: be95bf0695c721545a0873a700abfff2,
+        type: 3}
+      propertyPath: doorOpeningSpeed
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 1630644734181342517, guid: be95bf0695c721545a0873a700abfff2,
         type: 3}
       propertyPath: m_StaticEditorFlags
