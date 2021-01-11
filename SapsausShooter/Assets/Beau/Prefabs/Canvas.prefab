@@ -16245,6 +16245,9 @@ MonoBehaviour:
   mainMissionInfoText: {fileID: 7932595841932654841}
   sideMission1InfoText: {fileID: 7932595841869873776}
   moneyManagerScript: {fileID: 0}
+  allEnemiesInMap: 0
+  hasRunned: 0
+  achievementScript: {fileID: 0}
   killCount: 0
   kills: {fileID: 0}
   partVoiceLIie: 0
@@ -16277,6 +16280,9 @@ MonoBehaviour:
   killAmount: 0
   currentKillAmount: 0
   saveAndQuit: {fileID: 0}
+  smallKillChallange: 0
+  mediumKillChallange: 0
+  bigKillChallange: 0
 --- !u!1 &7932595841869873778
 GameObject:
   m_ObjectHideFlags: 0
@@ -16939,7 +16945,7 @@ MonoBehaviour:
   pistolAmmo: 0
   shotgunAmmo: 0
   sniperAmmo: 0
-  launcherAmmo: 0
+  launcherAmmo: 1
   specialAmmo: 0
   ammoLeftText: {fileID: 7932595841121007290}
   magText: {fileID: 7932595843089093482}

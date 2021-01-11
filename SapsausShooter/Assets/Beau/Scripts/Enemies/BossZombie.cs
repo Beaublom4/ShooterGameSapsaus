@@ -75,6 +75,9 @@ public class BossZombie : MonoBehaviour
     public MissionManager missionManager;
     public HealthManager healthManager;
     public AchievementPopUp achievementScript;
+
+    public Movement movement;
+    public MouseLook mouseLook;
     private void Start()
     {
         ChangeStats(normalStats.normalSpeed, normalStats.normalChargeSpeed, normalStats.normalTimeBetweenAttacks, normalStats.spinHitDmg, normalStats.chargeDmg, normalStats.shockWaveParticleDmg, normalStats.spitTimes);
@@ -204,6 +207,11 @@ public class BossZombie : MonoBehaviour
             battleMusic.Stop();
             bossDead.StartSound();
             ending.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            movement.enabled = !enabled;
+            mouseLook.enabled = !enabled;
+
             agent.speed = 0;
             agent.velocity = Vector3.zero;
             if (coroutine != null)

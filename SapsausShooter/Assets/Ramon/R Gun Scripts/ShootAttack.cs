@@ -487,20 +487,16 @@ public class ShootAttack : MonoBehaviour
 
                             HitMarker(hit.collider.gameObject);
                         }
-                        else if (hit.collider.tag == "BossHitBox")
-                        {
-                            if (hit.collider.GetComponent<BossBodyHit>())
-                            {
-                                GameObject g = Instantiate(hitVfx, hit.point, Quaternion.LookRotation(hit.normal), null);
-                                Destroy(g, 3);
-                                hit.collider.GetComponent<BossBodyHit>().HitPart(weapon, hit.point);
-                                HitMarker(hit.collider.gameObject);
-                            }
-                        }
                     }
-                    else
+                    else if (hit.collider.tag == "BossHitBox")
                     {
-                        //Instantiate(testObj, hit.point, Quaternion.LookRotation(hit.normal), null);
+                        if (hit.collider.GetComponent<BossBodyHit>())
+                        {
+                            GameObject g = Instantiate(hitVfx, hit.point, Quaternion.LookRotation(hit.normal), null);
+                            Destroy(g, 3);
+                            hit.collider.GetComponent<BossBodyHit>().HitPart(weapon, hit.point);
+                            HitMarker(hit.collider.gameObject);
+                        }
                     }
                 }
             }
@@ -534,19 +530,39 @@ public class ShootAttack : MonoBehaviour
     {
         redHitMarkerObj.SetActive(false);
         whiteHitMarkerObj.SetActive(false);
-        if (obj.GetComponent<BodyHit>().bodyType == 1)
+        if (obj.GetComponent<BodyHit>())
         {
-            hitMarkerObj = redHitMarkerObj;
-            sounds.headshot.volume = Random.Range(sounds.hitmarkerSoundVolume - .1f, sounds.hitmarkerSoundVolume + .1f);
-            sounds.headshot.pitch = Random.Range(1 - .1f, 1 + .1f);
-            sounds.headshot.Play();
+            if (obj.GetComponent<BodyHit>().bodyType == 1)
+            {
+                hitMarkerObj = redHitMarkerObj;
+                sounds.headshot.volume = Random.Range(sounds.hitmarkerSoundVolume - .1f, sounds.hitmarkerSoundVolume + .1f);
+                sounds.headshot.pitch = Random.Range(1 - .1f, 1 + .1f);
+                sounds.headshot.Play();
+            }
+            else
+            {
+                hitMarkerObj = whiteHitMarkerObj;
+                sounds.hitmarker.volume = Random.Range(sounds.hitmarkerSoundVolume - .1f, sounds.hitmarkerSoundVolume + .1f);
+                sounds.hitmarker.pitch = Random.Range(1 - .1f, 1 + .1f);
+                sounds.hitmarker.Play();
+            }
         }
-        else
+        else if (obj.GetComponent<BossBodyHit>())
         {
-            hitMarkerObj = whiteHitMarkerObj;
-            sounds.hitmarker.volume = Random.Range(sounds.hitmarkerSoundVolume - .1f, sounds.hitmarkerSoundVolume + .1f);
-            sounds.hitmarker.pitch = Random.Range(1 - .1f, 1 + .1f);
-            sounds.hitmarker.Play();
+            if (obj.GetComponent<BossBodyHit>().bodyType == 1)
+            {
+                hitMarkerObj = redHitMarkerObj;
+                sounds.headshot.volume = Random.Range(sounds.hitmarkerSoundVolume - .1f, sounds.hitmarkerSoundVolume + .1f);
+                sounds.headshot.pitch = Random.Range(1 - .1f, 1 + .1f);
+                sounds.headshot.Play();
+            }
+            else
+            {
+                hitMarkerObj = whiteHitMarkerObj;
+                sounds.hitmarker.volume = Random.Range(sounds.hitmarkerSoundVolume - .1f, sounds.hitmarkerSoundVolume + .1f);
+                sounds.hitmarker.pitch = Random.Range(1 - .1f, 1 + .1f);
+                sounds.hitmarker.Play();
+            }
         }
         StopCoroutine(coroutine);
         coroutine = HitMarker();
