@@ -39,6 +39,10 @@ public class DefaultZombie : Enemy
     }
     private void OnTriggerEnter(Collider other)
     {
+        if (enemiesInRange.Count >= wantedEnemiesInRange)
+        {
+            return;
+        }
         if (other.gameObject.tag == "Enemy" && !other.isTrigger)
         {
             if (other.GetComponentInParent<Enemy>().countTowardsBigZomb == true)

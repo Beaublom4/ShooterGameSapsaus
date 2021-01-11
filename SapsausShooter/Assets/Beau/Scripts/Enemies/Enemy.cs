@@ -29,7 +29,7 @@ public class Enemy : MonoBehaviour
     public GameObject moneyDropPrefab;
 
     public bool canMutateToBigZomb;
-    [HideInInspector] public bool countTowardsBigZomb;
+    public bool countTowardsBigZomb;
     public bool addedToList;
     [HideInInspector] public Vector3 main;
     [HideInInspector] public bool isMainBody;

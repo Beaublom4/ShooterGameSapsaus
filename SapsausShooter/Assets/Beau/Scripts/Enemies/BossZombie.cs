@@ -151,6 +151,8 @@ public class BossZombie : MonoBehaviour
         if (bossHealth <= 0)
         {
             bossHealth = 0;
+            bossHealthBar.value = bossHealth;
+            bossHealthPercentage.text = ((bossHealth / bossHealthBar.maxValue) * 100).ToString("F0") + "%";
 
             battleMusic.Stop();
             bossDead.StartSound();

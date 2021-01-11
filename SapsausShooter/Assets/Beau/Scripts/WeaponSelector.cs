@@ -130,6 +130,7 @@ public class WeaponSelector : MonoBehaviour
                                     GameObject g = Instantiate(selectedSlotScript.meleeWeapon.weaponPrefab, dropLoc.transform.position, Quaternion.identity, null);
                                     g.GetComponent<Rigidbody>().useGravity = true;
                                     g.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                                    g.GetComponent<MeleeScript>().uses = 0;
                                     print(hit.collider.GetComponent<MeleeScript>().weapon.name);
                                     print(hit.collider.GetComponent<MeleeScript>().uses);
                                     selectedSlotScript.meleeWeapon = hit.collider.GetComponent<MeleeScript>().weapon;

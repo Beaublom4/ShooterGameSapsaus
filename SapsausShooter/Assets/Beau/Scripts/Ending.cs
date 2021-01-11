@@ -14,7 +14,8 @@ public class Ending : MonoBehaviour
     public GameObject speedRunTimer;
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Player")
+        print(collision.gameObject.name);
+        if(collision.gameObject.tag == "Player" || collision.gameObject.tag == "PickUpCol")
         {
             speedRunTimer.SetActive(false);
             kills.text = "Kills: " + missionScript.killCount.ToString();
