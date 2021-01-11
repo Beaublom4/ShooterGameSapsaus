@@ -229,9 +229,9 @@ public class MissionManager : MonoBehaviour
         }
         killEnemiesMission = true;
     }
-    public void AddToKillCount()
+    public void AddToKillCount(int num)
     {
-        killCount++;
+        killCount += num;
         if(killCount >= 30)
         {
             kills.StartSound();

@@ -28,6 +28,7 @@ public class Enemy : MonoBehaviour
     public int minDropAmount, maxDropAmount;
     public GameObject moneyDropPrefab;
 
+    public bool isBigZombie;
     public bool canMutateToBigZomb;
     public bool countTowardsBigZomb;
     public bool addedToList;
@@ -325,7 +326,14 @@ public class Enemy : MonoBehaviour
             if(isDeath == false)
             {
                 isDeath = true;
-                missionManagerScript.AddToKillCount();
+                if(isBigZombie == false)
+                {
+                    missionManagerScript.AddToKillCount(1);
+                }
+                else
+                {
+                    missionManagerScript.AddToKillCount(7);
+                }
                 StartCoroutine(Dead(hitPoint));
             }
         }

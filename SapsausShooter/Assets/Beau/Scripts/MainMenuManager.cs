@@ -122,6 +122,7 @@ public class MainMenuManager : MonoBehaviour
 
                     movementScript.enabled = !enabled;
                     camScript.enabled = !enabled;
+                    Time.timeScale = 0;
                 }
                 else
                 {
@@ -131,6 +132,7 @@ public class MainMenuManager : MonoBehaviour
 
                     movementScript.enabled = enabled;
                     camScript.enabled = enabled;
+                    Time.timeScale = 1;
                 }
             }
         }
@@ -373,6 +375,7 @@ public class MainMenuManager : MonoBehaviour
 
         movementScript.enabled = enabled;
         camScript.enabled = enabled;
+        Time.timeScale = 1;
     }
     void DisableAllPanels()
     {

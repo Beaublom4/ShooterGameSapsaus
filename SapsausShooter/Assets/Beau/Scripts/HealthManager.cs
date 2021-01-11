@@ -80,17 +80,6 @@ public class HealthManager : MonoBehaviour
         Time.timeScale = 1;
         firstRespawn.StartSound();
         deaths++;
-        foreach (GameObject g in areasTriggered)
-        {
-            g.GetComponent<AreaColScript>().isAlreadyTriggered = false;
-            foreach(Transform child in g.transform)
-            {
-                if (child.GetComponent<Enemy>())
-                {
-                    child.GetComponent<Enemy>().UnTrigger();
-                }
-            }
-        }
         StartCoroutine(InvisableFrames());
     }
     IEnumerator InvisableFrames()

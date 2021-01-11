@@ -52,9 +52,17 @@ public class CrushedZombie : Enemy
     }
     public override void OnCollisionEnter(Collision collision)
     {
+        print(collision.gameObject.name);
         if (canBash == true)
         {
             if (collision.gameObject.tag == "Player")
+            {
+                isColliding = true;
+                playerObj = collision.gameObject;
+                StartCoroutine(Hit());
+                StartCoroutine(HitBash());
+            }
+            else if(collision.gameObject.tag == "GroundCheck")
             {
                 isColliding = true;
                 playerObj = collision.gameObject;
@@ -73,6 +81,7 @@ public class CrushedZombie : Enemy
     }
     IEnumerator HitBash()
     {
+        agent.velocity = Vector3.zero;
         bashImpact.volume = Random.Range(bashVolumeSound - bashrangeSound, bashVolumeSound + bashrangeSound);
         bashImpact.pitch = Random.Range(1 - bashrangeSound, 1 + bashrangeSound);
         bashImpact.Play();

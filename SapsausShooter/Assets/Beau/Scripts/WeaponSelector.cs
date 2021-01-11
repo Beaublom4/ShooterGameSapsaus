@@ -210,6 +210,8 @@ public class WeaponSelector : MonoBehaviour
                     GameObject g = Instantiate(weaponLocations.launcher, weaponLocations.launcherLoc.transform.position, weaponLocations.launcherLoc.rotation, hand.transform);
                     g.layer = 14;
                     weaponInHand = g;
+                    if(selectedSlotScript.ammoInMag == 0)
+                    g.GetComponent<GunScript>().shownBullet.SetActive(false);
                     g.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
                     playerAnim.SetBool("Launcher", true);
                     if(slotscript.ammoInMag > 0)
