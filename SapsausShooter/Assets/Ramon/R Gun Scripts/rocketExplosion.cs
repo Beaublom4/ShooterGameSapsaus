@@ -55,7 +55,6 @@ public class rocketExplosion : MonoBehaviour
         {
             rocketCol.collider.GetComponent<BreakableWall>().Break();
         }
-        Destroy(gameObject);
     }
     public void OnTriggerEnter(Collider other)
     {

@@ -15,6 +15,7 @@ public class DefaultZombie : Enemy
 
     public float mergeVolume, mergeChange;
     public AudioSource merge;
+    public LayerMask hittableLayer;
     public override void Update()
     {
         base.Update();
@@ -39,7 +40,11 @@ public class DefaultZombie : Enemy
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (enemiesInRange.Count >= wantedEnemiesInRange)
+        if(isBigZombie == true)
+        {
+            return;
+        }
+        if (enemiesInRange.Count >= wantedEnemiesInRange || other.GetComponent<Enemy>().canMutateToBigZomb == false)
         {
             return;
         }
@@ -58,6 +63,10 @@ public class DefaultZombie : Enemy
     }
     private void OnTriggerExit(Collider other)
     {
+        if (isBigZombie == true)
+        {
+            return;
+        }
         if (other.gameObject.tag == "Enemy" && !other.isTrigger)
         {
             if (other.GetComponentInParent<Enemy>().countTowardsBigZomb == true)
@@ -96,6 +105,13 @@ public class DefaultZombie : Enemy
 
         Vector3 midPos = new Vector3(x, y, z);
         main = midPos;
+
+        RaycastHit hit;
+        if(Physics.Raycast(transform.position, midPos, out hit, 1000, hittableLayer, QueryTriggerInteraction.Ignore))
+        {
+            float dist = Vector3.Distance(transform.position, midPos);
+            midPos = hit.point;
+        }
 
         foreach (GameObject g in enemiesInRange)
         {
