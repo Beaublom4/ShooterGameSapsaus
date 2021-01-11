@@ -19,7 +19,6 @@ public class CrushedZombie : Enemy
         if (canBash == true && runOnce == false)
         {
             runOnce = true;
-            print("Bash");
             anim.SetTrigger("TargetFound");
             agent.speed = bashSpeed;
             timer = reLocatePlayerTime;
@@ -52,20 +51,24 @@ public class CrushedZombie : Enemy
     }
     public override void OnCollisionEnter(Collision collision)
     {
-        print(collision.gameObject.name);
         if (canBash == true)
         {
+            if (collision.gameObject.tag == "Weapon")
+            {
+                return;
+            }
             if (collision.gameObject.tag == "Player")
             {
                 isColliding = true;
                 playerObj = collision.gameObject;
+                isColliding = true;
                 StartCoroutine(Hit());
                 StartCoroutine(HitBash());
             }
-            else if(collision.gameObject.tag == "GroundCheck")
+            else if(collision.gameObject.tag == "PickUpCol")
             {
                 isColliding = true;
-                playerObj = collision.gameObject;
+                isColliding = true;
                 StartCoroutine(Hit());
                 StartCoroutine(HitBash());
             }

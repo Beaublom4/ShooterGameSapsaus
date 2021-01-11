@@ -44,8 +44,14 @@ public class DefaultZombie : Enemy
         {
             return;
         }
-        if (enemiesInRange.Count >= wantedEnemiesInRange || other.GetComponent<Enemy>().canMutateToBigZomb == false)
+        if (enemiesInRange.Count >= wantedEnemiesInRange)
         {
+            return;
+        }
+
+        if(other.gameObject.GetComponent<Enemy>())
+        {
+            if(other.gameObject.GetComponent<Enemy>().canMutateToBigZomb == false)
             return;
         }
         if (other.gameObject.tag == "Enemy" && !other.isTrigger)

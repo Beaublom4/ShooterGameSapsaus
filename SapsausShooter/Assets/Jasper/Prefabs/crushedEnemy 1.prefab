@@ -1384,6 +1384,7 @@ MonoBehaviour:
   maxDropAmount: 100
   moneyDropPrefab: {fileID: 2030928626577662909, guid: 446e29ffe71723b4db774c3d271eb33d,
     type: 3}
+  isBigZombie: 0
   canMutateToBigZomb: 0
   countTowardsBigZomb: 0
   addedToList: 0
@@ -1420,6 +1421,7 @@ MonoBehaviour:
   hitNumPrefab: {fileID: 3314747878335242109, guid: 8c6b2080012d1a048870d88718b62e11,
     type: 3}
   dmgTextLoc: {fileID: 6952385164950814564}
+  isCrushed: 1
   canBash: 0
   runOnce: 0
   reLocatePlayerTime: 0.5
@@ -2826,8 +2828,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.332732, y: 2.117653, z: 1.6948851}
+  m_Center: {x: 0, y: 0, z: 0.34744284}
 --- !u!114 &7409373164357028000
 MonoBehaviour:
   m_ObjectHideFlags: 0

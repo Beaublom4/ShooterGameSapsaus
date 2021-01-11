@@ -24,6 +24,8 @@ public class Ending : MonoBehaviour
             var value = string.Format("{0:D2}:{1:D2}:{2:D2}", timeSpan.Hours, timeSpan.Minutes, timeSpan.Seconds);
             timePlayed.text = "Time played: " + value;
             panel.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
             Time.timeScale = 0;
         }
     }

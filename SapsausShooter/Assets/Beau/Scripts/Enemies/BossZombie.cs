@@ -207,10 +207,6 @@ public class BossZombie : MonoBehaviour
             battleMusic.Stop();
             bossDead.StartSound();
             ending.SetActive(true);
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            movement.enabled = !enabled;
-            mouseLook.enabled = !enabled;
 
             agent.speed = 0;
             agent.velocity = Vector3.zero;

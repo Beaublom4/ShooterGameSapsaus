@@ -6,7 +6,12 @@ public class EnemyDamageTrigger : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
+        print(other.gameObject.tag);
         if (other.gameObject.tag == "Player")
+        {
+            GetComponentInParent<Enemy>().HitBoxHit();
+        }
+        else if(other.gameObject.tag == "")
         {
             GetComponentInParent<Enemy>().HitBoxHit();
         }

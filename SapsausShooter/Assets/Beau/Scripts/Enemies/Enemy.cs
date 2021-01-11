@@ -70,7 +70,7 @@ public class Enemy : MonoBehaviour
 
     public GameObject hitNumPrefab;
     public Transform dmgTextLoc;
-
+    public bool isCrushed;
 
     public virtual void Start()
     {
@@ -263,7 +263,11 @@ public class Enemy : MonoBehaviour
                 agent.speed = freezeWalkingSpeed;
             }
             hitCooldown = false;
-            StartCoroutine(Hit());
+            agent.speed = speed;
+            if(isCrushed == false)
+            {
+                StartCoroutine(Hit());
+            }
         }
     }
     public virtual void PlayTriggerSound(AudioSource source)
