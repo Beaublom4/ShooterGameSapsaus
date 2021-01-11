@@ -136,7 +136,7 @@ MonoBehaviour:
     normalChargeSpeed: 7
     normalTimeBetweenAttacks: 1.2
     spinHitDmg: 9
-    chargeDmg: 12
+    chargeDmg: 15
     shockWaveParticleDmg: 10
     spitTimes: 2
   enragedStats:
@@ -145,7 +145,7 @@ MonoBehaviour:
     enragedChargeSpeed: 10
     enragedTimeBetweenAttacks: 0.9
     spinHitDmg: 11
-    chargeDmg: 15
+    chargeDmg: 23
     shockWaveParticleDmg: 12
     spitTimes: 4
   madAFStats:
@@ -154,7 +154,7 @@ MonoBehaviour:
     madAFChargeSpeed: 12
     madAFTimeBetweenAttacks: 0.6
     spinHitDmg: 15
-    chargeDmg: 20
+    chargeDmg: 28
     shockWaveParticleDmg: 15
     spitTimes: 6
   speed: 5
@@ -202,6 +202,8 @@ MonoBehaviour:
   missionManager: {fileID: 0}
   healthManager: {fileID: 0}
   achievementScript: {fileID: 0}
+  movement: {fileID: 0}
+  mouseLook: {fileID: 0}
 --- !u!65 &4583719566458134809
 BoxCollider:
   m_ObjectHideFlags: 0

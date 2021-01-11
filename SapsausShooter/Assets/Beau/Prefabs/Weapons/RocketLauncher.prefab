@@ -176,6 +176,7 @@ MonoBehaviour:
   prefabSpawn: {fileID: 1768889955164937688}
   ammoInMag: 0
   shownBullet: {fileID: 4041440310381880165}
+  blueBalls: {fileID: 0}
 --- !u!1 &6401856437566022152
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,7 +218,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 572e9ecb62b1e634590914589285ba36, type: 2}
+      objectReference: {fileID: 2100000, guid: ec70c147764fbe545994061e2b1ac379, type: 2}
     - target: {fileID: 5911026457113378095, guid: 7e88a6247c41971428d2b097b5992f53,
         type: 3}
       propertyPath: m_Name
@@ -278,6 +279,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7992803053148497968, guid: 7e88a6247c41971428d2b097b5992f53,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 2256753116390511548, guid: 714eba6522313fe469e26e7daab611ca,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e88a6247c41971428d2b097b5992f53, type: 3}
 --- !u!4 &5791715690446810130 stripped
