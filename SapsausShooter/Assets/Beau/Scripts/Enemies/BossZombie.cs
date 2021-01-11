@@ -69,6 +69,12 @@ public class BossZombie : MonoBehaviour
     public GameObject ending;
 
     public AudioSource walk, spit, chargeHit, chargeLoop, shockWave, spin, battleMusic;
+
+    public float timeForAchievementMin;
+    public ShootAttack shootScript;
+    public MissionManager missionManager;
+    public HealthManager healthManager;
+    public AchievementPopUp achievementScript;
     private void Start()
     {
         ChangeStats(normalStats.normalSpeed, normalStats.normalChargeSpeed, normalStats.normalTimeBetweenAttacks, normalStats.spinHitDmg, normalStats.chargeDmg, normalStats.shockWaveParticleDmg, normalStats.spitTimes);
@@ -150,13 +156,47 @@ public class BossZombie : MonoBehaviour
         bossHealthPercentage.text = ((bossHealth / bossHealthBar.maxValue) * 100).ToString("F0") + "%";
         if (bossHealth <= 0)
         {
+            isDead = true;
             bossHealth = 0;
             bossHealthBar.value = bossHealth;
             bossHealthPercentage.text = ((bossHealth / bossHealthBar.maxValue) * 100).ToString("F0") + "%";
 
+            if(healthManager.deaths == 0)
+            {
+                achievementScript.ShowAchievement(0);
+                PlayerPrefs.SetInt("WinWithoutDying", 1);
+            }
+            if(missionManager.killCount == 0)
+            {
+                achievementScript.ShowAchievement(1);
+                PlayerPrefs.SetInt("WinWithoutKilling", 1);
+            }
+            if(timeForAchievementMin * 60 >= Time.timeSinceLevelLoad)
+            {
+                achievementScript.ShowAchievement(2);
+                PlayerPrefs.SetInt("WinUnderMinutes", 1);
+            }
+            if(healthManager.hasTakenDmg == false)
+            {
+                achievementScript.ShowAchievement(4);
+                PlayerPrefs.SetInt("WinWithoutTakingDamage", 1);
+            }
+            if(missionManager.smallKillChallange == true && missionManager.mediumKillChallange == true && missionManager.bigKillChallange == true)
+            {
+                achievementScript.ShowAchievement(6);
+                PlayerPrefs.SetInt("FinishAllChallanges", 1);
+            }
+            if(shootScript.hasShoot == false)
+            {
+                achievementScript.ShowAchievement(7);
+                PlayerPrefs.SetInt("OnlyUseMelee", 1);
+            }
+            
+            achievementScript.ShowAchievement(5);
+            PlayerPrefs.SetInt("KillRufus", 1);
+
             battleMusic.Stop();
             bossDead.StartSound();
-            isDead = true;
             ending.SetActive(true);
             agent.speed = 0;
             agent.velocity = Vector3.zero;

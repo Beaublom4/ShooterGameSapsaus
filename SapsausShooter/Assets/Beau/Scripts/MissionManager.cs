@@ -29,6 +29,9 @@ public class MissionManager : MonoBehaviour
     public TextMeshProUGUI mainMissionInfoText, sideMission1InfoText;
     public MoneyManager moneyManagerScript;
 
+    public int allEnemiesInMap;
+    public bool hasRunned;
+    public AchievementPopUp achievementScript;
     public int killCount;
     public VoiceLineCol kills;
 
@@ -53,6 +56,8 @@ public class MissionManager : MonoBehaviour
     public int killAmount, currentKillAmount;
     int moneyAmount;
     public GameObject saveAndQuit;
+
+    public bool smallKillChallange, mediumKillChallange, bigKillChallange;
 
     private void Start()
     {
@@ -95,6 +100,20 @@ public class MissionManager : MonoBehaviour
                 currentSideMission = -1;
                 timeLeft = 0;
                 moneyManagerScript.GetMoney(moneyAmount);
+
+                if (killAmount == 5)
+                {
+                    smallKillChallange = true;
+                }
+                else if (killAmount == 10)
+                {
+                    mediumKillChallange = true;
+                }
+                else if (killAmount == 25)
+                {
+                    bigKillChallange = true;
+                }
+
                 StartCoroutine(SelectSideMission());
                 currentKillAmount = 0;
             }
@@ -216,6 +235,12 @@ public class MissionManager : MonoBehaviour
         if(killCount >= 30)
         {
             kills.StartSound();
+        }
+        if(killCount >= allEnemiesInMap || hasRunned == false)
+        {
+            hasRunned = true;
+            achievementScript.ShowAchievement(3);
+            PlayerPrefs.SetInt("KillAllZombies", 1);
         }
     }
 }

@@ -13,6 +13,7 @@ public class HealthManager : MonoBehaviour
     public Animator anim;
     public Animator hudAnim;
     public int deaths;
+    public bool hasTakenDmg;
 
     public GameObject mainCam;
     public float camMoveSpeed, camRotateSpeed;
@@ -43,7 +44,8 @@ public class HealthManager : MonoBehaviour
         {
             health -= damage;
             hudAnim.SetTrigger("ShakeScreen");
-            if(health <= 20)
+            hasTakenDmg = true;
+            if (health <= 20)
             {
                 hpIsLow.StartSound();
             }

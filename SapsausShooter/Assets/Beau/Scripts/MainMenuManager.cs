@@ -24,9 +24,9 @@ public class MainMenuManager : MonoBehaviour
         public Toggle timerToggle;
         public TMP_Dropdown resDropdown;
     }
-    public GameObject mainMenuPanel, optionsPanel, exitGamePanel;
-    public GameObject mainCamPos, optionsCamPos, exitGameCamPos;
-    public GameObject mainCamLookAt, optionsCamLookAt, exitGameLookAt;
+    public GameObject mainMenuPanel, optionsPanel, exitGamePanel, achievementPanel;
+    public GameObject mainCamPos, optionsCamPos, exitGameCamPos, achievementCamPos;
+    public GameObject mainCamLookAt, optionsCamLookAt, exitGameLookAt, achievementLookAt;
 
 
     public GameObject cam;
@@ -199,6 +199,15 @@ public class MainMenuManager : MonoBehaviour
 
         wantedPos = mainCamPos.transform;
         wantedLookAt = mainCamLookAt.transform;
+        moveToPos = true;
+    }
+    public void Achievements()
+    {
+        DisableAllPanels();
+        achievementPanel.SetActive(true);
+
+        wantedPos = achievementCamPos.transform;
+        wantedLookAt = achievementLookAt.transform;
         moveToPos = true;
     }
 

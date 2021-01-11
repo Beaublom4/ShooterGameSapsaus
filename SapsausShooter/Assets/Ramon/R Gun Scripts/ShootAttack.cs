@@ -70,6 +70,7 @@ public class ShootAttack : MonoBehaviour
     IEnumerator recoilCooldown;
 
     public Transform scatteringObj;
+    public bool hasShoot;
     void Start()
     {
         //currentMagCount = weapon.magCount;
@@ -411,6 +412,7 @@ public class ShootAttack : MonoBehaviour
         }
 
         anim.SetTrigger("Shoot");
+        hasShoot = true;
 
         if (weapon.weaponPrefab.GetComponent<GunScript>().weapon.gunType == "Pistol")
         {
