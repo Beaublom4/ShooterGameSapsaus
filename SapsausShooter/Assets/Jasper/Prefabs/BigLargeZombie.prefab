@@ -1420,8 +1420,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c38d4379f4bda3f4e882ac7ee24f68b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  health: 100
+  speed: 2
+  health: 1000
   damage: 20
   hitBox: {fileID: 6097149252553585105}
   anim: {fileID: 3814596896682437460}
@@ -1449,7 +1449,7 @@ MonoBehaviour:
     death: {fileID: 599186952682182129}
     walk: {fileID: 6999092169395662333}
     gettingFreezed: {fileID: 6307147396632741238}
-  chanceDrop: 20
+  chanceDrop: 70
   chanceDubbleDrop: 5
   ammoDrops:
   - {fileID: 5052875826255277196, guid: 3f7474d993aa995438b5cd2c54cadc25, type: 3}
@@ -1459,8 +1459,8 @@ MonoBehaviour:
   - {fileID: 669375285450597423, guid: c31da346040480e458b0b50f2a91ceae, type: 3}
   - {fileID: 8959282217942888637, guid: c437315f83f584d4ab3dcbcbf66d280d, type: 3}
   ammoDropLoc: {fileID: 2788436286956380912}
-  minDropAmount: 3
-  maxDropAmount: 96
+  minDropAmount: 40
+  maxDropAmount: 120
   moneyDropPrefab: {fileID: 2030928626577662909, guid: 446e29ffe71723b4db774c3d271eb33d,
     type: 3}
   isBigZombie: 1
@@ -1497,6 +1497,7 @@ MonoBehaviour:
   hitNumPrefab: {fileID: 3314747878335242109, guid: 8c6b2080012d1a048870d88718b62e11,
     type: 3}
   dmgTextLoc: {fileID: 5934871733977461249}
+  isCrushed: 0
   bigZombie: {fileID: 3225309657445313045, guid: b19454070a0ea164fac569d39e410b3b,
     type: 3}
   wantedEnemiesInRange: 7
@@ -1508,6 +1509,9 @@ MonoBehaviour:
   mergeVolume: 0.5
   mergeChange: 0.1
   merge: {fileID: 271191194205724501}
+  hittableLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!135 &4290842599087109683
 SphereCollider:
   m_ObjectHideFlags: 0

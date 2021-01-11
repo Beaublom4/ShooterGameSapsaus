@@ -4711,10 +4711,11 @@ MonoBehaviour:
   - {fileID: 669375285450597423, guid: c31da346040480e458b0b50f2a91ceae, type: 3}
   - {fileID: 8959282217942888637, guid: c437315f83f584d4ab3dcbcbf66d280d, type: 3}
   ammoDropLoc: {fileID: 7131556904433610979}
-  minDropAmount: 100
-  maxDropAmount: 100
+  minDropAmount: 1
+  maxDropAmount: 15
   moneyDropPrefab: {fileID: 2030928626577662909, guid: 446e29ffe71723b4db774c3d271eb33d,
     type: 3}
+  isBigZombie: 0
   canMutateToBigZomb: 0
   countTowardsBigZomb: 0
   addedToList: 0
@@ -4750,6 +4751,7 @@ MonoBehaviour:
   hitNumPrefab: {fileID: 3314747878335242109, guid: 8c6b2080012d1a048870d88718b62e11,
     type: 3}
   dmgTextLoc: {fileID: 4891122109516395545}
+  isCrushed: 0
   babyZombiePrefab: {fileID: 3134128508045663271, guid: f5e9294b5d704ff4f8e26dfa98897ca9,
     type: 3}
   carriedBaby: {fileID: 278890346001869127}

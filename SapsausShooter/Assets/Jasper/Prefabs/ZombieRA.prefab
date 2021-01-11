@@ -2755,7 +2755,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cf3ea64f27a19149b2a30bb5d5f2558, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.8
+  speed: 2.4
   health: 200
   damage: 6
   hitBox: {fileID: 4342904933359717042}
@@ -2796,6 +2796,7 @@ MonoBehaviour:
   maxDropAmount: 50
   moneyDropPrefab: {fileID: 2030928626577662909, guid: 446e29ffe71723b4db774c3d271eb33d,
     type: 3}
+  isBigZombie: 0
   canMutateToBigZomb: 0
   countTowardsBigZomb: 0
   addedToList: 0
@@ -2829,6 +2830,7 @@ MonoBehaviour:
   hitNumPrefab: {fileID: 3314747878335242109, guid: 8c6b2080012d1a048870d88718b62e11,
     type: 3}
   dmgTextLoc: {fileID: 2384711653583139493}
+  isCrushed: 0
   playerInRange: 0
   timer: 0
   addTimeToTimer: 2

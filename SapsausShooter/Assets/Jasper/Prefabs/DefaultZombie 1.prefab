@@ -2757,9 +2757,10 @@ MonoBehaviour:
   - {fileID: 8959282217942888637, guid: c437315f83f584d4ab3dcbcbf66d280d, type: 3}
   ammoDropLoc: {fileID: 8990664997495398597}
   minDropAmount: 1
-  maxDropAmount: 30
+  maxDropAmount: 20
   moneyDropPrefab: {fileID: 2030928626577662909, guid: 446e29ffe71723b4db774c3d271eb33d,
     type: 3}
+  isBigZombie: 0
   canMutateToBigZomb: 1
   countTowardsBigZomb: 0
   addedToList: 0
@@ -2793,6 +2794,7 @@ MonoBehaviour:
   hitNumPrefab: {fileID: 3314747878335242109, guid: 8c6b2080012d1a048870d88718b62e11,
     type: 3}
   dmgTextLoc: {fileID: 588599689635688500}
+  isCrushed: 0
   bigZombie: {fileID: 4049090637509514779, guid: b9812abbdd3d2384ba358a71ca1338ab,
     type: 3}
   wantedEnemiesInRange: 7
@@ -2804,6 +2806,9 @@ MonoBehaviour:
   mergeVolume: 0.5
   mergeChange: 0.1
   merge: {fileID: 3415984240524245313}
+  hittableLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!135 &7060488308705145862
 SphereCollider:
   m_ObjectHideFlags: 0
