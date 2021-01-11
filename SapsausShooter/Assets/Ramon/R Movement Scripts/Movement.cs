@@ -31,6 +31,7 @@ public class Movement : MonoBehaviour
     Vector3 move;
     Vector3 velocity;
     bool isGrounded;
+    bool isJumping;
 
     bool playWalkingSound;
     public float stepTimerTime;
@@ -54,6 +55,11 @@ public class Movement : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position, new Vector3(0, -groundDistance, 0), out hit, groundDistance , groundMask, QueryTriggerInteraction.Ignore))
         {
+            if(isJumping == true)
+            {
+                isJumping = false;
+                playerAnimation.SetBool("Jumping", false);
+            }
             isGrounded = true;
         }
         else if(isGrounded == true)
@@ -114,7 +120,8 @@ public class Movement : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
-            canPlayLandingSound = false;
+            Invoke("Gay", .2f);
+            playerAnimation.SetBool("Jumping", true);
 
             velocity.y = Mathf.Sqrt(jumpHeight = -2f * gravity);
 
@@ -126,6 +133,10 @@ public class Movement : MonoBehaviour
         {
             return;
         }
+    }
+    void Gay()
+    {
+        isJumping = true;
     }
     public void WalkSound()
     {
