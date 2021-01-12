@@ -26,7 +26,12 @@ public class Ending : MonoBehaviour
             panel.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            Time.timeScale = 0;
+            Invoke("SetTime", 3);
         }
+    }
+    void SetTime()
+    {
+        Time.timeScale = 0;
+        
     }
 }
