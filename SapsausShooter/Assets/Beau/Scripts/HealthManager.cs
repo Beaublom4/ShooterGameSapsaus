@@ -98,6 +98,8 @@ public class HealthManager : MonoBehaviour
 
         yield return new WaitForSeconds(0.00001f);
 
+        gameObject.transform.position = spawnLoc;
+
         health = healthSlider.maxValue;
         UpdateNumber();
         anim.SetTrigger("Respawn");
