@@ -138,7 +138,7 @@ MonoBehaviour:
     normalTimeBetweenAttacks: 1.2
     spinHitDmg: 20
     chargeDmg: 15
-    shockWaveParticleDmg: 10
+    shockWaveParticleDmg: 3
     spitTimes: 2
   enragedStats:
     wantedHealthPercentage: 50
@@ -147,7 +147,7 @@ MonoBehaviour:
     enragedTimeBetweenAttacks: 0.9
     spinHitDmg: 25
     chargeDmg: 23
-    shockWaveParticleDmg: 12
+    shockWaveParticleDmg: 6
     spitTimes: 4
   madAFStats:
     wantedHealthPercentage: 20
@@ -156,7 +156,7 @@ MonoBehaviour:
     madAFTimeBetweenAttacks: 0.6
     spinHitDmg: 35
     chargeDmg: 28
-    shockWaveParticleDmg: 15
+    shockWaveParticleDmg: 9
     spitTimes: 6
   speed: 5
   chargeSpeed: 10
@@ -764,6 +764,12 @@ PrefabInstance:
       propertyPath: MaxDistance
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 5088270872346481140, guid: 29640df6c869b9a4da8428a134de09c8,
+        type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -2013101532435762767, guid: d1567cd5055296547b550833238b7a58,
+        type: 2}
     - target: {fileID: 5373187367045418493, guid: 29640df6c869b9a4da8428a134de09c8,
         type: 3}
       propertyPath: MaxDistance
