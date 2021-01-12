@@ -81,6 +81,7 @@ public class HealthManager : MonoBehaviour
     public void Respawn()
     {
         Time.timeScale = 1;
+        gameObject.transform.position = spawnLoc;
         firstRespawn.StartSound();
         deaths++;
 
