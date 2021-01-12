@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: WeaponPart
-  m_Shader: {fileID: -6465566751694194690, guid: 04e9beef41041f3429cf012d1cb33e0c,
+  m_Name: BossBeam
+  m_Shader: {fileID: -6465566751694194690, guid: 5e11c1aced593344a9ad669ad0022a45,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -22,5 +22,5 @@ Material:
     m_TexEnvs: []
     m_Floats: []
     m_Colors:
-    - Color_1C370665: {r: 0, g: 0.5834622, b: 0.7053244, a: 0}
+    - Color_1C370665: {r: 4, g: 0.2509804, b: 0, a: 0}
   m_BuildTextureStacks: []

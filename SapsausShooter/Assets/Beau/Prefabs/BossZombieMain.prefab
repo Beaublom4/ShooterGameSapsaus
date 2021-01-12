@@ -135,7 +135,7 @@ MonoBehaviour:
     normalSpeed: 5
     normalChargeSpeed: 7
     normalTimeBetweenAttacks: 1.2
-    spinHitDmg: 9
+    spinHitDmg: 20
     chargeDmg: 15
     shockWaveParticleDmg: 10
     spitTimes: 2
@@ -144,7 +144,7 @@ MonoBehaviour:
     enragedSpeed: 8
     enragedChargeSpeed: 10
     enragedTimeBetweenAttacks: 0.9
-    spinHitDmg: 11
+    spinHitDmg: 25
     chargeDmg: 23
     shockWaveParticleDmg: 12
     spitTimes: 4
@@ -153,7 +153,7 @@ MonoBehaviour:
     madAFSpeed: 8
     madAFChargeSpeed: 12
     madAFTimeBetweenAttacks: 0.6
-    spinHitDmg: 15
+    spinHitDmg: 35
     chargeDmg: 28
     shockWaveParticleDmg: 15
     spitTimes: 6
@@ -181,7 +181,7 @@ MonoBehaviour:
   isBiteAttacking: 0
   isSpinAttacking: 0
   lookAtPlayer: 0
-  bossHealth: 4000
+  bossHealth: 7000
   bossHealthBarObj: {fileID: 0}
   bossHealthBar: {fileID: 0}
   bossHealthPercentage: {fileID: 0}

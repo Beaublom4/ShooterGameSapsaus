@@ -21235,6 +21235,75 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1851c62b29f7fde478645eee611d5686, type: 3}
+--- !u!1001 &4249218172977814806
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6934759819370259655, guid: 43a47f1ab858854449ed73a166c9280f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6934759819370259655, guid: 43a47f1ab858854449ed73a166c9280f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 175.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6934759819370259655, guid: 43a47f1ab858854449ed73a166c9280f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6934759819370259655, guid: 43a47f1ab858854449ed73a166c9280f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6934759819370259655, guid: 43a47f1ab858854449ed73a166c9280f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6934759819370259655, guid: 43a47f1ab858854449ed73a166c9280f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6934759819370259655, guid: 43a47f1ab858854449ed73a166c9280f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6934759819370259655, guid: 43a47f1ab858854449ed73a166c9280f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 6934759819370259655, guid: 43a47f1ab858854449ed73a166c9280f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6934759819370259655, guid: 43a47f1ab858854449ed73a166c9280f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6934759819370259655, guid: 43a47f1ab858854449ed73a166c9280f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6934759819370259659, guid: 43a47f1ab858854449ed73a166c9280f,
+        type: 3}
+      propertyPath: m_Name
+      value: DogBeam
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 43a47f1ab858854449ed73a166c9280f, type: 3}
 --- !u!1001 &4371823488612702239
 PrefabInstance:
   m_ObjectHideFlags: 0
