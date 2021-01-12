@@ -112,7 +112,7 @@ public class MainMenuManager : MonoBehaviour
     {
         if(inGame == true)
         {
-            if (Input.GetButtonDown("Cancel") && deathPanel)
+            if (Input.GetButtonDown("Cancel") && deathPanel.activeSelf == false)
             {
                 if (optionsPanelObj.activeSelf == false)
                 {

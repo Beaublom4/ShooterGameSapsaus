@@ -12,17 +12,14 @@ public class HitBoxMelee : MonoBehaviour
             if (meleeWeapon != null)
             {
                 other.GetComponentInParent<Enemy>().DoDamage(meleeWeapon, 2, new Vector3(other.transform.position.x, other.transform.position.y + 1, other.transform.position.z));
-
-                other.GetComponentInParent<Enemy>().isAttacking = false;
-                other.GetComponentInParent<NavMeshAgent>().enabled = !enabled;
-                other.GetComponentInParent<Rigidbody>().constraints = RigidbodyConstraints.None;
-                other.GetComponentInParent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
-                other.GetComponentInParent<Rigidbody>().AddRelativeForce(Vector3.back * meleeWeapon.knockBack);
-                StartCoroutine(ResetKnockBack(other.gameObject));
             }
-            else
+        }
+        if(other.gameObject.tag == "BossHitBox")
+        {
+            if (meleeWeapon != null)
             {
-                print("No melee weapon assigned");
+                print(meleeWeapon.damage);
+                other.GetComponentInParent<BossZombie>().GetDamage(meleeWeapon, 2, new Vector3(0, -100, 0));
             }
         }
     }
