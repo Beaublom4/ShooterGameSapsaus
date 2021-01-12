@@ -25,6 +25,7 @@ public class HealthManager : MonoBehaviour
     public VoiceLineCol firstRespawn, hpIsLow;
     public List<GameObject> areasTriggered = new List<GameObject>();
     public Vector3 spawnLoc;
+    public ChangeSpot spotScipt;
     private void Start()
     {
         spawnLoc = spawnPoint.position;
@@ -80,7 +81,7 @@ public class HealthManager : MonoBehaviour
     IEnumerator coroutine;
     public void Respawn()
     {
-        gameObject.transform.position = spawnLoc;
+        spotScipt.Change();
         firstRespawn.StartSound();
         deaths++;
 
