@@ -80,7 +80,6 @@ public class HealthManager : MonoBehaviour
     IEnumerator coroutine;
     public void Respawn()
     {
-        Time.timeScale = 1;
         gameObject.transform.position = spawnLoc;
         firstRespawn.StartSound();
         deaths++;
@@ -94,14 +93,6 @@ public class HealthManager : MonoBehaviour
     }
     IEnumerator InvisableFrames()
     {
-        gameObject.transform.position = spawnLoc;
-
-        yield return new WaitForSeconds(0.00001f);
-
-        gameObject.transform.position = spawnLoc;
-        print(spawnLoc);
-        print(gameObject.transform.position);
-
         health = healthSlider.maxValue;
         UpdateNumber();
         anim.SetTrigger("Respawn");
@@ -111,6 +102,8 @@ public class HealthManager : MonoBehaviour
         GetComponentInChildren<MouseLook>().enabled = enabled;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        Time.timeScale = 1;
 
         yield return new WaitForSeconds(5);
 
