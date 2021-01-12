@@ -99,6 +99,8 @@ public class HealthManager : MonoBehaviour
         yield return new WaitForSeconds(0.00001f);
 
         gameObject.transform.position = spawnLoc;
+        print(spawnLoc);
+        print(gameObject.transform.position);
 
         health = healthSlider.maxValue;
         UpdateNumber();
