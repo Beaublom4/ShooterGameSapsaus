@@ -649,6 +649,7 @@ MonoBehaviour:
   anim: {fileID: 0}
   hudAnim: {fileID: 0}
   deaths: 0
+  hasTakenDmg: 0
   mainCam: {fileID: 896554098131706639}
   camMoveSpeed: 0.1
   camRotateSpeed: 2
@@ -791,6 +792,7 @@ MonoBehaviour:
   recoilObj: {fileID: 1464542826873379567}
   recoilResetTime: 0.5
   scatteringObj: {fileID: 4716097358563218485}
+  hasShoot: 0
 --- !u!114 &995829965692537576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2517,6 +2519,7 @@ MonoBehaviour:
   enemies: []
   timer: 1
   ableToDoShit: 0
+  weaponScript: {fileID: 0}
 --- !u!1 &5256586979065381243
 GameObject:
   m_ObjectHideFlags: 0
