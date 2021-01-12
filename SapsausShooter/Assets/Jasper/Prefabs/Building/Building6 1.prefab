@@ -94,12 +94,17 @@ PrefabInstance:
     - target: {fileID: 7936998372772320586, guid: d64c38c4f43ea8045a905e79e3471e57,
         type: 3}
       propertyPath: m_CastShadows
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8441185546417288351, guid: d64c38c4f43ea8045a905e79e3471e57,
         type: 3}
       propertyPath: m_Name
       value: Block5Brown
+      objectReference: {fileID: 0}
+    - target: {fileID: 8441185546417288351, guid: d64c38c4f43ea8045a905e79e3471e57,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9110444682460884517, guid: d64c38c4f43ea8045a905e79e3471e57,
         type: 3}
@@ -189,7 +194,7 @@ PrefabInstance:
     - target: {fileID: 7294412089039706109, guid: 277e890ab73cb5d42b39868b7409e9ad,
         type: 3}
       propertyPath: m_CastShadows
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8462784840030825618, guid: 277e890ab73cb5d42b39868b7409e9ad,
         type: 3}
@@ -266,6 +271,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: _oorWood (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 9095592662167811624, guid: 277e890ab73cb5d42b39868b7409e9ad,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 277e890ab73cb5d42b39868b7409e9ad, type: 3}
 --- !u!4 &3277780040121476196 stripped
@@ -284,7 +294,7 @@ PrefabInstance:
     - target: {fileID: 5034833994474818461, guid: 5c3602b1a8ea8314aa6feade7779613d,
         type: 3}
       propertyPath: m_CastShadows
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6166692376353206514, guid: 5c3602b1a8ea8314aa6feade7779613d,
         type: 3}
@@ -361,6 +371,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WindowBrokenLp (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 6836374794491144776, guid: 5c3602b1a8ea8314aa6feade7779613d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c3602b1a8ea8314aa6feade7779613d, type: 3}
 --- !u!4 &979713677449149107 stripped
@@ -379,7 +394,7 @@ PrefabInstance:
     - target: {fileID: 5034833994474818461, guid: 5c3602b1a8ea8314aa6feade7779613d,
         type: 3}
       propertyPath: m_CastShadows
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6166692376353206514, guid: 5c3602b1a8ea8314aa6feade7779613d,
         type: 3}
@@ -456,6 +471,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WindowBrokenLp (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 6836374794491144776, guid: 5c3602b1a8ea8314aa6feade7779613d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c3602b1a8ea8314aa6feade7779613d, type: 3}
 --- !u!4 &979713678852100135 stripped
@@ -475,6 +495,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: _oofTopTri
+      objectReference: {fileID: 0}
+    - target: {fileID: 2475482302187718562, guid: c9bc98677cd51e547b7555d91bc97d4e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2959285678889377048, guid: c9bc98677cd51e547b7555d91bc97d4e,
         type: 3}
@@ -549,7 +574,7 @@ PrefabInstance:
     - target: {fileID: 4132706291787622007, guid: c9bc98677cd51e547b7555d91bc97d4e,
         type: 3}
       propertyPath: m_CastShadows
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9bc98677cd51e547b7555d91bc97d4e, type: 3}
@@ -641,10 +666,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: WindowRoundDoored (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 3019099443792514065, guid: 7a1e554ad91942141aa9ef60a6347a56,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3667340233067376068, guid: 7a1e554ad91942141aa9ef60a6347a56,
         type: 3}
       propertyPath: m_CastShadows
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a1e554ad91942141aa9ef60a6347a56, type: 3}
@@ -664,7 +694,7 @@ PrefabInstance:
     - target: {fileID: 5034833994474818461, guid: 5c3602b1a8ea8314aa6feade7779613d,
         type: 3}
       propertyPath: m_CastShadows
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6166692376353206514, guid: 5c3602b1a8ea8314aa6feade7779613d,
         type: 3}
@@ -740,6 +770,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WindowBrokenLp (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6836374794491144776, guid: 5c3602b1a8ea8314aa6feade7779613d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c3602b1a8ea8314aa6feade7779613d, type: 3}
@@ -831,10 +866,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: _indowRound (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5302122496473873007, guid: 28858225039e59244b37c3c4e471dc90,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5950398744322186170, guid: 28858225039e59244b37c3c4e471dc90,
         type: 3}
       propertyPath: m_CastShadows
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28858225039e59244b37c3c4e471dc90, type: 3}
@@ -926,10 +966,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Block1Brown
       objectReference: {fileID: 0}
+    - target: {fileID: 5575302325484780075, guid: 57aa90903177e91449eee2395e3b7798,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6223851115449048062, guid: 57aa90903177e91449eee2395e3b7798,
         type: 3}
       propertyPath: m_CastShadows
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57aa90903177e91449eee2395e3b7798, type: 3}

@@ -168,10 +168,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Block3Blue
       objectReference: {fileID: 0}
+    - target: {fileID: 5719830423431388168, guid: 25967b0808e6503409396369559e6e05,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6079884816364748253, guid: 25967b0808e6503409396369559e6e05,
         type: 3}
       propertyPath: m_CastShadows
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25967b0808e6503409396369559e6e05, type: 3}
@@ -191,7 +196,7 @@ PrefabInstance:
     - target: {fileID: 2853011455587535301, guid: 8c12db9c3eb41204dbb9e47997765d13,
         type: 3}
       propertyPath: m_CastShadows
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4025305545810752170, guid: 8c12db9c3eb41204dbb9e47997765d13,
         type: 3}
@@ -253,6 +258,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: _oorWood (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4365978969817081872, guid: 8c12db9c3eb41204dbb9e47997765d13,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c12db9c3eb41204dbb9e47997765d13, type: 3}
 --- !u!4 &3375646681845413065 stripped
@@ -271,12 +281,17 @@ PrefabInstance:
     - target: {fileID: 7739288007064653679, guid: 680d771daafcc8442adb148105f97936,
         type: 3}
       propertyPath: m_CastShadows
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8099588690653228730, guid: 680d771daafcc8442adb148105f97936,
         type: 3}
       propertyPath: m_Name
       value: WindowRoundDoored (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8099588690653228730, guid: 680d771daafcc8442adb148105f97936,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8875563165943362560, guid: 680d771daafcc8442adb148105f97936,
         type: 3}
@@ -353,6 +368,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: _oofTopFlat
       objectReference: {fileID: 0}
+    - target: {fileID: 156087550831531951, guid: 3054a4ddfb4907f40bc181c931f1f01b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 675918590429154581, guid: 3054a4ddfb4907f40bc181c931f1f01b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -426,7 +446,7 @@ PrefabInstance:
     - target: {fileID: 1813390154455529082, guid: 3054a4ddfb4907f40bc181c931f1f01b,
         type: 3}
       propertyPath: m_CastShadows
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3054a4ddfb4907f40bc181c931f1f01b, type: 3}
@@ -446,12 +466,17 @@ PrefabInstance:
     - target: {fileID: 615876750759960166, guid: e54cac324ae3e9c44a55e9f127da2e12,
         type: 3}
       propertyPath: m_CastShadows
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1408769976924880819, guid: e54cac324ae3e9c44a55e9f127da2e12,
         type: 3}
       propertyPath: m_Name
       value: _oorWood
+      objectReference: {fileID: 0}
+    - target: {fileID: 1408769976924880819, guid: e54cac324ae3e9c44a55e9f127da2e12,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1785435878955934985, guid: e54cac324ae3e9c44a55e9f127da2e12,
         type: 3}
@@ -526,12 +551,17 @@ PrefabInstance:
     - target: {fileID: 7739288007064653679, guid: 680d771daafcc8442adb148105f97936,
         type: 3}
       propertyPath: m_CastShadows
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8099588690653228730, guid: 680d771daafcc8442adb148105f97936,
         type: 3}
       propertyPath: m_Name
       value: WindowRoundDoored (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8099588690653228730, guid: 680d771daafcc8442adb148105f97936,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8875563165943362560, guid: 680d771daafcc8442adb148105f97936,
         type: 3}
@@ -678,10 +708,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: _indowRound (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 578279919288934507, guid: 10caac7c412c746459ddc5e673e4b6dd,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1370935925334000062, guid: 10caac7c412c746459ddc5e673e4b6dd,
         type: 3}
       propertyPath: m_CastShadows
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10caac7c412c746459ddc5e673e4b6dd, type: 3}
@@ -702,6 +737,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GolfPlaatHut
+      objectReference: {fileID: 0}
+    - target: {fileID: 91012812225645712, guid: 5c732839316c36b4fa8df9ad89bfa5ce,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 722976205334664746, guid: 5c732839316c36b4fa8df9ad89bfa5ce,
         type: 3}
@@ -776,7 +816,7 @@ PrefabInstance:
     - target: {fileID: 1892545227929398597, guid: 5c732839316c36b4fa8df9ad89bfa5ce,
         type: 3}
       propertyPath: m_CastShadows
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c732839316c36b4fa8df9ad89bfa5ce, type: 3}
@@ -796,12 +836,17 @@ PrefabInstance:
     - target: {fileID: 7739288007064653679, guid: 680d771daafcc8442adb148105f97936,
         type: 3}
       propertyPath: m_CastShadows
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8099588690653228730, guid: 680d771daafcc8442adb148105f97936,
         type: 3}
       propertyPath: m_Name
       value: WindowRoundDoored (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8099588690653228730, guid: 680d771daafcc8442adb148105f97936,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8875563165943362560, guid: 680d771daafcc8442adb148105f97936,
         type: 3}
@@ -876,7 +921,7 @@ PrefabInstance:
     - target: {fileID: 7382104902007436663, guid: 91626c9267d985a4e9eac274e2ff22bb,
         type: 3}
       propertyPath: m_CastShadows
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8519031036192837144, guid: 91626c9267d985a4e9eac274e2ff22bb,
         type: 3}
@@ -953,6 +998,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Block5Blue
       objectReference: {fileID: 0}
+    - target: {fileID: 9039425098410169506, guid: 91626c9267d985a4e9eac274e2ff22bb,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91626c9267d985a4e9eac274e2ff22bb, type: 3}
 --- !u!4 &8015803995256865913 stripped
@@ -971,12 +1021,17 @@ PrefabInstance:
     - target: {fileID: 7739288007064653679, guid: 680d771daafcc8442adb148105f97936,
         type: 3}
       propertyPath: m_CastShadows
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8099588690653228730, guid: 680d771daafcc8442adb148105f97936,
         type: 3}
       propertyPath: m_Name
       value: WindowRoundDoored (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8099588690653228730, guid: 680d771daafcc8442adb148105f97936,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8875563165943362560, guid: 680d771daafcc8442adb148105f97936,
         type: 3}

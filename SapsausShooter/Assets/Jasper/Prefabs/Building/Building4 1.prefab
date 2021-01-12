@@ -60,7 +60,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &3549435385068599171
 Transform:
@@ -92,7 +92,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3549435383947408152}
   m_Enabled: 1
-  m_CastShadows: 2
+  m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
@@ -141,7 +141,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &3549435384084754960
 Transform:
@@ -173,7 +173,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3549435385023775004}
   m_Enabled: 1
-  m_CastShadows: 2
+  m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
@@ -222,7 +222,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &3549435385411089662
 Transform:
@@ -254,7 +254,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3549435385411089659}
   m_Enabled: 1
-  m_CastShadows: 2
+  m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
@@ -439,10 +439,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: WindowRoundDoored (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 3019099443792514065, guid: 7a1e554ad91942141aa9ef60a6347a56,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3667340233067376068, guid: 7a1e554ad91942141aa9ef60a6347a56,
         type: 3}
       propertyPath: m_CastShadows
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a1e554ad91942141aa9ef60a6347a56, type: 3}
@@ -462,7 +467,7 @@ PrefabInstance:
     - target: {fileID: 307050316733791596, guid: a203e1c52d610b848aa8a14cc1e7cb7a,
         type: 3}
       propertyPath: m_CastShadows
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1443949580797953539, guid: a203e1c52d610b848aa8a14cc1e7cb7a,
         type: 3}
@@ -524,6 +529,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WindowSingledooredBroken (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 2252398853573123257, guid: a203e1c52d610b848aa8a14cc1e7cb7a,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a203e1c52d610b848aa8a14cc1e7cb7a, type: 3}
 --- !u!4 &2687471208394282658 stripped
@@ -542,7 +552,7 @@ PrefabInstance:
     - target: {fileID: 2661699364955521680, guid: 59f4c075ac9f134488caed15c679f131,
         type: 3}
       propertyPath: m_CastShadows
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3799751265904327167, guid: 59f4c075ac9f134488caed15c679f131,
         type: 3}
@@ -609,6 +619,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: _oorSimple (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4607390262696682309, guid: 59f4c075ac9f134488caed15c679f131,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59f4c075ac9f134488caed15c679f131, type: 3}
 --- !u!4 &430459943969666946 stripped
@@ -627,7 +642,7 @@ PrefabInstance:
     - target: {fileID: 307050316733791596, guid: a203e1c52d610b848aa8a14cc1e7cb7a,
         type: 3}
       propertyPath: m_CastShadows
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1443949580797953539, guid: a203e1c52d610b848aa8a14cc1e7cb7a,
         type: 3}
@@ -704,6 +719,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WindowSingledooredBroken (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2252398853573123257, guid: a203e1c52d610b848aa8a14cc1e7cb7a,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a203e1c52d610b848aa8a14cc1e7cb7a, type: 3}
 --- !u!4 &2687471207395845581 stripped
@@ -722,7 +742,7 @@ PrefabInstance:
     - target: {fileID: 7328614830245930400, guid: 073524bfa291ae1499c2d92bc67ba5c6,
         type: 3}
       propertyPath: m_CastShadows
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7328614830245930402, guid: 073524bfa291ae1499c2d92bc67ba5c6,
         type: 3}
@@ -799,6 +819,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: GarageYellow (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7328614830245930415, guid: 073524bfa291ae1499c2d92bc67ba5c6,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7328614830740411202, guid: 073524bfa291ae1499c2d92bc67ba5c6,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7328614831986062241, guid: 073524bfa291ae1499c2d92bc67ba5c6,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 073524bfa291ae1499c2d92bc67ba5c6, type: 3}
 --- !u!4 &6122178536819488090 stripped
@@ -874,10 +909,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: WindowRoundDoored (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3019099443792514065, guid: 7a1e554ad91942141aa9ef60a6347a56,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3667340233067376068, guid: 7a1e554ad91942141aa9ef60a6347a56,
         type: 3}
       propertyPath: m_CastShadows
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a1e554ad91942141aa9ef60a6347a56, type: 3}
