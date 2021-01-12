@@ -37,7 +37,7 @@ public class HealStation : MonoBehaviour
     }
     public void BuyHeal(GameObject player)
     {
-        if(moneyScript.money > priceHeal)
+        if(moneyScript.money > wantedPrice && healthScript.health < healthScript.healthSlider.maxValue)
         {
             moneyScript.DecreaseMoney((int)wantedPrice);
             priceHeal *= increaseNum;

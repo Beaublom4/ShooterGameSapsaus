@@ -24,8 +24,10 @@ public class HealthManager : MonoBehaviour
     public Transform spawnPoint;
     public VoiceLineCol firstRespawn, hpIsLow;
     public List<GameObject> areasTriggered = new List<GameObject>();
+    public Vector3 spawnLoc;
     private void Start()
     {
+        spawnLoc = spawnPoint.position;
         if (healthText != null)
         {
             healthSlider.maxValue = health;
@@ -91,7 +93,7 @@ public class HealthManager : MonoBehaviour
     }
     IEnumerator InvisableFrames()
     {
-        gameObject.transform.position = spawnPoint.position;
+        gameObject.transform.position = spawnLoc;
 
         yield return new WaitForSeconds(0.00001f);
 
