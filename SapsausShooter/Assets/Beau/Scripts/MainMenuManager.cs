@@ -59,7 +59,7 @@ public class MainMenuManager : MonoBehaviour
     public static float masterVolume = -1, soundVolume = -1, musicVolume = -1, footstepVolume= -1, voiceLineVolume = -1, sensitiviy = -1;
     public static bool loadGame;
 
-    public GameObject deathPanel;
+    public GameObject deathPanel, crossHairPanel, dotPanel;
 
     private void Start()
     {
@@ -284,6 +284,20 @@ public class MainMenuManager : MonoBehaviour
         {
             print("Windowed");
             Screen.fullScreenMode = FullScreenMode.Windowed;
+        }
+    }
+    public void CrossHairToggle(Toggle toggle)
+    {
+        if (toggle.isOn == true)
+        {
+            crossHairPanel.SetActive(true);
+            dotPanel.SetActive(false);
+
+        }
+        else if (toggle.isOn == false)
+        {
+            crossHairPanel.SetActive(false);
+            dotPanel.SetActive(true);
         }
     }
     public void ScreenResChange(TMP_Dropdown dropdown)

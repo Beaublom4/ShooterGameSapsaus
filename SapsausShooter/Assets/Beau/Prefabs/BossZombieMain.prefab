@@ -604,6 +604,11 @@ PrefabInstance:
       propertyPath: bossScript
       value: 
       objectReference: {fileID: 6019262791092362214}
+    - target: {fileID: 1271926520222148296, guid: 29640df6c869b9a4da8428a134de09c8,
+        type: 3}
+      propertyPath: bodyType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1878098670077109081, guid: 29640df6c869b9a4da8428a134de09c8,
         type: 3}
       propertyPath: MaxDistance
@@ -719,6 +724,11 @@ PrefabInstance:
       propertyPath: bossScript
       value: 
       objectReference: {fileID: 6019262791092362214}
+    - target: {fileID: 4290758744352538256, guid: 29640df6c869b9a4da8428a134de09c8,
+        type: 3}
+      propertyPath: bodyType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4483860117667669377, guid: 29640df6c869b9a4da8428a134de09c8,
         type: 3}
       propertyPath: m_Name
