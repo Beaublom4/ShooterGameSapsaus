@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
     public GameObject hitBox;
     public Animator anim;
     public Collider[] hitBoxes;
-    [HideInInspector]public bool isDeath;
+    public bool isDeath;
     public Sounds sounds;
     public GameObject freezeColObj;
 
@@ -402,7 +402,6 @@ public class Enemy : MonoBehaviour
     }
     public virtual IEnumerator Dead(int hitPoint)
     {
-        freezeColObj.SetActive(false);
         agent.speed = 0;
         agent.velocity = Vector3.zero;
         agent.enabled = !enabled;
@@ -431,8 +430,7 @@ public class Enemy : MonoBehaviour
             yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
         }
         yield return new WaitForSeconds(3);
-        if (freezeNum != 0)
-            yield return new WaitForSeconds(5);
+        //if (freezeNum == 0)
         Destroy(gameObject);
     }
     void Drop()
