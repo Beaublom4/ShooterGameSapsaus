@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7285211571143234242}
   - component: {fileID: 5959844255227829607}
   - component: {fileID: 8453654042471639469}
+  - component: {fileID: 959906884967067540}
   m_Layer: 0
   m_Name: _tatue
   m_TagString: Untagged
@@ -81,3 +82,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &959906884967067540
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7949299743379589240}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.9162533, y: 5.826271, z: 3.9394026}
+  m_Center: {x: 0, y: 2.9512572, z: 0}
