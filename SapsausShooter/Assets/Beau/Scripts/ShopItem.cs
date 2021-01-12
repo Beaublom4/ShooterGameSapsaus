@@ -15,6 +15,9 @@ public class ShopItem : MonoBehaviour
     public GameObject shopObject;
     public Sounds sounds;
     public Animator shopKeeper;
+    public bool isAmmo;
+    public int minAmmount, maxAmmount;
+    
 
     public GameObject canvas;
 
@@ -38,7 +41,13 @@ public class ShopItem : MonoBehaviour
         {
             shopKeeper.SetTrigger("Sold");
             moneyManagerScript.DecreaseMoney(price);
-            Instantiate(shopObject, transform.position, transform.rotation, null);
+            GameObject item = Instantiate(shopObject, transform.position, transform.rotation, null);
+            if(isAmmo == true)
+            {
+                item.GetComponent<AmmoPack>().minAmmo = minAmmount;
+                item.GetComponent<AmmoPack>().maxAmmo = maxAmmount;
+
+            }
             Destroy(gameObject);
         }
         else

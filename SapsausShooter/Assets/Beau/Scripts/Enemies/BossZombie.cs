@@ -53,6 +53,7 @@ public class BossZombie : MonoBehaviour
     MaterialPropertyBlock block;
     public float dissolvingNumber, freezeRenderNumber;
     public VoiceLineCol bossDead;
+    public GameObject dogBeam;
 
     public bool isBiteAttacking, isSpinAttacking, lookAtPlayer;
     NavMeshAgent agent;
@@ -159,6 +160,7 @@ public class BossZombie : MonoBehaviour
         bossHealthPercentage.text = ((bossHealth / bossHealthBar.maxValue) * 100).ToString("F0") + "%";
         if (bossHealth <= 0)
         {
+            dogBeam.SetActive(false);
             isDead = true;
             bossHealth = 0;
             bossHealthBar.value = bossHealth;
@@ -230,6 +232,7 @@ public class BossZombie : MonoBehaviour
     {
         if (hasRunned == false)
         {
+            dogBeam.SetActive(true);
             hasRunned = true;
             battleMusic.Play();
             bossHealthBarObj.SetActive(true);
