@@ -8,7 +8,7 @@ public class AchievementsManager : MonoBehaviour
 {
     public GameObject[] achievements;
     public Color gotColor;
-    private void Start()
+    private void OnEnable()
     {
         if (PlayerPrefs.GetInt("WinWithoutDying") == 1)
         {

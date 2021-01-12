@@ -409,4 +409,8 @@ public class MainMenuManager : MonoBehaviour
     {
         sounds.buttonPressSound.Play();
     }
+    public void ResetSavedInfo()
+    {
+        PlayerPrefs.DeleteAll();
+    }
 }
