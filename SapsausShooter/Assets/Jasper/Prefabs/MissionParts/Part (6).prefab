@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1e4030d877ae75947a9b513257a7c03e, type: 2}
+  - {fileID: 2100000, guid: cbb6d527f905e5a42b0cb2d5d1431b03, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -111,6 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   partNumber: 6
+  cantPickUp: 0
 --- !u!64 &8478333837802993400
 MeshCollider:
   m_ObjectHideFlags: 0
