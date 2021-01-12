@@ -431,11 +431,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: DefaultZombie 3 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5433026564681970299, guid: 595a79ed576d0434b85df93ea3312bcb,
+        type: 3}
+      propertyPath: hitBoxes.Array.data[11]
+      value: 
+      objectReference: {fileID: 4010654696122484610}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 595a79ed576d0434b85df93ea3312bcb, type: 3}
 --- !u!4 &4224413005783108570 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4624682574727440576, guid: 595a79ed576d0434b85df93ea3312bcb,
+    type: 3}
+  m_PrefabInstance: {fileID: 8831010709638701850}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &4010654696122484610 stripped
+CapsuleCollider:
+  m_CorrespondingSourceObject: {fileID: 5559333383584965784, guid: 595a79ed576d0434b85df93ea3312bcb,
     type: 3}
   m_PrefabInstance: {fileID: 8831010709638701850}
   m_PrefabAsset: {fileID: 0}

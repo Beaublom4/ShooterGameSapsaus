@@ -8,7 +8,7 @@ public class FreezeHitBox : MonoBehaviour
     public float timer;
     public bool ableToDoShit;
     public WeaponSelector weaponScript;
-    private void Update()
+    private void LateUpdate()
     {
         if (ableToDoShit == true)
         {
@@ -21,7 +21,7 @@ public class FreezeHitBox : MonoBehaviour
                 timer = 1;
                 foreach (GameObject g in enemies)
                 {
-                    if (g.GetComponentInParent<Enemy>().isDeath == false)
+                     if (g.GetComponentInParent<Enemy>().isDeath == false)
                     {
                         g.GetComponentInParent<Enemy>().freezeSpeed += .1f;
                         g.GetComponentInParent<Enemy>().freezeScript = GetComponent<FreezeHitBox>();
@@ -41,6 +41,16 @@ public class FreezeHitBox : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
+        print("1");
+        if (other.gameObject.tag == "FreezeCol")
+        {
+            print("2");
+            if (other.GetComponentInParent<Enemy>().isDeath == true)
+            {
+                print("3");
+                enemies.Remove(other.gameObject);
+            }
+        }
         if (ableToDoShit == true)
         {
             if (other.gameObject.tag == "FreezeCol")
