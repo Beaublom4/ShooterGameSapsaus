@@ -75,12 +75,19 @@ public class HealthManager : MonoBehaviour
         Cursor.visible = true;
         Time.timeScale = 0;
     }
+    IEnumerator coroutine;
     public void Respawn()
     {
         Time.timeScale = 1;
         firstRespawn.StartSound();
         deaths++;
-        StartCoroutine(InvisableFrames());
+
+        if(coroutine != null)
+        {
+            StopCoroutine(coroutine);
+        }
+        coroutine = InvisableFrames();
+        StartCoroutine(coroutine);
     }
     IEnumerator InvisableFrames()
     {
