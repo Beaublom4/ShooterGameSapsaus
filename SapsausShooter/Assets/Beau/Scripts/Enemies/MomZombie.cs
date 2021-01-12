@@ -21,6 +21,7 @@ public class MomZombie : Enemy
         {
             Destroy(carriedBaby);
             Instantiate(babyZombiePrefab, trowPos.position, transform.rotation, trowPos);
+            carriedBaby = null;
             currentBaby = trowPos.GetChild(0).gameObject;
             currentBaby.GetComponent<BabyZombie>().isTrown = false;
             currentBaby.GetComponent<BabyZombie>().heldByMother = true;
