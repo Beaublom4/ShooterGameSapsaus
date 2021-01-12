@@ -71,6 +71,10 @@ public class ShootAttack : MonoBehaviour
 
     public Transform scatteringObj;
     public bool hasShoot;
+
+    public ShopItem[] itemsInShop;
+    public GameObject particleItem;
+    public int number;
     void Start()
     {
         //currentMagCount = weapon.magCount;
@@ -412,7 +416,6 @@ public class ShootAttack : MonoBehaviour
         }
 
         anim.SetTrigger("Shoot");
-        hasShoot = true;
 
         if (weapon.weaponPrefab.GetComponent<GunScript>().weapon.gunType == "Pistol")
         {
@@ -429,6 +432,10 @@ public class ShootAttack : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(recoilObj.transform.position, recoilObj.transform.forward, out hit, 1000, canHit, QueryTriggerInteraction.Ignore))
             {
+                if(hit.collider.tag == "EasterEgg")
+                {
+                    EasterEgg(hit.collider.gameObject);
+                }
                 if (hit.collider.tag == "Enemy")
                 {
                     if (hit.collider.GetComponent<BodyHit>())
@@ -437,6 +444,7 @@ public class ShootAttack : MonoBehaviour
                         Destroy(g, 3);
                         hit.collider.GetComponent<BodyHit>().HitPart(weapon, hit.point);
                         HitMarker(hit.collider.gameObject);
+                        hasShoot = true;
                     }
                 }
                 else if (hit.collider.tag == "BossHitBox")
@@ -447,6 +455,7 @@ public class ShootAttack : MonoBehaviour
                         Destroy(g, 3);
                         hit.collider.GetComponent<BossBodyHit>().HitPart(weapon, hit.point);
                         HitMarker(hit.collider.gameObject);
+                        hasShoot = true;
                     }
                 }
             }
@@ -486,6 +495,7 @@ public class ShootAttack : MonoBehaviour
                             hit.collider.GetComponent<BodyHit>().HitPart(weapon, hit.point);
 
                             HitMarker(hit.collider.gameObject);
+                            hasShoot = true;
                         }
                     }
                     else if (hit.collider.tag == "BossHitBox")
@@ -496,6 +506,7 @@ public class ShootAttack : MonoBehaviour
                             Destroy(g, 3);
                             hit.collider.GetComponent<BossBodyHit>().HitPart(weapon, hit.point);
                             HitMarker(hit.collider.gameObject);
+                            hasShoot = true;
                         }
                     }
                 }
@@ -516,6 +527,7 @@ public class ShootAttack : MonoBehaviour
 
             sounds.launcherShoot.Play();
             GameObject rocket = (GameObject)Instantiate(rocketPrefab, weaponHand.GetComponentInChildren<GunScript>().prefabSpawn.position, weaponHand.GetComponentInChildren<GunScript>().prefabSpawn.rotation, null);
+            rocket.GetComponent<rocketExplosion>().shootScript = GetComponent<ShootAttack>();
             rocket.GetComponent<rocketExplosion>().ifWeCouldFly = true;
 
             weaponHand.GetComponentInChildren<GunScript>().shownBullet.SetActive(false);
@@ -576,5 +588,23 @@ public class ShootAttack : MonoBehaviour
     {
         yield return new WaitForSeconds(recoilResetTime);
         recoilObj.transform.localRotation = Quaternion.Euler(0, 0, 0);
+    }
+    public void EasterEgg(GameObject eye)
+    {
+        GameObject g = Instantiate(particleItem, eye.transform.position, Quaternion.identity, null);
+        Destroy(g, 3);
+        Destroy(eye);
+        number++;
+        if(number == 3)
+        {
+            if (Time.timeSinceLevelLoad < 90)
+            {
+                foreach (ShopItem item in itemsInShop)
+                {
+                    item.price = 0;
+                    item.UpdatePrice();
+                }
+            }
+        }
     }
 }

@@ -23,6 +23,10 @@ public class ShopItem : MonoBehaviour
 
     private void Start()
     {
+        UpdatePrice();
+    }
+    public void UpdatePrice()
+    {
         canvas.GetComponentInChildren<TextMeshProUGUI>().text = nameObj + "<br> Price: " + price;
     }
     public void ActivateScript()

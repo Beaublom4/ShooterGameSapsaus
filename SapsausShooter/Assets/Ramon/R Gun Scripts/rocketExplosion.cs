@@ -16,6 +16,7 @@ public class rocketExplosion : MonoBehaviour
     
     public LayerMask hittableMasks;
     public Gun gunScObj;
+    public ShootAttack shootScript;
 
     public List<Enemy> enemieInRange = new List<Enemy>();
     private void Start()
@@ -73,6 +74,8 @@ public class rocketExplosion : MonoBehaviour
     {
         foreach (Enemy enemyScript in enemieInRange)
         {
+            print("eeett");
+            shootScript.hasShoot = true;
             enemyScript.DoDamage(gunScObj, 2, enemyScript.dmgTextLoc.position);
         }
         Destroy(gameObject);
