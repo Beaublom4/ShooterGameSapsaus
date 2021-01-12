@@ -2782,6 +2782,7 @@ MonoBehaviour:
     death: {fileID: 2210830384010158416}
     walk: {fileID: 5619929789431826160}
     gettingFreezed: {fileID: 6747722251736021370}
+  freezeColObj: {fileID: 2389025840821166236}
   chanceDrop: 90
   chanceDubbleDrop: 40
   ammoDrops:
@@ -2821,6 +2822,8 @@ MonoBehaviour:
   dissolveSpeed: 1
   dissolvingNumber: 2
   inFreezeRange: 0
+  freezeScript: {fileID: 0}
+  freezeWeapon: {fileID: 0}
   freezeSpeed: 0
   freezeNum: 0
   freezeRenderNumber: 0

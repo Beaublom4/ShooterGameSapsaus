@@ -4869,37 +4869,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1620119322730260390, guid: be95bf0695c721545a0873a700abfff2,
         type: 3}
-      propertyPath: waves.Array.data[1].enemies.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1620119322730260390, guid: be95bf0695c721545a0873a700abfff2,
-        type: 3}
       propertyPath: stillWorking
       value: 
       objectReference: {fileID: 1266406195}
-    - target: {fileID: 1620119322730260390, guid: be95bf0695c721545a0873a700abfff2,
-        type: 3}
-      propertyPath: waves.Array.data[3].enemies.Array.data[0].randomEnemyPrefabs.Array.data[0]
-      value: 
-      objectReference: {fileID: 4049090637509514779, guid: af807e3177d7f9242b87bb7d77668bb9,
-        type: 3}
-    - target: {fileID: 1620119322730260390, guid: be95bf0695c721545a0873a700abfff2,
-        type: 3}
-      propertyPath: waves.Array.data[3].enemies.Array.data[0].enemieNumber
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1620119322730260390, guid: be95bf0695c721545a0873a700abfff2,
-        type: 3}
-      propertyPath: waves.Array.data[2].enemies.Array.data[0].randomEnemyPrefabs.Array.data[1]
-      value: 
-      objectReference: {fileID: 7081492952287351854, guid: bf80cc3780578f74c9d760369f7afbfd,
-        type: 3}
-    - target: {fileID: 1620119322730260390, guid: be95bf0695c721545a0873a700abfff2,
-        type: 3}
-      propertyPath: waves.Array.data[2].enemies.Array.data[0].randomEnemyPrefabs.Array.data[2]
-      value: 
-      objectReference: {fileID: 2826353454445027687, guid: e458be2955110a744a68989e7149c87e,
-        type: 3}
     - target: {fileID: 1620119322730260390, guid: be95bf0695c721545a0873a700abfff2,
         type: 3}
       propertyPath: waves.Array.data[1].enemies.Array.data[1].randomEnemyPrefabs.Array.data[1]
@@ -38985,13 +38957,18 @@ PrefabInstance:
     - target: {fileID: 7932595841853102745, guid: 344f823c1a9753447ab0f455c4f7d7bb,
         type: 3}
       propertyPath: allEnemiesInMap
-      value: 200
+      value: 230
       objectReference: {fileID: 0}
     - target: {fileID: 7932595841853102745, guid: 344f823c1a9753447ab0f455c4f7d7bb,
         type: 3}
       propertyPath: achievementScript
       value: 
       objectReference: {fileID: 1287865853}
+    - target: {fileID: 7932595841853102745, guid: 344f823c1a9753447ab0f455c4f7d7bb,
+        type: 3}
+      propertyPath: hasRunned
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7932595841917631340, guid: 344f823c1a9753447ab0f455c4f7d7bb,
         type: 3}
       propertyPath: pistolAmmo

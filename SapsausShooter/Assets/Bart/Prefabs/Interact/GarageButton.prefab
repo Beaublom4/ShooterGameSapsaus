@@ -55,6 +55,7 @@ MonoBehaviour:
   doorStartLoc: {x: 0, y: 0, z: 0}
   doorObj: {fileID: 0}
   garageDoor: {fileID: 4197780591896631477}
+  stillWorking: {fileID: 0}
   waves:
   - enemies:
     - randomEnemyPrefabs:
@@ -66,20 +67,22 @@ MonoBehaviour:
   - enemies:
     - randomEnemyPrefabs:
       - {fileID: 5433026564681970298, guid: 595a79ed576d0434b85df93ea3312bcb, type: 3}
-      enemieNumber: 5
-    - randomEnemyPrefabs:
-      - {fileID: 5433026564681970298, guid: 595a79ed576d0434b85df93ea3312bcb, type: 3}
-      enemieNumber: 5
-    - randomEnemyPrefabs:
-      - {fileID: 5433026564681970298, guid: 595a79ed576d0434b85df93ea3312bcb, type: 3}
-      enemieNumber: 5
-    - randomEnemyPrefabs:
-      - {fileID: 5433026564681970298, guid: 595a79ed576d0434b85df93ea3312bcb, type: 3}
+      - {fileID: 7081492952287351854, guid: bf80cc3780578f74c9d760369f7afbfd, type: 3}
+      - {fileID: 4049090637509514779, guid: af807e3177d7f9242b87bb7d77668bb9, type: 3}
       enemieNumber: 5
     timeBetweenWave: 20
   - enemies:
     - randomEnemyPrefabs:
       - {fileID: 5433026564681970298, guid: 595a79ed576d0434b85df93ea3312bcb, type: 3}
+      - {fileID: 7081492952287351854, guid: bf80cc3780578f74c9d760369f7afbfd, type: 3}
+      - {fileID: 2826353454445027687, guid: e458be2955110a744a68989e7149c87e, type: 3}
+      enemieNumber: 6
+    timeBetweenWave: 20
+  - enemies:
+    - randomEnemyPrefabs:
+      - {fileID: 4049090637509514779, guid: af807e3177d7f9242b87bb7d77668bb9, type: 3}
+      - {fileID: 8463677753485028893, guid: 67f420e94101fd34d9107c95a872f83e, type: 3}
+      - {fileID: 2826353454445027687, guid: e458be2955110a744a68989e7149c87e, type: 3}
       enemieNumber: 5
     timeBetweenWave: 20
 --- !u!82 &4197780591896631477

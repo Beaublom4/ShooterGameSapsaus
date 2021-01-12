@@ -397,11 +397,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 72459350135187426, guid: 3c3803ed87c3c534f91b0eb15dfa542f,
         type: 3}
-      propertyPath: waves.Array.data[1].enemies.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 72459350135187426, guid: 3c3803ed87c3c534f91b0eb15dfa542f,
-        type: 3}
       propertyPath: waves.Array.data[1].enemies.Array.data[0].randomEnemyPrefabs.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -471,27 +466,9 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 72459350135187426, guid: 3c3803ed87c3c534f91b0eb15dfa542f,
         type: 3}
-      propertyPath: waves.Array.data[2].enemies.Array.data[0].randomEnemyPrefabs.Array.data[1]
-      value: 
-      objectReference: {fileID: 7423821309739881678, guid: b54607042c87ef942a9c3fad90d03762,
-        type: 3}
-    - target: {fileID: 72459350135187426, guid: 3c3803ed87c3c534f91b0eb15dfa542f,
-        type: 3}
-      propertyPath: waves.Array.data[2].enemies.Array.data[0].randomEnemyPrefabs.Array.data[2]
-      value: 
-      objectReference: {fileID: 7423821309739881678, guid: b54607042c87ef942a9c3fad90d03762,
-        type: 3}
-    - target: {fileID: 72459350135187426, guid: 3c3803ed87c3c534f91b0eb15dfa542f,
-        type: 3}
       propertyPath: waves.Array.data[2].enemies.Array.data[0].enemieNumber
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 72459350135187426, guid: 3c3803ed87c3c534f91b0eb15dfa542f,
-        type: 3}
-      propertyPath: waves.Array.data[3].enemies.Array.data[0].randomEnemyPrefabs.Array.data[0]
-      value: 
-      objectReference: {fileID: 7423821309739881678, guid: b54607042c87ef942a9c3fad90d03762,
-        type: 3}
     - target: {fileID: 72459350135187426, guid: 3c3803ed87c3c534f91b0eb15dfa542f,
         type: 3}
       propertyPath: waves.Array.data[3].enemies.Array.data[0].randomEnemyPrefabs.Array.data[1]
@@ -504,11 +481,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2826353454445027687, guid: e458be2955110a744a68989e7149c87e,
         type: 3}
-    - target: {fileID: 72459350135187426, guid: 3c3803ed87c3c534f91b0eb15dfa542f,
-        type: 3}
-      propertyPath: waves.Array.data[3].enemies.Array.data[0].enemieNumber
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 72459350135187426, guid: 3c3803ed87c3c534f91b0eb15dfa542f,
         type: 3}
       propertyPath: waves.Array.data[3].timeBetweenWave

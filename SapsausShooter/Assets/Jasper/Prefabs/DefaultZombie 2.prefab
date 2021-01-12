@@ -1413,6 +1413,7 @@ MonoBehaviour:
     death: {fileID: 1291703620195194113}
     walk: {fileID: 1300969476119077402}
     gettingFreezed: {fileID: 7818421583992926377}
+  freezeColObj: {fileID: 5701976924136975094}
   chanceDrop: 70
   chanceDubbleDrop: 5
   ammoDrops:
@@ -1427,6 +1428,7 @@ MonoBehaviour:
   maxDropAmount: 30
   moneyDropPrefab: {fileID: 2030928626577662909, guid: 446e29ffe71723b4db774c3d271eb33d,
     type: 3}
+  isBigZombie: 0
   canMutateToBigZomb: 1
   countTowardsBigZomb: 0
   addedToList: 0
@@ -1451,6 +1453,8 @@ MonoBehaviour:
   dissolveSpeed: 1
   dissolvingNumber: 2
   inFreezeRange: 0
+  freezeScript: {fileID: 0}
+  freezeWeapon: {fileID: 0}
   freezeSpeed: 0
   freezeNum: 0
   freezeRenderNumber: 0
@@ -1460,6 +1464,7 @@ MonoBehaviour:
   hitNumPrefab: {fileID: 3314747878335242109, guid: 8c6b2080012d1a048870d88718b62e11,
     type: 3}
   dmgTextLoc: {fileID: 5934871733977461249}
+  isCrushed: 0
   bigZombie: {fileID: 4049090637509514779, guid: b9812abbdd3d2384ba358a71ca1338ab,
     type: 3}
   wantedEnemiesInRange: 7
@@ -1471,6 +1476,9 @@ MonoBehaviour:
   mergeVolume: 0.5
   mergeChange: 0.1
   merge: {fileID: 2040552839139322673}
+  hittableLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!135 &4290842599087109683
 SphereCollider:
   m_ObjectHideFlags: 0

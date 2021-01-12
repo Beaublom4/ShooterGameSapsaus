@@ -21,8 +21,12 @@ public class FreezeHitBox : MonoBehaviour
                 timer = 1;
                 foreach (GameObject g in enemies)
                 {
-                    g.GetComponentInParent<Enemy>().freezeSpeed += .1f;
-                    g.GetComponentInParent<Enemy>().freezeWeapon = weaponScript.selectedSlotScript.gunWeapon;
+                    if (g.GetComponentInParent<Enemy>().isDeath == false)
+                    {
+                        g.GetComponentInParent<Enemy>().freezeSpeed += .1f;
+                        g.GetComponentInParent<Enemy>().freezeScript = GetComponent<FreezeHitBox>();
+                        g.GetComponentInParent<Enemy>().freezeWeapon = weaponScript.selectedSlotScript.gunWeapon;
+                    }
                 }
             }
         }
@@ -30,7 +34,6 @@ public class FreezeHitBox : MonoBehaviour
         {
             if(enemies.Count > 0)
             {
-                print(enemies[0].gameObject.name);
                 enemies[0].GetComponentInParent<Enemy>().inFreezeRange = false;
                 enemies.Remove(enemies[0].gameObject);
             }

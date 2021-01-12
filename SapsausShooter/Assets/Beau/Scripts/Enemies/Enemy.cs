@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour
     public Collider[] hitBoxes;
     [HideInInspector]public bool isDeath;
     public Sounds sounds;
+    public GameObject freezeColObj;
 
     public int chanceDrop, chanceDubbleDrop;
     public GameObject[] ammoDrops;
@@ -60,6 +61,7 @@ public class Enemy : MonoBehaviour
     MaterialPropertyBlock block;
 
     public bool inFreezeRange;
+    public FreezeHitBox freezeScript;
     public Gun freezeWeapon;
     public float freezeSpeed;
     public float freezeNum;
@@ -400,6 +402,7 @@ public class Enemy : MonoBehaviour
     }
     public virtual IEnumerator Dead(int hitPoint)
     {
+        freezeColObj.SetActive(false);
         agent.speed = 0;
         agent.velocity = Vector3.zero;
         agent.enabled = !enabled;
@@ -423,9 +426,13 @@ public class Enemy : MonoBehaviour
         DropMoney();
         DropWeapon();
         dissolving = true;
-        if(anim.speed ==  1)
-        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
+        if (freezeNum == 0)
+        {
+            yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
+        }
         yield return new WaitForSeconds(3);
+        if (freezeNum != 0)
+            yield return new WaitForSeconds(5);
         Destroy(gameObject);
     }
     void Drop()
