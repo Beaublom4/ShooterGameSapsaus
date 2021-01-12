@@ -7,6 +7,7 @@ public class FreezeHitBox : MonoBehaviour
     public List<GameObject> enemies = new List<GameObject>();
     public float timer;
     public bool ableToDoShit;
+    public WeaponSelector weaponScript;
     private void Update()
     {
         if (ableToDoShit == true)
@@ -20,8 +21,8 @@ public class FreezeHitBox : MonoBehaviour
                 timer = 1;
                 foreach (GameObject g in enemies)
                 {
-                    print(g.gameObject.name);
                     g.GetComponentInParent<Enemy>().freezeSpeed += .1f;
+                    g.GetComponentInParent<Enemy>().freezeWeapon = weaponScript.selectedSlotScript.gunWeapon;
                 }
             }
         }

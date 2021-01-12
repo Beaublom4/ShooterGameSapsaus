@@ -60,6 +60,7 @@ public class Enemy : MonoBehaviour
     MaterialPropertyBlock block;
 
     public bool inFreezeRange;
+    public Gun freezeWeapon;
     public float freezeSpeed;
     public float freezeNum;
     public float freezeRenderNumber;
@@ -138,14 +139,17 @@ public class Enemy : MonoBehaviour
             block.SetFloat("Vector1_76374516", freezeRenderNumber);
             render.SetPropertyBlock(block);
 
-            if (freezeNum < 1)
+            if (freezeNum > 1)
             {
                 if(didFreezeSound == false)
                 {
                     didFreezeSound = true;
                     sounds.gettingFreezed.Play();
                 }
-
+                DoDamage(freezeWeapon, 2, new Vector3(0, -100, 0));
+            }
+            if(freezeNum < 1)
+            {
                 anim.SetFloat("speed", 1 - freezeNum);
                 freezeWalkingSpeed = (speed * (1 - freezeNum));
                 agent.speed = freezeWalkingSpeed;
@@ -163,6 +167,7 @@ public class Enemy : MonoBehaviour
                 {
                     didFreezeSound = false;
                 }
+
                 freezeSpeed = 0;
                 freezeRenderNumber -= (.2f * 4) * Time.deltaTime;
                 freezeRenderNumber = Mathf.Clamp(freezeRenderNumber, -1, 3);
@@ -418,6 +423,7 @@ public class Enemy : MonoBehaviour
         DropMoney();
         DropWeapon();
         dissolving = true;
+        if(anim.speed ==  1)
         yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
         yield return new WaitForSeconds(3);
         Destroy(gameObject);

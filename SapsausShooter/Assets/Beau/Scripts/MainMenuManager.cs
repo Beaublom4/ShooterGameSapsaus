@@ -154,7 +154,10 @@ public class MainMenuManager : MonoBehaviour
         Time.timeScale = 1;
         if(loader != null)
         loader.SetActive(true);
-        StartCoroutine(LoadSceneAsync("BeauScene"));
+        if (inGame == false)
+            StartCoroutine(LoadSceneAsync("BeauScene"));
+        else
+            SceneManager.LoadScene("BeauScene");
     }
     public void LoadGame()
     {
@@ -329,15 +332,12 @@ public class MainMenuManager : MonoBehaviour
         foreach (GameObject g in options.soundSlidersObj)
         {
             g.GetComponentInChildren<Slider>().value = 1;
-            PlayerPrefs.SetFloat(g.GetComponent<SliderInfo>().group.name, g.GetComponentInChildren<Slider>().value);
         }
         options.sensitivitySlider.value = 250;
         sensNumber.text = (options.sensitivitySlider.value / 100).ToString("F1");
-        PlayerPrefs.SetFloat("Sensitivity", options.sensitivitySlider.value);
         options.fullScreenToggle.isOn = true;
         options.resDropdown.value = 0;
         devMode = false;
-        PlayerPrefs.SetInt("DevMode", 0);
     }
     public GameObject[] parts;
     public string[] names;
