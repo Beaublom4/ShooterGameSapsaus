@@ -40492,6 +40492,26 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2063409492293811067, guid: 344f823c1a9753447ab0f455c4f7d7bb,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 211.59216
+      objectReference: {fileID: 0}
+    - target: {fileID: 2063409492293811067, guid: 344f823c1a9753447ab0f455c4f7d7bb,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 74.210464
+      objectReference: {fileID: 0}
+    - target: {fileID: 2063409492293811067, guid: 344f823c1a9753447ab0f455c4f7d7bb,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 105.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2063409492293811067, guid: 344f823c1a9753447ab0f455c4f7d7bb,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 499
+      objectReference: {fileID: 0}
     - target: {fileID: 2158535715853340900, guid: 344f823c1a9753447ab0f455c4f7d7bb,
         type: 3}
       propertyPath: m_fontSize
@@ -40784,6 +40804,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4201472284815507475, guid: 344f823c1a9753447ab0f455c4f7d7bb,
         type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 185.66962
+      objectReference: {fileID: 0}
+    - target: {fileID: 4201472284815507475, guid: 344f823c1a9753447ab0f455c4f7d7bb,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.00000047683716
+      objectReference: {fileID: 0}
+    - target: {fileID: 4201472284815507475, guid: 344f823c1a9753447ab0f455c4f7d7bb,
+        type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 60.671875
       objectReference: {fileID: 0}
@@ -41049,6 +41079,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMin.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6553446218820848117, guid: 344f823c1a9753447ab0f455c4f7d7bb,
+        type: 3}
+      propertyPath: m_text
+      value: Reset options
+      objectReference: {fileID: 0}
+    - target: {fileID: 6553446218820848117, guid: 344f823c1a9753447ab0f455c4f7d7bb,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 51.75
       objectReference: {fileID: 0}
     - target: {fileID: 6570196491205850745, guid: 344f823c1a9753447ab0f455c4f7d7bb,
         type: 3}
@@ -41746,6 +41786,26 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8421991801876019705, guid: 344f823c1a9753447ab0f455c4f7d7bb,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1302616644}
+    - target: {fileID: 8421991801876019705, guid: 344f823c1a9753447ab0f455c4f7d7bb,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1302616644}
+    - target: {fileID: 8421991801876019705, guid: 344f823c1a9753447ab0f455c4f7d7bb,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MouseOverButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 8421991801876019705, guid: 344f823c1a9753447ab0f455c4f7d7bb,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MouseHoverStop
+      objectReference: {fileID: 0}
     - target: {fileID: 8478082414700285832, guid: 344f823c1a9753447ab0f455c4f7d7bb,
         type: 3}
       propertyPath: m_IsActive
@@ -41925,6 +41985,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -84.19531
+      objectReference: {fileID: 0}
+    - target: {fileID: 8880657280460316097, guid: 344f823c1a9753447ab0f455c4f7d7bb,
+        type: 3}
+      propertyPath: m_text
+      value: Restart
+      objectReference: {fileID: 0}
+    - target: {fileID: 8880657280460316097, guid: 344f823c1a9753447ab0f455c4f7d7bb,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8880657280460316097, guid: 344f823c1a9753447ab0f455c4f7d7bb,
+        type: 3}
+      propertyPath: m_fontSizeMax
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 8897889293914407047, guid: 344f823c1a9753447ab0f455c4f7d7bb,
         type: 3}
