@@ -81,6 +81,7 @@ public class HealthManager : MonoBehaviour
     IEnumerator coroutine;
     public void Respawn()
     {
+        
         spotScipt.Change();
         firstRespawn.StartSound();
         deaths++;

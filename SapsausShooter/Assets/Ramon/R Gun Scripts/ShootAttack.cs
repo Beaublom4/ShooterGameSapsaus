@@ -26,7 +26,6 @@ public class ShootAttack : MonoBehaviour
     public GameObject whiteHitMarkerObj, redHitMarkerObj, hitMarkerObj, weaponWheel, optionsPanel;
     public GameObject rocketPrefab;
     public Transform weaponHand;
-    public Transform myTransform;
     public GameObject hitVfx;
     public GameObject PistolMag, ShotgunShells, launcherBullet, freezeBatery;
     public GameObject magLoc, rlMagLoc, blikkieLoc;
@@ -87,7 +86,6 @@ public class ShootAttack : MonoBehaviour
 
         //freezeSpeed = spAnimator.GetFloat("speed");
 
-        SetInstantiateReferences();
     }
     void OnEnable()
     {
@@ -579,10 +577,6 @@ public class ShootAttack : MonoBehaviour
         StopCoroutine(coroutine);
         coroutine = HitMarker();
         StartCoroutine(coroutine);
-    }
-    void SetInstantiateReferences()
-    {
-        myTransform = transform;
     }
     IEnumerator RecoilReset()
     {
