@@ -26,6 +26,7 @@ public class HealthManager : MonoBehaviour
     public List<GameObject> areasTriggered = new List<GameObject>();
     public Vector3 spawnLoc;
     public ChangeSpot spotScipt;
+    public CharacterController gappie;
     private void Start()
     {
         spawnLoc = spawnPoint.position;
@@ -92,7 +93,10 @@ public class HealthManager : MonoBehaviour
         deaths++;
         print(transform.position);
         print(spawnPoint.position);
+        gappie.enabled = false;
         transform.position = spawnPoint.position;
+        
+
         print(transform.position);
         print(spawnPoint.position);
         if (coroutine != null)
@@ -115,6 +119,7 @@ public class HealthManager : MonoBehaviour
         Cursor.visible = false;
 
         Time.timeScale = 1;
+        gappie.enabled = true;
 
         yield return new WaitForSeconds(5);
 
