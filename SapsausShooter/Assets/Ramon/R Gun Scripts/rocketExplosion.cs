@@ -80,6 +80,7 @@ public class rocketExplosion : MonoBehaviour
             shootScript.hasShoot = true;
             enemyScript.DoDamage(gunScObj, 2, enemyScript.dmgTextLoc.position);
         }
+        if(gameObject != null)
         Destroy(gameObject);
     }
 
