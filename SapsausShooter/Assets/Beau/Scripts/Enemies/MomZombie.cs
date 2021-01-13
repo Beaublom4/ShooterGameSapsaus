@@ -9,14 +9,19 @@ public class MomZombie : Enemy
     GameObject currentBaby;
     public Transform trowPos, spawnArea;
     public Vector3 trowVelocity;
+    IEnumerator coroutine;
     public override void Trigger(GameObject player)
     {
         base.Trigger(player);
         if (gameObject.activeSelf == true)
-            Invoke("TrowBaby", anim.GetCurrentAnimatorStateInfo(0).length);
+        {
+            coroutine = TrowBaby();
+            StartCoroutine(coroutine);
+        }
     }
-    void TrowBaby()
+    IEnumerator TrowBaby()
     {
+        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
         if (isDeath == false)
         {
             Destroy(carriedBaby);
@@ -38,11 +43,14 @@ public class MomZombie : Enemy
     public override IEnumerator Dead(int hitPoint)
     {
         isDeath = true;
-        if(carriedBaby != null && gameObject.activeSelf == true)
-        {
-            GameObject g = Instantiate(babyZombiePrefab, trowPos.position, transform.rotation, trowPos);
-            g.transform.parent = spawnArea;
-        }
+        //if(carriedBaby != null && gameObject.activeSelf == true)
+        //{
+        //    StopCoroutine(coroutine);
+        //    Destroy(currentBaby);
+        //    GameObject g = Instantiate(babyZombiePrefab, trowPos.position, transform.rotation, trowPos);
+        //    g.GetComponent<Enemy>().Trigger(playerObj);
+        //    g.transform.parent = spawnArea;
+        //}
         return base.Dead(hitPoint);
     }
 }
