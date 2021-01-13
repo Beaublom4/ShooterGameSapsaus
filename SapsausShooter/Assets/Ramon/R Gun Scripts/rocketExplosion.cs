@@ -42,8 +42,6 @@ public class rocketExplosion : MonoBehaviour
             ifWeCouldFly = false;
             //Explode(rocketCol.contacts[0].point);
         }
-        print(rocketCol.collider.name);
-        print(rocketCol.collider.tag);
         if (rocketCol.collider.tag == "BossHitBox")
         {
             if (rocketCol.collider.GetComponent<BossBodyHit>())
@@ -61,8 +59,12 @@ public class rocketExplosion : MonoBehaviour
     {
         if (other.gameObject.tag == "FreezeCol")
         {
-            print(other.gameObject.name + " Added");
-            enemieInRange.Add(other.GetComponentInParent<Enemy>());
+            print(other.gameObject.name);
+            if (other.GetComponentInParent<Enemy>().isDeath == false || other != null)
+            {
+                print(other.gameObject.name + " Added");
+                enemieInRange.Add(other.GetComponentInParent<Enemy>());
+            }
         }
     }
     public void OnTriggerExit(Collider other)
