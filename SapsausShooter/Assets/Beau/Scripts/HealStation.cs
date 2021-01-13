@@ -23,7 +23,7 @@ public class HealStation : MonoBehaviour
     }
     public void ShowPrice()
     {
-        if (healthScript.health < healthScript.healthSlider.maxValue)
+        if (healthScript.health >= healthScript.healthSlider.maxValue)
         {
             text.text = "Health Station";
         }

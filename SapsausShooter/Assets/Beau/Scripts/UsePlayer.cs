@@ -27,6 +27,7 @@ public class UsePlayer : MonoBehaviour
         mouseLook.enabled = !enabled;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        Time.timeScale = 0;
         startLetter.StartSound();
     }
 
@@ -39,6 +40,7 @@ public class UsePlayer : MonoBehaviour
             mouseLook.enabled = enabled;
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+            Time.timeScale = 1;
         }
 
 

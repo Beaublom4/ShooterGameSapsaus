@@ -43,14 +43,15 @@ public class MomZombie : Enemy
     public override IEnumerator Dead(int hitPoint)
     {
         isDeath = true;
-        //if(carriedBaby != null && gameObject.activeSelf == true)
-        //{
-        //    StopCoroutine(coroutine);
-        //    Destroy(currentBaby);
-        //    GameObject g = Instantiate(babyZombiePrefab, trowPos.position, transform.rotation, trowPos);
-        //    g.GetComponent<Enemy>().Trigger(playerObj);
-        //    g.transform.parent = spawnArea;
-        //}
+        if (carriedBaby != null)
+        {
+            print("dikke kut");
+            StopCoroutine(coroutine);
+            Destroy(currentBaby);
+            GameObject g = Instantiate(babyZombiePrefab, trowPos.position, transform.rotation, trowPos);
+            g.GetComponent<Enemy>().Trigger(playerObj);
+            g.transform.parent = spawnArea;
+        }
         return base.Dead(hitPoint);
     }
 }
