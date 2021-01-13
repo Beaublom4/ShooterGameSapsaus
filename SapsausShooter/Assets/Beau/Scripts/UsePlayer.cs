@@ -11,6 +11,7 @@ public class UsePlayer : MonoBehaviour
         public AudioSource itemPickUp, Use, shock, lever, powerOut;
     }
     public GameObject fpsCam;
+    public MouseLook mouseLook;
     public MissionManager missionScript;
     public float useRange;
     RaycastHit hit;
@@ -22,6 +23,10 @@ public class UsePlayer : MonoBehaviour
     private void Start()
     {
         startPanel.SetActive(true);
+        GetComponent<Movement>().enabled = !enabled;
+        mouseLook.enabled = !enabled;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         startLetter.StartSound();
     }
 
@@ -30,6 +35,10 @@ public class UsePlayer : MonoBehaviour
         if (Input.GetButtonDown("Use") && startPanel.activeSelf==true)
         {
             startPanel.SetActive(false);
+            GetComponent<Movement>().enabled = enabled;
+            mouseLook.enabled = enabled;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
 
 

@@ -53,7 +53,7 @@ public class WeaponSelector : MonoBehaviour
             if(weaponWheelObj.activeSelf == false)
             {
                 weaponWheelObj.SetActive(true);
-                player.GetComponent<Movement>().enabled = !enabled;
+                //player.GetComponent<Movement>().enabled = !enabled;
                 player.GetComponentInChildren<MouseLook>().enabled = !enabled;
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;

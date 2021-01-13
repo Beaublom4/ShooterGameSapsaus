@@ -76,10 +76,14 @@ public class MissionManager : MonoBehaviour
         {
             timeLeft -= Time.deltaTime;
             timeLeftText.text = timeLeft.ToString("F0");
+
         }
         else if(timeLeft < 0)
         {
             timeLeft = 0;
+
+            sideMission1NameText.text = "";
+            sideMission1InfoText.text = "";
 
             failSideMis.Play();
             currentSideMission = -1;
@@ -97,6 +101,9 @@ public class MissionManager : MonoBehaviour
                 currentSideMission = -1;
                 timeLeft = 0;
                 moneyManagerScript.GetMoney(moneyAmount);
+
+                sideMission1NameText.text = "";
+                sideMission1InfoText.text = "";
 
                 if (killAmount == 5)
                 {

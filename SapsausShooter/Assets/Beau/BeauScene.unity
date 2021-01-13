@@ -36812,6 +36812,11 @@ PrefabInstance:
       objectReference: {fileID: 1780075256}
     - target: {fileID: 995829965692537576, guid: 7a5e7907c140ff24082a1bce753ce327,
         type: 3}
+      propertyPath: mouseLook
+      value: 
+      objectReference: {fileID: 839220582}
+    - target: {fileID: 995829965692537576, guid: 7a5e7907c140ff24082a1bce753ce327,
+        type: 3}
       propertyPath: shopPanel
       value: 
       objectReference: {fileID: 2138217308}
@@ -40846,6 +40851,14 @@ PrefabInstance:
         type: 3}
       propertyPath: m_text
       value: Save and Quit
+      objectReference: {fileID: 0}
+    - target: {fileID: 5046535375387976606, guid: 344f823c1a9753447ab0f455c4f7d7bb,
+        type: 3}
+      propertyPath: m_text
+      value: "Dear Neighbour,\n\nLast Night I decided to leave this place.\nIt seems
+        like we were the only un-infected left in this town. \n\nI have been working
+        on building a rocket launcher to leave town through the big wall to the south.
+        \n\nUnfortunately I lost the parts. Feel free to look for them yourself."
       objectReference: {fileID: 0}
     - target: {fileID: 5082117006526203167, guid: 344f823c1a9753447ab0f455c4f7d7bb,
         type: 3}

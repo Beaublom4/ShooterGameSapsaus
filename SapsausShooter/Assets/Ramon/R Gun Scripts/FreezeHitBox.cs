@@ -23,7 +23,7 @@ public class FreezeHitBox : MonoBehaviour
                 {
                      if (g.GetComponentInParent<Enemy>().isDeath == false)
                     {
-                        g.GetComponentInParent<Enemy>().freezeSpeed += .1f;
+                        g.GetComponentInParent<Enemy>().freezeSpeed += .5f;
                         g.GetComponentInParent<Enemy>().freezeScript = GetComponent<FreezeHitBox>();
                         g.GetComponentInParent<Enemy>().freezeWeapon = weaponScript.selectedSlotScript.gunWeapon;
                     }
