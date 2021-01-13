@@ -68,6 +68,7 @@ public class BossZombie : MonoBehaviour
     public GameObject hitNumPrefab;
     public bool isDead, hasRunned;
     public GameObject ending;
+    public CapsuleCollider karenHitBox;
 
     public AudioSource walk, spit, chargeHit, chargeLoop, shockWave, spin, battleMusic;
 
@@ -165,6 +166,7 @@ public class BossZombie : MonoBehaviour
             bossHealth = 0;
             bossHealthBar.value = bossHealth;
             bossHealthPercentage.text = ((bossHealth / bossHealthBar.maxValue) * 100).ToString("F0") + "%";
+            karenHitBox.enabled = !enabled;
 
             if (MainMenuManager.devMode == false)
             {
@@ -239,6 +241,19 @@ public class BossZombie : MonoBehaviour
             anim.SetTrigger("Intro");
         }
         yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length + timeBetweenAttacks);
+        SpinAttack();
+    }
+    IEnumerator AndereRigger()
+    {
+        if (hasRunned == false)
+        {
+            dogBeam.SetActive(true);
+            hasRunned = true;
+            battleMusic.Play();
+            bossHealthBarObj.SetActive(true);
+            anim.SetTrigger("Intro");
+        }
+        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length + timeBetweenAttacks);
         RandomAttack();
     }
     public void RandomAttack()
@@ -290,7 +305,7 @@ public class BossZombie : MonoBehaviour
         {
             StopCoroutine(coroutine);
         }
-        StartCoroutine(Trigger());
+        StartCoroutine(AndereRigger());
     }
     public void HitWithSpin()
     {
@@ -362,7 +377,7 @@ public class BossZombie : MonoBehaviour
         {
             StopCoroutine(coroutine);
         }
-        StartCoroutine(Trigger());
+        StartCoroutine(AndereRigger());
     }
     IEnumerator ShockWaveAttack()
     {
@@ -378,7 +393,7 @@ public class BossZombie : MonoBehaviour
         {
             StopCoroutine(coroutine);
         }
-        StartCoroutine(Trigger());
+        StartCoroutine(AndereRigger());
     } 
     void ToxicBoyTrow()
     {
@@ -406,7 +421,7 @@ public class BossZombie : MonoBehaviour
         {
             StopCoroutine(coroutine);
         }
-        StartCoroutine(Trigger());
+        StartCoroutine(AndereRigger());
     }
     IEnumerator Spit()
     {

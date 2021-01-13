@@ -11,6 +11,10 @@ public class RadioActiveZombie : Enemy
         base.Update();
         if(playerInRange == true)
         {
+            if(playerObj.GetComponent<HealthManager>().health <= 0)
+            {
+                playerInRange = false;
+            }
             if(timer > 0)
             {
                 timer -= Time.deltaTime;
