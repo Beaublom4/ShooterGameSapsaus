@@ -42,6 +42,10 @@ public class FreezeHitBox : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         print("1");
+        if(other == null)
+        {
+            return;
+        }
         if (other.gameObject.tag == "FreezeCol")
         {
             print("2");
