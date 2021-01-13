@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Experimental.Rendering.Universal;
+using UnityEngine.Rendering;
 
 public class HealthManager : MonoBehaviour
 {
@@ -27,6 +29,10 @@ public class HealthManager : MonoBehaviour
     public Vector3 spawnLoc;
     public ChangeSpot spotScipt;
     public CharacterController gappie;
+    public GameObject postProcessDmg;
+    IEnumerator dmgCoroutine;
+    public ShootAttack shootScript;
+    bool turnOffPost;
     private void Start()
     {
         spawnLoc = spawnPoint.position;
@@ -48,6 +54,10 @@ public class HealthManager : MonoBehaviour
         {
             health -= damage;
             hudAnim.SetTrigger("ShakeScreen");
+            if (dmgCoroutine != null)
+                StopCoroutine(dmgCoroutine);
+            dmgCoroutine = DmgPostProcessing();
+            StartCoroutine(dmgCoroutine);
             hasTakenDmg = true;
             if (health <= 20)
             {
@@ -57,6 +67,7 @@ public class HealthManager : MonoBehaviour
             {
                 health = 0;
                 canGetDmg = false;
+                shootScript.isReloading = true;
                 anim.SetTrigger("Dead");
                 GetComponent<Movement>().enabled = !enabled;
                 GetComponentInChildren<MouseLook>().enabled = !enabled;
@@ -64,6 +75,13 @@ public class HealthManager : MonoBehaviour
             }
             UpdateNumber();
         }
+    }
+    IEnumerator DmgPostProcessing()
+    {
+        turnOffPost = false;
+        postProcessDmg.GetComponent<Volume>().weight = 1;
+        yield return new WaitForSeconds(1);
+        turnOffPost = true;
     }
     public void UpdateNumber()
     {
@@ -83,22 +101,22 @@ public class HealthManager : MonoBehaviour
     public bool movePlayer;
     private void Update()
     {
-        print(transform.position);
+        if(turnOffPost == true)
+        {
+            postProcessDmg.GetComponent<Volume>().weight -= Time.deltaTime;
+            if(postProcessDmg.GetComponent<Volume>().weight <= 0)
+            {
+                turnOffPost = false;
+                postProcessDmg.GetComponent<Volume>().weight = 0;
+            }
+        }
     }
     public void Respawn()
     {
-        //spotScipt.Change();
-        
         firstRespawn.StartSound();
         deaths++;
-        print(transform.position);
-        print(spawnPoint.position);
         gappie.enabled = false;
         transform.position = spawnPoint.position;
-        
-
-        print(transform.position);
-        print(spawnPoint.position);
         if (coroutine != null)
         {
             StopCoroutine(coroutine);
@@ -117,6 +135,7 @@ public class HealthManager : MonoBehaviour
         GetComponentInChildren<MouseLook>().enabled = enabled;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        shootScript.isReloading = false;
 
         Time.timeScale = 1;
         gappie.enabled = true;
