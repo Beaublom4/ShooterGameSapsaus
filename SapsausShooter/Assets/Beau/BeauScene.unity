@@ -2472,6 +2472,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 519839501506419496, guid: be95bf0695c721545a0873a700abfff2,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 15.15
+      objectReference: {fileID: 0}
     - target: {fileID: 525632732466648732, guid: be95bf0695c721545a0873a700abfff2,
         type: 3}
       propertyPath: m_Layer
@@ -9745,7 +9750,7 @@ PrefabInstance:
     - target: {fileID: 3347091670306737814, guid: be95bf0695c721545a0873a700abfff2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -69
+      value: -70.4
       objectReference: {fileID: 0}
     - target: {fileID: 3351431382635277721, guid: be95bf0695c721545a0873a700abfff2,
         type: 3}
@@ -11180,6 +11185,11 @@ PrefabInstance:
     - target: {fileID: 3611158973501711252, guid: be95bf0695c721545a0873a700abfff2,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3611212466133496655, guid: be95bf0695c721545a0873a700abfff2,
+        type: 3}
+      propertyPath: m_LightmapParameters
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3616903236273073229, guid: be95bf0695c721545a0873a700abfff2,
