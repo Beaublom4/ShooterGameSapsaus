@@ -82,12 +82,7 @@ public class HealthManager : MonoBehaviour
     public bool movePlayer;
     private void Update()
     {
-        if (movePlayer == true)
-        {
-            print("hoere zooi");
-            print(transform.position);
-            print(spawnPoint.position);
-        }
+        print(transform.position);
     }
     public void Respawn()
     {
