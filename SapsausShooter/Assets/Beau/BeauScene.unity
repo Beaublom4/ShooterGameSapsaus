@@ -36241,6 +36241,11 @@ PrefabInstance:
       propertyPath: hpIsLow
       value: 
       objectReference: {fileID: 999720751}
+    - target: {fileID: 896554098108623720, guid: 7a5e7907c140ff24082a1bce753ce327,
+        type: 3}
+      propertyPath: spotScipt
+      value: 
+      objectReference: {fileID: 1861100292}
     - target: {fileID: 896554098108623721, guid: 7a5e7907c140ff24082a1bce753ce327,
         type: 3}
       propertyPath: m_RootOrder
@@ -37525,6 +37530,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb6dc2d4315add947b057e9efe6cab49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &1627604940
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1627604931}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &1634898924 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3706331541823600170, guid: 344f823c1a9753447ab0f455c4f7d7bb,
@@ -38474,6 +38495,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1861100291}
+  - component: {fileID: 1861100292}
   m_Layer: 0
   m_Name: Spawnpoint
   m_TagString: Untagged
@@ -38489,12 +38511,25 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1861100290}
   m_LocalRotation: {x: -0, y: 0.4625751, z: -0, w: -0.8865801}
-  m_LocalPosition: {x: 76.59, y: -19.35, z: 66.02}
+  m_LocalPosition: {x: 76.59, y: -19.64, z: 66.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 304.893, z: 0}
+--- !u!114 &1861100292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1861100290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe8153ab67255384ea57ae65a6fc0536, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1627604931}
 --- !u!1 &1863223886 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5649265280937022009, guid: 344f823c1a9753447ab0f455c4f7d7bb,

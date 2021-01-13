@@ -79,13 +79,28 @@ public class HealthManager : MonoBehaviour
         Time.timeScale = 0;
     }
     IEnumerator coroutine;
+    public bool movePlayer;
+    private void Update()
+    {
+        if (movePlayer == true)
+        {
+            print("hoere zooi");
+            print(transform.position);
+            print(spawnPoint.position);
+        }
+    }
     public void Respawn()
     {
-        spotScipt.Change();
+        //spotScipt.Change();
+        
         firstRespawn.StartSound();
         deaths++;
-
-        if(coroutine != null)
+        print(transform.position);
+        print(spawnPoint.position);
+        transform.position = spawnPoint.position;
+        print(transform.position);
+        print(spawnPoint.position);
+        if (coroutine != null)
         {
             StopCoroutine(coroutine);
         }
