@@ -32620,6 +32620,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 597990461621955161, guid: be95bf0695c721545a0873a700abfff2, type: 3}
+    - {fileID: 8665316521961811367, guid: be95bf0695c721545a0873a700abfff2, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: be95bf0695c721545a0873a700abfff2, type: 3}
 --- !u!82 &263203748 stripped
 AudioSource:
@@ -34881,7 +34882,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 413551872}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &903305114
 MeshRenderer:
@@ -37331,25 +37332,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 263203747}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1385074106 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4079871697788736186, guid: be95bf0695c721545a0873a700abfff2,
-    type: 3}
-  m_PrefabInstance: {fileID: 263203747}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &1385074108
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1385074106}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 114.73391, y: 38.953476, z: 5.858968}
-  m_Center: {x: -0.22257234, y: -3.1530304, z: -0.23797229}
 --- !u!4 &1457952047 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8353685646032255163, guid: 7a5e7907c140ff24082a1bce753ce327,
@@ -38300,7 +38282,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 413551872}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1771597793
 MeshRenderer:
