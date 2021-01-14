@@ -19,17 +19,6 @@ public class EasterEggBox : MonoBehaviour
     IEnumerator coroutine;
 
     bool moveChestDown;
-    private void Update()
-    {
-        //if(moveChestDown == true)
-        //{
-        //    transform.position = Vector3.MoveTowards(transform.position, chestToGoToLoc.position, chestMoveSpeed * Time.deltaTime);
-        //    if (transform.position == chestToGoToLoc.position)
-        //    {
-
-        //    }
-        //}
-    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.isTrigger == true)
@@ -52,7 +41,7 @@ public class EasterEggBox : MonoBehaviour
     public void AddBaby()
     {
         babysEaten++;
-        if(babysEaten >= babiesToBeEaten)
+        if(babysEaten == babiesToBeEaten)
         {
             GameObject g = Instantiate(bigBaby, spawnLoc.position, spawnLoc.rotation, null);
             orbding.SetActive(true);
