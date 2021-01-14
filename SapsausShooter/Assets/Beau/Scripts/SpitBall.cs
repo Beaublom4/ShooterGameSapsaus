@@ -5,17 +5,24 @@ using UnityEngine;
 public class SpitBall : MonoBehaviour
 {
     [HideInInspector] public float damage;
-    private void OnCollisionEnter(Collision collision)
+    private void Start()
     {
-        if(collision.gameObject.tag == "Player")
+        Destroy(gameObject, 5);
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        print(other.gameObject.tag);
+        print(other.gameObject.name);
+        if (other.isTrigger == true || other.tag == "Enemy" || other.tag == "FreezeCol" || other.tag == "Weapon")
+            return;
+        if (other.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<HealthManager>().DoDamage(damage);
+            other.gameObject.GetComponent<HealthManager>().DoDamage(damage);
         }
-        else if(collision.gameObject.tag == "PickUpCol")
+        else if (other.gameObject.tag == "PickUpCol")
         {
-            collision.gameObject.GetComponentInParent<HealthManager>().DoDamage(damage);
+            other.gameObject.GetComponentInParent<HealthManager>().DoDamage(damage);
         }
-        if(collision.gameObject.tag != "Enemy") 
         Destroy(gameObject);
     }
 }

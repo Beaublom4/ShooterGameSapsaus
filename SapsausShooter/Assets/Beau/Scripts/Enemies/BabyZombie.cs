@@ -22,6 +22,12 @@ public class BabyZombie : Enemy
         base.Start();
         timer = spitDelay;
     }
+    public override void Trigger(GameObject player)
+    {
+        base.Trigger(player);
+        isTrown = false;
+        heldByMother = true;
+    }
     public override void Update()
     {
         base.Update();
@@ -70,6 +76,8 @@ public class BabyZombie : Enemy
     }
     private void OnTriggerEnter(Collider other)
     {
+        print(other.tag);
+        print(other.gameObject.name);
         if (isDeath == true) return;
         if(isTrown == true && other.gameObject.tag == "Player")
         {

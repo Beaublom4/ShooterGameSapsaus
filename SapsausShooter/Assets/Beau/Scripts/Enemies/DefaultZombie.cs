@@ -56,6 +56,8 @@ public class DefaultZombie : Enemy
         }
         if (other.gameObject.tag == "Enemy" && !other.isTrigger)
         {
+            if (!other.GetComponentInParent<Enemy>())
+                return;
             if (other.GetComponentInParent<Enemy>().countTowardsBigZomb == true)
             {
                 if (other.GetComponentInParent<Enemy>().addedToList == false)
@@ -75,6 +77,8 @@ public class DefaultZombie : Enemy
         }
         if (other.gameObject.tag == "Enemy" && !other.isTrigger)
         {
+            if (!other.GetComponentInParent<Enemy>())
+                return;
             if (other.GetComponentInParent<Enemy>().countTowardsBigZomb == true)
             {
                 if (other.GetComponentInParent<Enemy>().addedToList == true)

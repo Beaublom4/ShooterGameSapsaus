@@ -9,13 +9,16 @@ public class BodyHit : MonoBehaviour
     private void Start()
     {
         enemyScript = GetComponentInParent<Enemy>();
-        if(enemyScript == null)
-        {
-            print("Probleem poar neem");
-        }
     }
     public void HitPart(Weapon weapon, Vector3 hitLoc)
     {
-        enemyScript.DoDamage(weapon, bodyType, hitLoc);
+        if (enemyScript != null)
+        {
+            enemyScript.DoDamage(weapon, bodyType, hitLoc);
+        }
+        else
+        {
+            GetComponentInParent<BigBabyMiniBoss>().DoDamage(weapon, bodyType, hitLoc);
+        }
     }
 }
