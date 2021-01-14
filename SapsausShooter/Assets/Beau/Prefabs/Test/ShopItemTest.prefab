@@ -127,7 +127,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameObj: Launcher part
-  price: 34
+  price: 200
+  shopObject: {fileID: 0}
+  sounds:
+    minSoundRange: 0.2
+    maxSoundRange: 0.2
+    buyItem: {fileID: 0}
+    notEnoughMoney: {fileID: 0}
+  shopKeeper: {fileID: 0}
+  isAmmo: 0
+  minAmmount: 0
+  maxAmmount: 0
   canvas: {fileID: 8140012837046627450}
 --- !u!1 &8140012837046627450
 GameObject:
