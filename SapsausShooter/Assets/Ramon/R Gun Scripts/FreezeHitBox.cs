@@ -8,6 +8,8 @@ public class FreezeHitBox : MonoBehaviour
     public float timer;
     public bool ableToDoShit;
     public WeaponSelector weaponScript;
+    public ParticleSystem cantFreezeParticle;
+    
     private void LateUpdate()
     {
         if (ableToDoShit == true)
@@ -41,36 +43,38 @@ public class FreezeHitBox : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-        print("1");
-        if(other == null)
+        if(other.gameObject.tag == "FreezeCol" && !other.GetComponentInParent<Enemy>())
+        {
+            if(cantFreezeParticle.isPlaying == false)
+            {
+                print("Freeze");
+                cantFreezeParticle.Play();
+            }
+        }
+        if (other == null)
         {
             return;
         }
         if (other.gameObject.tag == "FreezeCol")
         {
-            print("2");
-            if (other.GetComponentInParent<Enemy>().isDeath == true)
+            if (other.GetComponentInParent<Enemy>())
             {
-                print("3");
-                enemies.Remove(other.gameObject);
+                if (other.GetComponentInParent<Enemy>().isDeath == true)
+                {
+                    enemies.Remove(other.gameObject);
+                }
             }
         }
         if (ableToDoShit == true)
         {
             if (other.gameObject.tag == "FreezeCol")
             {
-                if (other.GetComponentInParent<Enemy>().inFreezeRange == false)
-                {
-                    enemies.Add(other.gameObject);
-                    other.GetComponentInParent<Enemy>().inFreezeRange = true;
-                }
-
-                //GameObject g = other.GetComponent<BodyHit>().enemyScript.gameObject;
-                //if (g.GetComponent<Enemy>().inFreezeRange == false)
-                //{
-                //    enemies.Add(g);
-                //    g.GetComponent<Enemy>().inFreezeRange = true;
-                //}
+                if (other.GetComponentInParent<Enemy>())
+                    if (other.GetComponentInParent<Enemy>().inFreezeRange == false)
+                    {
+                        enemies.Add(other.gameObject);
+                        other.GetComponentInParent<Enemy>().inFreezeRange = true;
+                    }
             }
         }
     }
@@ -78,15 +82,11 @@ public class FreezeHitBox : MonoBehaviour
     {
         if (other.gameObject.tag == "FreezeCol")
         {
-            enemies.Remove(other.gameObject);
-            other.GetComponentInParent<Enemy>().inFreezeRange = false;
-
-            //if (coroutine != null)
-            //{
-            //    StopCoroutine(coroutine);
-            //}
-            //coroutine = WaitForDelete(other.gameObject);
-            //StartCoroutine(coroutine);
+            if (other.GetComponentInParent<Enemy>())
+            {
+                enemies.Remove(other.gameObject);
+                other.GetComponentInParent<Enemy>().inFreezeRange = false;
+            }
         }
     }
     IEnumerator coroutine;

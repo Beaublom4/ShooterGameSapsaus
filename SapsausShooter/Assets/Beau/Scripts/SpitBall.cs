@@ -11,18 +11,17 @@ public class SpitBall : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        print(other.gameObject.tag);
-        print(other.gameObject.name);
         if (other.isTrigger == true || other.tag == "Enemy" || other.tag == "FreezeCol" || other.tag == "Weapon")
             return;
         if (other.gameObject.tag == "Player")
         {
             other.gameObject.GetComponent<HealthManager>().DoDamage(damage);
+            Destroy(gameObject);
         }
         else if (other.gameObject.tag == "PickUpCol")
         {
             other.gameObject.GetComponentInParent<HealthManager>().DoDamage(damage);
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
     }
 }

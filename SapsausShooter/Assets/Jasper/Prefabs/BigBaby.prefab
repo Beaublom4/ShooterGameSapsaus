@@ -1449,16 +1449,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalStats:
     speed: 2
-    spitDamage: 7
-    missleDamage: 20
+    spitDamage: 3
+    missleDamage: 10
     shootRate: 0.5
     missileSpeed: 8
     spitTimes: 5
   enragedStats:
     wantedHealthPercentage: 50
     speed: 4
-    spitDamage: 14
-    missleDamage: 35
+    spitDamage: 5
+    missleDamage: 20
     shootRate: 0.2
     missileSpeed: 12
     spitTimes: 10
@@ -1479,8 +1479,31 @@ MonoBehaviour:
   hitNumPrefab: {fileID: 3314747878335242109, guid: 8c6b2080012d1a048870d88718b62e11,
     type: 3}
   dmgTextLoc: {fileID: 2320895225835079325}
-  hitBoxes: []
+  hitBoxes:
+  - {fileID: 6966487226224924211}
+  - {fileID: 3675908410811436414}
+  - {fileID: 9111681682731348900}
+  - {fileID: 212126135815192891}
+  - {fileID: 7221338107378074300}
+  - {fileID: 437119423633630465}
+  - {fileID: 195928989810705930}
+  - {fileID: 5907631809446666145}
+  - {fileID: 379079869555056711}
+  - {fileID: 2809506384821182439}
+  - {fileID: 2510809221129018146}
   rangeCol: {fileID: 7425659753846434733}
+  drops:
+  - {fileID: 669375285450597423, guid: c31da346040480e458b0b50f2a91ceae, type: 3}
+  - {fileID: 669375285450597423, guid: c31da346040480e458b0b50f2a91ceae, type: 3}
+  - {fileID: 4554482358237007466, guid: d00c633f6fdada74e996bda89f6b5d56, type: 3}
+  - {fileID: 4554482358237007466, guid: d00c633f6fdada74e996bda89f6b5d56, type: 3}
+  - {fileID: 5947956227818997311, guid: cdc2462a714d82d45b603c7f3294bc6e, type: 3}
+  - {fileID: 5947956227818997311, guid: cdc2462a714d82d45b603c7f3294bc6e, type: 3}
+  - {fileID: 2030928626577662909, guid: 446e29ffe71723b4db774c3d271eb33d, type: 3}
+  - {fileID: 2030928626577662909, guid: 446e29ffe71723b4db774c3d271eb33d, type: 3}
+  - {fileID: 2030928626577662909, guid: 446e29ffe71723b4db774c3d271eb33d, type: 3}
+  - {fileID: 2030928626577662909, guid: 446e29ffe71723b4db774c3d271eb33d, type: 3}
+  achievementScript: {fileID: 0}
   healthBar: {fileID: 0}
   health: 3000
   isDeath: 0

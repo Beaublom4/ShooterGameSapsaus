@@ -10,9 +10,13 @@ public class EasterEggBox : MonoBehaviour
     public Transform chestToGoToLoc;
     public float chestMoveSpeed;
 
+    public Animator anim;
+
     public Gun weapon;
     public int babiesToBeEaten;
     public int babysEaten;
+
+    IEnumerator coroutine;
 
     bool moveChestDown;
     private void Update()
@@ -38,6 +42,10 @@ public class EasterEggBox : MonoBehaviour
                 GameObject orbie = Instantiate(babyDeathParticle, other.transform.position, other.transform.rotation, transform);
                 orbie.GetComponent<BabyDeadOrb>().location = gameObject;
                 other.GetComponentInParent<Enemy>().DoDamage(weapon, 2, other.transform.position);
+                    if (coroutine != null)
+                        StopCoroutine(coroutine);
+                    coroutine = OpenAndClose();
+                    StartCoroutine(coroutine);
             }
         }
     }
@@ -52,5 +60,11 @@ public class EasterEggBox : MonoBehaviour
             Destroy(orbding, 5.4f);
             moveChestDown = true;
         }
+    }
+    IEnumerator OpenAndClose()
+    {
+        anim.SetBool("Open", true);
+        yield return new WaitForSeconds(2);
+        anim.SetBool("Open", false);
     }
 }

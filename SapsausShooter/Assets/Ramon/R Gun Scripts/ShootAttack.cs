@@ -151,7 +151,6 @@ public class ShootAttack : MonoBehaviour
                     {
                         sounds.freezeLoopShoot.Stop();
                     }
-                    print("stop");
                     doingFreeze = false;
                     freezeColObj.GetComponent<FreezeHitBox>().ableToDoShit = false;
                     weaponHand.GetComponentInChildren<VisualEffect>().Stop();

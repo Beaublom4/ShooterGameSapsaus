@@ -36,6 +36,8 @@ public class BigBabyMiniBoss : MonoBehaviour
     public Transform dmgTextLoc;
     public Collider[] hitBoxes;
     public Collider rangeCol;
+    public GameObject[] drops;
+    public AchievementPopUp achievementScript;
 
     public GameObject healthBar;
 
@@ -89,6 +91,7 @@ public class BigBabyMiniBoss : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
+        achievementScript = GameObject.FindGameObjectWithTag("achievement").GetComponent<AchievementPopUp>();
 
         render = GetComponentInChildren<SkinnedMeshRenderer>();
         block = new MaterialPropertyBlock();
@@ -312,8 +315,25 @@ public class BigBabyMiniBoss : MonoBehaviour
         {
             anim.SetInteger("Dead", 2);
         }
-        //Drop();
-        //DropMoney();
+
+        if (MainMenuManager.devMode == false)
+        {
+            if (PlayerPrefs.GetInt("KillRobert") != 1)
+            {
+                achievementScript.ShowAchievement(8);
+                PlayerPrefs.SetInt("KillRobert", 1);
+            }
+        }
+
+        foreach (GameObject g in drops)
+        {
+            GameObject drop = Instantiate(g, transform.position, Quaternion.Euler(transform.rotation.x, Random.Range(0, 360), transform.rotation.z), null);
+            if(drop.tag == "Money")
+            {
+                drop.GetComponent<MoneyDrop>().moneyAmount = 100;
+            }
+            drop.GetComponent<Rigidbody>().AddRelativeForce(0, 300, 10);
+        }
         dissolving = true;
         if (freezeNum == 0)
         {
