@@ -50,6 +50,7 @@ public class MomZombie : Enemy
             Destroy(currentBaby);
             GameObject g = Instantiate(babyZombiePrefab, trowPos.position, transform.rotation, trowPos);
             g.GetComponent<Enemy>().Trigger(playerObj);
+            g.GetComponent<BabyZombie>().col.enabled = enabled;
             g.transform.parent = spawnArea;
         }
         return base.Dead(hitPoint);
