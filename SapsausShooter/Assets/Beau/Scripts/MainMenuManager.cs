@@ -418,6 +418,14 @@ public class MainMenuManager : MonoBehaviour
                 MouseHoverStop(child.GetChild(0).gameObject);
             }
         }
+        achievementPanel.SetActive(false);
+        foreach (Transform child in achievementPanel.transform.GetChild(1).transform)
+        {
+            if (child.GetComponent<Button>())
+            {
+                MouseHoverStop(child.GetChild(0).gameObject);
+            }
+        }
     }
     public void ClickSound()
     {

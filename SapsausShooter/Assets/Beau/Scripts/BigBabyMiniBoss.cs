@@ -301,6 +301,7 @@ public class BigBabyMiniBoss : MonoBehaviour
     public virtual IEnumerator Dead(int hitPoint)
     {
         agent.speed = 0;
+        healthBar.SetActive(false);
         agent.velocity = Vector3.zero;
         agent.enabled = !enabled;
         foreach (Collider c in hitBoxes)
@@ -330,7 +331,7 @@ public class BigBabyMiniBoss : MonoBehaviour
             GameObject drop = Instantiate(g, transform.position, Quaternion.Euler(transform.rotation.x, Random.Range(0, 360), transform.rotation.z), null);
             if(drop.tag == "Money")
             {
-                drop.GetComponent<MoneyDrop>().moneyAmount = 100;
+                drop.GetComponent<MoneyDrop>().moneyAmount = 150;
             }
             drop.GetComponent<Rigidbody>().AddRelativeForce(0, 300, 10);
         }

@@ -50,8 +50,8 @@ public class ShopItem : MonoBehaviour
             {
                 item.GetComponent<AmmoPack>().minAmmo = minAmmount;
                 item.GetComponent<AmmoPack>().maxAmmo = maxAmmount;
-
             }
+            else
             Destroy(gameObject);
         }
         else

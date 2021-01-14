@@ -204,6 +204,7 @@ public class ShootAttack : MonoBehaviour
                 }
                 print("stop");
                 doingFreeze = false;
+                freezeColObj.SetActive(false);
                 freezeColObj.GetComponent<FreezeHitBox>().ableToDoShit = false;
                 weaponHand.GetComponentInChildren<VisualEffect>().Stop();
             }

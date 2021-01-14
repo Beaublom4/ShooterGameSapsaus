@@ -50,5 +50,10 @@ public class AchievementsManager : MonoBehaviour
             achievements[7].GetComponentInChildren<TextMeshProUGUI>().color = gotColor;
             achievements[7].GetComponentInChildren<Image>().color = gotColor;
         }
+        if (PlayerPrefs.GetInt("KillRobert") == 1)
+        {
+            achievements[8].GetComponentInChildren<TextMeshProUGUI>().color = gotColor;
+            achievements[8].GetComponentInChildren<Image>().color = gotColor;
+        }
     }
 }
