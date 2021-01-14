@@ -76,8 +76,6 @@ public class BabyZombie : Enemy
     }
     private void OnTriggerEnter(Collider other)
     {
-        print(other.tag);
-        print(other.gameObject.name);
         if (isDeath == true) return;
         if(isTrown == true && other.gameObject.tag == "Player")
         {

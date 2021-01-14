@@ -1433,7 +1433,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 2
+  m_Radius: 1.64
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5222494348666640279
 MonoBehaviour:
@@ -1498,6 +1498,8 @@ MonoBehaviour:
     death: {fileID: 2672043277839105989}
     walk: {fileID: 967199265116448220}
     gettingFreezed: {fileID: 1945348667717138162}
+  appearSpeed: 1.1
+  appearNumber: 0
   inFreezeRange: 0
   freezeScript: {fileID: 0}
   freezeWeapon: {fileID: 0}
@@ -1506,6 +1508,7 @@ MonoBehaviour:
   freezeRenderNumber: 0
   freezeWalkingSpeed: 0
   didFreezeSound: 0
+  appear: 0
 --- !u!1 &3252129439556517341
 GameObject:
   m_ObjectHideFlags: 0

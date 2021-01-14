@@ -4,37 +4,27 @@ using UnityEngine;
 
 public class EasterEggBox : MonoBehaviour
 {
-    public GameObject bigBaby;
-    public GameObject babyDeathParticle, bigBabyparticle;
-    public GameObject currentParticle;
-    public Transform chestToGoToLoc, bigBabySpawnPoint;
-    public float chestMoveSpeed, orbMoveSpeed;
+    public GameObject bigBaby, orbding;
+    public Transform spawnLoc;
+    public GameObject babyDeathParticle;
+    public Transform chestToGoToLoc;
+    public float chestMoveSpeed;
 
     public Gun weapon;
-    public float orbSpeed;
     public int babiesToBeEaten;
     public int babysEaten;
 
     bool moveChestDown;
-    bool moveOrb;
     private void Update()
     {
-        if(moveChestDown == true)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, chestToGoToLoc.position, chestMoveSpeed * Time.deltaTime);
-            if (transform.position == chestToGoToLoc.position)
-            {
+        //if(moveChestDown == true)
+        //{
+        //    transform.position = Vector3.MoveTowards(transform.position, chestToGoToLoc.position, chestMoveSpeed * Time.deltaTime);
+        //    if (transform.position == chestToGoToLoc.position)
+        //    {
 
-            }
-        }
-        if(moveOrb == true)
-        {
-            currentParticle.transform.position = Vector3.MoveTowards(currentParticle.transform.position, bigBabySpawnPoint.position, orbMoveSpeed * Time.deltaTime);
-            if(currentParticle.transform.position == bigBabySpawnPoint.position)
-            {
-                moveOrb = false;
-            }
-        }
+        //    }
+        //}
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -56,10 +46,11 @@ public class EasterEggBox : MonoBehaviour
         babysEaten++;
         if(babysEaten >= babiesToBeEaten)
         {
-            GameObject g = Instantiate(bigBabyparticle, transform.position, transform.rotation, null);
-            currentParticle = g;
+            GameObject g = Instantiate(bigBaby, spawnLoc.position, spawnLoc.rotation, null);
+            orbding.SetActive(true);
+            orbding.GetComponent<Animator>().SetTrigger("Orb");
+            Destroy(orbding, 5.4f);
             moveChestDown = true;
-            moveOrb = true;
         }
     }
 }

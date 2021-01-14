@@ -55,6 +55,9 @@ public class BigBabyMiniBoss : MonoBehaviour
 
     public Sounds sounds;
 
+    public float appearSpeed;
+    public float appearNumber;
+
     public bool inFreezeRange;
     public FreezeHitBox freezeScript;
     public Gun freezeWeapon;
@@ -63,6 +66,8 @@ public class BigBabyMiniBoss : MonoBehaviour
     public float freezeRenderNumber;
     public float freezeWalkingSpeed;
     public bool didFreezeSound;
+
+    public bool appear;
 
     void Stats(float _speed, float _spitDamage, float _launcherDamage, float _shootRate, float _spitTimes, float _missleSpeed)
     {
@@ -87,11 +92,18 @@ public class BigBabyMiniBoss : MonoBehaviour
 
         render = GetComponentInChildren<SkinnedMeshRenderer>();
         block = new MaterialPropertyBlock();
-        block.SetFloat("Vector1_4FF20CCE", dissolvingNumber);
         freezeRenderNumber = -1;
         block.SetFloat("Vector1_76374516", freezeRenderNumber);
         render.SetPropertyBlock(block);
 
+        Invoke("StartAppear", 1.5f);
+    }
+    void StartAppear()
+    {
+        appear = true;
+    }
+    void Trigger()
+    {
         Stats(normalStats.speed, normalStats.spitDamage, normalStats.missleDamage, normalStats.shootRate, normalStats.spitTimes, normalStats.missileSpeed);
         walkToPlayer = true;
         rangeCol.enabled = true;
@@ -100,6 +112,22 @@ public class BigBabyMiniBoss : MonoBehaviour
     }
     private void Update()
     {
+        if(appear == true)
+        {
+            appearNumber += appearSpeed * Time.deltaTime;
+            render.GetPropertyBlock(block);
+            block.SetFloat("Vector1_4FF20CCE", appearNumber);
+            render.SetPropertyBlock(block);
+            if(appearNumber >= 5)
+            {
+                appear = false;
+                appearNumber = 5;
+                Trigger();
+            }
+        }
+
+        if (isDeath == true)
+            return;
         if(walkToPlayer == true)
         {
             agent.SetDestination(player.transform.position);
@@ -114,7 +142,10 @@ public class BigBabyMiniBoss : MonoBehaviour
         }
         if(dissolving == true)
         {
-            dissolvingNumber -= Time.deltaTime;
+            dissolvingNumber -= 1 * Time.deltaTime;
+            render.GetPropertyBlock(block);
+            block.SetFloat("Vector1_4FF20CCE", dissolvingNumber);
+            render.SetPropertyBlock(block);
         }
         if (freezeSpeed > 0 && inFreezeRange == true)
         {
@@ -172,6 +203,8 @@ public class BigBabyMiniBoss : MonoBehaviour
     }
     void RandomAttack()
     {
+        if (isDeath == true)
+            return;
         int randomNum = Random.Range(0, 2);
         switch (randomNum)
         {
@@ -195,6 +228,8 @@ public class BigBabyMiniBoss : MonoBehaviour
 
         for (int i = 0; i < spitTimes; i++)
         {
+            if (isDeath == true)
+                break;
             anim.SetTrigger("Attack");
             GameObject g = Instantiate(spitPrefab, shootPos);
             g.transform.SetParent(null);
