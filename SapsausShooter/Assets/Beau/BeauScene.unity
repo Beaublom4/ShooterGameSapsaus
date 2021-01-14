@@ -454,12 +454,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbf4196932aa91e4b87815172a8e2d37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!198 &56365218 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 2115485058361842127, guid: 7a5e7907c140ff24082a1bce753ce327,
-    type: 3}
-  m_PrefabInstance: {fileID: 1294307362}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &85136477
 GameObject:
   m_ObjectHideFlags: 0
@@ -42217,7 +42211,7 @@ PrefabInstance:
         type: 3}
       propertyPath: cantFreezeParticle
       value: 
-      objectReference: {fileID: 56365218}
+      objectReference: {fileID: 2049028432}
     - target: {fileID: 5104244008519089620, guid: 7a5e7907c140ff24082a1bce753ce327,
         type: 3}
       propertyPath: m_Layer
@@ -44663,6 +44657,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5752934987133548490, guid: 344f823c1a9753447ab0f455c4f7d7bb,
     type: 3}
   m_PrefabInstance: {fileID: 7932595842009653851}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &2049028432 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2177574276346292998, guid: 7a5e7907c140ff24082a1bce753ce327,
+    type: 3}
+  m_PrefabInstance: {fileID: 1294307362}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2066043817
 PrefabInstance:
