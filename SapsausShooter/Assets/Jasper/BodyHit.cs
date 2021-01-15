@@ -16,7 +16,7 @@ public class BodyHit : MonoBehaviour
         {
             enemyScript.DoDamage(weapon, bodyType, hitLoc);
         }
-        else
+        else if (GetComponentInParent<BigBabyMiniBoss>())
         {
             GetComponentInParent<BigBabyMiniBoss>().DoDamage(weapon, bodyType, hitLoc);
         }

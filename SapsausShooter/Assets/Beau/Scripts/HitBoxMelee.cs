@@ -11,7 +11,17 @@ public class HitBoxMelee : MonoBehaviour
         {
             if (meleeWeapon != null)
             {
-                other.GetComponentInParent<Enemy>().DoDamage(meleeWeapon, 2, new Vector3(other.transform.position.x, other.transform.position.y + 1, other.transform.position.z));
+                if (other.GetComponentInParent<Enemy>())
+                {
+                    other.GetComponentInParent<Enemy>().DoDamage(meleeWeapon, 2, new Vector3(other.transform.position.x, other.transform.position.y + 1, other.transform.position.z));
+                }
+            }
+        }
+        if(other.gameObject.tag == "FreezeCol")
+        {
+            if (other.GetComponentInParent<BigBabyMiniBoss>())
+            {
+                other.GetComponentInParent<BigBabyMiniBoss>().DoDamage(meleeWeapon, 2, new Vector3(other.transform.position.x, other.transform.position.y + 1, other.transform.position.z));
             }
         }
         if(other.gameObject.tag == "BossHitBox")
@@ -22,12 +32,5 @@ public class HitBoxMelee : MonoBehaviour
                 other.GetComponentInParent<BossZombie>().GetDamage(meleeWeapon, 2, new Vector3(0, -100, 0));
             }
         }
-    }
-    IEnumerator ResetKnockBack(GameObject enemy)
-    {
-        yield return new WaitForSeconds(.2f);
-        enemy.GetComponentInParent<NavMeshAgent>().enabled = enabled;
-        enemy.GetComponentInParent<Enemy>().isAttacking = true;
-        enemy.GetComponentInParent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
     }
 }
